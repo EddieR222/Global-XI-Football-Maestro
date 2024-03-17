@@ -15,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
 theme = ExtResource("1_meumr")
-resizable = true
 slot/0/left_enabled = false
 slot/0/left_type = 13
 slot/0/left_color = Color(0, 1, 1, 1)

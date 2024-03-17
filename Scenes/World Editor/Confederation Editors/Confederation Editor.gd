@@ -72,7 +72,7 @@ func _on_add_territory_pressed():
 	# For the item in the ItemList, we create the Territory
 	var default_territory: Territory = Territory.new();
 	default_territory.Territory_Name = "Territory"
-	default_territory.CoTerritory_ID = 0;
+	default_territory.CoTerritory_ID = -1;
 	default_territory.Area = 0;
 	default_territory.Population = 0;
 	default_territory.Code = ""
@@ -114,6 +114,9 @@ func _on_delete_territory_pressed():
 
 	
 func reflect_territory_changes():
+	# First, we sort the ids of the terr in stored in confed
+	confed.Territory_List.sort();
+	
 	#We first need to go through and update the ItemList
 	item_list.clear();
 	for terr_id: int in confed.Territory_List:

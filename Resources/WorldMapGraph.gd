@@ -35,18 +35,16 @@ func add_edge(a: GraphNode, b: GraphNode) -> void:
 	# Make A the Child of B
 	b.confed.Children_ID.push_back(a.confd.ID);
 
-
-
 """ Removing or Erasing GraphNode """
 ## Removes the GraphNode at given index (confed_id)
 ## Automatically sorts and handles ids
-func remove_node(id: int) -> void:
+func remove_node(confed_id: int) -> void:
 	# Validate ID
-	if id < 0 or id >= graph_nodes.size():
-		return
+	var node: GraphNode = get_node_by_id(confed_id);
 
 	# Remove it from array
-	graph_nodes.remove_at(id);
+	if node != null:
+		graph_nodes.erase(node);
 	
 	# Sort the Array and Organize Confederation IDs
 	sort_graph_nodes();
@@ -61,21 +59,27 @@ func sort_graph_nodes() -> void:
 
 """ Getter Functions """
 ## This function returns the GraphNode by id
-func get_node_by_id(id: int) -> GraphNode:
+func get_node_by_id(confed_id: int) -> GraphNode:
 	# Validate ID
-	if id < 0 or id >= graph_nodes.size():
+	if confed_id < 0 or confed_id >= graph_nodes.size():
 		return null;
 	
 	# Return Requested GraphNode
-	return graph_nodes[id];
+	for node: GraphNode in graph_nodes:
+		if node.confed.ID == confed_id:
+			return node;
 	
-func get_territory_list(id: int) -> Array[int]:
+	return null
+	
+func get_territory_list(confed_id: int) -> Array[int]:
 	# Validate ID
-	if id < 0 or id >= graph_nodes.size():
-		return [];
+	var node: GraphNode = get_node_by_id(confed_id);
 		
 	# Return Requested Territory List
-	return graph_nodes[id].confed.Territory_List;
+	if node != null:
+		return node.confed.Territory_List;
+		
+	return [];
 		
 	
 	
@@ -149,7 +153,7 @@ func propagate_territory_deletion(terr_id: int, node_id: int) -> void:
 		
 		# Place it in Owner if not already there
 		if terr_id in owner_node.confed.Territory_List:
-			owner_node.confed.remove_territory(terr_id)
+			owner_node.confed.delete_territory(terr_id)
 			
 		owner_node.reflect_territory_changes();	
 		curr_node = owner_node

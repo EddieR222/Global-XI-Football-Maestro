@@ -3,7 +3,7 @@ extends GraphNode
 #var territory: Territory;
 
 @onready var territory: Territory = Territory.new();
-
+@onready var game_map: GameMap;
 
 """
 This function loads all the previous saved info of the country into the UI input fields. This is both useful for when loading a previous saved territory
@@ -23,7 +23,9 @@ func _on_texture_button_pressed():
 	$VBoxContainer2/HBoxContainer/FileDialog.visible = 1;
 
 func _on_territory_name_edit_text_changed(new_text):
+	# Apply name change
 	territory.Territory_Name = new_text
+	
 	
 func _on_CoT_ID_value_changed(value: float):
 	territory.CoTerritory_ID = int(value);

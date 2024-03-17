@@ -35,6 +35,7 @@ func _ready():
 	var new_terr_edit_node: GraphNode = terr_node.instantiate();
 	add_child(new_terr_edit_node);
 	new_terr_edit_node.visible = 0;
+	new_terr_edit_node.game_map = game_map;
 	
 	# Now we connect the territory edit node to the correct signals here
 	connect_signals_from_territory_node(new_terr_edit_node);
@@ -131,11 +132,13 @@ func save_territory() -> void:
 	# Save to itemlist
 	curr_node_open_edit.set_selected_territory(curr_territory);
 	
-	## Now we need to display the changes in ItemList
+	#Sort all Territories
+	game_map.sort_territories();
+	
+	# Now we need to display the changes in ItemList
 	curr_node_open_edit.reflect_territory_changes();
 	world_graph.propagate_territory_addition(curr_territory.Territory_ID, curr_node_open_edit.confed.ID)
 	#world_map.propagate_country_list(world_map.graph_nodes[node_open_edit]);
-	#
 	
 func load_territory(selected_index: int ) -> void:
 	# First we grab the territory info
@@ -214,7 +217,7 @@ func _on_confirmation_dialog_confirmed() -> void:
 	world_graph.remove_node(id)
 	
 	# Erase Node from GameMap
-	game_map.erase_confederation_by_id(id)
+	game_map.erase_confederation_by_id(id);
 	
 	#Free the GraphNode
 	curr_node_selected.free();
@@ -318,14 +321,14 @@ func _on_deleted_confirmed():
 	world_graph.propagate_territory_deletion(curr_node_selected.get_selected_territory().Territory_ID, curr_node_selected.confed.ID);
 	
 	# Delete from Confed
-	curr_node_selected.delete_territory(curr_node_selected.get_selected_territory().Territory_ID)
+	curr_node_selected.confed.delete_territory(curr_node_selected.get_selected_territory().Territory_ID)
 	
 	# Delete from GameMap
 	game_map.erase_territories_by_id(curr_node_selected.get_selected_territory().Territory_ID)
 	
 	# Sort ItemList
-	curr_node_open_edit.item_list.sort_items_by_text()
-	
+	curr_node_selected.reflect_territory_changes()
+	curr_node_selected.item_list.sort_items_by_text()
 	
 
 
