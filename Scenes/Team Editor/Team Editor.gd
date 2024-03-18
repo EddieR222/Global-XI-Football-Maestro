@@ -4,7 +4,7 @@ extends Node
 
 """ File Saving and Loading Info """
 var FileName : String; 
-var game_map: GameMap;
+@onready var game_map: GameMap = GameMap.new();
 
 """ ItemList """
 @onready var team_list: ItemList = get_node("VBoxContainer/Editor Bar/VBoxContainer/Team List");
@@ -32,7 +32,7 @@ func _on_file_dialog_file_selected(path: String):
 	var file_name_edit: LineEdit = get_node("VBoxContainer/Title Bar/LineEdit");
 	file_name_edit.text = FileName
 
-# Iter through each confed	
+	# Iter through each confed	
 	for confed: Confederation in file_map.Confederations:
 
 		if confed.Level != 1:
@@ -50,7 +50,7 @@ func _on_file_dialog_file_selected(path: String):
 			var terr_name = terr.Territory_Name;
 			# Get Territory Flag or Icon
 			var texture_normal
-			var flag = terr.Flag;
+			var flag = terr.get_territory_image();
 			if flag != null:
 				flag.decompress();
 				texture_normal = ImageTexture.create_from_image(flag);
@@ -80,7 +80,7 @@ func load_territory_teams(terr: Territory) -> void:
 		var team: Team = game_map.get_team_by_id(team_id);
 		# Get team name and logo
 		var team_name = team.Name;
-		var logo: Image = team.Logo;
+		var logo: Image = team.get_team_logo();
 		var texture_normal
 		if logo != null:
 			logo.decompress();
@@ -120,7 +120,7 @@ func reflect_team_changes() -> void:
 		var team: Team = team_list.get_item_metadata(team_id);
 		# Get team name and logo
 		var team_name = team.Name;
-		var logo: Image = team.Logo;
+		var logo: Image = team.get_team_logo();
 		var texture_normal
 		if logo != null:
 			logo.decompress();
@@ -215,7 +215,10 @@ func _on_logo_file_dialog_file_selected(path) -> void:
 	# Save Image into Team 
 	logo.compress(Image.COMPRESS_BPTC);
 	var team: Team = team_list.get_item_metadata(team_id);
-	team.Logo = logo;
+	var save_path: String = "res://Images/Team Logos/" + str(team.ID) + ".png";
+	logo.save_png(save_path)
+	
+	
 func _on_team_name_text_changed(new_text: String) -> void:
 	# First ensure team and nation are selected
 	if team_list.get_selected_items().is_empty():
@@ -264,7 +267,6 @@ func _on_spin_box_value_changed(value: int) -> void:
 	#
 	## Now we need to get each row
 	#var result = database.select_rows("team_data", "", ["*"]);
-	#var dict_index = 0;
 	#for team_info: Dictionary in result:
 		## For each team_infp, we need to create a team
 		#var team: Team = Team.new();
@@ -272,9 +274,12 @@ func _on_spin_box_value_changed(value: int) -> void:
 		## Now we need to add the team info from the sql database
 		#team.Name = team_info["Team_Name"];
 		#
+		## Add it to gamemap
+		#game_map.add_team(team)
+		#
 		#var nation: String = team_info["Nation"];
 		#var this_terr;
-		#for terr: Territory in terr_list.values():
+		#for terr: Territory in game_map.Territories:
 			#if terr.Territory_Name == nation:
 				#team.Territory_Name = terr.Territory_Name
 				#team.Territory_ID = terr.Territory_ID
@@ -289,31 +294,13 @@ func _on_spin_box_value_changed(value: int) -> void:
 			#if logo != null:
 				#logo.resize(150, 150, 2);
 				#logo.compress(Image.COMPRESS_BPTC);
-				#team.Logo = logo;
-		#
+				#var save_path: String = "res://Images/Team Logos/" + str(team.ID) + ".png";
+				#logo.save_png(save_path)
 		##Finally, we add it to respective country list
 		#if this_terr != null:
-			#var curr_index = terr_list.find_key(this_terr);
-			#terr_list[curr_index].Teams[dict_index] = team;
+			## Add it to terr club rankings
+			#this_terr.Club_Teams_Rankings.push_back(team.ID);
 			#
-		#dict_index += 1;
-			#
-	#
-	##Now we want to organize each countries team lists
-	#for fix_index: int in terr_list.keys():
-		## Get Territory 
-		#var selected_terr: Territory = terr_list[fix_index];
+	#game_map.sort_teams();		
 		#
-		## Now we get all teams and alphabetize them
-		#var entire_team_arr = selected_terr.Teams.values();
-		#entire_team_arr.sort_custom(func(a, b): return a.Name < b.Name);
-		#
-		## Now we recreate the Team List
-		#var entire_team_dict: Dictionary = {};
-		#var new_index: int = 0;
-		#for team: Team in entire_team_arr:
-			#entire_team_dict[new_index] = team;
-			#new_index += 1;
-			#
-		#selected_terr.Teams = entire_team_dict; 
-		#
+

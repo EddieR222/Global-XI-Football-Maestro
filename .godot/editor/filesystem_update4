@@ -10,3 +10,6 @@ res://Scenes/World Editor/Confederation Editors/Confederation Editor.gd
 res://Scenes/World Editor/Territory Editors/Territory Editor.gd
 res://Scenes/Country Editor/TextureButton.gd
 res://Resources/GameMap.gd
+res://Scenes/Team Editor/Team Editor.gd
+res://Resources/Team.gd
+res://Scenes/Team Editor/Misc Scripts/Logo.gd

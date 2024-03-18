@@ -3,7 +3,7 @@ extends TextureButton
 
 func team_selected(team: Team) -> void:
 	# Get and Decompress Logo 
-	var logo: Image = team.Logo;
+	var logo: Image = team.get_team_logo();
 	var texture;
 	
 	if logo != null:

@@ -124,20 +124,26 @@ func sort_territories() -> void:
 ## This functions sorts the teams in alphabetical order by name. 
 ## Also changes IDs based on new alphabetical order
 func sort_teams() -> void:
-		# Copy the Unsorted Array for now, to preserve old_ids
-	var unsorted: Array[Team] = Teams.duplicate(false); #false allows us to keep references in place
 	
 	# Sort the array based on Name (Alphabetical Order)
 	Teams.sort_custom(func(a: Team, b: Team): return a.Name < b.Name);
 	
-	
-	
-	
 	# Now update the ID of each Territory, based on index in Array
-	var index = 0;
+	var new_index = 0;
 	for team: Team in Teams:
-		team.ID = index;
-		index += 1;
+		# Get old index
+		var old_index: int = team.ID;
+		
+		# Swap it for new one
+		# Convert OLD_ID to -100 (unused id)
+		update_team_id(old_index, -100);
+		# Now convert new_id to old_id
+		update_team_id(new_index, old_index);
+		# Finally, convert -100 to new_id
+		update_team_id(-100, new_index);
+		
+		# Iter new_index
+		new_index += 1;
 
 ## This functions sorts the tournaments in alphabetical order by name. 
 ## Also changes IDs based on new alphabetical order
@@ -327,4 +333,15 @@ func update_team_id(old_id: int, new_id: int) -> void:
 			terr.Club_Teams_Rankings[index] = new_id; #swap id
 			
 
-	# Third, 
+	# Third, change the Team itself
+	for team: Team in Teams:
+		if team.ID == old_id:
+			team.ID = new_id;
+			
+			
+	# Finally, update Image path
+	var old_path: String = "res://Images/Team Logos/" + str(old_id) + ".png"
+	var new_path: String = "res://Images/Team Logos/" + str(new_id) + ".png"
+	var flag_directory: DirAccess = DirAccess.open("res://Images/Team Logos/");
+	
+	flag_directory.rename(old_path, new_path);

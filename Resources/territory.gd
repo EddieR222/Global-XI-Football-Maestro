@@ -45,7 +45,12 @@ func get_territory_image() -> Image:
 	var load_path: String = "res://Images/Territory Flags/" + str(Territory_ID) + ".png"
 	
 	# Load Image
-	var flag: Image = Image.load_from_file(load_path);
-	
-	#Return 
-	return flag; 
+	if FileAccess.file_exists(load_path):
+		var flag_texture: Texture2D = load(load_path)
+		if flag_texture != null:
+			var flag: Image = flag_texture.get_image()
+			return flag
+		else:
+			return null
+	else:
+		return null
