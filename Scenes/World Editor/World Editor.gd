@@ -26,7 +26,7 @@ func _on_save_file_pressed():
 	save_map = get_node("VBoxContainer/Confed Edit").game_map;
 	
 	# Finally, save it to file
-	ResourceSaver.save(save_map, "user://{filename}.res".format({"filename": Filename}));
+	ResourceSaver.save(save_map, "user://{filename}.res".format({"filename": Filename}), 32);
 	
 func _on_line_edit_text_changed(new_text: String):
 	Filename = new_text;

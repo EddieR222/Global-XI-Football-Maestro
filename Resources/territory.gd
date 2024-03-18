@@ -40,9 +40,9 @@ extends Resource
 
 
 ## Function to load the image for this territory
-func get_territory_image() -> Image:
+func get_territory_image(filename: String ) -> Image:
 	# Generate Load Path
-	var load_path: String = "res://Images/Territory Flags/" + str(Territory_ID) + ".png"
+	var load_path: String = "res://Images/Territory Flags/" + filename + "/" +  str(Territory_ID) + ".png"
 	
 	# Load Image
 	if FileAccess.file_exists(load_path):

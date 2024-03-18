@@ -36,9 +36,9 @@ class_name Team extends Resource
 
 
 ## Get the image for this team. Null is returned if no image exists for this Team
-func get_team_logo() -> Image:
+func get_team_logo(FileName: String) -> Image:
 	# Generate Load Path
-	var load_path: String = "res://Images/Team Logos/" +  str(ID) + ".png"
+	var load_path: String = "res://Images/Team Logos/" + FileName + "/" + str(ID) + ".png"
 	
 	# Load Image
 	if FileAccess.file_exists(load_path):

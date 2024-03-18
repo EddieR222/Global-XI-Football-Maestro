@@ -4,6 +4,9 @@ class_name GameMap extends Resource
 ## This Class contains all the information for the game including territories, confederations, teams, tournaments, etc.
 ## It also contains a lot of useful functions for parsing and working with this data
 
+## The FileName Decided on in the World Editor
+@export var Filename: String
+
 @export_category("World Map")
 ## The Dictionary that contains all Confederations. 
 @export 
@@ -332,6 +335,8 @@ func update_team_id(old_id: int, new_id: int) -> void:
 		if index != -1:
 			terr.Club_Teams_Rankings[index] = new_id; #swap id
 			
+		terr.Club_Teams_Rankings.sort();
+			
 
 	# Third, change the Team itself
 	for team: Team in Teams:
@@ -340,8 +345,8 @@ func update_team_id(old_id: int, new_id: int) -> void:
 			
 			
 	# Finally, update Image path
-	var old_path: String = "res://Images/Team Logos/" + str(old_id) + ".png"
-	var new_path: String = "res://Images/Team Logos/" + str(new_id) + ".png"
-	var flag_directory: DirAccess = DirAccess.open("res://Images/Team Logos/");
+	var old_path: String = "res://Images/Team Logos/" + Filename + "/" + str(old_id) + ".png"
+	var new_path: String = "res://Images/Team Logos/" + Filename + "/" + str(new_id) + ".png"
+	var flag_directory: DirAccess = DirAccess.open("res://Images/Team Logos/" + Filename + "/");
 	
 	flag_directory.rename(old_path, new_path);
