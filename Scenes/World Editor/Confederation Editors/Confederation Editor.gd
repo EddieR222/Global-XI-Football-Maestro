@@ -45,7 +45,7 @@ func set_confed(new_confed: Confederation) -> void:
 		var terr_name = terr.Territory_Name;
 		# Get Territory Flag or Icon
 		var texture_normal
-		var flag = terr.Flag;
+		var flag = terr.get_territory_image();
 		if flag != null:
 			flag.decompress();
 			texture_normal = ImageTexture.create_from_image(flag);
@@ -58,6 +58,7 @@ func set_confed(new_confed: Confederation) -> void:
 		
 		# Set Metadata
 		item_list.set_item_metadata(index, terr);
+		
 	
 
 """
@@ -126,7 +127,7 @@ func reflect_territory_changes():
 		var terr_name = terr.Territory_Name;
 		# Get Territory Flag or Icon
 		var texture_normal
-		var flag = terr.Flag;
+		var flag = terr.get_territory_image();
 		if flag != null:
 			flag.decompress();
 			texture_normal = ImageTexture.create_from_image(flag);

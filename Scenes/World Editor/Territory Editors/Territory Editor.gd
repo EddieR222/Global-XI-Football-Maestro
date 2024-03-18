@@ -77,9 +77,10 @@ func _on_file_dialog_file_selected(path):
 	# Change Texture of Texture Button to reflect change
 	$VBoxContainer2/HBoxContainer/TextureButton.texture_normal = flag_texture
 	
-	# Save Image into Territory Class
+	# Now we save to " Territory Flags" Folder
+	var save_path: String = "res://Images/Territory Flags/" + str(territory.Territory_ID) + ".png"
 	flag.compress(Image.COMPRESS_BPTC);
-	territory.Flag = flag;
+	flag.save_png(save_path)
 		
 """ End of Signal Functions"""	
 func get_territory() -> Territory:

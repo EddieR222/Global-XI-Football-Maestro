@@ -2,7 +2,7 @@ extends TextureButton
 
 
 func territory_selected(t: Territory):
-	var flag: Image = t.Flag;
+	var flag: Image = t.get_territory_image();
 	
 	if flag != null:
 		flag.decompress();

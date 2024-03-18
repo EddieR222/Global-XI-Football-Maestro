@@ -264,19 +264,26 @@ func update_territory_id(old_id: int, new_id: int) -> void:
 		if terr.CoTerritory_ID == old_id:
 			terr.CoTerritory_ID = new_id;
 
-	# First we update the territory IDs in all confederations
+	# Second we update the territory IDs in all confederations
 	for confed: Confederation in Confederations:
 		confed.update_territory_id(old_id, new_id); 
 
-	# Second, we update all Territory Id's in Teams
+	# Third, we update all Territory Id's in Teams
 	for team: Team in Teams:
 		if team.Territory_ID == old_id:
 			team.Territory_ID = new_id;
 
-	# Finally, we update all Territory Id's in Tournaments
+	# Fourth, we update all Territory Id's in Tournaments
 	for tour: Tournament in Tournaments:
 		if tour.Host_Country_ID == old_id:
 			tour.Host_Country_ID = new_id;
+			
+	#Fifth, we update the territory flag
+	var old_path: String = "res://Images/Territory Flags/" + str(old_id) + ".png"
+	var new_path: String = "res://Images/Territory Flags/" + str(new_id) + ".png"
+	var flag_directory: DirAccess = DirAccess.open("res://Images/Territory Flags/");
+	
+	flag_directory.rename(old_path, new_path);
 
 ## This function updates the old confed ID to the new one across the Entire GameMap
 func update_confederation_id(old_id: int, new_id: int) -> void:

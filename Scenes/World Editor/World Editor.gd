@@ -44,7 +44,7 @@ func _on_file_dialog_file_selected(path):
 	
 	#Load the World Map from Disk
 	var file_map : GameMap = ResourceLoader.load(path) as GameMap;
-	
+	#var file_map: GameMap = convert_to_new_image_system(file_start);
 
 	# Start Graph Resource
 	var world_map: WorldMapGraph = WorldMapGraph.new() 
@@ -88,15 +88,20 @@ func _on_file_dialog_file_selected(path):
 		new_node.set_confed(confed)
 		#Add it to graph_nodes to keep track of it
 		world_map.add_node(new_node);
+
 		
 	# Redraw All Connections that were saved
 	redraw_saved_connections(world_map, graph_edit);
 	
 	# Set Graph Edit's worl
 	graph_edit.world_graph = world_map;
+	graph_edit.game_map = file_map;
 	
 	# Arrange Nodes
 	graph_edit.arrange_nodes();
+	
+	# Save all Images
+	#convert_to_new_image_system(file_map);
 	
 	
 func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> void:
@@ -127,3 +132,28 @@ func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> vo
 					
 		else:
 			continue;
+			
+			
+			
+			#
+#func convert_to_new_image_system(game_map: GameMap) -> GameMap:
+	#for terr: Territory in game_map.Territories:
+		## Get Flag
+		#var flag: Image = terr.Flag;
+		#
+		## Decompress
+		#if flag != null:
+			#flag.decompress();
+		#else:
+			#continue;
+		## Now we save to " Territory Flags" Folder
+		#var path: String = "res://Images/Territory Flags/" + str(terr.Territory_ID) + ".png"
+		#flag.save_png(path)
+		#
+	## Now we copy GameMap and get rid of Flags
+	#var new_gm: GameMap = game_map.duplicate(true) as GameMap;
+	#
+	#for terr: Territory in new_gm.Territories:
+		#terr.Flag = null
+		#
+	#return new_gm

@@ -8,7 +8,7 @@ extends Resource
 @export var CoTerritory_ID: int;
 @export var CoTerritory_Name: String;
 @export var Code: String;
-@export var Flag: Image;
+#@export var Flag: Image; # Too much area, now image is just the territory_id.png inside Terriotry Flag Folder
 
 """ Country Information """
 @export var Population: float; # In Millions
@@ -36,3 +36,16 @@ extends Resource
 
 """ Rankings """
 @export var Club_Teams_Rankings: Array[int] # Array[Team_ID]
+
+
+
+## Function to load the image for this territory
+func get_territory_image() -> Image:
+	# Generate Load Path
+	var load_path: String = "res://Images/Territory Flags/" + str(Territory_ID) + ".png"
+	
+	# Load Image
+	var flag: Image = Image.load_from_file(load_path);
+	
+	#Return 
+	return flag; 
