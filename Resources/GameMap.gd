@@ -350,3 +350,8 @@ func update_team_id(old_id: int, new_id: int) -> void:
 	var flag_directory: DirAccess = DirAccess.open("res://Images/Team Logos/" + Filename + "/");
 	
 	flag_directory.rename(old_path, new_path);
+
+
+
+	
+	

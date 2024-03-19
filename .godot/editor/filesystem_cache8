@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1710743735
+::res://::1710814606
 Control.gd::GDScript::-1::1710264703::0::1::::<>Control<>::
 README.md::TextFile::-1::1710711722::0::1::::<><>::
 test_itemlist.tscn::PackedScene::1046052840237460886::1710270321::0::1::::<><>::res://Control.gd
@@ -9,7 +9,7 @@ gdsqlite.gdextension::GDExtension::-1::1709184968::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1709184968::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1709184968::0::1::::<><>::
 plugin.cfg::TextFile::-1::1709184968::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1710738143
+::res://addons/godot-sqlite/bin/::1710814602
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1709184968
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1709184968
 ::res://Database/::1710725138
@@ -20,273 +20,20 @@ Global_XI_Football_Maestro_Logo.JPG::CompressedTexture2D::2428067565950428885::1
 icon.svg::CompressedTexture2D::5005012556432720634::1702159414::1710620446::1::::<><>::
 main_menu.jpg::CompressedTexture2D::6923708401058514228::1704026911::1708584744::1::::<><>::
 start_up_background.jpg::CompressedTexture2D::5242971471424488616::1702160235::1708584744::1::::<><>::
-::res://Images/Team Logos/::1710743735
-::res://Images/Team Logos/W_F/::1710743845
-0.png::CompressedTexture2D::4011724858880794765::1710743816::1710743817::1::::<><>::
-1.png::CompressedTexture2D::6986861217564249461::1710743827::1710743832::1::::<><>::
-2.png::CompressedTexture2D::1928742213028049632::1710743830::1710743832::1::::<><>::
-4.png::CompressedTexture2D::3081547571538094201::1710743824::1710743852::1::::<><>::
-::res://Images/Territory Flags/::1710739217
-::res://Images/Territory Flags/W_F/::1710739250
-0.png::CompressedTexture2D::2121890064502654249::1710722267::1710739249::1::::<><>::
-1.png::CompressedTexture2D::4340808998408849157::1710722267::1710739249::1::::<><>::
-2.png::CompressedTexture2D::881061341888367510::1710722267::1710739250::1::::<><>::
-3.png::CompressedTexture2D::8279763947469954106::1710722267::1710739249::1::::<><>::
-4.png::CompressedTexture2D::5944815684006149921::1710722267::1710739249::1::::<><>::
-5.png::CompressedTexture2D::3740520367278715635::1710722267::1710739249::1::::<><>::
-6.png::CompressedTexture2D::2381907359999054644::1710722267::1710739249::1::::<><>::
-7.png::CompressedTexture2D::4581542676779561148::1710722267::1710739249::1::::<><>::
-8.png::CompressedTexture2D::5128559002947224934::1710722267::1710739249::1::::<><>::
-9.png::CompressedTexture2D::2416746060817217078::1710722267::1710739249::1::::<><>::
-10.png::CompressedTexture2D::2085462150917735884::1710722267::1710739249::1::::<><>::
-11.png::CompressedTexture2D::2117658338985159914::1710722267::1710739249::1::::<><>::
-12.png::CompressedTexture2D::32892069915811448::1710722267::1710739249::1::::<><>::
-13.png::CompressedTexture2D::7707171843129259685::1710722267::1710739249::1::::<><>::
-14.png::CompressedTexture2D::8918778778035198350::1710722267::1710739249::1::::<><>::
-15.png::CompressedTexture2D::5242071961234209082::1710722267::1710739249::1::::<><>::
-16.png::CompressedTexture2D::5351177558344956513::1710722267::1710739250::1::::<><>::
-17.png::CompressedTexture2D::1171437559736920152::1710722267::1710739250::1::::<><>::
-18.png::CompressedTexture2D::8860006536408618083::1710722267::1710739250::1::::<><>::
-19.png::CompressedTexture2D::4190426091064613932::1710722267::1710739250::1::::<><>::
-20.png::CompressedTexture2D::6970432578284233172::1710722267::1710739250::1::::<><>::
-21.png::CompressedTexture2D::6955867323825244347::1710724225::1710739250::1::::<><>::
-22.png::CompressedTexture2D::7442263311961937967::1710722267::1710739249::1::::<><>::
-23.png::CompressedTexture2D::4613045134127481489::1710722267::1710739249::1::::<><>::
-24.png::CompressedTexture2D::5334520268277786082::1710722267::1710739249::1::::<><>::
-25.png::CompressedTexture2D::489751081065564355::1710722267::1710739249::1::::<><>::
-26.png::CompressedTexture2D::3013491595748950424::1710722267::1710739249::1::::<><>::
-27.png::CompressedTexture2D::4641310952625582326::1710722267::1710739249::1::::<><>::
-28.png::CompressedTexture2D::2052752860629541561::1710722267::1710739249::1::::<><>::
-29.png::CompressedTexture2D::8676031535180600008::1710722267::1710739249::1::::<><>::
-30.png::CompressedTexture2D::7791773299963349923::1710722267::1710739249::1::::<><>::
-31.png::CompressedTexture2D::5644885150982179013::1710722267::1710739249::1::::<><>::
-32.png::CompressedTexture2D::4100346560076851488::1710722267::1710739249::1::::<><>::
-33.png::CompressedTexture2D::7675331559169094679::1710722267::1710739249::1::::<><>::
-34.png::CompressedTexture2D::724084501985782078::1710722267::1710739249::1::::<><>::
-35.png::CompressedTexture2D::5119153474980309060::1710722267::1710739249::1::::<><>::
-36.png::CompressedTexture2D::3369995983738256841::1710722267::1710739249::1::::<><>::
-37.png::CompressedTexture2D::2569222896366060637::1710722267::1710739249::1::::<><>::
-38.png::CompressedTexture2D::3934463291175106882::1710722267::1710739249::1::::<><>::
-39.png::CompressedTexture2D::8555438758312053474::1710722267::1710739249::1::::<><>::
-40.png::CompressedTexture2D::6371548386575494577::1710722267::1710739249::1::::<><>::
-41.png::CompressedTexture2D::7995911785389377973::1710722267::1710739249::1::::<><>::
-42.png::CompressedTexture2D::7011034361500115861::1710722267::1710739249::1::::<><>::
-43.png::CompressedTexture2D::4330462905159028662::1710722267::1710739249::1::::<><>::
-44.png::CompressedTexture2D::2238112289960177450::1710722267::1710739249::1::::<><>::
-45.png::CompressedTexture2D::1090337615722423568::1710722267::1710739249::1::::<><>::
-46.png::CompressedTexture2D::595144651063126488::1710722267::1710739249::1::::<><>::
-47.png::CompressedTexture2D::6808954932463779317::1710722267::1710739249::1::::<><>::
-48.png::CompressedTexture2D::7310058264745709038::1710722267::1710739249::1::::<><>::
-49.png::CompressedTexture2D::4387802683819777178::1710722267::1710739249::1::::<><>::
-50.png::CompressedTexture2D::1192784690264083951::1710722267::1710739249::1::::<><>::
-51.png::CompressedTexture2D::3941443711517088418::1710722267::1710739249::1::::<><>::
-52.png::CompressedTexture2D::2917122718053399006::1710722267::1710739249::1::::<><>::
-53.png::CompressedTexture2D::3695977685182312593::1710722267::1710739249::1::::<><>::
-54.png::CompressedTexture2D::5868657954707546513::1710722267::1710739249::1::::<><>::
-55.png::CompressedTexture2D::6927606793537067146::1710722267::1710739249::1::::<><>::
-56.png::CompressedTexture2D::617455011748719059::1710722267::1710739249::1::::<><>::
-57.png::CompressedTexture2D::2669553900957257108::1710722267::1710739249::1::::<><>::
-58.png::CompressedTexture2D::8254176300970341781::1710722267::1710739249::1::::<><>::
-59.png::CompressedTexture2D::8231042576219517113::1710722267::1710739249::1::::<><>::
-60.png::CompressedTexture2D::1628164721315027861::1710722267::1710739249::1::::<><>::
-61.png::CompressedTexture2D::177469135808441903::1710722267::1710739249::1::::<><>::
-62.png::CompressedTexture2D::398553354691705533::1710722267::1710739249::1::::<><>::
-63.png::CompressedTexture2D::5010103078496475707::1710722267::1710739249::1::::<><>::
-64.png::CompressedTexture2D::349946181870932518::1710722267::1710739249::1::::<><>::
-65.png::CompressedTexture2D::5687793994893975117::1710722267::1710739249::1::::<><>::
-66.png::CompressedTexture2D::3558238992034344968::1710722267::1710739249::1::::<><>::
-67.png::CompressedTexture2D::1603625008000851637::1710722267::1710739249::1::::<><>::
-68.png::CompressedTexture2D::7798660840942094784::1710722267::1710739249::1::::<><>::
-69.png::CompressedTexture2D::7038565944349035184::1710722267::1710739249::1::::<><>::
-70.png::CompressedTexture2D::3555456400941287583::1710722267::1710739249::1::::<><>::
-71.png::CompressedTexture2D::436849987189768627::1710722267::1710739249::1::::<><>::
-72.png::CompressedTexture2D::792142123886387170::1710722267::1710739249::1::::<><>::
-73.png::CompressedTexture2D::7047213279360031598::1710722267::1710739249::1::::<><>::
-74.png::CompressedTexture2D::3612337685153209169::1710722267::1710739249::1::::<><>::
-75.png::CompressedTexture2D::4816112203645238555::1710722267::1710739249::1::::<><>::
-76.png::CompressedTexture2D::1814718754337469638::1710722267::1710739249::1::::<><>::
-77.png::CompressedTexture2D::362149235524811612::1710722267::1710739249::1::::<><>::
-78.png::CompressedTexture2D::4997662922813613616::1710722267::1710739249::1::::<><>::
-79.png::CompressedTexture2D::9055193503520753754::1710722267::1710739249::1::::<><>::
-80.png::CompressedTexture2D::2633758069444915717::1710722267::1710739249::1::::<><>::
-81.png::CompressedTexture2D::2929732292141836011::1710722267::1710739249::1::::<><>::
-82.png::CompressedTexture2D::2305069521158055182::1710722267::1710739249::1::::<><>::
-83.png::CompressedTexture2D::8620593549704074007::1710722267::1710739249::1::::<><>::
-84.png::CompressedTexture2D::4780470056543566830::1710722267::1710739249::1::::<><>::
-86.png::CompressedTexture2D::906822103916644865::1710722267::1710739249::1::::<><>::
-87.png::CompressedTexture2D::50312953178224388::1710722267::1710739249::1::::<><>::
-88.png::CompressedTexture2D::8564762723185373023::1710722267::1710739249::1::::<><>::
-89.png::CompressedTexture2D::7383935263021224570::1710722267::1710739249::1::::<><>::
-90.png::CompressedTexture2D::5092780868671861356::1710722267::1710739249::1::::<><>::
-91.png::CompressedTexture2D::7554863587344624708::1710722267::1710739249::1::::<><>::
-92.png::CompressedTexture2D::9174841223850622122::1710722267::1710739249::1::::<><>::
-93.png::CompressedTexture2D::4333804705201757245::1710722267::1710739249::1::::<><>::
-94.png::CompressedTexture2D::6614904328782013789::1710722267::1710739249::1::::<><>::
-95.png::CompressedTexture2D::8345334254110228557::1710722267::1710739249::1::::<><>::
-96.png::CompressedTexture2D::4788182557200426123::1710722267::1710739249::1::::<><>::
-97.png::CompressedTexture2D::6748668444513639764::1710722267::1710739249::1::::<><>::
-98.png::CompressedTexture2D::685799020724229965::1710722267::1710739249::1::::<><>::
-99.png::CompressedTexture2D::2179390358021913546::1710722267::1710739249::1::::<><>::
-100.png::CompressedTexture2D::3246268044141924248::1710722267::1710739249::1::::<><>::
-101.png::CompressedTexture2D::7417718312632223872::1710722267::1710739249::1::::<><>::
-102.png::CompressedTexture2D::5360150324504957782::1710722267::1710739249::1::::<><>::
-103.png::CompressedTexture2D::3450123885363609750::1710722267::1710739249::1::::<><>::
-104.png::CompressedTexture2D::3192298318195267490::1710722267::1710739249::1::::<><>::
-105.png::CompressedTexture2D::7796219242775140917::1710722267::1710739249::1::::<><>::
-106.png::CompressedTexture2D::7305894733057255293::1710722267::1710739249::1::::<><>::
-107.png::CompressedTexture2D::7341427097908799935::1710722267::1710739249::1::::<><>::
-108.png::CompressedTexture2D::2105318479683372755::1710722267::1710739249::1::::<><>::
-109.png::CompressedTexture2D::3144824605989157381::1710722267::1710739249::1::::<><>::
-110.png::CompressedTexture2D::6898335913159478272::1710722267::1710739249::1::::<><>::
-111.png::CompressedTexture2D::6402904569811095057::1710722267::1710739249::1::::<><>::
-112.png::CompressedTexture2D::6202218239930078334::1710722267::1710739249::1::::<><>::
-113.png::CompressedTexture2D::6518143397315747787::1710722267::1710739249::1::::<><>::
-114.png::CompressedTexture2D::6233559366944255325::1710722267::1710739249::1::::<><>::
-115.png::CompressedTexture2D::3670064443783413363::1710722267::1710739249::1::::<><>::
-116.png::CompressedTexture2D::6915534100314555220::1710722267::1710739249::1::::<><>::
-117.png::CompressedTexture2D::3142531344251565444::1710722267::1710739249::1::::<><>::
-118.png::CompressedTexture2D::5559893084319157660::1710722267::1710739249::1::::<><>::
-119.png::CompressedTexture2D::5749758791451925829::1710722267::1710739249::1::::<><>::
-120.png::CompressedTexture2D::8887615965865303885::1710722267::1710739249::1::::<><>::
-121.png::CompressedTexture2D::3408561028312458858::1710722267::1710739249::1::::<><>::
-122.png::CompressedTexture2D::558201579096190959::1710722267::1710739249::1::::<><>::
-123.png::CompressedTexture2D::5043110128195581876::1710722267::1710739249::1::::<><>::
-124.png::CompressedTexture2D::3383874745398421494::1710722267::1710739249::1::::<><>::
-125.png::CompressedTexture2D::6964157741800251652::1710722267::1710739249::1::::<><>::
-126.png::CompressedTexture2D::6277488291326523543::1710722267::1710739249::1::::<><>::
-127.png::CompressedTexture2D::7657756354798027939::1710722267::1710739249::1::::<><>::
-128.png::CompressedTexture2D::2654049314355095113::1710722267::1710739249::1::::<><>::
-129.png::CompressedTexture2D::7144324039348257744::1710722267::1710739249::1::::<><>::
-130.png::CompressedTexture2D::4704657640879204527::1710722267::1710739249::1::::<><>::
-131.png::CompressedTexture2D::4564864882353830414::1710722267::1710739249::1::::<><>::
-132.png::CompressedTexture2D::2305051925423313248::1710722267::1710739249::1::::<><>::
-133.png::CompressedTexture2D::1487671147262629272::1710722267::1710739249::1::::<><>::
-134.png::CompressedTexture2D::7429684801996970263::1710722267::1710739249::1::::<><>::
-135.png::CompressedTexture2D::1737203767403065331::1710722267::1710739249::1::::<><>::
-136.png::CompressedTexture2D::4558637508137158105::1710722267::1710739249::1::::<><>::
-137.png::CompressedTexture2D::6913427231852145027::1710722267::1710739249::1::::<><>::
-138.png::CompressedTexture2D::3738758581506837099::1710722267::1710739249::1::::<><>::
-139.png::CompressedTexture2D::956080118826872342::1710722267::1710739249::1::::<><>::
-140.png::CompressedTexture2D::8718330956394811532::1710722267::1710739249::1::::<><>::
-141.png::CompressedTexture2D::7532753250092492892::1710722267::1710739249::1::::<><>::
-142.png::CompressedTexture2D::4398542879630251419::1710722267::1710739249::1::::<><>::
-143.png::CompressedTexture2D::2351858714918190631::1710722267::1710739249::1::::<><>::
-144.png::CompressedTexture2D::1368625392197762642::1710722267::1710739249::1::::<><>::
-145.png::CompressedTexture2D::6877656209937115796::1710722267::1710739249::1::::<><>::
-146.png::CompressedTexture2D::1521118242644760943::1710722267::1710739249::1::::<><>::
-147.png::CompressedTexture2D::1695045415390836229::1710722267::1710739249::1::::<><>::
-148.png::CompressedTexture2D::7656903814075602752::1710722267::1710739249::1::::<><>::
-149.png::CompressedTexture2D::6361065063845163294::1710722267::1710739249::1::::<><>::
-150.png::CompressedTexture2D::1024710863736106496::1710722267::1710739249::1::::<><>::
-151.png::CompressedTexture2D::5767685356228001569::1710722267::1710739249::1::::<><>::
-152.png::CompressedTexture2D::2698038034737529047::1710722267::1710739249::1::::<><>::
-153.png::CompressedTexture2D::6739758923529301477::1710722267::1710739249::1::::<><>::
-154.png::CompressedTexture2D::3234538285728157745::1710722267::1710739250::1::::<><>::
-155.png::CompressedTexture2D::3133688020283009701::1710722267::1710739250::1::::<><>::
-156.png::CompressedTexture2D::3988420313266643417::1710722267::1710739250::1::::<><>::
-157.png::CompressedTexture2D::3373321634196549532::1710722267::1710739250::1::::<><>::
-158.png::CompressedTexture2D::3492967642037794381::1710722267::1710739250::1::::<><>::
-159.png::CompressedTexture2D::5408003832933499317::1710722267::1710739250::1::::<><>::
-160.png::CompressedTexture2D::2885378769019053568::1710722267::1710739250::1::::<><>::
-161.png::CompressedTexture2D::3928777107600151758::1710722267::1710739250::1::::<><>::
-162.png::CompressedTexture2D::4040145272799333026::1710722267::1710739250::1::::<><>::
-163.png::CompressedTexture2D::2781792688877603148::1710722267::1710739250::1::::<><>::
-164.png::CompressedTexture2D::8071266074324403591::1710722267::1710739250::1::::<><>::
-165.png::CompressedTexture2D::413855494608000962::1710722267::1710739250::1::::<><>::
-166.png::CompressedTexture2D::872485372669911948::1710722267::1710739250::1::::<><>::
-167.png::CompressedTexture2D::5231061770814786028::1710722267::1710739250::1::::<><>::
-168.png::CompressedTexture2D::1925457562767885529::1710722267::1710739250::1::::<><>::
-169.png::CompressedTexture2D::909901247086412557::1710722267::1710739250::1::::<><>::
-170.png::CompressedTexture2D::4998026701538095712::1710722267::1710739250::1::::<><>::
-171.png::CompressedTexture2D::3057073122122323940::1710722267::1710739250::1::::<><>::
-172.png::CompressedTexture2D::7357645713941482517::1710722267::1710739250::1::::<><>::
-173.png::CompressedTexture2D::2195368147062183821::1710722267::1710739250::1::::<><>::
-174.png::CompressedTexture2D::8358591204459813274::1710722267::1710739250::1::::<><>::
-175.png::CompressedTexture2D::2241887753102091766::1710722267::1710739250::1::::<><>::
-176.png::CompressedTexture2D::2895475345288726258::1710722267::1710739250::1::::<><>::
-177.png::CompressedTexture2D::2136782794429336498::1710722267::1710739250::1::::<><>::
-178.png::CompressedTexture2D::1326822716773840924::1710722267::1710739250::1::::<><>::
-179.png::CompressedTexture2D::261569949629161873::1710722267::1710739250::1::::<><>::
-180.png::CompressedTexture2D::3505594180946446834::1710722267::1710739250::1::::<><>::
-181.png::CompressedTexture2D::6646543134445520599::1710722267::1710739250::1::::<><>::
-182.png::CompressedTexture2D::5113046012586611448::1710722267::1710739250::1::::<><>::
-183.png::CompressedTexture2D::9161128465382283963::1710722267::1710739249::1::::<><>::
-184.png::CompressedTexture2D::7395903572271478194::1710722267::1710739249::1::::<><>::
-185.png::CompressedTexture2D::6263703343669087147::1710722267::1710739249::1::::<><>::
-186.png::CompressedTexture2D::6429948680588541547::1710722267::1710739250::1::::<><>::
-187.png::CompressedTexture2D::8447075277049408157::1710722267::1710739250::1::::<><>::
-188.png::CompressedTexture2D::887886094175546419::1710722267::1710739250::1::::<><>::
-189.png::CompressedTexture2D::2278613789673300659::1710722267::1710739250::1::::<><>::
-190.png::CompressedTexture2D::518308819947965359::1710722267::1710739250::1::::<><>::
-191.png::CompressedTexture2D::5159212444617155875::1710722267::1710739250::1::::<><>::
-192.png::CompressedTexture2D::7599972417289276703::1710722267::1710739250::1::::<><>::
-193.png::CompressedTexture2D::6499082694510233673::1710722267::1710739250::1::::<><>::
-194.png::CompressedTexture2D::3850082074033149572::1710722267::1710739250::1::::<><>::
-195.png::CompressedTexture2D::7770965329451660212::1710722267::1710739250::1::::<><>::
-196.png::CompressedTexture2D::6683209077698847562::1710722267::1710739250::1::::<><>::
-198.png::CompressedTexture2D::1323068619101064627::1710722267::1710739250::1::::<><>::
-199.png::CompressedTexture2D::5354921038981469728::1710722267::1710739250::1::::<><>::
-200.png::CompressedTexture2D::6168067909695395704::1710722267::1710739250::1::::<><>::
-201.png::CompressedTexture2D::2016953859431300638::1710722267::1710739250::1::::<><>::
-202.png::CompressedTexture2D::7808412924265963737::1710722267::1710739250::1::::<><>::
-203.png::CompressedTexture2D::8171140176184557049::1710722267::1710739250::1::::<><>::
-204.png::CompressedTexture2D::7810953386284174830::1710722267::1710739250::1::::<><>::
-205.png::CompressedTexture2D::643349221070592434::1710722267::1710739250::1::::<><>::
-206.png::CompressedTexture2D::1670392950228842872::1710722267::1710739250::1::::<><>::
-207.png::CompressedTexture2D::5425458095961564100::1710722267::1710739250::1::::<><>::
-208.png::CompressedTexture2D::7503105105464864328::1710722267::1710739250::1::::<><>::
-209.png::CompressedTexture2D::2692806397693496900::1710722267::1710739250::1::::<><>::
-210.png::CompressedTexture2D::5290597764651235161::1710722267::1710739250::1::::<><>::
-211.png::CompressedTexture2D::3502724422995504799::1710722267::1710739249::1::::<><>::
-212.png::CompressedTexture2D::5606623041044684293::1710722267::1710739249::1::::<><>::
-213.png::CompressedTexture2D::3922990942483059550::1710722267::1710739249::1::::<><>::
-214.png::CompressedTexture2D::1633292970968606734::1710722267::1710739249::1::::<><>::
-215.png::CompressedTexture2D::6401220644579076666::1710722267::1710739249::1::::<><>::
-216.png::CompressedTexture2D::8620088275568146173::1710722267::1710739249::1::::<><>::
-217.png::CompressedTexture2D::8761220390785168337::1710722267::1710739249::1::::<><>::
-218.png::CompressedTexture2D::6010968669731861758::1710722267::1710739249::1::::<><>::
-219.png::CompressedTexture2D::4753102592715599318::1710722267::1710739249::1::::<><>::
-220.png::CompressedTexture2D::393355391604313129::1710722267::1710739249::1::::<><>::
-221.png::CompressedTexture2D::4068954496912400588::1710722267::1710739249::1::::<><>::
-222.png::CompressedTexture2D::5813309459808291199::1710722267::1710739249::1::::<><>::
-223.png::CompressedTexture2D::3639714252781540008::1710722267::1710739249::1::::<><>::
-224.png::CompressedTexture2D::8516183269341762754::1710722267::1710739249::1::::<><>::
-225.png::CompressedTexture2D::1667765761336917709::1710722267::1710739249::1::::<><>::
-226.png::CompressedTexture2D::2750189257079660350::1710722267::1710739249::1::::<><>::
-227.png::CompressedTexture2D::7045655734370780256::1710722267::1710739249::1::::<><>::
-228.png::CompressedTexture2D::9035659190097664122::1710722267::1710739249::1::::<><>::
-229.png::CompressedTexture2D::8812660991379058379::1710722267::1710739249::1::::<><>::
-230.png::CompressedTexture2D::6425979281241939839::1710722267::1710739249::1::::<><>::
-231.png::CompressedTexture2D::4957351814034782281::1710722267::1710739249::1::::<><>::
-232.png::CompressedTexture2D::1913531388388425351::1710722267::1710739249::1::::<><>::
-233.png::CompressedTexture2D::1601694810155307953::1710722267::1710739249::1::::<><>::
-234.png::CompressedTexture2D::4178126077098730901::1710722267::1710739249::1::::<><>::
-235.png::CompressedTexture2D::883382968230315309::1710722267::1710739249::1::::<><>::
-236.png::CompressedTexture2D::725759806640815188::1710722267::1710739249::1::::<><>::
-237.png::CompressedTexture2D::63291551367350398::1710722267::1710739249::1::::<><>::
-238.png::CompressedTexture2D::1722112141484218679::1710722267::1710739249::1::::<><>::
-239.png::CompressedTexture2D::1919506899429502139::1710722267::1710739249::1::::<><>::
-240.png::CompressedTexture2D::5815717874359762592::1710722267::1710739249::1::::<><>::
-241.png::CompressedTexture2D::4602290354285510499::1710722267::1710739249::1::::<><>::
-242.png::CompressedTexture2D::2500752613567065153::1710722267::1710739249::1::::<><>::
-243.png::CompressedTexture2D::1448704630325841342::1710722267::1710739249::1::::<><>::
-244.png::CompressedTexture2D::5170080851882541924::1710722267::1710739249::1::::<><>::
-245.png::CompressedTexture2D::156383675847760029::1710722267::1710739249::1::::<><>::
-246.png::CompressedTexture2D::7949027211464236467::1710722267::1710739249::1::::<><>::
-247.png::CompressedTexture2D::4460939416769348741::1710722267::1710739249::1::::<><>::
-248.png::CompressedTexture2D::5682804120002569688::1710722267::1710739249::1::::<><>::
-249.png::CompressedTexture2D::5338665324222384944::1710722267::1710739249::1::::<><>::
-250.png::CompressedTexture2D::4655870523377781232::1710722267::1710739249::1::::<><>::
-251.png::CompressedTexture2D::867229144840655344::1710722267::1710739249::1::::<><>::
-::res://Resources/::1710743692
+::res://Images/Team Logos/::1710812927
+::res://Images/Territory Flags/::1710816889
+1.png::CompressedTexture2D::6739031093832391037::1710816870::1710816886::1::::<><>::
+3.png::CompressedTexture2D::7523449193700750380::1710816888::1710816893::1::::<><>::
+::res://Resources/::1710816822
 Confederation.gd::GDScript::-1::1710650829::0::1::::Confederation<>Resource<>::
-GameMap.gd::GDScript::-1::1710743692::0::1::::GameMap<>Resource<>::
+GameMap.gd::GDScript::-1::1710814638::0::1::::GameMap<>Resource<>::
+GMSaveLoader.gd::GDScript::-1::1710752156::0::1::::GMSaveLoader<>Resource<>::
 Graph.gd::GDScript::-1::1710449338::0::1::::Graph<>Resource<>::
 League_Graph.gd::GDScript::-1::1709359224::0::1::::League_Graph<>Resource<>::
 QualificationSystem.gd::GDScript::-1::1710515131::0::1::::QualificationSystem<>Resource<>::
 Stadium.gd::GDScript::-1::1709184815::0::1::::Stadium<>Resource<>::
 Team.gd::GDScript::-1::1710739734::0::1::::Team<>Resource<>::
-territory.gd::GDScript::-1::1710739946::0::1::::Territory<>Resource<>::
+territory.gd::GDScript::-1::1710816822::0::1::::Territory<>Resource<>::
 Tournament.gd::GDScript::-1::1710620431::0::1::::Tournament<>Resource<>::
 WorldMapGraph.gd::GDScript::-1::1710711032::0::1::::WorldMapGraph<>Node<>::
 ::res://Resources/Tournament Stages/::1710657588
@@ -300,7 +47,7 @@ TournamentStage.gd::GDScript::-1::1710634613::0::1::::TournamentStage<>Resource<
 ::res://Scenes/::1709226321
 game_mode.tscn::PackedScene::6152867077861201729::1705810622::0::1::::<><>::
 start_up.tscn::PackedScene::5474885288116163727::1705810574::0::1::::<><>::uid://cgapilsdm1ebp::::res://Images/start_up_background.jpg
-::res://Scenes/Country Editor/::1710723039
+::res://Scenes/Country Editor/::1710815381
 Area Val.gd::GDScript::-1::1709184813::0::1::::<>SpinBox<>::
 Code Name Text.gd::GDScript::-1::1709184813::0::1::::<>LineEdit<>::
 Con ID.gd::GDScript::-1::1709184814::0::1::::<>SpinBox<>::
@@ -320,10 +67,10 @@ Pop Val.gd::GDScript::-1::1709184815::0::1::::<>SpinBox<>::
 Rating Value.gd::GDScript::-1::1709184815::0::1::::<>SpinBox<>::
 T ID.gd::GDScript::-1::1709184815::0::1::::<>SpinBox<>::
 Territory Name Edit.gd::GDScript::-1::1709184815::0::1::::<>LineEdit<>::
-TextureButton.gd::GDScript::-1::1710723039::0::1::::<>TextureButton<>::
-::res://Scenes/League Editor/::1710743738
+TextureButton.gd::GDScript::-1::1710815381::0::1::::<>TextureButton<>::
+::res://Scenes/League Editor/::1710816828
 League Editor.gd::GDScript::-1::1710643016::0::1::::<>Control<>::
-League Editor.tscn::PackedScene::7265154220437041893::1710743738::0::1::::<><>::res://Scenes/League Editor/League Editor.gd<>res://Scenes/League Editor/Tournament Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/League Editor/Misc Scripts/TextureButton.gd<>res://Scenes/League Editor/Misc Scripts/League Name.gd<>res://Scenes/League Editor/Misc Scripts/League Tournament ID.gd<>res://Scenes/League Editor/Misc Scripts/SpinBox.gd<>res://Scenes/League Editor/Misc Scripts/Host Country Input.gd<>res://Scenes/League Editor/Misc Scripts/Every N Years Input.gd<>res://Scenes/League Editor/Misc Scripts/StartMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/EndMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/StartDayInput.gd<>res://Scenes/League Editor/Misc Scripts/EndDayInput.gd<>res://Scenes/League Editor/Misc Scripts/TournamentLogo.gd<>res://Scenes/League Editor/Misc Scripts/TournamentName.gd<>res://Scenes/League Editor/Misc Scripts/Tournament ID.gd<>res://Scenes/League Editor/Misc Scripts/TourImportanceInput.gd<>res://Scenes/League Editor/Misc Scripts/TourHostCountryInput.gd<>res://Scenes/League Editor/Misc Scripts/Tour Every N Years Input.gd<>res://Scenes/League Editor/Misc Scripts/TourStartMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/TourStartDayInput.gd<>res://Scenes/League Editor/Misc Scripts/TourEndMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/TourEndDayInput.gd
+League Editor.tscn::PackedScene::7265154220437041893::1710816828::0::1::::<><>::res://Scenes/League Editor/League Editor.gd<>res://Scenes/League Editor/Tournament Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/League Editor/Misc Scripts/TextureButton.gd<>res://Scenes/League Editor/Misc Scripts/League Name.gd<>res://Scenes/League Editor/Misc Scripts/League Tournament ID.gd<>res://Scenes/League Editor/Misc Scripts/SpinBox.gd<>res://Scenes/League Editor/Misc Scripts/Host Country Input.gd<>res://Scenes/League Editor/Misc Scripts/Every N Years Input.gd<>res://Scenes/League Editor/Misc Scripts/StartMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/EndMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/StartDayInput.gd<>res://Scenes/League Editor/Misc Scripts/EndDayInput.gd<>res://Scenes/League Editor/Misc Scripts/TournamentLogo.gd<>res://Scenes/League Editor/Misc Scripts/TournamentName.gd<>res://Scenes/League Editor/Misc Scripts/Tournament ID.gd<>res://Scenes/League Editor/Misc Scripts/TourImportanceInput.gd<>res://Scenes/League Editor/Misc Scripts/TourHostCountryInput.gd<>res://Scenes/League Editor/Misc Scripts/Tour Every N Years Input.gd<>res://Scenes/League Editor/Misc Scripts/TourStartMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/TourStartDayInput.gd<>res://Scenes/League Editor/Misc Scripts/TourEndMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/TourEndDayInput.gd
 Tournament Editor.gd::GDScript::-1::1710529684::0::1::::<>GraphEdit<>::
 ::res://Scenes/League Editor/Misc Scripts/::1710266767
 EndDayInput.gd::GDScript::-1::1710264703::0::1::::<>OptionButton<>::
@@ -346,13 +93,13 @@ TournamentLogo.gd::GDScript::-1::1710264703::0::1::::<>TextureButton<>::
 TournamentName.gd::GDScript::-1::1710264703::0::1::::<>LineEdit<>::
 TourStartDayInput.gd::GDScript::-1::1710264703::0::1::::<>OptionButton<>::
 TourStartMonthInput.gd::GDScript::-1::1710264703::0::1::::<>OptionButton<>::
-::res://Scenes/League Editor/Tournament Nodes/::1710743738
+::res://Scenes/League Editor/Tournament Nodes/::1710816828
 GroupStageNode.tscn::PackedScene::5692537551898188798::1710059876::0::1::::<><>::
 InputTeamsPopPanel.gd::GDScript::-1::1710363955::0::1::::<>PopupPanel<>::
 KnockoutNode.tscn::PackedScene::4239750112646264504::1710059876::0::1::::<><>::
 LeagueNode.gd::GDScript::-1::1710438521::0::1::::<>GraphNode<>::
 LeagueNode.tres::Theme::6656489255451360212::1710275577::0::1::::<><>::
-LeagueNode.tscn::PackedScene::3358931805867857940::1710743738::0::1::::<><>::res://Scenes/League Editor/Tournament Nodes/LeagueNode.gd<>res://Scenes/League Editor/Tournament Nodes/InputTeamsPopPanel.gd<>res://Scenes/League Editor/Tournament Nodes/SpecificTeamPopPanel.gd<>res://Scenes/League Editor/Tournament Nodes/TeamsList.gd<>res://Scenes/League Editor/Tournament Nodes/OtherTournamentPanel.gd<>res://Scenes/League Editor/Tournament Nodes/TournamentSelection.gd
+LeagueNode.tscn::PackedScene::3358931805867857940::1710816828::0::1::::<><>::res://Scenes/League Editor/Tournament Nodes/LeagueNode.gd<>res://Scenes/League Editor/Tournament Nodes/InputTeamsPopPanel.gd<>res://Scenes/League Editor/Tournament Nodes/SpecificTeamPopPanel.gd<>res://Scenes/League Editor/Tournament Nodes/TeamsList.gd<>res://Scenes/League Editor/Tournament Nodes/OtherTournamentPanel.gd<>res://Scenes/League Editor/Tournament Nodes/TournamentSelection.gd
 OtherTournamentPanel.gd::GDScript::-1::1710438521::0::1::::<>PopupPanel<>::
 SingleKnockOutNode.tscn::PackedScene::5942002964185257488::1710059876::0::1::::<><>::
 SpecificTeamPopPanel.gd::GDScript::-1::1710526117::0::1::::<>PopupPanel<>::
@@ -361,30 +108,30 @@ TournamentSelection.gd::GDScript::-1::1710438521::0::1::::<>OptionButton<>::
 ::res://Scenes/Main Menu/::1709184815
 main_menu.gd::GDScript::-1::1709184815::0::1::::<>Control<>::
 main_menu.tscn::PackedScene::9010644990611671047::1706229486::0::1::::<><>::res://Scenes/Main Menu/main_menu.gd<>uid://cnhitdoh7wh7y::::res://Images/main_menu.jpg<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres
-::res://Scenes/Team Editor/::1710743738
+::res://Scenes/Team Editor/::1710816828
 City Input.gd::GDScript::-1::1709184813::0::1::::<>LineEdit<>::
 Name Code Input.gd::GDScript::-1::1709184815::0::1::::<>LineEdit<>::
 SpinBox.gd::GDScript::-1::1709184815::0::1::::<>SpinBox<>::
-Team Editor.gd::GDScript::-1::1710743709::0::1::::<>Node<>::
-Team Editor.tscn::PackedScene::5428947114430059492::1710743738::0::1::::<><>::res://Scenes/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/Team Editor/Name Code Input.gd<>res://Scenes/Team Editor/City Input.gd<>res://Scenes/Team Editor/SpinBox.gd
+Team Editor.gd::GDScript::-1::1710814638::0::1::::<>Node<>::
+Team Editor.tscn::PackedScene::5428947114430059492::1710816828::0::1::::<><>::res://Scenes/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/Team Editor/Name Code Input.gd<>res://Scenes/Team Editor/City Input.gd<>res://Scenes/Team Editor/SpinBox.gd
 ::res://Scenes/Team Editor/Misc Scripts/::1710739780
 Logo.gd::GDScript::-1::1710739780::0::1::::<>TextureButton<>::
 Team ID.gd::GDScript::-1::1709184815::0::1::::<>Label<>::
 Team Name.gd::GDScript::-1::1709184815::0::1::::<>LineEdit<>::
-::res://Scenes/World Editor/::1710743739
-GraphEdit.gd::GDScript::-1::1710710931::0::1::::<>GraphEdit<>::
-World Editor.gd::GDScript::-1::1710736754::0::1::::<>Control<>::
-World Editor.tscn::PackedScene::1217744872715804559::1710743739::0::1::::<><>::res://Scenes/World Editor/World Editor.gd<>res://Scenes/World Editor/GraphEdit.gd
-::res://Scenes/World Editor/Confederation Editors/::1710743739
-Confederation Editor.gd::GDScript::-1::1710723016::0::1::::<>GraphNode<>::
-Confederation Editor.tscn::PackedScene::4377020352998335848::1710743739::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/World Editor/Confederation Editors/Confederation Editor.gd
+::res://Scenes/World Editor/::1710816828
+GraphEdit.gd::GDScript::-1::1710815091::0::1::::<>GraphEdit<>::
+World Editor.gd::GDScript::-1::1710752075::0::1::::<>Control<>::
+World Editor.tscn::PackedScene::1217744872715804559::1710816828::0::1::::<><>::res://Scenes/World Editor/World Editor.gd<>res://Scenes/World Editor/GraphEdit.gd
+::res://Scenes/World Editor/Confederation Editors/::1710816828
+Confederation Editor.gd::GDScript::-1::1710815317::0::1::::<>GraphNode<>::
+Confederation Editor.tscn::PackedScene::4377020352998335848::1710816828::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/World Editor/Confederation Editors/Confederation Editor.gd
 ItemList.gd::GDScript::-1::1709184814::0::1::::<>ItemList<>::
 ::res://Scenes/World Editor/League Editor/::1710270321
 League Editor.tscn::PackedScene::507481753769897923::1708815563::0::1::::<><>::
 LeagueNode.tscn::PackedScene::8628539737815509014::1710270321::0::1::::<><>::
-::res://Scenes/World Editor/Territory Editors/::1710743739
+::res://Scenes/World Editor/Territory Editors/::1710816828
 Label.gd::GDScript::-1::1709184814::0::1::::<>Label<>::
-Territory Editor.gd::GDScript::-1::1710722990::0::1::::<>GraphNode<>::
-Territory Editor.tscn::PackedScene::8422911629128742764::1710743739::0::1::::<><>::res://Scenes/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/Country Editor/TextureButton.gd<>res://Scenes/Country Editor/Territory Name Edit.gd<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Country Editor/CoT ID.gd<>res://Scenes/World Editor/Territory Editors/Label.gd<>res://Scenes/Country Editor/CoT Name.gd<>res://Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Country Editor/Pop Val.gd<>res://Scenes/Country Editor/Area Val.gd<>res://Scenes/Country Editor/GDP Val.gd<>res://Scenes/Country Editor/First Name List.gd<>res://Scenes/Country Editor/Last Names List.gd<>res://Scenes/Country Editor/Rating Value.gd<>res://Scenes/Country Editor/League Rating Val.gd
+Territory Editor.gd::GDScript::-1::1710816079::0::1::::<>GraphNode<>::
+Territory Editor.tscn::PackedScene::8422911629128742764::1710816828::0::1::::<><>::res://Scenes/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/Country Editor/TextureButton.gd<>res://Scenes/Country Editor/Territory Name Edit.gd<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Country Editor/CoT ID.gd<>res://Scenes/World Editor/Territory Editors/Label.gd<>res://Scenes/Country Editor/CoT Name.gd<>res://Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Country Editor/Pop Val.gd<>res://Scenes/Country Editor/Area Val.gd<>res://Scenes/Country Editor/GDP Val.gd<>res://Scenes/Country Editor/First Name List.gd<>res://Scenes/Country Editor/Last Names List.gd<>res://Scenes/Country Editor/Rating Value.gd<>res://Scenes/Country Editor/League Rating Val.gd
 ::res://Textures/::1706307655
 main_menu.tres::Theme::320751974886637368::1706307655::0::1::::<><>::

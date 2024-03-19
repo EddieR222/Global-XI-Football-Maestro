@@ -1,11 +1,13 @@
+res://Scenes/World Editor/World Editor.tscn
+res://Scenes/Team Editor/Team Editor.gd
+res://Resources/GameMap.gd
+res://Resources/territory.gd
+res://Scenes/World Editor/GraphEdit.gd
+res://Scenes/World Editor/Confederation Editors/Confederation Editor.tscn
+res://Scenes/World Editor/Confederation Editors/Confederation Editor.gd
+res://Scenes/World Editor/Territory Editors/Territory Editor.tscn
+res://Scenes/World Editor/Territory Editors/Territory Editor.gd
+res://Scenes/Country Editor/TextureButton.gd
 res://Scenes/League Editor/League Editor.tscn
 res://Scenes/League Editor/Tournament Nodes/LeagueNode.tscn
 res://Scenes/Team Editor/Team Editor.tscn
-res://Scenes/World Editor/Territory Editors/Territory Editor.tscn
-res://Scenes/World Editor/Confederation Editors/Confederation Editor.tscn
-res://Scenes/World Editor/World Editor.tscn
-res://Scenes/Team Editor/Team Editor.gd
-res://Resources/Team.gd
-res://Scenes/Team Editor/Misc Scripts/Logo.gd
-res://Resources/territory.gd
-res://Resources/GameMap.gd
