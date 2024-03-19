@@ -2,3 +2,4 @@ res://Scenes/League Editor/League Editor.tscn
 res://Scenes/Team Editor/Team Editor.gd
 res://Scenes/League Editor/Tournament Nodes/LeagueNode.tscn
 res://Scenes/Team Editor/Team Editor.tscn
+res://Scenes/League Editor/League Editor.gd
