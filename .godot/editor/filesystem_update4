@@ -8,3 +8,6 @@ res://Scenes/World Editor/Confederation Editors/Confederation Editor.tscn
 res://Scenes/World Editor/GraphEdit.gd
 res://Resources/territory.gd
 res://Resources/GMSaveLoader.gd
+res://Resources/Team.gd
+res://Resources/GameMap.gd
+res://Scenes/Team Editor/Misc Scripts/Logo.gd

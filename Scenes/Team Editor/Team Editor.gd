@@ -16,6 +16,7 @@ The following Functions Handle the Saving and Loading of Files
 
 func _on_save_file_pressed():
 	print("Saving..")
+	game_map.sort_teams();
 	# Finally, save it to file
 	ResourceSaver.save(game_map, "user://{filename}.res".format({"filename": FileName}), 32);
 
@@ -53,7 +54,7 @@ func _on_file_dialog_file_selected(path: String):
 			var terr_name = terr.Territory_Name;
 			# Get Territory Flag or Icon
 			var texture_normal
-			var flag = terr.get_territory_image(FileName);
+			var flag = terr.get_territory_image();
 			if flag != null:
 				flag.decompress();
 				texture_normal = ImageTexture.create_from_image(flag);
@@ -66,9 +67,12 @@ func _on_file_dialog_file_selected(path: String):
 			terr_list.set_item_metadata(terr_index, terr);
 			
 			
-	$"VBoxContainer/Editor Bar/Middle/HBoxContainer/Logo".filename = FileName
-	#automatic_team_upload();
-
+	#$"VBoxContainer/Editor Bar/Middle/HBoxContainer/Logo".filename = FileName
+	
+	#for terr: Territory in game_map.Territories:
+		#automatic_team_upload(terr);
+	
+	#game_map.sort_teams();
 
 func _on_line_edit_text_changed(new_text: String):
 	FileName = new_text
@@ -89,7 +93,7 @@ func load_territory_teams(terr: Territory) -> void:
 		var team: Team = game_map.get_team_by_id(team_id);
 		# Get team name and logo
 		var team_name = team.Name;
-		var logo: Image = team.get_team_logo(FileName);
+		var logo: Image = team.get_team_logo();
 		var texture_normal
 		if logo != null:
 			logo.decompress();
@@ -113,6 +117,9 @@ func _on_country_list_item_selected(index: int) -> void:
 	var selected_terr: Territory = terr_list.get_item_metadata(index);
 	load_territory_teams(selected_terr);
 	
+	#if selected_terr.Club_Teams_Rankings.is_empty():
+		#automatic_team_upload(selected_terr)
+	
 func _on_team_list_item_selected(index: int) -> void:
 	#We need to display the territory selected
 	var team: Team = team_list.get_item_metadata(index)
@@ -121,7 +128,7 @@ func _on_team_list_item_selected(index: int) -> void:
 	get_tree().call_group("Team_Info", "team_selected", team)
 	
 	# We also need to relfect any logo, team_name, or ID changes to previously selected teams
-	game_map.sort_teams();
+	#game_map.sort_teams();
 	reflect_team_changes();
 
 func reflect_team_changes() -> void:
@@ -130,7 +137,7 @@ func reflect_team_changes() -> void:
 		var team: Team = team_list.get_item_metadata(team_id);
 		# Get team name and logo
 		var team_name = team.Name;
-		var logo: Image = team.get_team_logo(FileName);
+		var logo: Image = team.get_team_logo();
 		var texture_normal
 		if logo != null:
 			logo.decompress();
@@ -160,7 +167,7 @@ func _on_add_team_pressed() -> void:
 	var team: Team = Team.new();
 	
 	#Get currently selected Territory
-	var terr: Territory = game_map.get_territory_by_id(selected_terr);
+	var terr: Territory = game_map.get_territory_by_id(selected_terr); ##ALERT; Change this to get metadata as we have empty items on itemlist
 	
 	#Store Default Information for a new Team in this territory
 	team.Name = "Team Name"
@@ -223,10 +230,8 @@ func _on_logo_file_dialog_file_selected(path) -> void:
 	team_list.set_item_icon(team_id, logo_texture);
 	
 	# Save Image into Team 
-	logo.compress(Image.COMPRESS_BPTC);
 	var team: Team = team_list.get_item_metadata(team_id);
-	var save_path: String = "res://Images/Team Logos/" + FileName + "/" + str(team.ID) + ".png";
-	logo.save_png(save_path)
+	team.save_image_for_team(logo)
 	
 	
 func _on_team_name_text_changed(new_text: String) -> void:
@@ -267,45 +272,43 @@ func _on_spin_box_value_changed(value: int) -> void:
 	var selected_index: int = team_list.get_selected_items()[0];
 	var team: Team = team_list.get_item_metadata(selected_index)
 	team.Rating = value
-func automatic_team_upload(terr: Territory) -> void:
-	#First we must load in the SQL Database
-	var database = SQLite.new();
-	database.path = "C:/Rust_Projects/FootballProject/Team Breakdown.db"
-	database.open_db();	
-	
-	
-	# Now we need to get each row
-	var result = database.select_rows("team_data", "Nation = '" + terr.Territory_Name + "'", ["*"]);
-	for team_info: Dictionary in result:
-		# For each team_infp, we need to create a team
-		var team: Team = Team.new();
-		
-		# Now we need to add the team info from the sql database
-		team.Name = team_info["Team_Name"];
-		
-		# Add it to gamemap
-		game_map.add_team(team)
-		
-		var nation: String = terr.Territory_Name
-		team.Territory_Name = terr.Territory_Name
-		team.Territory_ID = terr.Territory_ID
-			
-		
-		# Now we add team logo if we have it
-		var index = team_info["index"];
-		var path = "C:/Rust_Projects/Team_Logos/" + str(index) + ".png";
-		
-		if FileAccess.file_exists(path):
-			var logo: Image = Image.load_from_file(path);
-			if logo != null:
-				logo.resize(150, 150, 2);
-				logo.compress(Image.COMPRESS_BPTC);
-				var save_path: String = "res://Images/Team Logos/" + FileName + "/" + str(team.ID) + ".png";
-				logo.save_png(save_path)
-		#Finally, we add it to respective country list
-		# Add it to terr club rankings
-		terr.Club_Teams_Rankings.push_back(team.ID);
-			
-	game_map.sort_teams();		
+#func automatic_team_upload(terr: Territory) -> void:
+	##First we must load in the SQL Database
+	#var database = SQLite.new();
+	#database.path = "C:/Rust_Projects/FootballProject/Team Breakdown.db"
+	#database.open_db();	
+	#
+	#
+	## Now we need to get each row
+	#var result = database.select_rows("team_data", "Nation = '" + terr.Territory_Name + "'", ["*"]);
+	#for team_info: Dictionary in result:
+		## For each team_infp, we need to create a team
+		#var team: Team = Team.new();
+		#
+		## Now we need to add the team info from the sql database
+		#team.Name = team_info["Team_Name"];
+		#
+		## Add it to gamemap
+		#game_map.add_team(team)
+		#
+		#var nation: String = terr.Territory_Name
+		#team.Territory_Name = terr.Territory_Name
+		#team.Territory_ID = terr.Territory_ID
+			#
+		#
+		## Now we add team logo if we have it
+		#var index = team_info["index"];
+		#var path = "C:/Rust_Projects/Team_Logos/" + str(index) + ".png";
+		#
+		#if FileAccess.file_exists(path):
+			#var logo: Image = Image.load_from_file(path);
+			#if logo != null:
+				#logo.resize(150, 150, 2);
+				#team.save_image_for_team(logo)
+		##Finally, we add it to respective country list
+		## Add it to terr club rankings
+		#terr.Club_Teams_Rankings.push_back(team.ID);
+			#
+
 		
 
