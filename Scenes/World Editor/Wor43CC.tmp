@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://rl5cyv1p3072"]
+
+[ext_resource type="Script" path="res://Scenes/World Editor/World Editor.gd" id="1_0v7p6"]
+[ext_resource type="Script" path="res://Scenes/World Editor/GraphEdit.gd" id="3_hpr62"]
+
+[node name="SaveLoader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0v7p6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0117647, 0.0588235, 0.0862745, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Load File" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "   File  "
+flat = true
+
+[node name="Save File" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "  Save   "
+flat = true
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Filename"
+alignment = 1
+
+[node name="Add Confed Node" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Add New Confederation"
+
+[node name="Delete Node" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Delete Selected Node"
+
+[node name="Confed Edit" type="GraphEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+snapping_distance = 100
+right_disconnects = true
+connection_lines_thickness = 5.0
+zoom_min = 0.1
+show_zoom_label = true
+script = ExtResource("3_hpr62")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(312, 159)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 0
+access = 1
+use_native_dialog = true
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+initial_position = 2
+size = Vector2i(487, 132)
+dialog_text = "               You cannot delete a territory if it is Inherited. 
+Please delete it from highest level that contains the territory. 
+                                             Thank you!"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+initial_position = 2
+size = Vector2i(375, 158)
+dialog_text = "              Deleting A Confederation Node,
+ Deletes all Counties Inside This Confederation 
+             (except for Inheritied Countries). 
+                  Do you still wish to delete?"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Load File" to="." method="_on_load_file_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Save File" to="." method="_on_save_file_pressed"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Add Confed Node" to="VBoxContainer/Confed Edit" method="_on_add_confed_node_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Delete Node" to="VBoxContainer/Confed Edit" method="_on_delete_node_pressed"]
+[connection signal="connection_request" from="VBoxContainer/Confed Edit" to="VBoxContainer/Confed Edit" method="_on_connection_request"]
+[connection signal="disconnection_request" from="VBoxContainer/Confed Edit" to="VBoxContainer/Confed Edit" method="_on_disconnection_request"]
+[connection signal="node_selected" from="VBoxContainer/Confed Edit" to="VBoxContainer/Confed Edit" method="_on_node_selected"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="confirmed" from="ConfirmationDialog" to="VBoxContainer/Confed Edit" method="_on_confirmation_dialog_confirmed"]

@@ -4,6 +4,9 @@ class_name GameMap extends Resource
 ## This Class contains all the information for the game including territories, confederations, teams, tournaments, etc.
 ## It also contains a lot of useful functions for parsing and working with this data
 
+## The FileName Decided on in the World Editor
+@export var Filename: String
+
 @export_category("World Map")
 ## The Dictionary that contains all Confederations. 
 @export 
@@ -78,7 +81,7 @@ func get_tournament_by_id(id: int) -> Tournament:
 ## Also changes IDs based on new alphabetical order
 func sort_confederations() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	Confederations.sort_custom(func(a: Confederation, b: Confederation): return a.Name < b.Name);
+	Confederations.sort_custom(func(a: Confederation, b: Confederation): return a.Name.to_lower().strip_edges() < b.Name.to_lower().strip_edges());
 	
 	# Now update the ID of each Confederation, based on index in Array
 	var new_index = 0;
@@ -126,7 +129,7 @@ func sort_territories() -> void:
 func sort_teams() -> void:
 	
 	# Sort the array based on Name (Alphabetical Order)
-	Teams.sort_custom(func(a: Team, b: Team): return a.Name < b.Name);
+	Teams.sort_custom(func(a: Team, b: Team): return a.Name.to_lower().strip_edges() < b.Name.to_lower().strip_edges());
 	
 	# Now update the ID of each Territory, based on index in Array
 	var new_index = 0;
@@ -149,7 +152,7 @@ func sort_teams() -> void:
 ## Also changes IDs based on new alphabetical order
 func sort_tournaments() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	Tournaments.sort_custom(func(a: Tournament, b: Tournament): return a.Name < b.Name);
+	Tournaments.sort_custom(func(a: Tournament, b: Tournament): return a.Name.to_lower().strip_edges() < b.Name.to_lower().strip_edges());
 	
 	# Now update the ID of each Territory, based on index in Array
 	var index = 0;
@@ -283,13 +286,6 @@ func update_territory_id(old_id: int, new_id: int) -> void:
 	for tour: Tournament in Tournaments:
 		if tour.Host_Country_ID == old_id:
 			tour.Host_Country_ID = new_id;
-			
-	#Fifth, we update the territory flag
-	var old_path: String = "res://Images/Territory Flags/" + str(old_id) + ".png"
-	var new_path: String = "res://Images/Territory Flags/" + str(new_id) + ".png"
-	var flag_directory: DirAccess = DirAccess.open("res://Images/Territory Flags/");
-	
-	flag_directory.rename(old_path, new_path);
 
 ## This function updates the old confed ID to the new one across the Entire GameMap
 func update_confederation_id(old_id: int, new_id: int) -> void:
@@ -332,16 +328,17 @@ func update_team_id(old_id: int, new_id: int) -> void:
 		if index != -1:
 			terr.Club_Teams_Rankings[index] = new_id; #swap id
 			
+		terr.Club_Teams_Rankings.sort();
+			
 
 	# Third, change the Team itself
 	for team: Team in Teams:
 		if team.ID == old_id:
 			team.ID = new_id;
 			
-			
-	# Finally, update Image path
-	var old_path: String = "res://Images/Team Logos/" + str(old_id) + ".png"
-	var new_path: String = "res://Images/Team Logos/" + str(new_id) + ".png"
-	var flag_directory: DirAccess = DirAccess.open("res://Images/Team Logos/");
+
+
+
+
 	
-	flag_directory.rename(old_path, new_path);
+	

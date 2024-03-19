@@ -1,5 +1,5 @@
 extends TextureButton
-
+var filename: String;
 
 func team_selected(team: Team) -> void:
 	# Get and Decompress Logo 

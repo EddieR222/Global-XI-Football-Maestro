@@ -15,8 +15,10 @@ The following Functions Handle the Saving and Loading of Files
 """
 
 func _on_save_file_pressed():
+	print("Saving..")
+	game_map.sort_teams();
 	# Finally, save it to file
-	ResourceSaver.save(game_map, "user://{filename}.res".format({"filename": FileName}));
+	ResourceSaver.save(game_map, "user://{filename}.res".format({"filename": FileName}), 32);
 
 func _on_load_file_pressed():
 	get_node("World Map File Dialog").visible = true
@@ -26,14 +28,16 @@ func _on_file_dialog_file_selected(path: String):
 	var file_map : GameMap = ResourceLoader.load(path) as GameMap;
 	game_map = file_map;
 	
+	
 	#Change the FileName to display what the name of file was, so user can automatically
 	#save changes easily
 	FileName = path.get_file().get_basename();
 	var file_name_edit: LineEdit = get_node("VBoxContainer/Title Bar/LineEdit");
 	file_name_edit.text = FileName
+	game_map.Filename = FileName;
 
 	# Iter through each confed	
-	for confed: Confederation in file_map.Confederations:
+	for confed: Confederation in game_map.Confederations:
 
 		if confed.Level != 1:
 			continue
@@ -45,7 +49,7 @@ func _on_file_dialog_file_selected(path: String):
 		# Iterate through territoies
 		for terr_id: int in confed.Territory_List:
 			#Get Terr
-			var terr: Territory = file_map.get_territory_by_id(terr_id);
+			var terr: Territory = game_map.get_territory_by_id(terr_id);
 			# Get Territory Name
 			var terr_name = terr.Territory_Name;
 			# Get Territory Flag or Icon
@@ -62,18 +66,27 @@ func _on_file_dialog_file_selected(path: String):
 			# Set Metadata
 			terr_list.set_item_metadata(terr_index, terr);
 			
-	#automatic_team_upload();
+			
+	#$"VBoxContainer/Editor Bar/Middle/HBoxContainer/Logo".filename = FileName
+	
+	#for terr: Territory in game_map.Territories:
+		#automatic_team_upload(terr);
+	
+	#game_map.sort_teams();
 
 func _on_line_edit_text_changed(new_text: String):
 	FileName = new_text
 	
-
 """
 These functions deal with the ItemList for Teams
 """
 func load_territory_teams(terr: Territory) -> void:
 	#Clear itemlist
 	team_list.clear();
+	
+	# Automatically Get Teams From Database
+	#if terr.Club_Teams_Rankings.is_empty():
+		#automatic_team_upload(terr)
 	
 	# Now add all teams in territory selected
 	for team_id: int in terr.Club_Teams_Rankings:
@@ -104,6 +117,9 @@ func _on_country_list_item_selected(index: int) -> void:
 	var selected_terr: Territory = terr_list.get_item_metadata(index);
 	load_territory_teams(selected_terr);
 	
+	#if selected_terr.Club_Teams_Rankings.is_empty():
+		#automatic_team_upload(selected_terr)
+	
 func _on_team_list_item_selected(index: int) -> void:
 	#We need to display the territory selected
 	var team: Team = team_list.get_item_metadata(index)
@@ -112,6 +128,7 @@ func _on_team_list_item_selected(index: int) -> void:
 	get_tree().call_group("Team_Info", "team_selected", team)
 	
 	# We also need to relfect any logo, team_name, or ID changes to previously selected teams
+	#game_map.sort_teams();
 	reflect_team_changes();
 
 func reflect_team_changes() -> void:
@@ -150,7 +167,7 @@ func _on_add_team_pressed() -> void:
 	var team: Team = Team.new();
 	
 	#Get currently selected Territory
-	var terr: Territory = game_map.get_territory_by_id(selected_terr);
+	var terr: Territory = game_map.get_territory_by_id(selected_terr); ##ALERT; Change this to get metadata as we have empty items on itemlist
 	
 	#Store Default Information for a new Team in this territory
 	team.Name = "Team Name"
@@ -213,10 +230,8 @@ func _on_logo_file_dialog_file_selected(path) -> void:
 	team_list.set_item_icon(team_id, logo_texture);
 	
 	# Save Image into Team 
-	logo.compress(Image.COMPRESS_BPTC);
 	var team: Team = team_list.get_item_metadata(team_id);
-	var save_path: String = "res://Images/Team Logos/" + str(team.ID) + ".png";
-	logo.save_png(save_path)
+	team.save_image_for_team(logo)
 	
 	
 func _on_team_name_text_changed(new_text: String) -> void:
@@ -228,7 +243,6 @@ func _on_team_name_text_changed(new_text: String) -> void:
 	var selected_index: int = team_list.get_selected_items()[0];
 	var team: Team = team_list.get_item_metadata(selected_index)
 	team.Name = new_text;
-
 
 	reflect_team_changes();
 func _on_name_code_input_text_changed(new_text: String) -> void:
@@ -258,7 +272,7 @@ func _on_spin_box_value_changed(value: int) -> void:
 	var selected_index: int = team_list.get_selected_items()[0];
 	var team: Team = team_list.get_item_metadata(selected_index)
 	team.Rating = value
-#func automatic_team_upload() -> void:
+#func automatic_team_upload(terr: Territory) -> void:
 	##First we must load in the SQL Database
 	#var database = SQLite.new();
 	#database.path = "C:/Rust_Projects/FootballProject/Team Breakdown.db"
@@ -266,7 +280,7 @@ func _on_spin_box_value_changed(value: int) -> void:
 	#
 	#
 	## Now we need to get each row
-	#var result = database.select_rows("team_data", "", ["*"]);
+	#var result = database.select_rows("team_data", "Nation = '" + terr.Territory_Name + "'", ["*"]);
 	#for team_info: Dictionary in result:
 		## For each team_infp, we need to create a team
 		#var team: Team = Team.new();
@@ -277,13 +291,10 @@ func _on_spin_box_value_changed(value: int) -> void:
 		## Add it to gamemap
 		#game_map.add_team(team)
 		#
-		#var nation: String = team_info["Nation"];
-		#var this_terr;
-		#for terr: Territory in game_map.Territories:
-			#if terr.Territory_Name == nation:
-				#team.Territory_Name = terr.Territory_Name
-				#team.Territory_ID = terr.Territory_ID
-				#this_terr = terr;
+		#var nation: String = terr.Territory_Name
+		#team.Territory_Name = terr.Territory_Name
+		#team.Territory_ID = terr.Territory_ID
+			#
 		#
 		## Now we add team logo if we have it
 		#var index = team_info["index"];
@@ -293,14 +304,11 @@ func _on_spin_box_value_changed(value: int) -> void:
 			#var logo: Image = Image.load_from_file(path);
 			#if logo != null:
 				#logo.resize(150, 150, 2);
-				#logo.compress(Image.COMPRESS_BPTC);
-				#var save_path: String = "res://Images/Team Logos/" + str(team.ID) + ".png";
-				#logo.save_png(save_path)
+				#team.save_image_for_team(logo)
 		##Finally, we add it to respective country list
-		#if this_terr != null:
-			## Add it to terr club rankings
-			#this_terr.Club_Teams_Rankings.push_back(team.ID);
+		## Add it to terr club rankings
+		#terr.Club_Teams_Rankings.push_back(team.ID);
 			#
-	#game_map.sort_teams();		
-		#
+
+		
 

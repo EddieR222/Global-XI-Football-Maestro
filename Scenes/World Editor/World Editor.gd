@@ -25,8 +25,11 @@ func _on_save_file_pressed():
 	# Get current GameMap
 	save_map = get_node("VBoxContainer/Confed Edit").game_map;
 	
-	# Finally, save it to file
-	ResourceSaver.save(save_map, "user://{filename}.res".format({"filename": Filename}));
+	## Finally, save it to file
+	var saver: GMSaveLoader = GMSaveLoader.new();
+	saver.save_game_map(save_map, Filename)
+	
+	#ResourceSaver.save(save_map, "user://{filename}.res".format({"filename": Filename}), 32);
 	
 func _on_line_edit_text_changed(new_text: String):
 	Filename = new_text;
@@ -136,24 +139,19 @@ func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> vo
 			
 			
 			#
-#func convert_to_new_image_system(game_map: GameMap) -> GameMap:
-	#for terr: Territory in game_map.Territories:
-		## Get Flag
-		#var flag: Image = terr.Flag;
-		#
-		## Decompress
-		#if flag != null:
-			#flag.decompress();
-		#else:
-			#continue;
-		## Now we save to " Territory Flags" Folder
-		#var path: String = "res://Images/Territory Flags/" + str(terr.Territory_ID) + ".png"
-		#flag.save_png(path)
-		#
-	## Now we copy GameMap and get rid of Flags
-	#var new_gm: GameMap = game_map.duplicate(true) as GameMap;
-	#
-	#for terr: Territory in new_gm.Territories:
-		#terr.Flag = null
-		#
-	#return new_gm
+func convert_to_new_image_system(game_map: GameMap):
+	for terr: Territory in game_map.Territories:
+		# Get Flag
+		var path: String = "res://Images/Territory Flags/W_F/" + str(terr.Territory_ID) + ".png"
+		if FileAccess.file_exists(path):
+			var flag_texture: Texture2D = load(path)
+			if flag_texture != null:
+				var flag: Image = flag_texture.get_image()
+				flag.compress(Image.COMPRESS_BPTC);
+				terr.Flag = flag;
+			else:
+				continue
+		else:
+			continue
+		
+

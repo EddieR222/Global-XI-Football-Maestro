@@ -26,7 +26,6 @@ Preload Nodes that we will instantiate later
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	# We want to establish the world node and ensure it has the right properties
 	var world_confed_node: GraphNode = establish_world_node();
 	
