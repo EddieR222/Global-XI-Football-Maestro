@@ -47,12 +47,12 @@ func save_image_for_terr(image: Image) -> void:
 	
 	# Second we need to get the current number of territory flags in "Territory Flags" folder
 	var flag_path: String = "res://Images/Territory Flags/";
-	var flag_folder: DirAccess = DirAccess.open(flag_path);
-	var num_images: int = flag_folder.get_files().size(); 
+	var num_images: int = get_num_import_files(flag_path);
+	print(num_images)
 
 	# Now we need to save this image using the number unique identifier or previous name is already located
 	var save_path: String = flag_path + str(num_images + 1) + ".png";
-	if Flag_Path.length() > 12:
+	if Flag_Path.begins_with(flag_path):
 		save_path = Flag_Path;
 	image.save_png(save_path);
 	
@@ -66,10 +66,21 @@ func get_territory_image() -> Image:
 	
 	# Load Image
 	if FileAccess.file_exists(load_path):
-		var image_data = Image.new();
-		var error = image_data.load(load_path);
-		if error != OK:
+		var image_data_compressed: CompressedTexture2D = load(load_path);
+		var image_data: Image = image_data_compressed.get_image()
+		if image_data == null:
 			return null
 		return image_data;
 	else:
 		return null
+		
+func get_num_import_files(image_folder_path: String) -> int:
+	var flag_folder: DirAccess = DirAccess.open(image_folder_path);
+	var files: PackedStringArray= flag_folder.get_files_at(image_folder_path);
+	
+	var num_imports: int = 0;
+	for file: String in files:
+		if file.get_extension() == "png":
+			num_imports += 1;
+			
+	return num_imports
