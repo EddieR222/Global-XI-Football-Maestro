@@ -1,7 +1,8 @@
+LineEdit
+Label
 VBoxContainer
 Button
 OptionButton
-Label
 GridContainer
 PopupPanel
 CheckBox
@@ -11,4 +12,3 @@ PopupMenu
 HBoxContainer
 FileDialog
 MarginContainer
-TextureButton

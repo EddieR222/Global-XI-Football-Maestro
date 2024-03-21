@@ -16,9 +16,14 @@ The following Functions Handle the Saving and Loading of Files
 
 func _on_save_file_pressed():
 	print("Saving..")
+	
+	# Sort teams before saving
 	game_map.sort_teams();
+	
+	var saver: GameMapManager = GameMapManager.new();
+	
 	# Finally, save it to file
-	ResourceSaver.save(game_map, "user://{filename}.res".format({"filename": FileName}), 32);
+	saver.save_game_map(game_map, FileName);
 
 func _on_load_file_pressed():
 	get_node("World Map File Dialog").visible = true
@@ -84,10 +89,26 @@ func load_territory_teams(terr: Territory) -> void:
 	#Clear itemlist
 	team_list.clear();
 	
-	# Automatically Get Teams From Database
-	#if terr.Club_Teams_Rankings.is_empty():
-		#automatic_team_upload(terr)
-	
+	# Add National Team if territory has one
+	#if terr.National_Team != -1:
+		#var team: Team = game_map.get_team_by_id(terr.National_Team);
+		## Get team name and logo
+		#var team_name = team.Name;
+		#var logo: Image = team.get_team_logo();
+		#var texture_normal
+		#if logo != null:
+			#logo.decompress();
+			#texture_normal = ImageTexture.create_from_image(logo);
+		#else:
+			#var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
+			#texture_normal = default_icon;
+			#
+		## Add Team to Item List
+		#var index: int = team_list.add_item(team_name, texture_normal, true);
+		## Set Metadata for item
+		#team_list.set_item_metadata(index, team);
+		#
+
 	# Now add all teams in territory selected
 	for team_id: int in terr.Club_Teams_Rankings:
 		var team: Team = game_map.get_team_by_id(team_id);

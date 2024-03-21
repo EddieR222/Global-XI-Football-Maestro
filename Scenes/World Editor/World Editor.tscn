@@ -83,6 +83,7 @@ ok_button_text = "Open"
 dialog_hide_on_ok = true
 file_mode = 0
 access = 1
+root_subfolder = "save_files/"
 use_native_dialog = true
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]

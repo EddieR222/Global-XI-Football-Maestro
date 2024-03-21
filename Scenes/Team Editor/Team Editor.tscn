@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://Scenes/Team Editor/Misc Scripts/Logo.gd" id="3_yrcmb"]
 [ext_resource type="Script" path="res://Scenes/Team Editor/Misc Scripts/Team Name.gd" id="4_kfda0"]
 [ext_resource type="Script" path="res://Scenes/Team Editor/Misc Scripts/Team ID.gd" id="5_f6c14"]
-[ext_resource type="Script" path="res://Scenes/Team Editor/Name Code Input.gd" id="6_ufmqb"]
-[ext_resource type="Script" path="res://Scenes/Team Editor/City Input.gd" id="7_1e47m"]
-[ext_resource type="Script" path="res://Scenes/Team Editor/SpinBox.gd" id="8_e66ls"]
+[ext_resource type="Script" path="res://Scenes/Team Editor/Misc Scripts/Name Code Input.gd" id="6_ufmqb"]
+[ext_resource type="Script" path="res://Scenes/Team Editor/Misc Scripts/City Input.gd" id="7_1e47m"]
+[ext_resource type="Script" path="res://Scenes/Team Editor/Misc Scripts/SpinBox.gd" id="8_e66ls"]
 
 [node name="TeamEditor" type="Control"]
 layout_mode = 3
@@ -110,6 +110,30 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 columns = 2
 
+[node name="DisplayName" type="Label" parent="VBoxContainer/Editor Bar/Middle/Team Edit Area"]
+layout_mode = 2
+text = "Display Name"
+horizontal_alignment = 1
+
+[node name="DisplayNameInput" type="LineEdit" parent="VBoxContainer/Editor Bar/Middle/Team Edit Area"]
+layout_mode = 2
+text = "Display Name Input"
+alignment = 1
+max_length = 50
+clear_button_enabled = true
+
+[node name="NickName" type="Label" parent="VBoxContainer/Editor Bar/Middle/Team Edit Area"]
+layout_mode = 2
+text = "Nick Name"
+horizontal_alignment = 1
+
+[node name="NickNameInput" type="LineEdit" parent="VBoxContainer/Editor Bar/Middle/Team Edit Area"]
+layout_mode = 2
+text = "Nick Name Input"
+alignment = 1
+max_length = 30
+clear_button_enabled = true
+
 [node name="Name Code" type="Label" parent="VBoxContainer/Editor Bar/Middle/Team Edit Area"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -147,7 +171,7 @@ uppercase = true
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/Editor Bar/Middle/Team Edit Area" groups=["Team_Info"]]
 layout_mode = 2
-max_value = 99.0
+max_value = 75.0
 rounded = true
 alignment = 1
 update_on_text_changed = true
@@ -185,6 +209,7 @@ ok_button_text = "Open"
 dialog_hide_on_ok = true
 file_mode = 0
 access = 1
+root_subfolder = "save_files/"
 
 [node name="Delete Team Confirmation" type="ConfirmationDialog" parent="."]
 initial_position = 2

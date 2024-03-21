@@ -279,7 +279,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = ExtResource("5_b6u1a")
-max_value = 74.0
+max_value = 75.0
 alignment = 1
 script = ExtResource("14_aovjd")
 
@@ -289,7 +289,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 size_flags_stretch_ratio = 3.0
 theme = ExtResource("5_b6u1a")
-text = "League Rating
+text = "League Elo
 "
 horizontal_alignment = 1
 
@@ -298,7 +298,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = ExtResource("5_b6u1a")
-max_value = 74.0
+max_value = 10000.0
 alignment = 1
 script = ExtResource("15_cimjh")
 

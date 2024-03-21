@@ -26,8 +26,8 @@ func _on_save_file_pressed():
 	save_map = get_node("VBoxContainer/Confed Edit").game_map;
 	
 	## Finally, save it to file
-	var saver: GMSaveLoader = GMSaveLoader.new();
-	saver.save_game_map(save_map, Filename)
+	var saver: GameMapManager = GameMapManager.new();
+	saver.save_game_map(save_map, Filename);
 	
 	#ResourceSaver.save(save_map, "user://{filename}.res".format({"filename": Filename}), 32);
 	
@@ -115,7 +115,7 @@ func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> vo
 		if node.confed.Owner_ID == -1:
 			#We know we have a root node here, we have to iterate down now
 			var queue: Array[GraphNode];
-			var curr_node: GraphNode;
+			var curr_node: GraphNode; 
 			queue.push_back(node);
 	
 			while not queue.is_empty():
@@ -137,21 +137,3 @@ func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> vo
 			continue;
 			
 			
-			
-			#
-func convert_to_new_image_system(game_map: GameMap):
-	for terr: Territory in game_map.Territories:
-		# Get Flag
-		var path: String = "res://Images/Territory Flags/W_F/" + str(terr.Territory_ID) + ".png"
-		if FileAccess.file_exists(path):
-			var flag_texture: Texture2D = load(path)
-			if flag_texture != null:
-				var flag: Image = flag_texture.get_image()
-				flag.compress(Image.COMPRESS_BPTC);
-				terr.Flag = flag;
-			else:
-				continue
-		else:
-			continue
-		
-

@@ -32,7 +32,7 @@ extends Resource
 @export var Tournaments: Array[int]
 
 """ Teams """
-@export var National_Team: int #team_id
+@export var National_Team: int = -1
 
 """ Rankings """
 @export var Club_Teams_Rankings: Array[int] # Array[Team_ID]
@@ -46,7 +46,7 @@ func save_image_for_terr(image: Image) -> void:
 	image.compress(Image.COMPRESS_BPTC);
 	
 	# Second we need to get the current number of territory flags in "Territory Flags" folder
-	var flag_path: String = "res://Images/Territory Flags/";
+	var flag_path: String = "user://Images/Territory Flags/";
 	var num_images: int = get_num_import_files(flag_path);
 	print(num_images)
 

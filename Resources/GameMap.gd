@@ -131,20 +131,27 @@ func sort_teams() -> void:
 	# Sort the array based on Name (Alphabetical Order)
 	Teams.sort_custom(func(a: Team, b: Team): return a.Name.to_lower().strip_edges() < b.Name.to_lower().strip_edges());
 	
-	# Now update the ID of each Territory, based on index in Array
+	## Now update the ID of each Territory, based on index in Array
 	var new_index = 0;
 	for team: Team in Teams:
 		# Get old index
 		var old_index: int = team.ID;
 		
+		# Skip if ID stayed the same
+		if old_index == new_index:
+			continue
+		
 		# Swap it for new one
 		# Convert OLD_ID to -100 (unused id)
 		update_team_id(old_index, -100);
+		team.ID = -100;
 		# Now convert new_id to old_id
 		update_team_id(new_index, old_index);
+		var team_to_switch: Array[Team] = Teams.filter(func(a: Team): return a.ID == new_index);
+		if not team_to_switch.is_empty(): team_to_switch[0].ID = old_index
 		# Finally, convert -100 to new_id
 		update_team_id(-100, new_index);
-		
+		team.ID = new_index
 		# Iter new_index
 		new_index += 1;
 
@@ -306,39 +313,40 @@ func update_confederation_id(old_id: int, new_id: int) -> void:
 			confed.Owner_ID = new_id;
 		
 ## This function updates the old team ID to the new Team ID across the Entire GameMap
-func update_team_id(old_id: int, new_id: int) -> void:
-	# First, we need to go through the confeds and update the team ids
-	for confed: Confederation in Confederations:
-		# First we check if team is in National Team Rankings
-		var index: int = confed.National_Teams_Rankings.find(old_id, 0);
-		if index != -1: #if not -1, then it is present in array
-			confed.National_Teams_Rankings[index] = new_id; # swap id
-		# Second, we check if team is in Club Team Rankings
-		index = confed.Club_Teams_Rankings.find(old_id, 0);
-		if index != -1:
-			confed.Club_Teams_Rankings[index] = new_id; # swap id
-	
-	# Second, we need to update team ids in territories
-	for terr: Territory in Territories:
-		# First, we check it against national_team
-		if terr.National_Team == old_id:
-			terr.National_Team = new_id; #swap id
-		# Second, we check it if in club ranking
-		var index: int = terr.Club_Teams_Rankings.find(old_id, 0);
-		if index != -1:
-			terr.Club_Teams_Rankings[index] = new_id; #swap id
+func update_team_id(old_id: int, new_id: int) -> void:		
+	# Get Largest Index of Territories or Confederations
+	var largest_index: int =  Confederations.size() if Confederations.size() > Territories.size() else Territories.size();
+	for index in range(largest_index):
+		
+		if index < Territories.size():
+			var terr: Territory = Territories[index];
+			# First, we check it against national_team
+			if terr.National_Team == old_id:
+				terr.National_Team = new_id; #swap id
+			# Second, we check it if in club ranking
+			var club_index: int = terr.Club_Teams_Rankings.find(old_id, 0);
+			if club_index != -1:
+				terr.Club_Teams_Rankings[club_index] = new_id; #swap id
+				
+			terr.Club_Teams_Rankings.sort();
+		elif index >= Territories.size() and index >= Confederations.size():
+			break
 			
-		terr.Club_Teams_Rankings.sort();
 			
+		if index < Confederations.size():
+			var confed = Confederations[index]
+			# First we check if team is in National Team Rankings
+			var national_index: int = confed.National_Teams_Rankings.find(old_id, 0);
+			if national_index != -1: #if not -1, then it is present in array
+				confed.National_Teams_Rankings[national_index] = new_id; # swap id
+			# Second, we check if team is in Club Team Rankings
+			var club_index = confed.Club_Teams_Rankings.find(old_id, 0);
+			if club_index != -1:
+				confed.Club_Teams_Rankings[club_index] = new_id; # swap id
+		elif index >= Territories.size() and index >= Confederations.size():
+			break
+		
 
-	# Third, change the Team itself
-	for team: Team in Teams:
-		if team.ID == old_id:
-			team.ID = new_id;
-			
 
 
 
-
-	
-	

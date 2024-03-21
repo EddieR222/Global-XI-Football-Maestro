@@ -5,7 +5,7 @@ class_name Team extends Resource
 @export var Name: String;
 @export var Display_Name: String;
 @export var Nick_Name: String
-@export var Logo_Path: String;  ## ALERT The Images will now be stored in the res:// file system, the image will be in the folder "Team Logos" and will simply be the ID.png
+@export var Logo_Path: String;  ## ALERT The Images will now be stored in the user:// file system, the image will be in the folder "Team Logos" and will simply be the ID.png
 @export var ID: int;
 @export var Name_Code: String;
 
@@ -20,7 +20,7 @@ class_name Team extends Resource
 @export var League_ID: int;
 @export var Stadium_ID: int;
 @export var Rivals_Name: String;
-@export var Rivals_ID: String;
+@export var Rivals_ID: int
 
 
  
@@ -43,7 +43,7 @@ func save_image_for_team(image: Image) -> void:
 	image.compress(Image.COMPRESS_BPTC);
 	
 	# Second we need to get the current number of territory flags in "Territory Flags" folder
-	var logo_path: String = "res://Images/Team Logos/";
+	var logo_path: String = "user://Images/Team Logos/";
 	var num_images: int = get_num_import_files(logo_path);
 	print(num_images)
 

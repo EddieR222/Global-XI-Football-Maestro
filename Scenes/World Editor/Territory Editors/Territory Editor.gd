@@ -62,7 +62,7 @@ func _on_last_names_list_text_changed():
 	territory.Last_Names = saved_names
 
 func _on_rating_value_value_changed(value: float):
-	territory.Rating = int(value);
+	territory.Rating = value;
 	
 func _on_league_rating_val_value_changed(value: float):
 	territory.League_Elo = value;
