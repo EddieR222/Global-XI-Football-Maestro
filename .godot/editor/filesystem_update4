@@ -5,3 +5,8 @@ res://Scenes/Team Editor/Team Editor.tscn
 res://Scenes/World Editor/World Editor.tscn
 res://Scenes/World Editor/Territory Editors/Territory Editor.tscn
 res://Scenes/World Editor/World Editor.gd
+res://Resources/PlayerManager.gd
+res://Resources/Player.gd
+res://Resources/Player Details/Player.gd
+res://Resources/Player Details/PlayerSeasonStats.gd
+res://Resources/GameMap.gd

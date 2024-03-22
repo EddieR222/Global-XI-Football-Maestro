@@ -8,36 +8,32 @@ class_name GameMap extends Resource
 @export var Filename: String
 
 @export_category("World Map")
-## The Dictionary that contains all Confederations. 
-@export 
-var Confederations: Array[Confederation] = [];
-## The Dictionary that contains all Territories. 
-@export 
-var Territories: Array[Territory] = [];
+## The Array that contains all Confederations. 
+@export var Confederations: Array[Confederation] = [];
+## The Array that contains all Territories. 
+@export var Territories: Array[Territory] = [];
 
 @export_category("Team Details")
-## The Dictionary that contains all Teams. 
-@export
-var Teams: Array[Team] = [];
+## The Array that contains all Teams. 
+@export var Teams: Array[Team] = [];
 
-## The Dictionary that contains all Stadiums. 
-@export
-var Stadiums: Array[Stadium] = [];
+## The Array that contains all Stadiums. 
+@export var Stadiums: Array[Stadium] = [];
 
 @export_category("Tournament Details")
-## The Dictionary that contains all Tournaments.
-@export
-var Tournaments: Array[Tournament] = [];
+## The Array that contains all Tournaments.
+@export var Tournaments: Array[Tournament] = [];
 
+@export_category("Player Database")
+## The Array that contains all Players
+@export var Players: Array[Player] = [];
 
 @export_category("Time Details")
 ## The starting date
-@export
-var Start_Date: Array[int]
+@export var Start_Date: Array[int]
 
 ## The Year to Start
-@export
-var Starting_Year: int = 2024; #current year is default
+@export var Starting_Year: int = 2024; #current year is default
 
 """ Getter Functions """
 ## Function to get confed by inputted id. Returns null if id is NOT valid
@@ -76,6 +72,15 @@ func get_tournament_by_id(id: int) -> Tournament:
 	# If valid, then return corresponding territory
 	return Tournaments[id];
 
+## Function to get player by inputted id. Returns null if id is NOT valid
+func get_player_by_id(id: int) -> Player:
+	# Check to see if id is valid, if not valid then return null
+	if id < 0 or id >= Players.size():
+		return null
+	
+	# If valid, then return corresponding territory
+	return Players[id];
+	
 """ Sorting and ID managment """
 ## This functions sorts the confederations in alphabetical order by name. 
 ## Also changes IDs based on new alphabetical order
@@ -220,6 +225,21 @@ func add_tournament(tour: Tournament) -> void:
 	# Sort and organize id's
 	sort_tournaments();
 	
+	
+## Adds the given Player to the list of Players
+## Automatically handles sorting and organizing ids
+func add_player(player: Player) -> void:
+	if player.Name == null:
+		return
+		
+	# Add to array
+	player.ID = Players.size();
+	Players.push_back(player);
+	
+	# Sort Players and Organize IDs
+	
+	
+	
 """ Remove or Erase By ID """
 ## This functions erases the confederation by id (the confed id). 
 ## Array automatically will sort and organize id's after deletion
@@ -245,7 +265,7 @@ func erase_territories_by_id(id: int) -> void:
 	# Resort all territories
 	sort_territories();
 	
-## This functions erases the team by id (the confed id). 
+## This functions erases the team by id (the team id). 
 ## Array automatically will sort and organize id's after deletion
 func erase_team_by_id(id: int) -> void:
 	if id < 0 or id >= Teams.size():
@@ -257,7 +277,7 @@ func erase_team_by_id(id: int) -> void:
 	# Resort all territories
 	sort_teams();
 	
-## This functions erases the tournament by id (the confed id). 
+## This functions erases the tournament by id (the tournament id). 
 ## Array automatically will sort and organize id's after deletion
 func erase_tournament_by_id(id: int) -> void:
 	if id < 0 or id >= Tournaments.size():
@@ -269,6 +289,18 @@ func erase_tournament_by_id(id: int) -> void:
 	# Resort all territories
 	sort_tournaments();
 	
+## This functions erases the player by id (the player id). 
+## Array automatically will sort and organize id's after deletion
+func erase_player_by_id(id: int) -> void:
+	if id < 0 or id >= Players.size():
+		return 
+		
+	# Remove at index
+	Players.remove_at(id);
+	
+	# Resort all territories
+	#sort_tournaments();
+
 """ Updating IDs Across GameMap """
 ## This function updates the old territory ID to the new one across the Entire GameMap
 func update_territory_id(old_id: int, new_id: int) -> void:
@@ -349,4 +381,25 @@ func update_team_id(old_id: int, new_id: int) -> void:
 
 
 
+
+
+
+
+""" Functions to Get Set of Players """
+
+## Function to get all the player who are eligiable to play for the given Territory
+func get_territory_pool(terr_id: int) -> Array[Player]:
+	var territory_pool: Array[Player] = Players.filter(func(a: Player): return terr_id in a.Nationalities);
+	
+	return territory_pool;
+
+func get_team_roster(team_id: int) -> Array[Player]:
+	# Get Team
+	var team: Team = get_team_by_id(team_id);
+	
+	if team != null:
+		var team_roster: Array[Player] = team.Players.map(func(a: int): return get_player_by_id(a));
+		return team_roster
+	
+	return [];
 
