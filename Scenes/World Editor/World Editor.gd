@@ -110,7 +110,7 @@ func _on_file_dialog_file_selected(path):
 func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> void:
 	# We iter through all trees and redraw connections
 	for node: GraphNode in graph.graph_nodes:
-		#We only iter levels down if node is starting node
+		#We only iter levels down if node is starting nod"res://Database/GMF.res"e
 		# we detect this by seeing if owner_id is -1 (applies for detached trees and world node)
 		if node.confed.Owner_ID == -1:
 			#We know we have a root node here, we have to iterate down now

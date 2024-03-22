@@ -299,6 +299,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = ExtResource("5_b6u1a")
 max_value = 10000.0
+step = 0.25
 alignment = 1
 script = ExtResource("15_cimjh")
 
