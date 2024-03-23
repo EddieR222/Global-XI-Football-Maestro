@@ -1,0 +1,328 @@
+[gd_scene load_steps=17 format=3 uid="uid://dsaeehi5y4i6g"]
+
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd" id="1_wjfhd"]
+[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Images/icon.svg" id="2_wlquc"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/TextureButton.gd" id="3_16urc"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/Territory Name Edit.gd" id="4_mpt5v"]
+[ext_resource type="Theme" uid="uid://etm0dk2bjjr1" path="res://Textures/main_menu.tres" id="5_b6u1a"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/CoT ID.gd" id="6_bjth4"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/World Editor/Territory Editors/Label.gd" id="6_xlkee"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/CoT Name.gd" id="7_fsj15"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/Code Name Text.gd" id="8_6y0g3"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/Pop Val.gd" id="9_ykm2k"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/Area Val.gd" id="10_ibkp2"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/GDP Val.gd" id="11_w6f8s"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/First Name List.gd" id="12_4b2cm"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/Last Names List.gd" id="13_2vhcn"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/Rating Value.gd" id="14_aovjd"]
+[ext_resource type="Script" path="res://Scenes/Country Editor/League Rating Val.gd" id="15_cimjh"]
+
+[node name="Territory Edit" type="GraphNode"]
+custom_minimum_size = Vector2(600, 1012)
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 602.0
+offset_bottom = 1015.0
+theme = ExtResource("5_b6u1a")
+title = "Edit Territory Information"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_wjfhd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0, 0.0745098, 0.133333, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer2/HBoxContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_wlquc")
+stretch_mode = 4
+script = ExtResource("3_16urc")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="Territory Name Edit" type="LineEdit" parent="VBoxContainer2/HBoxContainer/MarginContainer" groups=["T_Info"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Territory"
+alignment = 1
+max_length = 50
+clear_button_enabled = true
+script = ExtResource("4_mpt5v")
+
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer2/HBoxContainer"]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(392, 159)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 0
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ID: 0"
+horizontal_alignment = 1
+script = ExtResource("6_xlkee")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+columns = 2
+
+[node name="CoTerritory_ID" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_b6u1a")
+text = "CoTerritory ID
+"
+horizontal_alignment = 1
+
+[node name="CoT ID" type="SpinBox" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("5_b6u1a")
+min_value = -1.0
+max_value = 255.0
+value = -1.0
+allow_greater = true
+alignment = 1
+script = ExtResource("6_bjth4")
+
+[node name="CoTerritory_Name" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_b6u1a")
+text = "CoTerritory Name
+
+"
+horizontal_alignment = 1
+
+[node name="CoT Name" type="LineEdit" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_b6u1a")
+placeholder_text = "CoTerritory Name"
+alignment = 1
+max_length = 30
+script = ExtResource("7_fsj15")
+
+[node name="Code Name" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_b6u1a")
+text = "3 Letter Code Name
+"
+horizontal_alignment = 1
+
+[node name="Code Name Text" type="LineEdit" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_b6u1a")
+placeholder_text = "Three Letter Code Name"
+alignment = 1
+max_length = 3
+script = ExtResource("8_6y0g3")
+
+[node name="Population" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_b6u1a")
+text = "Population (Millions)"
+horizontal_alignment = 1
+
+[node name="Pop Val" type="SpinBox" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("5_b6u1a")
+allow_greater = true
+alignment = 1
+script = ExtResource("9_ykm2k")
+
+[node name="Area" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_b6u1a")
+text = "Area (Km Squared)
+"
+horizontal_alignment = 1
+
+[node name="Area Val" type="SpinBox" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("5_b6u1a")
+allow_greater = true
+alignment = 1
+script = ExtResource("10_ibkp2")
+
+[node name="GDP" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_b6u1a")
+text = "GDP (Billions)"
+horizontal_alignment = 1
+
+[node name="GDP Val" type="SpinBox" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("5_b6u1a")
+allow_greater = true
+alignment = 1
+script = ExtResource("11_w6f8s")
+
+[node name="First Names" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("5_b6u1a")
+text = "
+First Names
+
+"
+horizontal_alignment = 1
+
+[node name="First Name List" type="TextEdit" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.51
+theme = ExtResource("5_b6u1a")
+placeholder_text = "Names Sperated with Commas"
+script = ExtResource("12_4b2cm")
+
+[node name="Last Names" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("5_b6u1a")
+text = "
+Last Names
+
+"
+horizontal_alignment = 1
+
+[node name="Last Names List" type="TextEdit" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.51
+theme = ExtResource("5_b6u1a")
+placeholder_text = "Names Sperated with Commas"
+script = ExtResource("13_2vhcn")
+
+[node name="International Rating" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("5_b6u1a")
+text = "International Rating
+"
+horizontal_alignment = 1
+
+[node name="Rating Value" type="SpinBox" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("5_b6u1a")
+max_value = 75.0
+alignment = 1
+script = ExtResource("14_aovjd")
+
+[node name="League Rating" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("5_b6u1a")
+text = "League Elo
+"
+horizontal_alignment = 1
+
+[node name="League Rating Val" type="SpinBox" parent="VBoxContainer2/GridContainer" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("5_b6u1a")
+max_value = 10000.0
+step = 0.25
+alignment = 1
+script = ExtResource("15_cimjh")
+
+[node name="Done" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_b6u1a")
+text = "Done"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="text_changed" from="VBoxContainer2/HBoxContainer/MarginContainer/Territory Name Edit" to="." method="_on_territory_name_edit_text_changed"]
+[connection signal="file_selected" from="VBoxContainer2/HBoxContainer/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/CoT ID" to="." method="_on_CoT_ID_value_changed"]
+[connection signal="text_changed" from="VBoxContainer2/GridContainer/CoT Name" to="." method="_on_co_t_name_text_changed"]
+[connection signal="text_changed" from="VBoxContainer2/GridContainer/Code Name Text" to="." method="_on_code_name_text_text_changed"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/Pop Val" to="." method="_on_pop_val_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/Area Val" to="." method="_on_area_val_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/GDP Val" to="." method="_on_gdp_val_value_changed"]
+[connection signal="text_changed" from="VBoxContainer2/GridContainer/First Name List" to="." method="_on_first_name_list_text_changed"]
+[connection signal="text_changed" from="VBoxContainer2/GridContainer/Last Names List" to="." method="_on_last_names_list_text_changed"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/Rating Value" to="." method="_on_rating_value_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/League Rating Val" to="." method="_on_league_rating_val_value_changed"]
+[connection signal="pressed" from="VBoxContainer2/Done" to="." method="_on_done_pressed"]

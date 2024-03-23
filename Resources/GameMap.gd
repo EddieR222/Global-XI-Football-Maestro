@@ -245,7 +245,7 @@ func add_player(player: Player) -> void:
 ## Array automatically will sort and organize id's after deletion
 func erase_confederation_by_id(id: int) -> void:
 	if id < 0 or id >= Confederations.size():
-		return 
+		return
 		
 	# Remove at index
 	Confederations.remove_at(id);
@@ -257,7 +257,7 @@ func erase_confederation_by_id(id: int) -> void:
 ## Array automatically will sort and organize id's after deletion
 func erase_territories_by_id(id: int) -> void:
 	if id < 0 or id >= Territories.size():
-		return 
+		return
 		
 	# Remove at index
 	Territories.remove_at(id);
@@ -269,7 +269,7 @@ func erase_territories_by_id(id: int) -> void:
 ## Array automatically will sort and organize id's after deletion
 func erase_team_by_id(id: int) -> void:
 	if id < 0 or id >= Teams.size():
-		return 
+		return
 		
 	# Remove at index
 	Teams.remove_at(id);
@@ -281,7 +281,7 @@ func erase_team_by_id(id: int) -> void:
 ## Array automatically will sort and organize id's after deletion
 func erase_tournament_by_id(id: int) -> void:
 	if id < 0 or id >= Tournaments.size():
-		return 
+		return
 		
 	# Remove at index
 	Tournaments.remove_at(id);
@@ -293,7 +293,7 @@ func erase_tournament_by_id(id: int) -> void:
 ## Array automatically will sort and organize id's after deletion
 func erase_player_by_id(id: int) -> void:
 	if id < 0 or id >= Players.size():
-		return 
+		return
 		
 	# Remove at index
 	Players.remove_at(id);
@@ -314,7 +314,7 @@ func update_territory_id(old_id: int, new_id: int) -> void:
 
 	# Second we update the territory IDs in all confederations
 	for confed: Confederation in Confederations:
-		confed.update_territory_id(old_id, new_id); 
+		confed.update_territory_id(old_id, new_id);
 
 	# Third, we update all Territory Id's in Teams
 	for team: Team in Teams:
@@ -345,7 +345,7 @@ func update_confederation_id(old_id: int, new_id: int) -> void:
 			confed.Owner_ID = new_id;
 		
 ## This function updates the old team ID to the new Team ID across the Entire GameMap
-func update_team_id(old_id: int, new_id: int) -> void:		
+func update_team_id(old_id: int, new_id: int) -> void:
 	# Get Largest Index of Territories or Confederations
 	var largest_index: int =  Confederations.size() if Confederations.size() > Territories.size() else Territories.size();
 	for index in range(largest_index):
@@ -383,16 +383,42 @@ func update_team_id(old_id: int, new_id: int) -> void:
 
 
 
+""" Functions to Get Set of Teams """
+## Get the Teams that are in the Tournament. Returns an empty array if error
+func get_tournament_teams(tour_id: int) -> Array[Team]:
+	# Verify ID
+	if tour_id < 0 or tour_id >= Tournaments.size():
+		return [];
+		
+	# Get the Tournament
+	var tour: Tournament = get_tournament_by_id(tour_id);
+	var teams_in_tour: Array[int] = tour.Teams;
+	
+	# Get Team for each Team ID
+	var teams: Array[Team] = teams_in_tour.map(func(a: int): return get_team_by_id(a));
+	
+	return teams;
+
+## Get the Teams that are in the Territory (not including the National Team). Returns an empty array if error
+func get_territory_teams(terr_id: int) -> Array[Team]:
+	#Verify ID
+	if terr_id < 0 or terr_id >= Territories.size():
+		return [];
+		
+	# Get Territory
+	var terr: Territory = get_territory_by_id(terr_id);
+	var club_list: Array[int] = terr.Club_Teams_Rankings;
+
+	# Get Teams in Territory
+	var club_teams: Array[Team] = club_list.map(func(a: int): return get_team_by_id(a));
+	
+	return club_teams;
+
 
 
 """ Functions to Get Set of Players """
 
-## Function to get all the player who are eligiable to play for the given Territory
-func get_territory_pool(terr_id: int) -> Array[Player]:
-	var territory_pool: Array[Player] = Players.filter(func(a: Player): return terr_id in a.Nationalities);
-	
-	return territory_pool;
-
+## Get the Players for the given team id. Returns an empty array if error
 func get_team_roster(team_id: int) -> Array[Player]:
 	# Get Team
 	var team: Team = get_team_by_id(team_id);
@@ -402,4 +428,31 @@ func get_team_roster(team_id: int) -> Array[Player]:
 		return team_roster
 	
 	return [];
+	
+## Get the Players for the given tournament id. Returns an empty array if error
+func get_tournament_players(tour_id: int) -> Array[Player]:
+	# Verify ID
+	if tour_id < 0 or tour_id >= Tournaments.size():
+		return []
+		
+	# Get the Teams
+	var teams: Array[Team] = get_tournament_teams(tour_id);
+	
+	
+	# Now get players in each team
+	var player_roster: Array[Player] = [];
+	if not teams.is_empty():
+		for t: Team in teams:
+			player_roster.append_array(get_team_roster(t.ID));
+			
+	return player_roster;
+			
+## Function to get all the player who are eligiable to play for the given Territory
+func get_territory_pool(terr_id: int) -> Array[Player]:
+	var territory_pool: Array[Player] = Players.filter(func(a: Player): return terr_id in a.Nationalities);
+	
+	return territory_pool;
+
+
+
 

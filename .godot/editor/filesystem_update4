@@ -1,12 +1,8 @@
-res://Scenes/League Editor/League Editor.tscn
+res://Scenes/Player Editor/PlayerEditor.tscn
 res://Scenes/Team Editor/Team Editor.gd
-res://Scenes/League Editor/Tournament Nodes/LeagueNode.tscn
-res://Scenes/Team Editor/Team Editor.tscn
 res://Scenes/World Editor/World Editor.tscn
 res://Scenes/World Editor/Territory Editors/Territory Editor.tscn
-res://Scenes/World Editor/World Editor.gd
-res://Resources/PlayerManager.gd
-res://Resources/Player.gd
-res://Resources/Player Details/Player.gd
-res://Resources/Player Details/PlayerSeasonStats.gd
-res://Resources/GameMap.gd
+res://Scenes/Team Editor/Team Editor.tscn
+res://Scenes/League Editor/League Editor.tscn
+res://Scenes/League Editor/Tournament Nodes/LeagueNode.tscn
+res://Scenes/GameMapEditor/GameMapEditor.tscn

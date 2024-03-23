@@ -7,7 +7,7 @@ class_name Tournament extends Resource
 @export var Importance: int
 @export var Player_Team: int; 
 @export var Num_Teams: int;
-
+@export var Teams: Array[int];
 
 @export var Host_Country_Name: String
 @export var Host_Country_ID: int
