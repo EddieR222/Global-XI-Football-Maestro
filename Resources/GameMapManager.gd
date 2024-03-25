@@ -23,13 +23,19 @@ func save_game_map(game_map: GameMap, filename: String) -> void:
 
 
 ## This function loads the specific filename given. If error occurs, returns null;
-func load_game_map(filename: String) -> GameMap:
+func load_game_map(path: String) -> GameMap:
 	# Load the GameMap from the User Folder
-	var load_path: String = game_map_folder + str(filename) + ".res";
-	var game_map: GameMap = load(load_path) as GameMap;
+	var game_map: GameMap = load(path) as GameMap;
 
 	# Return GameMap
 	return game_map;
+	
+func load_game_map_with_filename(filename: String) -> GameMap:
+	# Create Path Name
+	var load_path: String = "user://save_files/{filename}.res".format({"filename": filename})
+	var game_map: GameMap = load(load_path) as GameMap;
+	
+	return game_map
 
 ## This functions goes through all team logos and ensures the path for the images follows the natural order. This is to ensure there are not huge gaps
 ## in the flag unique id. Doing this regularly helps to ensure the user can store up to 9223372036854775807 team logos (depending on their storage)

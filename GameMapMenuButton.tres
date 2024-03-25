@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dijeqj7meug53"]
+
+[resource]
+GameMapMenuButton/base_type = &"Button"
+GameMapMenuButton/colors/font_color = Color(0.564706, 0.490196, 0.996078, 1)
+GameMapMenuButton/constants/icon_max_width = 60
+GameMapMenuButton/font_sizes/font_size = 20

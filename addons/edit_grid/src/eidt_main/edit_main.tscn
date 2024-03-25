@@ -1,0 +1,135 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0qnh5mq3bece"]
+
+[ext_resource type="Script" path="res://addons/edit_grid/src/eidt_main/edit_main.gd" id="1_cser6"]
+[ext_resource type="PackedScene" uid="uid://dr56xjtb3v5cn" path="res://addons/edit_grid/src/edit_grid/edit_grid.tscn" id="1_v8wrj"]
+[ext_resource type="Script" path="res://addons/edit_grid/src/eidt_main/simple_menu.gd" id="2_jq386"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23jht"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="EditMain" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+script = ExtResource("1_cser6")
+
+[node name="dialog" type="Control" parent="."]
+layout_mode = 2
+
+[node name="OpenFileDialog" type="FileDialog" parent="dialog"]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(550, 350)
+ok_button_text = "打开"
+file_mode = 0
+filters = PackedStringArray("*.egd;EGD")
+
+[node name="SaveFileDialog" type="FileDialog" parent="dialog"]
+unique_name_in_owner = true
+title = "Save As"
+size = Vector2i(550, 350)
+filters = PackedStringArray("*.egd;EGD")
+
+[node name="ImportFileDialog" type="FileDialog" parent="dialog"]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(550, 350)
+ok_button_text = "打开"
+file_mode = 0
+filters = PackedStringArray("*.csv;CSV")
+
+[node name="ExportFileDialog" type="FileDialog" parent="dialog"]
+unique_name_in_owner = true
+size = Vector2i(550, 350)
+ok_button_text = "保存"
+filters = PackedStringArray("*.csv;CSV")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="dialog"]
+unique_name_in_owner = true
+dialog_text = "还没有保存，是否继续操作？"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Menu" type="MenuBar" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+flat = true
+script = ExtResource("2_jq386")
+
+[node name="EditGrid" parent="VBoxContainer" instance=ExtResource("1_v8wrj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 2
+text = "File Path:"
+
+[node name="FilePathLabel" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "null"
+
+[node name="Control" type="Control" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 2
+text = "Status:"
+
+[node name="SaveStatusLabel" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Saved"
+
+[node name="prompt" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/PanelContainer/prompt"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_23jht")
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/prompt"]
+layout_mode = 2
+clip_text = true
+
+[connection signal="file_selected" from="dialog/OpenFileDialog" to="." method="_open_grid_data"]
+[connection signal="file_selected" from="dialog/SaveFileDialog" to="." method="_save_grid_data"]
+[connection signal="file_selected" from="dialog/ImportFileDialog" to="." method="_import_file"]
+[connection signal="file_selected" from="dialog/ExportFileDialog" to="." method="_export_file"]
+[connection signal="confirmed" from="dialog/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="menu_pressed" from="VBoxContainer/Menu" to="." method="_on_menu_menu_pressed"]
+[connection signal="cell_value_changed" from="VBoxContainer/EditGrid" to="." method="_on_edit_grid_cell_value_changed"]
+[connection signal="column_width_changed" from="VBoxContainer/EditGrid" to="." method="_on_edit_grid_column_width_changed"]
+[connection signal="popup_menu_clicked" from="VBoxContainer/EditGrid" to="." method="_on_edit_grid_popup_menu_clicked"]
+[connection signal="row_height_changed" from="VBoxContainer/EditGrid" to="." method="_on_edit_grid_row_height_changed"]
+[connection signal="selected_cells" from="VBoxContainer/EditGrid" to="." method="_on_edit_grid_selected_cells"]

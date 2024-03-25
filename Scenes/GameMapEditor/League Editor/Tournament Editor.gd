@@ -2,10 +2,10 @@ extends GraphEdit
 
 
 """ Paths for Node Scenes """
-const LEAGUE_NODE: String = "res://Scenes/League Editor/Tournament Nodes/LeagueNode.tscn"
-const GROUPSTAGE_NODE: String = "res://Scenes/League Editor/Tournament Nodes/GroupStageNode.tscn"
-const KNOCKOUT_NODE: String = "res://Scenes/League Editor/Tournament Nodes/KnockoutNode.tscn"
-const SINGLE_KNOCKOUT_NODE: String ="res://Scenes/League Editor/Tournament Nodes/SingleKnockOutNode.tscn"
+const LEAGUE_NODE: String = "res://Scenes/GameMapEditor/League Editor/Tournament Nodes/LeagueNode.tscn";
+const GROUPSTAGE_NODE: String = "res://Scenes/GameMapEditor/League Editor/Tournament Nodes/GroupStageNode.tscn";
+const KNOCKOUT_NODE: String = "res://Scenes/GameMapEditor/League Editor/Tournament Nodes/KnockoutNode.tscn";
+const SINGLE_KNOCKOUT_NODE: String = "res://Scenes/GameMapEditor/League Editor/Tournament Nodes/SingleKnockOutNode.tscn";
 
 
 """ Packed Scenes of GraphNode """

@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bn4dd7hcawo6o"]
 
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/LeagueNode.gd" id="1_110ef"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/InputTeamsPopPanel.gd" id="2_c5nhr"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/SpecificTeamPopPanel.gd" id="3_j4glf"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/TeamsList.gd" id="4_q3fhp"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/OtherTournamentPanel.gd" id="5_ju7pm"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/TournamentSelection.gd" id="6_aovfb"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/LeagueNode.gd" id="1_a2dn8"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/InputTeamsPopPanel.gd" id="2_nht7h"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/SpecificTeamPopPanel.gd" id="3_p47s3"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/TeamsList.gd" id="4_md3hs"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/OtherTournamentPanel.gd" id="5_1ty7c"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Nodes/TournamentSelection.gd" id="6_q0hj8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u7v0"]
 content_margin_left = 10.0
@@ -89,7 +89,7 @@ slot/3/right_type = 0
 slot/3/right_color = Color(1, 1, 1, 1)
 slot/3/right_icon = null
 slot/3/draw_stylebox = true
-script = ExtResource("1_110ef")
+script = ExtResource("1_a2dn8")
 
 [node name="Name&ID" type="GridContainer" parent="."]
 layout_mode = 2
@@ -298,7 +298,7 @@ title = "Choose How Team Qualifys"
 initial_position = 2
 size = Vector2i(500, 113)
 theme_override_styles/panel = SubResource("StyleBoxFlat_dupsj")
-script = ExtResource("2_c5nhr")
+script = ExtResource("2_nht7h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InputTeamsPopPanel"]
 offset_left = 10.0
@@ -339,7 +339,7 @@ text = "Done"
 title = "Select Specific Team to Add"
 initial_position = 2
 size = Vector2i(353, 551)
-script = ExtResource("3_j4glf")
+script = ExtResource("3_p47s3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SpecificTeamPopPanel"]
 offset_left = 4.0
@@ -375,7 +375,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(100, 400)
 layout_mode = 2
 fixed_icon_size = Vector2i(25, 25)
-script = ExtResource("4_q3fhp")
+script = ExtResource("4_md3hs")
 
 [node name="DoneButton" type="Button" parent="SpecificTeamPopPanel/VBoxContainer"]
 layout_mode = 2
@@ -385,7 +385,7 @@ text = "Done"
 initial_position = 2
 size = Vector2i(598, 215)
 theme_override_styles/panel = SubResource("StyleBoxFlat_k4ocj")
-script = ExtResource("5_ju7pm")
+script = ExtResource("5_1ty7c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OtherTournamentPanel"]
 offset_left = 10.0
@@ -423,7 +423,7 @@ size_flags_horizontal = 4
 
 [node name="TournamentSelection" type="OptionButton" parent="OtherTournamentPanel/VBoxContainer/GridContainer"]
 layout_mode = 2
-script = ExtResource("6_aovfb")
+script = ExtResource("6_q0hj8")
 
 [node name="StageSelection" type="OptionButton" parent="OtherTournamentPanel/VBoxContainer/GridContainer"]
 layout_mode = 2

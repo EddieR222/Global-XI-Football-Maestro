@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvuwy12mhrki4"]
+
+[ext_resource type="PackedScene" uid="uid://dr56xjtb3v5cn" path="res://addons/edit_grid/src/edit_grid/edit_grid.tscn" id="1_genf5"]
+[ext_resource type="Script" path="res://addons/edit_grid/example/example.gd" id="1_xicel"]
+
+[node name="Example" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_xicel")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EditGrid" parent="VBoxContainer" instance=ExtResource("1_genf5")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="PrintData" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 35.0
+offset_right = 559.0
+offset_bottom = 95.0
+text = "Print Data"
+
+[connection signal="pressed" from="VBoxContainer/Control/PrintData" to="." method="_on_print_data_pressed"]

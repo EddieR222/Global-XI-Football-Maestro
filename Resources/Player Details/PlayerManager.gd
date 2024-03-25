@@ -8,5 +8,5 @@ class_name PlayerManager extends Resource
 
 
 ## This function will create one player with the given paramaters
-func create_player(terr := -1, ) -> Player:
-
+func create_player(terr := -1, ) -> void:
+	pass

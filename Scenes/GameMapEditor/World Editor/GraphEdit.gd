@@ -1,7 +1,7 @@
 extends GraphEdit
 
-const CONFED_NODE : String = "res://Scenes/World Editor/Confederation Editors/Confederation Editor.tscn";
-const TERRITORY_NODE : String = "res://Scenes/World Editor/Territory Editors/Territory Editor.tscn";
+const CONFED_NODE : String = "res://Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn";
+const TERRITORY_NODE : String = "res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn";
 
 """
 All known issues still:

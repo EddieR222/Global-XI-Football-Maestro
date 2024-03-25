@@ -1,11 +1,8 @@
 extends Control
 
 
-const CONFED_NODE : String = "res://Scenes/World Editor/Confederation Editors/Confederation Editor.tscn";
-const TERRITORY_NODE : String = "res://Scenes/World Editor/Territory Editors/Territory Editor.tscn";
-
-
-@export var Filename: String = ""
+const CONFED_NODE : String = "res://Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn";
+const TERRITORY_NODE : String = "res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn";
 
 
 """
@@ -15,39 +12,31 @@ Preload Nodes that we will instantiate later
 @onready var terr_node: PackedScene = preload(TERRITORY_NODE);
 
 
+""" Packed Scene of GameMap Editor """
+const GAME_MAP_EDITOR: PackedScene = preload("res://Scenes/GameMapEditor/GameMapEditor.tscn");
+
+
+@onready var graph_edit: GraphEdit = get_node("VBoxContainer/Confed Edit");
+
+func _ready():
+	# Here we want to load the "SelectedFile" file to load the selected GameMap in the GameMap Editor
+	load_selected_gamemap();
+
+
 """
 Functions below are responsible for saving and loading the WorldMap to user data. 
 """
-func _on_save_file_pressed():
-	# Init WorldMap Variable
-	var save_map: GameMap = GameMap.new();
-	
-	# Get current GameMap
-	save_map = get_node("VBoxContainer/Confed Edit").game_map;
-	
-	## Finally, save it to file
-	var saver: GameMapManager = GameMapManager.new();
-	saver.save_game_map(save_map, Filename);
-	
-	#ResourceSaver.save(save_map, "user://{filename}.res".format({"filename": Filename}), 32);
-	
-func _on_line_edit_text_changed(new_text: String):
-	Filename = new_text;
-
-func _on_load_file_pressed():
-	$FileDialog.visible = true;
-
-func _on_file_dialog_file_selected(path):
+func load_selected_gamemap():
+	#Load the World Map from Disk
+	var game_map_manager: GameMapManager = GameMapManager.new();
+	var file_map : GameMap = game_map_manager.load_game_map_with_filename("selected_game_map")
+	if file_map == null:
+		return
+		
 	# First we need to delete all nodes on screen
 	#Get the Graph Edit Node
-	var graph_edit: GraphEdit = get_node("VBoxContainer/Confed Edit");
 	for node: GraphNode in graph_edit.world_graph.graph_nodes:
 		node.queue_free();
-		
-	
-	#Load the World Map from Disk
-	var file_map : GameMap = ResourceLoader.load(path) as GameMap;
-	#var file_map: GameMap = convert_to_new_image_system(file_start);
 
 	# Start Graph Resource
 	var world_map: WorldMapGraph = WorldMapGraph.new() 
@@ -103,9 +92,8 @@ func _on_file_dialog_file_selected(path):
 	# Arrange Nodes
 	graph_edit.arrange_nodes();
 	
-	# Save all Images
-	#convert_to_new_image_system(file_map);
-	
+	# Set FileName
+	get_node("VBoxContainer/HBoxContainer/FileName").text = file_map.Filename;
 	
 func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> void:
 	# We iter through all trees and redraw connections
@@ -136,4 +124,14 @@ func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> vo
 		else:
 			continue;
 			
-			
+		
+
+## When the user wants to go back to the Main GameMap Editor Menu
+func _on_go_back_button_pressed():
+	# First we must save the file to the selected_game_map file
+	var game_map_manager: GameMapManager = GameMapManager.new();
+	game_map_manager.save_game_map(graph_edit.game_map, "selected_game_map");
+	
+	# Now switch scenes
+	get_tree().change_scene_to_packed(GAME_MAP_EDITOR)
+	

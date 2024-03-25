@@ -6,3 +6,18 @@ res://Scenes/Team Editor/Team Editor.tscn
 res://Scenes/League Editor/League Editor.tscn
 res://Scenes/League Editor/Tournament Nodes/LeagueNode.tscn
 res://Scenes/GameMapEditor/GameMapEditor.tscn
+res://Scenes/GameMapEditor/GameMapEditor.gd
+res://Scenes/GameMapEditor/League Editor/League Editor.tscn
+res://Scenes/GameMapEditor/League Editor/Tournament Nodes/LeagueNode.tscn
+res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
+res://Scenes/GameMapEditor/World Editor/World Editor.tscn
+res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
+res://Scenes/GameMapEditor/Player Editor/PlayerEditor.tscn
+res://Resources/GameMapManager.gd
+res://Scenes/GameMapEditor/World Editor/World Editor.gd
+res://Scenes/GameMapEditor/World Editor/GraphEdit.gd
+res://Scenes/GameMapEditor/League Editor/Tournament Editor.gd
+res://GameMapMenuButton.tres
+res://Resources/Player Details/PlayerManager.gd
+res://addons/fuku/control.tscn
+res://addons/edit_grid/example/example.tscn

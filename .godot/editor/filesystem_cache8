@@ -1,16 +1,57 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711164085
+::res://::1711206332
 Control.gd::GDScript::-1::1710833807::0::1::::<>Control<>::
+data.csv::::-1::1711206332::1711206332::1::::<><>::
 icon.svg::CompressedTexture2D::4715473616569385960::1711149189::1711149193::1::::<><>::
 README.md::TextFile::-1::1710711722::0::1::::<><>::
+GameMapMenuButton.tres::Theme::7739624163338901520::1711172898::0::1::::<><>::
 test_itemlist.tscn::PackedScene::1046052840237460886::1710270321::0::1::::<><>::res://Control.gd
-::res://addons/::1711149189
+::res://addons/::1711206651
 ::res://addons/draggablesprite2d/::1711149189
 plugin.cfg::TextFile::-1::1711149189::0::1::::<><>::
 plugin.gd::GDScript::-1::1711149189::0::1::::<>EditorPlugin<>::
 ::res://addons/draggablesprite2d/src/::1711149193
 draggablesprite2d.gd::GDScript::-1::1711149189::0::1::::DraggableSprite2D<>Area2D<>::
 icon.png::CompressedTexture2D::1713565216183954014::1711149189::1711149193::1::::<><>::
+::res://addons/edit_grid/::1711206332
+plugin.cfg::TextFile::-1::1711206332::0::1::::<><>::
+plugin.gd::GDScript::-1::1711206332::0::1::::<>EditorPlugin<>::
+::res://addons/edit_grid/assets/::1711206336
+2024-03-21_205100.png::CompressedTexture2D::2225386112750001631::1711206332::1711206336::1::::<><>::
+::res://addons/edit_grid/example/::1711206332
+example.gd::GDScript::-1::1711206332::0::1::::<>Control<>::
+example.tscn::PackedScene::8675895363325840909::1711206332::0::1::::<><>::uid://dr56xjtb3v5cn::::res://addons/edit_grid/src/edit_grid/edit_grid.tscn<>res://addons/edit_grid/example/example.gd
+::res://addons/edit_grid/example/excel_reader/::1711206332
+data_util.gd::GDScript::-1::1711206332::0::1::::ExcelDataUtil<>RefCounted<>::
+excel_file.gd::GDScript::-1::1711206332::0::1::::ExcelFile<>RefCounted<>::
+workbook.gd::GDScript::-1::1711206332::0::1::::ExcelWorkbook<>RefCounted<>::
+xml_file.gd::GDScript::-1::1711206332::0::1::::ExcelXMLFile<>RefCounted<>::
+xml_node.gd::GDScript::-1::1711206332::0::1::::ExcelXMLNode<>RefCounted<>::
+::res://addons/edit_grid/example/excel_reader/files/::1711206332
+content_types.gd::GDScript::-1::1711206332::0::1::::ExcelContentTypes<>ExcelXlBase<>::
+sheet.gd::GDScript::-1::1711206332::0::1::::ExcelSheet<>RefCounted<>::
+xl_base.gd::GDScript::-1::1711206332::0::1::::ExcelXlBase<>RefCounted<>::
+xl_cell_images.gd::GDScript::-1::1711206332::0::1::::ExcelXlCellImages<>ExcelXlBase<>::
+xl_rels_cell_images.gd::GDScript::-1::1711206332::0::1::::ExcelXlRelsCellImages<>ExcelXlBase<>::
+xl_rels_workbook.gd::GDScript::-1::1711206332::0::1::::ExcelXlRelsWorkbook<>ExcelXlBase<>::
+xl_shared_strings.gd::GDScript::-1::1711206332::0::1::::ExcelXlSharedStrings<>ExcelXlBase<>::
+xl_styles.gd::GDScript::-1::1711206332::0::1::::ExcelXlStyle<>ExcelXlBase<>::
+xl_workbook.gd::GDScript::-1::1711206332::0::1::::ExcelXlWorkbook<>ExcelXlBase<>::
+::res://addons/edit_grid/src/::1711206332
+::res://addons/edit_grid/src/edit_grid/::1711206332
+data_grid.gd::GDScript::-1::1711206332::0::1::::DataGrid<>Control<>::
+draw_data.gd::GDScript::-1::1711206332::0::1::::DrawData<>RefCounted<>::
+edit_grid.gd::GDScript::-1::1711206332::0::1::::EditGrid<>Panel<>::
+edit_grid.tscn::PackedScene::8416327527728368145::1711206332::0::1::::<><>::res://addons/edit_grid/src/edit_grid/edit_grid.gd<>res://addons/edit_grid/src/edit_grid/number_bar.gd<>uid://4xts0ha85fja::::res://addons/edit_grid/src/popup_edit_box/popup_edit_box.tscn<>res://addons/edit_grid/src/edit_grid/data_grid.gd
+number_bar.gd::GDScript::-1::1711206332::0::1::::<>Panel<>::
+::res://addons/edit_grid/src/eidt_main/::1711206332
+edit_grid_util.gd::GDScript::-1::1711206332::0::1::::EditGridUtil<>RefCounted<>::
+edit_main.gd::GDScript::-1::1711206332::0::1::::<>MarginContainer<>::
+edit_main.tscn::PackedScene::6561395918867851936::1711206332::0::1::::<><>::res://addons/edit_grid/src/eidt_main/edit_main.gd<>uid://dr56xjtb3v5cn::::res://addons/edit_grid/src/edit_grid/edit_grid.tscn<>res://addons/edit_grid/src/eidt_main/simple_menu.gd
+simple_menu.gd::GDScript::-1::1711206332::0::1::::SimpleMenu<>MenuBar<>::
+::res://addons/edit_grid/src/popup_edit_box/::1711206332
+popup_edit_box.gd::GDScript::-1::1711206332::0::1::::<>Control<>::
+popup_edit_box.tscn::PackedScene::2084144244941833734::1711206332::0::1::::<><>::res://addons/edit_grid/src/popup_edit_box/popup_edit_box.gd
 ::res://addons/fuku/::1711147782
 control.gd::GDScript::-1::1711147772::0::1::::<>Control<>::
 control.tscn::PackedScene::2761330576338762868::1711147772::0::1::::<><>::res://addons/fuku/control.gd<>uid://cmqnl5ac84yys::::res://addons/fuku/NunitoSans_10pt-Medium.ttf<>uid://bvmtrd7knehi1::::res://addons/fuku/NunitoSans_10pt-Black.ttf
@@ -48,6 +89,14 @@ legend.gd::GDScript::-1::1711148212::0::1::::<>Control<>::
 plot_2d.gd::GDScript::-1::1711148212::0::1::::<>Control<>::
 ::res://addons/graph_2d/custom_refcounted/::1711148212
 plot_item.gd::GDScript::-1::1711148212::0::1::::PlotItem<>RefCounted<>::
+::res://addons/logger/::1711206651
+config.gd::GDScript::-1::1711206651::0::1::::Config<>Node<>::
+json-data.gd::GDScript::-1::1711206651::0::1::::JsonData<>RefCounted<>::
+log-stream.gd::GDScript::-1::1711206651::0::1::::LogStream<>Node<>::
+logger.gd::GDScript::-1::1711206651::0::1::::<>LogStream<>::
+plugin.cfg::TextFile::-1::1711206651::0::1::::<><>::
+plugin.gd::GDScript::-1::1711206651::0::1::::<>EditorPlugin<>::
+settings.gd::GDScript::-1::1711206651::0::1::::<>RefCounted<>::
 ::res://addons/safe_resource_loader/::1711148610
 plugin.cfg::TextFile::-1::1711148610::0::1::::<><>::
 plugin.gd::GDScript::-1::1711148610::0::1::::<>EditorPlugin<>::
@@ -64,11 +113,20 @@ plot_sint.gd::GDScript::-1::1711148212::0::1::::<>Control<>::
 plot_sint.tscn::PackedScene::8745649787525565503::1711148212::0::1::::<><>::res://examples/plot_sint.gd<>res://addons/graph_2d/graph_2d.gd
 single_plot.gd::GDScript::-1::1711148212::0::1::::<>Control<>::
 single_plot.tscn::PackedScene::3640788172478214070::1711148212::0::1::::<><>::res://examples/single_plot.gd<>res://addons/graph_2d/graph_2d.gd
-::res://Images/::1710739265
+::res://Images/::1711170996
 Global_XI_Football_Maestro_Logo.JPG::CompressedTexture2D::2428067565950428885::1710657583::1710657588::1::::<><>::
 icon.svg::CompressedTexture2D::5005012556432720634::1702159414::1710620446::1::::<><>::
 main_menu.jpg::CompressedTexture2D::6923708401058514228::1704026911::1708584744::1::::<><>::
 start_up_background.jpg::CompressedTexture2D::5242971471424488616::1702160235::1708584744::1::::<><>::
+::res://Images/Icons/::1711236769
+football_kit_icon.png::CompressedTexture2D::8503222143896418475::1711172204::1711172901::1::::<><>::
+manager_icon.png::CompressedTexture2D::993718941428212871::1711172974::1711173061::1::::<><>::
+player_icon.png::CompressedTexture2D::8490037610907660329::1711171829::1711172901::1::::<><>::
+stadium_icon.png::CompressedTexture2D::4745208814807159909::1711171979::1711172901::1::::<><>::
+team_logo_icon.png::CompressedTexture2D::5999125747609041686::1711171677::1711172901::1::::<><>::
+tournament_icon.png::CompressedTexture2D::1369045791143387575::1711171928::1711172901::1::::<><>::
+trophy_icon.png::CompressedTexture2D::5720681252933950031::1711236631::1711236775::1::::<><>::
+world_icon.png.png::CompressedTexture2D::7011507300605697420::1711171699::1711172901::1::::<><>::
 ::res://Images/Team Logos/::1710833822
 1.png::CompressedTexture2D::1872073453317152161::1710833819::1710833819::1::::<><>::
 2.png::CompressedTexture2D::818435990664269377::1710833819::1710833819::1::::<><>::
@@ -5576,10 +5634,10 @@ start_up_background.jpg::CompressedTexture2D::5242971471424488616::1702160235::1
 248.png::CompressedTexture2D::7403966861615651498::1710833823::1710833823::1::::<><>::
 249.png::CompressedTexture2D::8099073605244642694::1710833823::1710833823::1::::<><>::
 250.png::CompressedTexture2D::2655953428079181595::1710833823::1710833823::1::::<><>::
-::res://Resources/::1711145869
+::res://Resources/::1711169890
 Confederation.gd::GDScript::-1::1710833756::0::1::::Confederation<>Resource<>::
 GameMap.gd::GDScript::-1::1711145869::0::1::::GameMap<>Resource<>::
-GameMapManager.gd::GDScript::-1::1710980960::0::1::::GameMapManager<>Resource<>::
+GameMapManager.gd::GDScript::-1::1711169890::0::1::::GameMapManager<>Resource<>::
 GMF_Teams - Copy.res::Resource/Resource::-1::1711066824::0::1::::<><>::res://Resources/GameMap.gd<>res://Resources/Confederation.gd<>res://Resources/territory.gd<>res://Resources/Team.gd
 Graph.gd::GDScript::-1::1710833757::0::1::::Graph<>Resource<>::
 League_Graph.gd::GDScript::-1::1710833759::0::1::::League_Graph<>Resource<>::
@@ -5609,7 +5667,7 @@ my_script.gd::GDScript::-1::1711148610::0::1::::<>RefCounted<>::
 safe_resource.tres::Resource/Resource::989706826449730690::1711148610::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
 saved_game.gd::GDScript::-1::1711148610::0::1::::SRLSavedGame<>Resource<>::
 unsafe_resource.tres::Resource/Resource::6448094193986199902::1711148610::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
-::res://Scenes/::1711164085
+::res://Scenes/::1711164091
 game_mode.tscn::PackedScene::6152867077861201729::1705810622::0::1::::<><>::
 start_up.tscn::PackedScene::5474885288116163727::1705810574::0::1::::<><>::uid://cgapilsdm1ebp::::res://Images/start_up_background.jpg
 ::res://Scenes/Country Editor/::1710833762
@@ -5633,43 +5691,14 @@ Rating Value.gd::GDScript::-1::1710833760::0::1::::<>SpinBox<>::
 T ID.gd::GDScript::-1::1710833761::0::1::::<>SpinBox<>::
 Territory Name Edit.gd::GDScript::-1::1710833762::0::1::::<>LineEdit<>::
 TextureButton.gd::GDScript::-1::1710833762::0::1::::<>TextureButton<>::
-::res://Scenes/GameMapEditor/::1711164085
-GameMapEditor.tscn::PackedScene::4945358785978659714::1711164025::0::1::::<><>::
-::res://Scenes/GameMapEditor/League Editor/::0
-::res://Scenes/GameMapEditor/League Editor/Misc Scripts/::0
-::res://Scenes/GameMapEditor/League Editor/Tournament Nodes/::0
-::res://Scenes/GameMapEditor/Player Editor/::1711164079
-PlayerEditor.tscn::PackedScene::5819171660964311173::1711164079::0::1::::<><>::
-::res://Scenes/GameMapEditor/Team Editor/::1711164072
-Team Editor.gd::GDScript::-1::1711156858::0::1::::<>Node<>::
-Team Editor.tscn::PackedScene::5428947114430059492::1711164072::0::1::::<><>::res://Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
-::res://Scenes/GameMapEditor/Team Editor/Misc Scripts/::1710991486
-City Input.gd::GDScript::-1::1710833756::0::1::::<>LineEdit<>::
-Logo.gd::GDScript::-1::1710833823::0::1::::<>TextureButton<>::
-Name Code Input.gd::GDScript::-1::1710833759::0::1::::<>LineEdit<>::
-SpinBox.gd::GDScript::-1::1710833760::0::1::::<>SpinBox<>::
-Team ID.gd::GDScript::-1::1710833761::0::1::::<>Label<>::
-Team Name.gd::GDScript::-1::1710833761::0::1::::<>LineEdit<>::
-::res://Scenes/GameMapEditor/World Editor/::1711164064
-GraphEdit.gd::GDScript::-1::1710833823::0::1::::<>GraphEdit<>::
-World Editor.gd::GDScript::-1::1711066990::0::1::::<>Control<>::
-World Editor.tscn::PackedScene::1217744872715804559::1711164064::0::1::::<><>::res://Scenes/GameMapEditor/World Editor/World Editor.gd<>res://Scenes/GameMapEditor/World Editor/GraphEdit.gd
-::res://Scenes/GameMapEditor/World Editor/Confederation Editors/::1711164064
-Confederation Editor.gd::GDScript::-1::1710833756::0::1::::<>GraphNode<>::
-Confederation Editor.tscn::PackedScene::4377020352998335848::1711164064::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.gd
-ItemList.gd::GDScript::-1::1710833758::0::1::::<>ItemList<>::
-::res://Scenes/GameMapEditor/World Editor/League Editor/::1710270321
-League Editor.tscn::PackedScene::507481753769897923::1708815563::0::1::::<><>::
-LeagueNode.tscn::PackedScene::8628539737815509014::1710270321::0::1::::<><>::
-::res://Scenes/GameMapEditor/World Editor/Territory Editors/::1711164064
-Label.gd::GDScript::-1::1710833758::0::1::::<>Label<>::
-Territory Editor.gd::GDScript::-1::1710995002::0::1::::<>GraphNode<>::
-Territory Editor.tscn::PackedScene::8422911629128742764::1711164064::0::1::::<><>::res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/Country Editor/TextureButton.gd<>res://Scenes/Country Editor/Territory Name Edit.gd<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Country Editor/CoT ID.gd<>res://Scenes/GameMapEditor/World Editor/Territory Editors/Label.gd<>res://Scenes/Country Editor/CoT Name.gd<>res://Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Country Editor/Pop Val.gd<>res://Scenes/Country Editor/Area Val.gd<>res://Scenes/Country Editor/GDP Val.gd<>res://Scenes/Country Editor/First Name List.gd<>res://Scenes/Country Editor/Last Names List.gd<>res://Scenes/Country Editor/Rating Value.gd<>res://Scenes/Country Editor/League Rating Val.gd
-::res://Scenes/League Editor/::1711149234
+::res://Scenes/GameMapEditor/::1711206894
+GameMapEditor.gd::GDScript::-1::1711173953::0::1::::<>Control<>::
+GameMapEditor.tscn::PackedScene::4945358785978659714::1711206894::0::1::::<><>::res://Scenes/GameMapEditor/GameMapEditor.gd<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>uid://dijeqj7meug53::::res://GameMapMenuButton.tres<>uid://c65ora8j2a8su::::res://Images/Icons/world_icon.png.png<>uid://crqayvu5gcmqw::::res://Images/Icons/team_logo_icon.png<>uid://ds7vxc8b1nn10::::res://Images/Icons/player_icon.png<>uid://b8uu5pwkliayf::::res://Images/Icons/stadium_icon.png<>uid://ofmn2c28o1yp::::res://Images/Icons/manager_icon.png<>uid://dtfa3dj15ee2f::::res://Images/Icons/football_kit_icon.png
+::res://Scenes/GameMapEditor/League Editor/::1711173956
 League Editor.gd::GDScript::-1::1710834218::0::1::::<>Control<>::
-League Editor.tscn::PackedScene::7265154220437041893::1711164091::0::1::::<><>::res://Scenes/League Editor/League Editor.gd<>res://Scenes/League Editor/Tournament Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/League Editor/Misc Scripts/TextureButton.gd<>res://Scenes/League Editor/Misc Scripts/League Name.gd<>res://Scenes/League Editor/Misc Scripts/League Tournament ID.gd<>res://Scenes/League Editor/Misc Scripts/SpinBox.gd<>res://Scenes/League Editor/Misc Scripts/Host Country Input.gd<>res://Scenes/League Editor/Misc Scripts/Every N Years Input.gd<>res://Scenes/League Editor/Misc Scripts/StartMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/EndMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/StartDayInput.gd<>res://Scenes/League Editor/Misc Scripts/EndDayInput.gd<>res://Scenes/League Editor/Misc Scripts/TournamentLogo.gd<>res://Scenes/League Editor/Misc Scripts/TournamentName.gd<>res://Scenes/League Editor/Misc Scripts/Tournament ID.gd<>res://Scenes/League Editor/Misc Scripts/TourImportanceInput.gd<>res://Scenes/League Editor/Misc Scripts/TourHostCountryInput.gd<>res://Scenes/League Editor/Misc Scripts/Tour Every N Years Input.gd<>res://Scenes/League Editor/Misc Scripts/TourStartMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/TourStartDayInput.gd<>res://Scenes/League Editor/Misc Scripts/TourEndMonthInput.gd<>res://Scenes/League Editor/Misc Scripts/TourEndDayInput.gd
-Tournament Editor.gd::GDScript::-1::1710944663::0::1::::<>GraphEdit<>::
-::res://Scenes/League Editor/Misc Scripts/::1710833807
+League Editor.tscn::PackedScene::7265154220437041893::1711173956::0::1::::<><>::res://Scenes/GameMapEditor/League Editor/League Editor.gd<>res://Scenes/GameMapEditor/League Editor/Tournament Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TextureButton.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Name.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Tournament ID.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/SpinBox.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Host Country Input.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Every N Years Input.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartDayInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndDayInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentLogo.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentName.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tournament ID.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourImportanceInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourHostCountryInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tour Every N Years Input.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartDayInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndDayInput.gd
+Tournament Editor.gd::GDScript::-1::1711170563::0::1::::<>GraphEdit<>::
+::res://Scenes/GameMapEditor/League Editor/Misc Scripts/::1710833807
 EndDayInput.gd::GDScript::-1::1710833807::0::1::::<>OptionButton<>::
 EndMonthInput.gd::GDScript::-1::1710833807::0::1::::<>OptionButton<>::
 Every N Years Input.gd::GDScript::-1::1710833807::0::1::::<>SpinBox<>::
@@ -5690,18 +5719,45 @@ TournamentLogo.gd::GDScript::-1::1710833807::0::1::::<>TextureButton<>::
 TournamentName.gd::GDScript::-1::1710833807::0::1::::<>LineEdit<>::
 TourStartDayInput.gd::GDScript::-1::1710833807::0::1::::<>OptionButton<>::
 TourStartMonthInput.gd::GDScript::-1::1710833807::0::1::::<>OptionButton<>::
-::res://Scenes/League Editor/Tournament Nodes/::1711149234
+::res://Scenes/GameMapEditor/League Editor/Tournament Nodes/::1711173956
 GroupStageNode.tscn::PackedScene::5692537551898188798::1710059876::0::1::::<><>::
 InputTeamsPopPanel.gd::GDScript::-1::1710833807::0::1::::<>PopupPanel<>::
 KnockoutNode.tscn::PackedScene::4239750112646264504::1710059876::0::1::::<><>::
 LeagueNode.gd::GDScript::-1::1710833807::0::1::::<>GraphNode<>::
 LeagueNode.tres::Theme::6656489255451360212::1710275577::0::1::::<><>::
-LeagueNode.tscn::PackedScene::3358931805867857940::1711164091::0::1::::<><>::res://Scenes/League Editor/Tournament Nodes/LeagueNode.gd<>res://Scenes/League Editor/Tournament Nodes/InputTeamsPopPanel.gd<>res://Scenes/League Editor/Tournament Nodes/SpecificTeamPopPanel.gd<>res://Scenes/League Editor/Tournament Nodes/TeamsList.gd<>res://Scenes/League Editor/Tournament Nodes/OtherTournamentPanel.gd<>res://Scenes/League Editor/Tournament Nodes/TournamentSelection.gd
+LeagueNode.tscn::PackedScene::3358931805867857940::1711173956::0::1::::<><>::res://Scenes/GameMapEditor/League Editor/Tournament Nodes/LeagueNode.gd<>res://Scenes/GameMapEditor/League Editor/Tournament Nodes/InputTeamsPopPanel.gd<>res://Scenes/GameMapEditor/League Editor/Tournament Nodes/SpecificTeamPopPanel.gd<>res://Scenes/GameMapEditor/League Editor/Tournament Nodes/TeamsList.gd<>res://Scenes/GameMapEditor/League Editor/Tournament Nodes/OtherTournamentPanel.gd<>res://Scenes/GameMapEditor/League Editor/Tournament Nodes/TournamentSelection.gd
 OtherTournamentPanel.gd::GDScript::-1::1710833807::0::1::::<>PopupPanel<>::
 SingleKnockOutNode.tscn::PackedScene::5942002964185257488::1710059876::0::1::::<><>::
 SpecificTeamPopPanel.gd::GDScript::-1::1710833760::0::1::::<>PopupPanel<>::
 TeamsList.gd::GDScript::-1::1710833807::0::1::::<>ItemList<>::
 TournamentSelection.gd::GDScript::-1::1710833807::0::1::::<>OptionButton<>::
+::res://Scenes/GameMapEditor/Player Editor/::1711173957
+PlayerEditor.tscn::PackedScene::5819171660964311173::1711173957::0::1::::<><>::
+::res://Scenes/GameMapEditor/Team Editor/::1711173956
+Team Editor.gd::GDScript::-1::1711156858::0::1::::<>Node<>::
+Team Editor.tscn::PackedScene::5428947114430059492::1711173956::0::1::::<><>::res://Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
+::res://Scenes/GameMapEditor/Team Editor/Misc Scripts/::1710991486
+City Input.gd::GDScript::-1::1710833756::0::1::::<>LineEdit<>::
+Logo.gd::GDScript::-1::1710833823::0::1::::<>TextureButton<>::
+Name Code Input.gd::GDScript::-1::1710833759::0::1::::<>LineEdit<>::
+SpinBox.gd::GDScript::-1::1710833760::0::1::::<>SpinBox<>::
+Team ID.gd::GDScript::-1::1710833761::0::1::::<>Label<>::
+Team Name.gd::GDScript::-1::1710833761::0::1::::<>LineEdit<>::
+::res://Scenes/GameMapEditor/World Editor/::1711173956
+GraphEdit.gd::GDScript::-1::1711170488::0::1::::<>GraphEdit<>::
+World Editor.gd::GDScript::-1::1711170381::0::1::::<>Control<>::
+World Editor.tscn::PackedScene::1217744872715804559::1711173956::0::1::::<><>::res://Scenes/GameMapEditor/World Editor/World Editor.gd<>res://Scenes/GameMapEditor/World Editor/GraphEdit.gd
+::res://Scenes/GameMapEditor/World Editor/Confederation Editors/::1711164064
+Confederation Editor.gd::GDScript::-1::1710833756::0::1::::<>GraphNode<>::
+Confederation Editor.tscn::PackedScene::4377020352998335848::1711164064::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.gd
+ItemList.gd::GDScript::-1::1710833758::0::1::::<>ItemList<>::
+::res://Scenes/GameMapEditor/World Editor/League Editor/::1710270321
+League Editor.tscn::PackedScene::507481753769897923::1708815563::0::1::::<><>::
+LeagueNode.tscn::PackedScene::8628539737815509014::1710270321::0::1::::<><>::
+::res://Scenes/GameMapEditor/World Editor/Territory Editors/::1711173956
+Label.gd::GDScript::-1::1710833758::0::1::::<>Label<>::
+Territory Editor.gd::GDScript::-1::1710995002::0::1::::<>GraphNode<>::
+Territory Editor.tscn::PackedScene::8422911629128742764::1711173956::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/Country Editor/TextureButton.gd<>res://Scenes/Country Editor/Territory Name Edit.gd<>res://Scenes/GameMapEditor/World Editor/Territory Editors/Label.gd<>res://Scenes/Country Editor/CoT ID.gd<>res://Scenes/Country Editor/CoT Name.gd<>res://Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Country Editor/Pop Val.gd<>res://Scenes/Country Editor/Area Val.gd<>res://Scenes/Country Editor/GDP Val.gd<>res://Scenes/Country Editor/First Name List.gd<>res://Scenes/Country Editor/Last Names List.gd<>res://Scenes/Country Editor/Rating Value.gd<>res://Scenes/Country Editor/League Rating Val.gd
 ::res://Scenes/Main Menu/::1710833759
 main_menu.gd::GDScript::-1::1710833759::0::1::::<>Control<>::
 main_menu.tscn::PackedScene::9010644990611671047::1706229486::0::1::::<><>::res://Scenes/Main Menu/main_menu.gd<>uid://cnhitdoh7wh7y::::res://Images/main_menu.jpg<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres
