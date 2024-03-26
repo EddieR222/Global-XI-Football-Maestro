@@ -1,27 +1,30 @@
 extends Control
 
-
+""" GraphEdit """
 @onready var graph_edit: GraphEdit = get_node("VBoxContainer/EditorBar/TabContainer/Tournament Editor");
 
+
+""" Packed Scenes """
+const GAME_MAP_EDITOR: PackedScene = preload("res://Scenes/GameMapEditor/GameMapEditor.tscn");
 
 var FileName: String;
 
 
 
-func _on_load_file_pressed() -> void:
-	#We need to open the file dialog
-	get_node("LoadWorldMap").visible = true;
+func _ready():
+	load_game_map();
 
-func _on_load_world_map_file_selected(path: String) -> void:
+func load_game_map() -> void:
 	# Load the data saved in Disk
-	var file_map : GameMap = ResourceLoader.load(path) as GameMap;
+	var game_map_manager: GameMapManager = GameMapManager.new();
+	var file_map : GameMap = game_map_manager.load_game_map_with_filename("selected_game_map") as GameMap;
 	get_node("VBoxContainer/EditorBar/TabContainer/Tournament Editor").game_map = file_map;
 	
 	#Change the FileName to display what the name of file was, so user can automatically
 	#save changes easily
-	FileName = path.get_file().get_basename();
-	var file_name_edit: LineEdit = get_node("VBoxContainer/TitleBar/FileNameEdit");
-	file_name_edit.text = FileName
+	FileName = file_map.Filename
+	var file_name_label: Label = get_node("VBoxContainer/TitleBar/FileNameLabel");
+	file_name_label.text = FileName
 	
 	var item_list: ItemList = get_node("VBoxContainer/EditorBar/NationList");
 
@@ -63,28 +66,16 @@ func _on_load_world_map_file_selected(path: String) -> void:
 	# Add to dictionary to keep track
 	graph_edit.game_map = file_map;
 
-
-func _on_file_name_edit_text_changed(new_text: String) -> void:
-	FileName = new_text;
-
 # DONT FORGET METADATA!!!!!
 func _on_texture_button_pressed():
 	get_node("LeagueLogoInput").visible = true;
+								   
 
-
-#func create_national_teams(world_map: WorldMap) -> void:
-	#for terr: Territory in world_map.Confederations[0].Territory_List.values():
-		#var national_team: Team = Team.new();
-		#national_team.Name = terr.Territory_Name + " National Team";
-		#national_team.Logo = terr.Flag;
-		#national_team.Territory_Name = terr.Territory_Name
-		#national_team.Territory_ID = terr.Territory_ID;
-		#terr.National_Team = national_team
-		#
-
-# When User Presses to Save File
-func _on_save_file_pressed():
-	# Init WorldMap Variable
-	var save_map: GameMap = graph_edit.game_map;
-	# Finally, save it to file
-	ResourceSaver.save(save_map, "user://{filename}.res".format({"filename": FileName}));
+## When the User Presses the "Go Back to Menu" button. Changes the scene back to the GameMap Editor
+func _on_button_pressed():
+	# First we must save the file to the selected_game_map file
+	var game_map_manager: GameMapManager = GameMapManager.new();
+	game_map_manager.save_game_map(graph_edit.game_map, "selected_game_map");
+	
+	# Now switch scenes
+	get_tree().change_scene_to_packed(GAME_MAP_EDITOR)

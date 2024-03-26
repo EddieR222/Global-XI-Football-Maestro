@@ -39,30 +39,19 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Load File" type="Button" parent="VBoxContainer/Title Bar"]
+[node name="GoBackButton" type="Button" parent="VBoxContainer/Title Bar"]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "   File  "
-flat = true
+text = "<- Go Back to Menu"
 
-[node name="Save File" type="Button" parent="VBoxContainer/Title Bar"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "  Save   "
-flat = true
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Title Bar"]
+[node name="FileName" type="Label" parent="VBoxContainer/Title Bar"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Filename"
-alignment = 1
+horizontal_alignment = 1
 
 [node name="Editor Bar" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 6.0
+size_flags_stretch_ratio = 8.0
 
 [node name="Country List" type="ItemList" parent="VBoxContainer/Editor Bar"]
 layout_mode = 2
@@ -224,9 +213,7 @@ file_mode = 0
 access = 2
 use_native_dialog = true
 
-[connection signal="pressed" from="VBoxContainer/Title Bar/Load File" to="." method="_on_load_file_pressed"]
-[connection signal="pressed" from="VBoxContainer/Title Bar/Save File" to="." method="_on_save_file_pressed"]
-[connection signal="text_changed" from="VBoxContainer/Title Bar/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Title Bar/GoBackButton" to="." method="_on_go_back_button_pressed"]
 [connection signal="item_selected" from="VBoxContainer/Editor Bar/Country List" to="." method="_on_country_list_item_selected"]
 [connection signal="pressed" from="VBoxContainer/Editor Bar/Middle/HBoxContainer/Logo" to="." method="_on_logo_pressed"]
 [connection signal="text_changed" from="VBoxContainer/Editor Bar/Middle/HBoxContainer/Team Name" to="." method="_on_team_name_text_changed"]

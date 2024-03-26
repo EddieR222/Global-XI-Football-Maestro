@@ -54,25 +54,13 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Load File" type="Button" parent="VBoxContainer/TitleBar"]
+[node name="Button" type="Button" parent="VBoxContainer/TitleBar"]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "   File  "
-flat = true
+text = "<- Go Back to Menu"
 
-[node name="Save File" type="Button" parent="VBoxContainer/TitleBar"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "  Save   "
-flat = true
-
-[node name="FileNameEdit" type="LineEdit" parent="VBoxContainer/TitleBar"]
+[node name="FileNameLabel" type="Label" parent="VBoxContainer/TitleBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Filename"
-alignment = 1
 
 [node name="AddLeagueStage" type="MenuButton" parent="VBoxContainer/TitleBar"]
 layout_mode = 2
@@ -588,9 +576,7 @@ file_mode = 0
 access = 2
 use_native_dialog = true
 
-[connection signal="pressed" from="VBoxContainer/TitleBar/Load File" to="." method="_on_load_file_pressed"]
-[connection signal="pressed" from="VBoxContainer/TitleBar/Save File" to="." method="_on_save_file_pressed"]
-[connection signal="text_changed" from="VBoxContainer/TitleBar/FileNameEdit" to="." method="_on_file_name_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/TitleBar/Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="VBoxContainer/TitleBar/YearSelection" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_year_selection_value_changed"]
 [connection signal="item_selected" from="VBoxContainer/EditorBar/NationList" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_nation_list_item_selected"]
 [connection signal="pressed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/League Pyramid Area/HBoxContainer/Add League Level" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_add_league_level_pressed"]

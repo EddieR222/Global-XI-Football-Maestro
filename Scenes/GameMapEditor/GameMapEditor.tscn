@@ -183,6 +183,7 @@ dialog_text = "File was unable to be  loaded, please try again or try another fi
 cancel_button_text = "Try Another"
 
 [connection signal="pressed" from="TopBottom/MarginContainer/FileSelecter/FileSelection" to="." method="_on_file_selection_pressed"]
+[connection signal="pressed" from="TopBottom/MarginContainer/FileSelecter/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="text_changed" from="TopBottom/MarginContainer/FileSelecter/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="TopBottom/SettingsSelection/WorldEditorButton" to="." method="_on_world_editor_button_pressed"]
 [connection signal="pressed" from="TopBottom/SettingsSelection/TeamEditorButton" to="." method="_on_team_editor_button_pressed"]

@@ -21,3 +21,5 @@ res://GameMapMenuButton.tres
 res://Resources/Player Details/PlayerManager.gd
 res://addons/fuku/control.tscn
 res://addons/edit_grid/example/example.tscn
+res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
+res://Scenes/GameMapEditor/League Editor/League Editor.gd

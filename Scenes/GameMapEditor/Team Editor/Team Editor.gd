@@ -1,6 +1,7 @@
 extends Node
 
-
+""" Packed Scenes """
+const GAME_MAP_EDITOR: PackedScene = preload("res://Scenes/GameMapEditor/GameMapEditor.tscn")
 
 """ File Saving and Loading Info """
 var FileName : String; 
@@ -9,6 +10,11 @@ var FileName : String;
 """ ItemList """
 @onready var team_list: ItemList = get_node("VBoxContainer/Editor Bar/VBoxContainer/Team List");
 @onready var terr_list: ItemList = get_node("VBoxContainer/Editor Bar/Country List");
+
+
+func _ready():
+	load_game_map();
+
 
 """
 The following Functions Handle the Saving and Loading of Files
@@ -25,21 +31,19 @@ func _on_save_file_pressed():
 	# Finally, save it to file
 	saver.save_game_map(game_map, FileName);
 
-func _on_load_file_pressed():
-	get_node("World Map File Dialog").visible = true
 	
-func _on_file_dialog_file_selected(path: String):
+func load_game_map():
 	# Load the data saved in Disk
-	var file_map : GameMap = ResourceLoader.load(path) as GameMap;
+	var game_map_manager: GameMapManager = GameMapManager.new();
+	var file_map : GameMap = game_map_manager.load_game_map_with_filename("selected_game_map") as GameMap;
 	game_map = file_map;
 	
 	
 	#Change the FileName to display what the name of file was, so user can automatically
 	#save changes easily
-	FileName = path.get_file().get_basename();
-	var file_name_edit: LineEdit = get_node("VBoxContainer/Title Bar/LineEdit");
-	file_name_edit.text = FileName
-	game_map.Filename = FileName;
+	FileName =  "selected_game_map";
+	var file_name_label: Label = get_node("VBoxContainer/Title Bar/FileName");
+	file_name_label.text = FileName
 
 	# Iter through each confed	
 	for confed: Confederation in game_map.Confederations:
@@ -72,12 +76,7 @@ func _on_file_dialog_file_selected(path: String):
 			terr_list.set_item_metadata(terr_index, terr);
 			
 			
-	#$"VBoxContainer/Editor Bar/Middle/HBoxContainer/Logo".filename = FileName
 	
-	#for terr: Territory in game_map.Territories:
-		#automatic_team_upload(terr);
-	
-	#game_map.sort_teams();
 
 func _on_line_edit_text_changed(new_text: String):
 	FileName = new_text
@@ -333,3 +332,12 @@ func _on_spin_box_value_changed(value: int) -> void:
 
 		
 
+
+## Runs when the user clicks the "Go Back" Button, simply takes them back to the GameMap Editor. All changes here are saved to "selected_game_map.res" file
+func _on_go_back_button_pressed():
+	# First we must save the file to the selected_game_map file
+	var game_map_manager: GameMapManager = GameMapManager.new();
+	game_map_manager.save_game_map(game_map, "selected_game_map");
+	
+	# Now switch scenes
+	get_tree().change_scene_to_packed(GAME_MAP_EDITOR)

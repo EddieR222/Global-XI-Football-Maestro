@@ -47,8 +47,6 @@ var game_map: GameMap = GameMap.new();
 func _ready():
 	configure_pop_menus()
 
-
-	
 func configure_pop_menus() -> void:
 	#First we need to set up the popup menu from the Add League Stage
 	add_node_popmenu.id_pressed.connect(_on_add_stage_popmenu_item_selected);
@@ -69,8 +67,8 @@ func load_tournaments(source) -> void:
 	league_pyramid.clear();
 	tournament_list.clear();
 
-	var leagues: Dictionary
-	var tournaments: Dictionary
+	var leagues: Array
+	var tournaments: Array
 	var super_cup_index: int;
 	var league_cup: int;
 	if source is Territory:
@@ -196,6 +194,7 @@ func load_tournaments(source) -> void:
 		##Save to local list
 		##tournament_list.set_item_metadata(index, tournament);
 	#
+
 """ Functions for when user selects in an item list """
 func _on_nation_list_item_selected(index: int) -> void:
 	# Save curr confed/terr to var

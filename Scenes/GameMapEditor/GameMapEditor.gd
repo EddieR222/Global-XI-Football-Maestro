@@ -145,3 +145,16 @@ func _on_trophy_editor_button_pressed():
 
 func _on_line_edit_text_changed(new_text):
 	File_Path = "user://save_files/{filename}.res".format({"filename": new_text})
+
+## Runs when User Clicks the "Save" Button. This simply saves the GameMap
+func _on_save_button_pressed():
+	# Create GameMapManager to save game later
+	var game_map_manager: GameMapManager = GameMapManager.new();
+	
+	# Save Filename into GameMap
+	Game_Map.Filename = File_Path.get_file().get_basename();
+	
+	# Save GameMap to save_files
+	game_map_manager.save_game_map(Game_Map, File_Path.get_file().get_basename());
+	
+	

@@ -1,5 +1,7 @@
-Button
 Label
+Button
+HBoxContainer
+VBoxContainer
 TextureButton
 ConfirmationDialog
 Popup
@@ -9,6 +11,4 @@ MarginContainer
 ReferenceRect
 ColorRect
 GridContainer
-HBoxContainer
-VBoxContainer
 TabContainer
