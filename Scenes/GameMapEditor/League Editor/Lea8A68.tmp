@@ -1,28 +1,28 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0j16peq8322n"]
+[gd_scene load_steps=24 format=3 uid="uid://dbrka8appw0wv"]
 
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/League Editor.gd" id="1_t21qs"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Editor.gd" id="2_ke8lr"]
-[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Images/icon.svg" id="3_e73rl"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TextureButton.gd" id="4_l7ego"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Name.gd" id="5_qyh3y"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Tournament ID.gd" id="6_7lnj6"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/SpinBox.gd" id="7_vpk4o"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Host Country Input.gd" id="8_wvf0m"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Every N Years Input.gd" id="9_5bmbn"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartMonthInput.gd" id="10_wiomf"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartDayInput.gd" id="11_k40k4"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndMonthInput.gd" id="12_hiqlf"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndDayInput.gd" id="13_sikxr"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentLogo.gd" id="14_1y16u"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentName.gd" id="15_hrade"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tournament ID.gd" id="16_kscu2"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourImportanceInput.gd" id="17_og3oi"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourHostCountryInput.gd" id="18_82820"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tour Every N Years Input.gd" id="19_sqyyj"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartMonthInput.gd" id="20_x40pa"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartDayInput.gd" id="21_nksei"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndMonthInput.gd" id="22_ud5tr"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndDayInput.gd" id="23_d4xna"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/League Editor.gd" id="1_k6jpy"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Tournament Editor.gd" id="2_7mbge"]
+[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Images/icon.svg" id="3_k8tbg"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TextureButton.gd" id="4_xd183"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Name.gd" id="5_phklu"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Tournament ID.gd" id="6_3u11b"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/SpinBox.gd" id="7_mcigt"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Host Country Input.gd" id="8_oxhpt"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Every N Years Input.gd" id="9_mump2"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartMonthInput.gd" id="10_qwf65"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndMonthInput.gd" id="11_6sceh"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartDayInput.gd" id="11_m1i4c"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndDayInput.gd" id="13_3e5uh"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentLogo.gd" id="14_sna2q"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentName.gd" id="15_3vvdo"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tournament ID.gd" id="16_nb46q"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourImportanceInput.gd" id="17_xmh55"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourHostCountryInput.gd" id="18_8fy2m"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tour Every N Years Input.gd" id="19_qd11d"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartMonthInput.gd" id="20_6id1l"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartDayInput.gd" id="21_alkrf"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndMonthInput.gd" id="22_kxa2u"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndDayInput.gd" id="23_umwcf"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_t21qs")
+script = ExtResource("1_k6jpy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -126,7 +126,7 @@ size_flags_stretch_ratio = 4.0
 zoom_min = 0.05
 zoom_max = 2.0
 show_zoom_label = true
-script = ExtResource("2_ke8lr")
+script = ExtResource("2_7mbge")
 
 [node name="Territory League Pyramid" type="HBoxContainer" parent="VBoxContainer/EditorBar/TabContainer"]
 visible = false
@@ -168,8 +168,8 @@ size_flags_horizontal = 3
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Header" groups=["League_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("3_e73rl")
-script = ExtResource("4_l7ego")
+texture_normal = ExtResource("3_k8tbg")
+script = ExtResource("4_xd183")
 
 [node name="League Name" type="LineEdit" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Header" groups=["League_Info"]]
 layout_mode = 2
@@ -178,7 +178,7 @@ size_flags_stretch_ratio = 3.5
 text = "Stage Name"
 alignment = 1
 max_length = 40
-script = ExtResource("5_qyh3y")
+script = ExtResource("5_phklu")
 
 [node name="League Tournament ID" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Header" groups=["League_Info"]]
 layout_mode = 2
@@ -186,7 +186,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 text = "Tournament ID: "
 horizontal_alignment = 1
-script = ExtResource("6_7lnj6")
+script = ExtResource("6_3u11b")
 
 [node name="Body" type="GridContainer" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area"]
 layout_mode = 2
@@ -202,7 +202,7 @@ horizontal_alignment = 1
 layout_mode = 2
 rounded = true
 alignment = 1
-script = ExtResource("7_vpk4o")
+script = ExtResource("7_mcigt")
 
 [node name="Host Country" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Body"]
 layout_mode = 2
@@ -215,7 +215,7 @@ size_flags_horizontal = 3
 text = "Host Country Name"
 alignment = 1
 max_length = 50
-script = ExtResource("8_wvf0m")
+script = ExtResource("8_oxhpt")
 
 [node name="Every N Years" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Body"]
 layout_mode = 2
@@ -228,7 +228,7 @@ layout_mode = 2
 step = 0.25
 alignment = 1
 suffix = "Years"
-script = ExtResource("9_5bmbn")
+script = ExtResource("9_mump2")
 
 [node name="DatesInput" type="GridContainer" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area"]
 layout_mode = 2
@@ -270,14 +270,14 @@ popup/item_10/text = "November"
 popup/item_10/id = 10
 popup/item_11/text = "December"
 popup/item_11/id = 11
-script = ExtResource("10_wiomf")
+script = ExtResource("10_qwf65")
 
 [node name="StartDayInput" type="OptionButton" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/DatesInput" groups=["League_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 allow_reselect = true
-script = ExtResource("11_k40k4")
+script = ExtResource("11_m1i4c")
 
 [node name="EndDate" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/DatesInput"]
 layout_mode = 2
@@ -314,14 +314,14 @@ popup/item_10/text = "November"
 popup/item_10/id = 10
 popup/item_11/text = "December"
 popup/item_11/id = 11
-script = ExtResource("12_hiqlf")
+script = ExtResource("11_6sceh")
 
 [node name="EndDayInput" type="OptionButton" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/DatesInput" groups=["League_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 allow_reselect = true
-script = ExtResource("13_sikxr")
+script = ExtResource("13_3e5uh")
 
 [node name="Territory Tournaments" type="HBoxContainer" parent="VBoxContainer/EditorBar/TabContainer"]
 layout_mode = 2
@@ -362,8 +362,8 @@ size_flags_horizontal = 3
 [node name="TournamentLogo" type="TextureButton" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/Header" groups=["Tour_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("3_e73rl")
-script = ExtResource("14_1y16u")
+texture_normal = ExtResource("3_k8tbg")
+script = ExtResource("14_sna2q")
 
 [node name="TournamentName" type="LineEdit" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/Header" groups=["Tour_Info"]]
 layout_mode = 2
@@ -372,7 +372,7 @@ size_flags_stretch_ratio = 3.5
 text = "Stage Name"
 alignment = 1
 max_length = 40
-script = ExtResource("15_hrade")
+script = ExtResource("15_3vvdo")
 
 [node name="Tournament ID" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/Header" groups=["Tour_Info"]]
 layout_mode = 2
@@ -380,7 +380,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 text = "Tournament ID: "
 horizontal_alignment = 1
-script = ExtResource("16_kscu2")
+script = ExtResource("16_nb46q")
 
 [node name="Body" type="GridContainer" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area"]
 layout_mode = 2
@@ -396,7 +396,7 @@ horizontal_alignment = 1
 layout_mode = 2
 rounded = true
 alignment = 1
-script = ExtResource("17_og3oi")
+script = ExtResource("17_xmh55")
 
 [node name="Host Country" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/Body"]
 layout_mode = 2
@@ -409,7 +409,7 @@ size_flags_horizontal = 3
 text = "Host Country Name"
 alignment = 1
 max_length = 50
-script = ExtResource("18_82820")
+script = ExtResource("18_8fy2m")
 
 [node name="Every N Years" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/Body"]
 layout_mode = 2
@@ -422,7 +422,7 @@ layout_mode = 2
 step = 0.25
 alignment = 1
 suffix = "Years"
-script = ExtResource("19_sqyyj")
+script = ExtResource("19_qd11d")
 
 [node name="DatesInput" type="GridContainer" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area"]
 layout_mode = 2
@@ -464,14 +464,14 @@ popup/item_10/text = "November"
 popup/item_10/id = 10
 popup/item_11/text = "December"
 popup/item_11/id = 11
-script = ExtResource("20_x40pa")
+script = ExtResource("20_6id1l")
 
 [node name="TourStartDayInput" type="OptionButton" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/DatesInput" groups=["Tour_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 allow_reselect = true
-script = ExtResource("21_nksei")
+script = ExtResource("21_alkrf")
 
 [node name="EndDate" type="Label" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/DatesInput"]
 layout_mode = 2
@@ -508,14 +508,14 @@ popup/item_10/text = "November"
 popup/item_10/id = 10
 popup/item_11/text = "December"
 popup/item_11/id = 11
-script = ExtResource("22_ud5tr")
+script = ExtResource("22_kxa2u")
 
 [node name="TourEndDayInput" type="OptionButton" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area/DatesInput" groups=["Tour_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 allow_reselect = true
-script = ExtResource("23_d4xna")
+script = ExtResource("23_umwcf")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments/Tournament Edit Area"]
 layout_mode = 2

@@ -131,69 +131,73 @@ func load_tournaments(source) -> void:
 		elif index == league_cup:
 			tournament_list.set_item_custom_bg_color(index, Color(0.486, 0.416, 0.0));
 	
-	#update_tournament_selection_popup();
-		#
-#func update_tournament_selection_popup() -> void:
-	#if curr_nation == null:
-		#return
-		#
-	## Clear the popup menu
-	#tour_select_popmenu.clear();	
-		#
-	#var leagues: Dictionary
-	#var tournaments: Dictionary
-	#var super_cup_index: int;
-	#var league_cup: int;
-	#if curr_nation is Territory:
-		## Load needed variables
-		#leagues= curr_nation.Leagues;
-		#tournaments = curr_nation.Tournaments;
-		#super_cup_index= curr_nation.Super_Cup;
-		#league_cup = curr_nation.League_Cup;
-	#elif curr_nation is Confederation:
-		#leagues = curr_nation.Confed_Leagues;
-		#tournaments = curr_nation.Confed_Tournaments;
-		#super_cup_index = curr_nation.Super_Cup;
-		#league_cup = curr_nation.Cup;
-		#
-		#
-	## Now we need to load them into the needed itemlists
-	## First we load the league pyramid
-	#for league: Tournament in leagues.values():
-		## Get Tournament Name
-		#var league_name = league.Name;
-		## Get Tournament Logo
-		#var texture_normal
-		#var logo = league.Logo;
-		#if logo != null:
-			#logo.decompress();
-			#texture_normal = ImageTexture.create_from_image(logo);
-		#else:
-			#var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
-			#texture_normal = default_icon;
-		## Add it to popup menu
-		#tour_select_popmenu.add_icon_item(texture_normal, league_name);
-		## Save it to local list  
-		##league_pyramid.set_item_metadata(index, league);
-		#
-	## Second we load the other tournaments
-	#for tournament: Tournament in tournaments.values():
-		## Get Tournament Name
-		#var tournament_name = tournament.Name;
-		## Get Tournament Logo
-		#var texture_normal
-		#var logo = tournament.Logo;
-		#if logo != null:
-			#logo.decompress();
-			#texture_normal = ImageTexture.create_from_image(logo);
-		#else:
-			#var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
-			#texture_normal = default_icon;
-		## Add it to item list
-		#tour_select_popmenu.add_icon_item(texture_normal, tournament_name)
-		##Save to local list
-		##tournament_list.set_item_metadata(index, tournament);
-	#
+	update_tournament_selection_popup();
+		
+func update_tournament_selection_popup() -> void:
+	if curr_nation == null:
+		return
+		
+	# Clear the popup menu
+	tour_select_popmenu.clear();	
+		
+	var leagues: Array[int]
+	var tournaments: Array[int]
+	var super_cup_index: int;
+	var league_cup: int;
+	if curr_nation is Territory:
+		# Load needed variables
+		leagues = curr_nation.Leagues;
+		tournaments = curr_nation.Tournaments;
+		super_cup_index= curr_nation.Super_Cup;
+		league_cup = curr_nation.League_Cup;
+	elif curr_nation is Confederation:
+		leagues = curr_nation.Confed_Leagues;
+		tournaments = curr_nation.Confed_Tournaments;
+		super_cup_index = curr_nation.Super_Cup;
+		league_cup = curr_nation.Cup;
+		
+		
+	# Now we need to load them into the needed itemlists
+	# First we load the league pyramid
+	for league_id: int in leagues:
+		# Get Tournament
+		var league = game_map.get_tournament_by_id(league_id);
+		# Get Tournament Name
+		var league_name = league.Name;
+		# Get Tournament Logo
+		var texture_normal
+		var logo = league.Logo;
+		if logo != null:
+			logo.decompress();
+			texture_normal = ImageTexture.create_from_image(logo);
+		else:
+			var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
+			texture_normal = default_icon;
+		# Add it to popup menu
+		tour_select_popmenu.add_icon_item(texture_normal, league_name);
+		# Save it to local list  
+		#tour_select_popmenu.set_item_metadata(index, league);
+		
+	# Second we load the other tournaments
+	for tournament_id: int in tournaments:
+		# Get Tournament
+		var tournament: Tournament = game_map.get_tournament_by_id(tournament_id);
+		# Get Tournament Name
+		var tournament_name = tournament.Name;
+		# Get Tournament Logo
+		var texture_normal
+		var logo = tournament.Logo;
+		if logo != null:
+			logo.decompress();
+			texture_normal = ImageTexture.create_from_image(logo);
+		else:
+			var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
+			texture_normal = default_icon;
+		# Add it to item list
+		tour_select_popmenu.add_icon_item(texture_normal, tournament_name)
+		#Save to local list
+		#tournament_list.set_item_metadata(index, tournament);
+	
 
 """ Functions for when user selects in an item list """
 func _on_nation_list_item_selected(index: int) -> void:
@@ -244,7 +248,7 @@ func _on_add_league_level_pressed():
 	# Sort ItemList
 	league_pyramid.sort_items_by_text();
 	
-	#update_tournament_selection_popup();
+	update_tournament_selection_popup();
 
 func _on_delete_league_level_pressed():
 	# Get index of selected item
@@ -265,7 +269,7 @@ func _on_delete_league_level_pressed():
 	#Remove it from gamemap
 	game_map.erase_tournament_by_id(tour.ID)
 	
-	#update_tournament_selection_popup();
+	update_tournament_selection_popup();
 
 func _on_add_tournament_pressed() -> void:
 	if curr_nation == null:
@@ -290,7 +294,7 @@ func _on_add_tournament_pressed() -> void:
 	elif sink is Confederation:
 		sink.Confed_Tournaments.push_back(new_tour.ID)
 		
-	#update_tournament_selection_popup();
+	update_tournament_selection_popup();
 
 func _on_delete_tournament_pressed():
 	# Get index of selected item
@@ -311,7 +315,7 @@ func _on_delete_tournament_pressed():
 	# Remove it from game_map
 	game_map.erase_tournament_by_id(tour.ID)
 
-	#update_tournament_selection_popup();
+	update_tournament_selection_popup();
 
 """ League Pyramid Editor Inputs Singals """
 # League Logo Texture Button

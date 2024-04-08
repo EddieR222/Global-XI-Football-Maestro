@@ -1,25 +1,11 @@
-res://Scenes/Player Editor/PlayerEditor.tscn
-res://Scenes/Team Editor/Team Editor.gd
-res://Scenes/World Editor/World Editor.tscn
-res://Scenes/World Editor/Territory Editors/Territory Editor.tscn
-res://Scenes/Team Editor/Team Editor.tscn
-res://Scenes/League Editor/League Editor.tscn
-res://Scenes/League Editor/Tournament Nodes/LeagueNode.tscn
-res://Scenes/GameMapEditor/GameMapEditor.tscn
-res://Scenes/GameMapEditor/GameMapEditor.gd
-res://Scenes/GameMapEditor/League Editor/League Editor.tscn
 res://Scenes/GameMapEditor/League Editor/Tournament Nodes/LeagueNode.tscn
+res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
+res://GameMapMenuButton.tres
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
 res://Scenes/GameMapEditor/World Editor/World Editor.tscn
-res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
 res://Scenes/GameMapEditor/Player Editor/PlayerEditor.tscn
-res://Resources/GameMapManager.gd
-res://Scenes/GameMapEditor/World Editor/World Editor.gd
-res://Scenes/GameMapEditor/World Editor/GraphEdit.gd
+res://Scenes/GameMapEditor/GameMapEditor.tscn
+res://Scenes/GameMapEditor/League Editor/League Editor1.tscn
+res://Scenes/GameMapEditor/GameMapEditor.gd
+res://Scenes/GameMapEditor/League Editor/League Editor.tscn
 res://Scenes/GameMapEditor/League Editor/Tournament Editor.gd
-res://GameMapMenuButton.tres
-res://Resources/Player Details/PlayerManager.gd
-res://addons/fuku/control.tscn
-res://addons/edit_grid/example/example.tscn
-res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
-res://Scenes/GameMapEditor/League Editor/League Editor.gd
