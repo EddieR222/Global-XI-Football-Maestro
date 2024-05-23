@@ -57,6 +57,8 @@ func configure_pop_menus() -> void:
 	# Second we need to set up the select tournament popup
 	tour_select_popmenu.id_pressed.connect(_on_tournament_selected);
 
+
+# The following Function Runs when the Player Selects a Tournament
 func _on_tournament_selected(index: int) -> void:
 	pass
 	
@@ -194,9 +196,9 @@ func update_tournament_selection_popup() -> void:
 			var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
 			texture_normal = default_icon;
 		# Add it to item list
-		tour_select_popmenu.add_icon_item(texture_normal, tournament_name)
+		#var index:int  = tour_select_popmenu.add_icon_item(texture_normal, tournament_name, )
 		#Save to local list
-		#tournament_list.set_item_metadata(index, tournament);
+		#tour_select_popmenu.set_item_metadata(index, tournament);
 	
 
 """ Functions for when user selects in an item list """
@@ -696,7 +698,7 @@ func determine_eligable_teams(item_list: ItemList) -> void:
 	if curr_nation == null:
 		return
 
-	var national_teams:Array[Team];
+	var national_teams: Array[Team];
 	
 	if curr_nation is Territory:
 		# If Territory, we need to get all teams in this territory, 

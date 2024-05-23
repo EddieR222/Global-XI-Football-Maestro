@@ -67,8 +67,7 @@ func load_game_map() -> void:
 	graph_edit.game_map = file_map;
 
 # DONT FORGET METADATA!!!!!
-func _on_texture_button_pressed():
-	get_node("LeagueLogoInput").visible = true;
+
 								   
 
 ## When the User Presses the "Go Back to Menu" button. Changes the scene back to the GameMap Editor

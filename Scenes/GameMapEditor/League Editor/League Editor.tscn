@@ -115,7 +115,7 @@ custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
-current_tab = 2
+current_tab = 1
 
 [node name="Tournament Editor" type="GraphEdit" parent="VBoxContainer/EditorBar/TabContainer"]
 visible = false
@@ -123,13 +123,13 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
+scroll_offset = Vector2(0, -31)
 zoom_min = 0.05
 zoom_max = 2.0
 show_zoom_label = true
 script = ExtResource("2_ke8lr")
 
 [node name="Territory League Pyramid" type="HBoxContainer" parent="VBoxContainer/EditorBar/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="League Pyramid Area" type="VBoxContainer" parent="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid"]
@@ -324,6 +324,7 @@ allow_reselect = true
 script = ExtResource("13_sikxr")
 
 [node name="Territory Tournaments" type="HBoxContainer" parent="VBoxContainer/EditorBar/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Tournament List Area" type="VBoxContainer" parent="VBoxContainer/EditorBar/TabContainer/Territory Tournaments"]
@@ -582,7 +583,7 @@ use_native_dialog = true
 [connection signal="pressed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/League Pyramid Area/HBoxContainer/Add League Level" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_add_league_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/League Pyramid Area/HBoxContainer/Delete League Level" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_delete_league_level_pressed"]
 [connection signal="item_selected" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/League Pyramid Area/League Pyramid" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_league_pyramid_item_selected"]
-[connection signal="pressed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Header/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Header/TextureButton" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_texture_button_pressed"]
 [connection signal="text_changed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Header/League Name" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_league_name_text_changed"]
 [connection signal="value_changed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Body/SpinBox" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_spin_box_value_changed"]
 [connection signal="text_changed" from="VBoxContainer/EditorBar/TabContainer/Territory League Pyramid/Tournament Edit Area/Body/Host Country Input" to="VBoxContainer/EditorBar/TabContainer/Tournament Editor" method="_on_host_country_input_text_changed"]

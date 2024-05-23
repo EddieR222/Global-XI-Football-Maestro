@@ -3,13 +3,13 @@ extends ItemList
 """ Constants """
 @onready var GROUP_NAME_COLOR: Color = Color(0.486, 0.416, 0.4);
 
-func prepare_item_list(team_list: Dictionary, group_name: String) -> void:
+func prepare_item_list(team_list: Array, group_name: String) -> void:
 	# Add Group Name first, to show that the teams below are part of this group
 	var group_name_index: int = add_item(group_name, null, false);
 	set_item_custom_bg_color(group_name_index, GROUP_NAME_COLOR);
 	
 	# Now add all teams in Dictionary
-	for team: Team in team_list.values():
+	for team: Team in team_list:
 		var team_name: String = team.Name;
 		var logo: Image = team.Logo;
 		var texture: Texture2D
