@@ -1,4 +1,5 @@
-res://Scenes/GameMapEditor/League Editor/Tournament Nodes/LeagueNode.tscn
+res://Resources/territory.gd
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://GameMapMenuButton.tres
-res://Resources/Name_Directory.gd
+res://Resources/Confederation.gd
+res://Resources/Team.gd

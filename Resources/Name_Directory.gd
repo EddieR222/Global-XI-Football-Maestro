@@ -122,11 +122,17 @@ func name_in_last_names(name: String) -> bool:
 	else:
 		return false;
 		
-		
+func name_in_directory_by_id(name_id: int) -> bool:
+	if name_id >= 0 and name_id < First_Names.size() + Last_Names.size():
+		return true;
+	else:
+		return false;
+
+
 """ Functions to get name(s) """
 ### Given the id of the name, this gets the name stored in the directory with that id
 func get_name_by_id(name_id: int) -> String:
-	if name_id < 0 and name_id < First_Names.size():
+	if name_id >= 0 and name_id < First_Names.size():
 		return First_Names[name_id];
 	elif name_id >= First_Names.size() and name_id < First_Names.size() + Last_Names.size():
 		return Last_Names[name_id - First_Names.size()];

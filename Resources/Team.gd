@@ -4,13 +4,12 @@ class_name Team extends Resource
 """ Identifying Information """
 @export var Name: String;
 @export var Display_Name: String;
-@export var Nick_Name: String
+@export var Nick_Name: String;
 @export var Logo_Path: String;  ## ALERT The Images will now be stored in the user:// file system, the image will be in the folder "Team Logos" and will simply be the ID.png
 @export var ID: int;
 @export var Name_Code: String;
 
 """ Regional Information """
-@export var Territory_Name: String;
 @export var Territory_ID: int;
 @export var City: String;
 
