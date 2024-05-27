@@ -1,5 +1,4 @@
-res://Resources/territory.gd
+res://Scenes/start_up.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://GameMapMenuButton.tres
-res://Resources/Confederation.gd
-res://Resources/Team.gd
+res://Resources/Player Details/Player.gd
