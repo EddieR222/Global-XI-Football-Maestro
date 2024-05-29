@@ -1,8 +1,15 @@
 extends GraphNode
+## This Node is responcible for saving data for territory as the user inputs it
+##
+## This script has functions to save data correctly and ensure the World Map editor gets the correct data
+##
 
-#var territory: Territory;
 
+
+## The local saved territory information
 @onready var territory: Territory = Territory.new();
+
+## The local saved GameMap, only needed for some information. This should NOT change GameMap directly
 @onready var game_map: GameMap;
 
 """
@@ -13,9 +20,6 @@ func load_previous_territory_info(t: Territory) -> void:
 	territory = t;
 	get_tree().call_group("T_Info", "territory_selected", t);
 	
-	
-	
-
 """
 	All the functions below are signals that the input UI nodes send here to be saved in the variable Territory. 
 """
@@ -48,18 +52,18 @@ func _on_gdp_val_value_changed(value: float):
 func _on_first_name_list_text_changed():
 	var name_list: PackedStringArray = $"VBoxContainer2/GridContainer/First Name List".text.split(",", false, 0);
 	name_list.sort();
-	var saved_names: PackedStringArray = [];
-	for name in name_list:
-		saved_names.push_back(name.strip_edges(true, true));
-	territory.First_Names = saved_names 
+	#var saved_names: PackedStringArray = [];
+	#for name in name_list:
+		#saved_names.push_back(name.strip_edges(true, true));
+	#territory.First_Names = saved_names 
 	
 func _on_last_names_list_text_changed():
 	var name_list: PackedStringArray = $"VBoxContainer2/GridContainer/Last Names List".text.split(",", false, 0);
 	name_list.sort();
-	var saved_names: PackedStringArray = [];
-	for name in name_list:
-		saved_names.push_back(name.strip_edges(true, true));
-	territory.Last_Names = saved_names
+	#var saved_names: PackedStringArray = [];
+	#for name in name_list:
+		#saved_names.push_back(name.strip_edges(true, true));
+	#territory.Last_Names = saved_names
 
 func _on_rating_value_value_changed(value: float):
 	territory.Rating = value;
