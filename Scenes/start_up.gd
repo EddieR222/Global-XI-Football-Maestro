@@ -8,10 +8,10 @@ func _ready():
 	
 	## Set Player Height and Weight and other details to test it
 	player.set_player_age(1);
-	player.set_player_height(1);
-	player.set_player_weight(1);
-	player.set_player_overall_rating(1);
-	player.set_player_potential_rating(1);
+	player.set_player_height(2);
+	player.set_player_weight(3);
+	player.set_player_overall_rating(4);
+	player.set_player_potential_rating(5);
 	
 	
 	## Print value out
@@ -19,13 +19,14 @@ func _ready():
 	
 	## Set foot
 	player.set_player_foot(true);
-	print("%16x" % player.Key_Details)
 	
 	
-	#Set foot
-	player.set_player_foot(false);
-	print("%16x" % player.Key_Details)
 	
+	## Print Value
+	print(player.get_player_age());
+	print(player.get_player_club_team())
+	print(player.get_player_height())
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

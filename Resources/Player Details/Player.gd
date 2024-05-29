@@ -335,5 +335,79 @@ func set_player_month_injured(months: float) -> void:
 
 
 """ Getter Functions """
+## Call to get Player Name
+func get_player_name() -> String: return Name;
+
+## Gets the Player's ID
+func get_player_id() -> int: return ID
+
+## Gets the Player's Birthdate Day
+func get_player_birth_day() -> int: return (BirthDate >> 4) & 0xFF;
+
+## Gets the Player's Birthdate Month
+func get_player_birth_month() -> int: return (BirthDate & 0xF);
+
+## Gets the Player's Birthdate Year
+func get_player_birth_year() -> int: return (BirthDate >> 12) & 0xFFFFFFFFFFFFF;
+
+## Sets the Player's Age
+func get_player_age() -> int: return Key_Details & 0xFF;
+	
+## Gets the Player Height
+func get_player_height() -> int: return (Key_Details >> 8) & 0xFF;
+
+## Gets the Player Weight
+func get_player_weight() -> int: return (Key_Details >> 16) & 0xFF;
+
+## Gets the Player Overall Rating
+func get_player_overall_rating() -> int: return (Key_Details >> 24) & 0xFF; 
+
+## Gets the Player's Potential Rating
+func get_player_potential_rating() -> int: return (Key_Details >> 32) & 0xFF;
+
+## Gets the player's preferred foot (either right or left)
+func get_player_foot() -> bool: return ((Key_Details >> 40) & 0b1) == 0b1;
+
+## Gets the player's skill moves (1 - 5 stars)
+func get_player_skill_moves() -> int: return (Key_Details >> 41) & 0b111;
+
+## Gets the player's Weak Foot (1 - 5 stars)
+func get_player_weak_foot() -> int: return (Key_Details >> 44) & 0b111;
+
+## Gets the player's morale. 
+func get_player_morale() -> int: return (Key_Details >> 47) & 0xFF;
+
+## Gets the player's sharpness 
+func get_player_sharpness() -> int: return (Key_Details >> 55) & 0xFF;
+
+## Gets the list of player's nationalities
+func get_player_nationalities() -> PackedInt32Array: return Nationalities;
+
+## Gets the positions of the player given by the Position Number
+func get_player_positions() -> int: return Positions;
+
+## Gets the player's club team ID
+func get_player_club_team() -> int: return (Team_IDs & 0xFFFFFFFF);
+
+## Gets the player's national team ID
+func get_player_national_team() -> int: return (Team_IDs >> 32) & 0xFFFFFFFF;
+
+## Gets the market value of the player
+func get_player_market_value() -> float: return Market_Value;
+
+## Gets the Wage of the player
+func get_player_wage() -> float: return Wage;
+
+## Gets the player training result number	
+func get_player_training() -> int: return Training;
+
+## Get the player's condition
+func get_player_condition() -> int: return Condition;
+
+# Get the Player's Injury ID
+func get_player_injury() -> int: return Injury;
+
+## Get the player's month injured
+func get_player_month_injured() -> float: return Months_Injured;
 
 

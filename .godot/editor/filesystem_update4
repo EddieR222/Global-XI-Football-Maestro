@@ -1,5 +1,5 @@
 res://Scenes/start_up.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://GameMapMenuButton.tres
-res://Resources/Player Details/Player.gd
-res://Scenes/start_up.gd
+res://Tests/Resource_Testing/test_Player.gd
+res://Scenes/GameMapEditor/World Editor/World Editor.tscn

@@ -24,6 +24,18 @@ settings/stdout/print_fps=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Resources/": "yellow",
+"res://Tests/": "pink",
+"res://Tests/Resource_Testing/": "yellow"
+}
+
 [rendering]
 
 renderer/rendering_method="mobile"

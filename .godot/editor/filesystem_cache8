@@ -1,12 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1716868635
+::res://::1716967262
 Control.gd::GDScript::-1::1710141762::0::1::::<>Control<>::
 data.csv::::-1::1711913782::1711913782::1::::<><>::
-GameMapMenuButton.tres::Theme::7739624163338901520::1712557083::0::1::::<><>::
+GameMapMenuButton.tres::Theme::7739624163338901520::1716967138::0::1::::<><>::
 icon.svg::CompressedTexture2D::4715473616569385960::1711913782::1716615566::1::::<><>::
 README.md::TextFile::-1::1711913781::0::1::::<><>::
 test_itemlist.tscn::PackedScene::1046052840237460886::1710193767::0::1::::<><>::res://Control.gd
-::res://addons/::1711913782
+::res://addons/::1716962811
 ::res://addons/draggablesprite2d/::1711913782
 plugin.cfg::TextFile::-1::1711913782::0::1::::<><>::
 plugin.gd::GDScript::-1::1711913782::0::1::::<>EditorPlugin<>::
@@ -64,7 +64,7 @@ gdsqlite.gdextension::GDExtension::-1::1709313352::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1709313352::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1709313352::0::1::::<><>::
 plugin.cfg::TextFile::-1::1709313352::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1716868628
+::res://addons/godot-sqlite/bin/::1716967041
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1709313352
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1709313352
 ::res://addons/goutte.unicode/::1711913782
@@ -73,7 +73,7 @@ plugin.gd::GDScript::-1::1711913782::0::1::::<>EditorPlugin<>::
 README.md::TextFile::-1::1711913782::0::1::::<><>::
 ::res://addons/goutte.unicode/data/::1711913782
 normalization_mapping.gd::GDScript::-1::1711913782::0::1::::NormalizationMapping<>Resource<>::
-normalization_mapping.res::Resource/NormalizationMapping::394245167290660497::1711913782::0::1::::<><>::res://addons/goutte.unicode/data/normalization_mapping.gd
+normalization_mapping.res::Resource/Resource::394245167290660497::1711913782::0::1::::<><>::res://addons/goutte.unicode/data/normalization_mapping.gd
 ::res://addons/goutte.unicode/singleton/::1711913782
 UnicodeNormalizer.gd::GDScript::-1::1711913782::0::1::::UnicodeNormalizerNode<>Node<>::
 ::res://addons/graph_2d/::1716615566
@@ -89,6 +89,114 @@ legend.gd::GDScript::-1::1711913782::0::1::::<>Control<>::
 plot_2d.gd::GDScript::-1::1711913782::0::1::::<>Control<>::
 ::res://addons/graph_2d/custom_refcounted/::1711913782
 plot_item.gd::GDScript::-1::1711913782::0::1::::PlotItem<>RefCounted<>::
+::res://addons/gut/::1716965230
+autofree.gd::GDScript::-1::1716962811::0::1::::<>RefCounted<>::
+awaiter.gd::GDScript::-1::1716962811::0::1::::<>Node<>::
+collected_script.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+collected_test.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+comparator.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+compare_result.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+diff_formatter.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+diff_tool.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+doubler.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+double_tools.gd::GDScript::-1::1716962812::0::1::::<>RefCounted<>::
+gut.gd::GDScript::-1::1716962815::0::1::::<>Node<>::
+GutScene.gd::GDScript::-1::1716962811::0::1::::<>Node2D<>::
+GutScene.tscn::PackedScene::900020720033095020::1716965229::0::1::::<><>::res://addons/gut/GutScene.gd<>uid://duxblir3vu8x7::::res://addons/gut/gui/NormalGui.tscn<>uid://cnqqdfsn80ise::::res://addons/gut/gui/MinGui.tscn
+gut_cmdln.gd::GDScript::-1::1716962815::0::1::::<>SceneTree<>::
+gut_config.gd::GDScript::-1::1716962815::0::1::::<>RefCounted<>::
+gut_plugin.gd::GDScript::-1::1716962815::0::1::::<>EditorPlugin<>::
+gut_to_move.gd::GDScript::-1::1716962815::0::1::::<>Node<>::
+gut_vscode_debugger.gd::GDScript::-1::1716962815::0::1::::<>SceneTree<>::
+hook_script.gd::GDScript::-1::1716962815::0::1::::GutHookScript<>RefCounted<>::
+icon.png::CompressedTexture2D::3890841352431263106::1716962815::1716962824::1::::<><>::
+inner_class_registry.gd::GDScript::-1::1716962815::0::1::::<>RefCounted<>::
+input_factory.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+input_sender.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+junit_xml_export.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+LICENSE.md::TextFile::-1::1716962811::0::1::::<><>::
+logger.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+method_maker.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+one_to_many.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+optparse.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+orphan_counter.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+parameter_factory.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+parameter_handler.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+plugin.cfg::TextFile::-1::1716962816::0::1::::<><>::
+printers.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+result_exporter.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+script_parser.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+signal_watcher.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+source_code_pro.fnt::FontFile::5125156706837925311::1716962816::1716962823::1::::<><>::
+spy.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+strutils.gd::GDScript::-1::1716962816::0::1::::GutStringUtils<>RefCounted<>::
+stubber.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+stub_params.gd::GDScript::-1::1716962816::0::1::::<>RefCounted<>::
+summary.gd::GDScript::-1::1716962817::0::1::::<>RefCounted<>::
+test.gd::GDScript::-1::1716962817::0::1::::GutTest<>Node<>::
+test_collector.gd::GDScript::-1::1716962817::0::1::::<>RefCounted<>::
+thing_counter.gd::GDScript::-1::1716962817::0::1::::<>RefCounted<>::
+UserFileViewer.gd::GDScript::-1::1716962811::0::1::::<>Window<>::
+UserFileViewer.tscn::PackedScene::3676575661945431583::1716965230::0::1::::<><>::res://addons/gut/UserFileViewer.gd
+utils.gd::GDScript::-1::1716962817::0::1::::GutUtils<>Object<>::
+version_conversion.gd::GDScript::-1::1716962817::0::1::::<>RefCounted<>::
+::res://addons/gut/double_templates/::1716962812
+function_template.txt::TextFile::-1::1716962812::0::1::::<><>::
+init_template.txt::TextFile::-1::1716962812::0::1::::<><>::
+script_template.txt::TextFile::-1::1716962812::0::1::::<><>::
+::res://addons/gut/fonts/::1716962823
+AnonymousPro-Bold.ttf::FontFile::7090493737101227053::1716962812::1716962823::1::::<><>::
+AnonymousPro-BoldItalic.ttf::FontFile::761724172175864::1716962812::1716962823::1::::<><>::
+AnonymousPro-Italic.ttf::FontFile::503495830806397342::1716962812::1716962823::1::::<><>::
+AnonymousPro-Regular.ttf::FontFile::6954778653853521719::1716962812::1716962823::1::::<><>::
+CourierPrime-Bold.ttf::FontFile::2896714378692211288::1716962812::1716962823::1::::<><>::
+CourierPrime-BoldItalic.ttf::FontFile::977220797652290018::1716962812::1716962823::1::::<><>::
+CourierPrime-Italic.ttf::FontFile::846855295635301556::1716962813::1716962823::1::::<><>::
+CourierPrime-Regular.ttf::FontFile::3314864826498090510::1716962813::1716962823::1::::<><>::
+LobsterTwo-Bold.ttf::FontFile::5632861098580159618::1716962813::1716962823::1::::<><>::
+LobsterTwo-BoldItalic.ttf::FontFile::3182965850633207044::1716962813::1716962823::1::::<><>::
+LobsterTwo-Italic.ttf::FontFile::7759867820021968437::1716962813::1716962823::1::::<><>::
+LobsterTwo-Regular.ttf::FontFile::2115948870915788183::1716962813::1716962823::1::::<><>::
+OFL.txt::TextFile::-1::1716962813::0::1::::<><>::
+::res://addons/gut/gui/::1716962824
+arrow.png::CompressedTexture2D::2222304255268796957::1716962814::1716962824::1::::<><>::
+BottomPanelShortcuts.gd::GDScript::-1::1716962813::0::1::::<>Window<>::
+BottomPanelShortcuts.tscn::PackedScene::3672212108687301338::1716962813::0::1::::<><>::uid://sfb1fw8j6ufu::::res://addons/gut/gui/ShortcutButton.tscn<>res://addons/gut/gui/BottomPanelShortcuts.gd
+editor_globals.gd::GDScript::-1::1716962814::0::1::::<>RefCounted<>::
+GutBottomPanel.gd::GDScript::-1::1716962813::0::1::::<>Control<>::
+GutBottomPanel.tscn::PackedScene::4354655867367614688::1716962813::0::1::::<><>::res://addons/gut/gui/GutBottomPanel.gd<>uid://bsk32dh41b4gs::::res://addons/gut/gui/BottomPanelShortcuts.tscn<>uid://0yunjxtaa8iw::::res://addons/gut/gui/RunAtCursor.tscn<>uid://cr6tvdv0ve6cv::::res://addons/gut/gui/play.png<>uid://4gyyn12um08h::::res://addons/gut/gui/RunResults.tscn<>uid://bqmo4dj64c7yl::::res://addons/gut/gui/OutputText.tscn
+GutControl.gd::GDScript::-1::1716962813::0::1::::<>Control<>::
+GutControl.tscn::PackedScene::2054171664569605320::1716962813::0::1::::<><>::res://addons/gut/gui/GutControl.gd
+GutRunner.gd::GDScript::-1::1716962813::0::1::::<>Node2D<>::
+GutRunner.tscn::PackedScene::3560702166169920196::1716962813::0::1::::<><>::res://addons/gut/gui/GutRunner.gd<>uid://m28heqtswbuq::::res://addons/gut/GutScene.tscn
+GutSceneTheme.tres::Theme::6076084572326576944::1716962814::0::1::::<><>::uid://c6c7gnx36opr0::::res://addons/gut/fonts/AnonymousPro-Regular.ttf
+gut_config_gui.gd::GDScript::-1::1716962814::0::1::::<>RefCounted<>::
+gut_gui.gd::GDScript::-1::1716962814::0::1::::<>Control<>::
+gut_user_preferences.gd::GDScript::-1::1716962814::0::1::::<>RefCounted<>::
+MinGui.tscn::PackedScene::5719303499070539904::1716962814::0::1::::<><>::uid://cstkhwkpajvqu::::res://addons/gut/gui/GutSceneTheme.tres<>uid://bnh0lslf4yh87::::res://addons/gut/fonts/CourierPrime-Regular.ttf<>res://addons/gut/gui/gut_gui.gd<>uid://bvrqqgjpyouse::::res://addons/gut/gui/ResizeHandle.tscn
+NormalGui.tscn::PackedScene::8610600420658602210::1716962814::0::1::::<><>::uid://cstkhwkpajvqu::::res://addons/gut/gui/GutSceneTheme.tres<>res://addons/gut/gui/gut_gui.gd<>uid://bnh0lslf4yh87::::res://addons/gut/fonts/CourierPrime-Regular.ttf<>uid://bvrqqgjpyouse::::res://addons/gut/gui/ResizeHandle.tscn
+OutputText.gd::GDScript::-1::1716962814::0::1::::<>VBoxContainer<>::
+OutputText.tscn::PackedScene::3535116713792967483::1716962814::0::1::::<><>::res://addons/gut/gui/OutputText.gd
+panel_controls.gd::GDScript::-1::1716962814::0::1::::<>RefCounted<>::
+play.png::CompressedTexture2D::6031238735318256293::1716962815::1716962824::1::::<><>::
+ResizeHandle.gd::GDScript::-1::1716962814::0::1::::<>ColorRect<>::
+ResizeHandle.tscn::PackedScene::3896481196255057096::1716962814::0::1::::<><>::res://addons/gut/gui/ResizeHandle.gd
+ResultsTree.gd::GDScript::-1::1716962814::0::1::::<>Control<>::
+ResultsTree.tscn::PackedScene::7970351583819098362::1716962814::0::1::::<><>::res://addons/gut/gui/ResultsTree.gd
+RunAtCursor.gd::GDScript::-1::1716962814::0::1::::<>Control<>::
+RunAtCursor.tscn::PackedScene::1805504221328301514::1716962814::0::1::::<><>::res://addons/gut/gui/RunAtCursor.gd<>uid://cr6tvdv0ve6cv::::res://addons/gut/gui/play.png<>uid://6wra5rxmfsrl::::res://addons/gut/gui/arrow.png
+RunResults.gd::GDScript::-1::1716962814::0::1::::<>Control<>::
+RunResults.tscn::PackedScene::2049363523129861965::1716962814::0::1::::<><>::res://addons/gut/gui/RunResults.gd<>uid://dls5r5f6157nq::::res://addons/gut/gui/ResultsTree.tscn
+script_text_editor_controls.gd::GDScript::-1::1716962815::0::1::::<>RefCounted<>::
+Settings.tscn::PackedScene::6291468949329504810::1716962814::0::1::::<><>::
+ShortcutButton.gd::GDScript::-1::1716962814::0::1::::<>Control<>::
+ShortcutButton.tscn::PackedScene::1273828520004261174::1716962814::0::1::::<><>::res://addons/gut/gui/ShortcutButton.gd
+::res://addons/gut/images/::1716962824
+Folder.svg::CompressedTexture2D::7694651741458501535::1716962815::1716962824::1::::<><>::
+green.png::CompressedTexture2D::3896279560051998512::1716962815::1716962824::1::::<><>::
+red.png::CompressedTexture2D::2443263267725858415::1716962815::1716962824::1::::<><>::
+Script.svg::CompressedTexture2D::4817060143842260657::1716962815::1716962824::1::::<><>::
+yellow.png::CompressedTexture2D::1043265824178416429::1716962815::1716962824::1::::<><>::
 ::res://addons/logger/::1711913782
 config.gd::GDScript::-1::1711913782::0::1::::Config<>Node<>::
 json-data.gd::GDScript::-1::1711913782::0::1::::JsonData<>RefCounted<>::
@@ -103,8 +211,8 @@ plugin.gd::GDScript::-1::1711913782::0::1::::<>EditorPlugin<>::
 safe_resource_loader.gd::GDScript::-1::1711913782::0::1::::SafeResourceLoader<>RefCounted<>::
 ::res://Database/::1711913769
 ::res://Database/Game Maps/::1712601528
-GMF_Teams - Copy.res::Resource/GameMap::-1::1711913769::0::1::::<><>::res://Resources/GameMap.gd<>res://Resources/Confederation.gd<>res://Resources/territory.gd<>res://Resources/Team.gd
-W_F.res::Resource/GameMap::-1::1711913769::0::1::::<><>::res://Resources/GameMap.gd<>res://Resources/Confederation.gd<>res://Resources/territory.gd
+GMF_Teams - Copy.res::Resource/Resource::-1::1711913769::0::1::::<><>::res://Resources/GameMap.gd<>res://Resources/Confederation.gd<>res://Resources/territory.gd<>res://Resources/Team.gd
+W_F.res::Resource/Resource::-1::1711913769::0::1::::<><>::res://Resources/GameMap.gd<>res://Resources/Confederation.gd<>res://Resources/territory.gd
 ::res://example/::1711913782
 debug_scene.tscn::PackedScene::6552034186547586024::1711913782::0::1::::<><>::res://addons/draggablesprite2d/src/draggablesprite2d.gd<>uid://b8ghfqyuph10g::::res://icon.svg
 ::res://examples/::1711913782
@@ -5637,7 +5745,7 @@ world_icon.png.png::CompressedTexture2D::7011507300605697420::1711913769::171191
 Confederation.gd::GDScript::-1::1716868610::0::1::::Confederation<>Resource<>::
 GameMap.gd::GDScript::-1::1711913781::0::1::::GameMap<>Resource<>::
 GameMapManager.gd::GDScript::-1::1711913781::0::1::::GameMapManager<>Resource<>::
-GMF_Teams - Copy.res::Resource/GameMap::-1::1711913781::0::1::::<><>::res://Resources/GameMap.gd<>res://Resources/Confederation.gd<>res://Resources/territory.gd<>res://Resources/Team.gd
+GMF_Teams - Copy.res::Resource/Resource::-1::1711913781::0::1::::<><>::res://Resources/GameMap.gd<>res://Resources/Confederation.gd<>res://Resources/territory.gd<>res://Resources/Team.gd
 Graph.gd::GDScript::-1::1710464320::0::1::::Graph<>Resource<>::
 League_Graph.gd::GDScript::-1::1709578044::0::1::::League_Graph<>Resource<>::
 Name_Directory.gd::GDScript::-1::1716868610::0::1::::<>Node<>::
@@ -5647,8 +5755,8 @@ Team.gd::GDScript::-1::1716868610::0::1::::Team<>Resource<>::
 territory.gd::GDScript::-1::1716868610::0::1::::Territory<>Resource<>::
 Tournament.gd::GDScript::-1::1711913781::0::1::::Tournament<>Resource<>::
 WorldMapGraph.gd::GDScript::-1::1711913781::0::1::::WorldMapGraph<>Node<>::
-::res://Resources/Player Details/::1716868610
-Player.gd::GDScript::-1::1716868610::0::1::::Player<>Resource<>::
+::res://Resources/Player Details/::1716962409
+Player.gd::GDScript::-1::1716962409::0::1::::Player<>Resource<>::
 PlayerManager.gd::GDScript::-1::1711913781::0::1::::PlayerManager<>Resource<>::
 PlayerSeasonStats.gd::GDScript::-1::1711913781::0::1::::PlayerSeasonStats<>Resource<>::
 ::res://Resources/Tournament Stages/::1711913781
@@ -5660,16 +5768,17 @@ SingleKnockOutStage.gd::GDScript::-1::1711913781::0::1::::SingleKnockOutStage<>R
 TeamLeagueStats.gd::GDScript::-1::1711913781::0::1::::TeamLeagueStats<>Resource<>::
 TournamentStage.gd::GDScript::-1::1711913781::0::1::::TournamentStage<>Resource<>::
 ::res://safe_resource_loader_example/::1711913782
-another_unsafe_resource.tres::Resource/SRLSavedGame::6448094193986199902::1711913782::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd<>res://safe_resource_loader_example/my_script.gd
+another_unsafe_resource.tres::Resource/Resource::6448094193986199902::1711913782::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd<>res://safe_resource_loader_example/my_script.gd
 example.gd::GDScript::-1::1711913782::0::1::::<>CenterContainer<>::
 example.tscn::PackedScene::7647719113463746944::1711913782::0::1::::<><>::res://safe_resource_loader_example/example.gd
 my_script.gd::GDScript::-1::1711913782::0::1::::<>RefCounted<>::
-safe_resource.tres::Resource/SRLSavedGame::989706826449730690::1711913782::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
+safe_resource.tres::Resource/Resource::989706826449730690::1711913782::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
 saved_game.gd::GDScript::-1::1711913782::0::1::::SRLSavedGame<>Resource<>::
-unsafe_resource.tres::Resource/SRLSavedGame::6448094193986199902::1711913782::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
-::res://Scenes/::1716868610
+unsafe_resource.tres::Resource/Resource::6448094193986199902::1711913782::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
+::res://Scenes/::1716967310
 game_mode.tscn::PackedScene::6152867077861201729::1706998120::0::1::::<><>::
-start_up.tscn::PackedScene::5474885288116163727::1716868610::0::1::::<><>::uid://cgxy8edcrbqnw::::res://Images/start_up_background.jpg
+start_up.gd::GDScript::-1::1716962491::0::1::::<>Control<>::
+start_up.tscn::PackedScene::5474885288116163727::1716967310::0::1::::<><>::uid://cgxy8edcrbqnw::::res://Images/start_up_background.jpg<>res://Scenes/start_up.gd
 ::res://Scenes/Country Editor/::1711913781
 Area Val.gd::GDScript::-1::1706998120::0::1::::<>SpinBox<>::
 Code Name Text.gd::GDScript::-1::1706998120::0::1::::<>LineEdit<>::
@@ -5733,8 +5842,8 @@ TeamsList.gd::GDScript::-1::1716615380::0::1::::<>ItemList<>::
 TournamentSelection.gd::GDScript::-1::1711913782::0::1::::<>OptionButton<>::
 ::res://Scenes/GameMapEditor/Player Editor/::1712603774
 PlayerEditor.tscn::PackedScene::5819171660964311173::1712603774::0::1::::<><>::
-::res://Scenes/GameMapEditor/Team Editor/::1712603774
-Team Editor.gd::GDScript::-1::1712557083::0::1::::<>Node<>::
+::res://Scenes/GameMapEditor/Team Editor/::1716967138
+Team Editor.gd::GDScript::-1::1716967138::0::1::::<>Node<>::
 Team Editor.tscn::PackedScene::5428947114430059492::1712603774::0::1::::<><>::res://Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
 ::res://Scenes/GameMapEditor/Team Editor/Misc Scripts/::1711913782
 City Input.gd::GDScript::-1::1711913782::0::1::::<>LineEdit<>::
@@ -5761,5 +5870,8 @@ Territory Editor.tscn::PackedScene::8422911629128742764::1711913782::0::1::::<><
 ::res://Scenes/Main Menu/::1706998120
 main_menu.gd::GDScript::-1::1706998120::0::1::::<>Control<>::
 main_menu.tscn::PackedScene::9010644990611671047::1706998120::0::1::::<><>::res://Scenes/Main Menu/main_menu.gd<>uid://cnhitdoh7wh7y::::res://Images/main_menu.jpg<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres
+::res://Tests/::1716967231
+::res://Tests/Resource_Testing/::1716963537
+Player_Test.gd::GDScript::-1::1716963537::0::1::::<>GutTest<>::
 ::res://Textures/::1706998120
 main_menu.tres::Theme::320751974886637368::1706998120::0::1::::<><>::
