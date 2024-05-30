@@ -10,6 +10,7 @@ class_name GameMap extends Resource
 @export_category("World Map")
 ## The Array that contains all Confederations. 
 @export var Confederations: Array[Confederation] = [];
+
 ## The Array that contains all Territories. 
 @export var Territories: Array[Territory] = [];
 
@@ -34,6 +35,11 @@ class_name GameMap extends Resource
 
 ## The Year to Start
 @export var Starting_Year: int = 2024; #current year is default
+
+@export_category("Name Details")
+
+## The Name Directory
+@export var NameDirectory: Name_Directory = Name_Directory.new();
 
 """ Getter Functions """
 ## Function to get confed by inputted id. Returns null if id is NOT valid
@@ -104,8 +110,7 @@ func sort_confederations() -> void:
 		
 		# Iter new_index
 		new_index += 1;
-	
-	
+
 ## This functions sorts the territories in alphabetical order by name. 
 ## Also changes IDs based on new alphabetical order
 func sort_territories() -> void:
@@ -171,6 +176,57 @@ func sort_tournaments() -> void:
 	for tour: Tournament in Tournaments:
 		tour.ID = index;
 		index += 1;
+
+		
+## This functions sorts the name directory in alphabetical order by name.
+## Also changes the IDs based on new alphabetical order
+func sort_names() -> void:
+	# First we create a deep copy of the list of names
+	var first_name_copy = NameDirectory.First_Names.duplicate(true);
+	var last_name_copy = NameDirectory.Last_Names.duplicate(true);
+	
+	# Now we sort list of names
+	NameDirectory.sort_names();
+	
+	# Now we iter through first names to update changed indexes
+	for old_index in range(NameDirectory.First_Names.size()):
+		# Get old name at old_index
+		var name: String = first_name_copy[old_index];
+		
+		# Get new index of name
+		var new_index: int = NameDirectory.get_id_of_name(name, true);
+		
+		# Skip if new index is same as before
+		if old_index == new_index:
+			continue
+			
+		# Else, we update the name id
+		# Convert OLD_ID to -100 (unused id)
+		update_name_id(old_index, -100);
+		# Now convert new_id to old_id
+		update_name_id(new_index, old_index);
+		# Finally, convert -100 to new_id
+		update_name_id(-100, new_index);
+		
+	# Now we iter through first names to update changed indexes
+	for old_index in range(NameDirectory.Last_Names.size()):
+		# Get old name at old_index
+		var name: String = last_name_copy[old_index];
+		
+		# Get new index of name
+		var new_index: int = NameDirectory.get_id_of_name(name, false);
+		
+		# Skip if new index is same as before
+		if old_index == new_index:
+			continue
+			
+		# Else, we update the name id
+		# Convert OLD_ID to -100 (unused id)
+		update_name_id(old_index, -100);
+		# Now convert new_id to old_id
+		update_name_id(new_index, old_index);
+		# Finally, convert -100 to new_id
+		update_name_id(-100, new_index);		
 		
 """ Adding a new member """
 ## Adds the given confederation to the list of confederation
@@ -238,7 +294,7 @@ func add_player(player: Player) -> void:
 	
 	# Sort Players and Organize IDs
 	
-	
+
 	
 """ Remove or Erase By ID """
 ## This functions erases the confederation by id (the confed id). 
@@ -377,9 +433,21 @@ func update_team_id(old_id: int, new_id: int) -> void:
 				confed.Club_Teams_Rankings[club_index] = new_id; # swap id
 		elif index >= Territories.size() and index >= Confederations.size():
 			break
-		
-
-
+	
+func update_name_id(old_id: int, new_id: int) -> void:
+	# We have to update the old_id to new_id. These are only present in Territories
+	for terr: Territory in Territories:
+		# First we check if old_id is in first names for terr
+		var index: int = terr.First_Names.bsearch(old_id, true);
+		if (terr.First_Names[index] == old_id):
+			# If present, switch it
+			terr.First_Names[index] = new_id;
+			
+		# Second, we check if old_id is in last names for terr
+		index = terr.Last_Names.bsearch(old_id, true);
+		if (terr.Last_Names[index] == old_id):
+			#If present, switch it
+			terr.Last_Names[index] = new_id;
 
 
 

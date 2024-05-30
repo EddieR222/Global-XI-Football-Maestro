@@ -50,10 +50,15 @@ func _on_gdp_val_value_changed(value: float):
 	territory.GDP = value
 
 func _on_first_name_list_text_changed():
+	## Gets Name Inputted
 	var name_list: PackedStringArray = $"VBoxContainer2/GridContainer/First Name List".text.split(",", false, 0);
 	name_list.sort();
+	
+	## Now we need to get the IDs of the Names in order to add them or create a new ID for the name
+	
 	#var saved_names: PackedStringArray = [];
-	#for name in name_list:
+	for name in name_list:
+		var name_id: int = game_map.NameDirectory.add_name(name, true);
 		#saved_names.push_back(name.strip_edges(true, true));
 	#territory.First_Names = saved_names 
 	

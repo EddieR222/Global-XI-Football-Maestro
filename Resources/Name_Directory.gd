@@ -1,4 +1,4 @@
-extends Node
+class_name Name_Directory extends Resource
 
 ### 
 @export var First_Names: Array[String]
@@ -24,14 +24,16 @@ func add_name(name: String, first_name: bool) -> int:
 			return -1;
 		else:
 			# Now we can add it in
-			First_Names.insert(insertion_index , name)
+			First_Names.append(name);
+			First_Names.sort();
 	else:
 		insertion_index = Last_Names.bsearch(name, true)
 		if (Last_Names[insertion_index] == name):
 			return -1;
 		else:
 			# Now we can add it in
-			Last_Names.insert(insertion_index , name)
+			Last_Names.append(name);
+			Last_Names.sort();
 
 	return insertion_index;
 		
@@ -117,6 +119,7 @@ func name_in_last_names(name: String) -> bool:
 		
 	# Now get if in First Names
 	var index: int = Last_Names.bsearch(name, true);
+	
 	if (Last_Names[index] == name):
 		return true;
 	else:
@@ -144,3 +147,21 @@ func get_first_names() -> Array[String]:
 	
 func get_last_names() -> Array[String]:
 	return Last_Names;
+
+func get_id_of_name(name: String, first_name: bool) -> int:
+	if (first_name):
+		var index: int = First_Names.find(name);
+		return index;
+	else:
+		var index: int = Last_Names.find(name);
+		if (index == -1):
+			return index;
+		else:
+			return index + First_Names.size() + 1;
+
+""" Sorting """
+
+func sort_names() -> void:
+	First_Names.sort();
+	Last_Names.sort();
+
