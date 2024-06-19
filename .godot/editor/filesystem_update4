@@ -1,9 +1,9 @@
-res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
+res://Scenes/GameMapEditor/GameMapEditor.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://GameMapMenuButton.tres
-res://Resources/GameMap.gd
-res://Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn
-res://Resources/Name_Directory.gd
-res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd
-res://Scenes/start_up.tscn
+res://Resources/Player Details/PlayerManager.gd
+res://Tests/Resource_Testing/test_PlayerGeneration.gd
 res://Scenes/GameMapEditor/World Editor/World Editor.tscn
+res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
+res://Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn
+res://Resources/Player Details/Player.gd

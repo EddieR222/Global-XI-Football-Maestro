@@ -100,3 +100,41 @@ func organize_territory_images() -> void:
 						save_game_map(game_map, game_map.Filename);
 		flag_id += 1;
 
+
+
+
+
+
+
+
+
+
+
+# Function to read a CSV file and return its contents as an array of dictionaries
+func read_csv_file(file_path: String) -> Array:
+	var data = []
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	
+	if file:
+		var headers = []
+		if not file.eof_reached():
+			headers = file.get_csv_line()
+		while not file.eof_reached():
+			var line = file.get_csv_line()
+			if line.size() == headers.size():
+				var entry = {}
+				for i in range(headers.size()):
+					entry[headers[i]] = line[i]
+				data.append(entry)
+		file.close()
+	else:
+		print("Failed to open file: ", file_path)
+	
+	return data
+
+# Example usage
+func get_csv_data():
+	var csv_file_path = "res://Game Directories - All Confederations.csv"
+	var csv_data = read_csv_file(csv_file_path)
+	for entry in csv_data:
+		print(entry)

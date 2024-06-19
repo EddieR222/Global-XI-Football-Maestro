@@ -213,8 +213,8 @@ func set_player_skill_moves(stars: int) -> void:
 	var star_bits: int = stars & 0b111;
 	
 	# Now we set the bits
-	Key_Details &= ~(0b111 << 40);
-	Key_Details |= (star_bits << 40);
+	Key_Details &= ~(0b111 << 41);
+	Key_Details |= (star_bits << 41);
 	
 ## Sets the player's Weak Foot (1 - 5 stars)
 func set_player_weak_foot(stars: int) -> void:
@@ -262,7 +262,8 @@ func add_player_nationality(terr_id: int) -> void:
 
 ## Sets the positions of the player given by the Position Number
 func set_players_positions(positions: Array[int]) -> void:
-	for iter in range(8):
+	var max_range: int = min(positions.size(), 8);
+	for iter in range(max_range):
 		# Get position
 		var curr_position: int = positions[iter];
 		
@@ -384,7 +385,7 @@ func get_player_sharpness() -> int: return (Key_Details >> 55) & 0xFF;
 func get_player_nationalities() -> PackedInt32Array: return Nationalities;
 
 ## Gets the positions of the player given by the Position Number
-func get_player_positions() -> int: return Positions;
+func get_player_positions() -> int: return Positions & 0xFF; #CHANGE THIS!!
 
 ## Gets the player's club team ID
 func get_player_club_team() -> int: return (Team_IDs & 0xFFFFFFFF);
@@ -411,3 +412,8 @@ func get_player_injury() -> int: return Injury;
 func get_player_month_injured() -> float: return Months_Injured;
 
 
+
+func print_player():
+	print("Name: " + Name);
+	print("Overall: " + String.num_int64(get_player_overall_rating()) + "Potential: " + String.num_int64(get_player_potential_rating()));
+	print("Nation: " + String.num_int64(get_player_nationalities()[0]));

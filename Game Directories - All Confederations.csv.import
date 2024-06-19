@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://6fcyfhi1upx2"
+
+[deps]
+
+files=["res://Game Directories - All Confederations.ID.translation", "res://Game Directories - All Confederations.Level.translation", "res://Game Directories - All Confederations.Territory.translation", "res://Game Directories - All Confederations.Owner_ID.translation", "res://Game Directories - All Confederations.Children_ID.translation"]
+
+source_file="res://Game Directories - All Confederations.csv"
+dest_files=["res://Game Directories - All Confederations.ID.translation", "res://Game Directories - All Confederations.Level.translation", "res://Game Directories - All Confederations.Territory.translation", "res://Game Directories - All Confederations.Owner_ID.translation", "res://Game Directories - All Confederations.Children_ID.translation"]
+
+[params]
+
+compress=true
+delimiter=0

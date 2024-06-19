@@ -63,49 +63,43 @@ var Club_Teams_Rankings: PackedInt32Array; # int = team_id
 
 
 """ Functions """
-## Adds a new Territory to the list
+## Adds a new Territory to the list local to the Confederation
 func add_territory(id: int) -> void:
 	# Id of territory should be positive
-	if id < 0 or id >= Territory_List.size():
+	if id < 0:
 		return
 		
 	
 	# Now we find the insert index of the id
-	var insert_id: int = Territory_List.bsearch(id, true);
-	
-	# First, we check if value is already present
-	if (Territory_List[insert_id] == id):
+	if (id in Territory_List):
 		return
 	else:
-		Territory_List.insert(insert_id, id);
+		Territory_List.append(id);
+		Territory_List.sort();
 		
 	
 func delete_territory(id: int) -> void:
-	# Id of territory should be positive
-	if id < 0 or id >= Territory_List.size():
-		return 
-		
-	# Now we find the insert index of the id
-	var remove_id: int = Territory_List.bsearch(id, true);
+	var remove_id: int = Territory_List.find(id);
 	
-	# First, we check if value is already present
-	if (Territory_List[remove_id] == id):
-		Territory_List.remove_at(remove_id)
+	if remove_id == -1:
+		return
 	
-
+	
+	# We can swap the item with the last item and simply pop it
+	var temp: int = Territory_List[remove_id];
+	Territory_List[remove_id] = Territory_List[-1]
+	Territory_List[-1] = temp;
+	
+	# Now we simply pop and avoid allocating or shifting all values after the value we want to remove
+	Territory_List.remove_at(Territory_List.size() - 1)
 
 ## Update the old territory id to the new one
 func update_territory_id(old_id: int, new_id: int) -> void:
 	# Get Index to Change
-	var index_to_change: int = Territory_List.bsearch(old_id, true);
+	var index_to_change: int = Territory_List.find(old_id)
 	
 	# See that old id is present
 	if (Territory_List[index_to_change] != old_id):
-		return
+		return;
 	else:
-		Territory_List.remove_at(index_to_change)
-		
-	var insert_id: int = Territory_List.bsearch(new_id, true);
-	
-	#Now we just insert
-	Territory_List.insert(insert_id, new_id);
+		Territory_List[index_to_change] = new_id;

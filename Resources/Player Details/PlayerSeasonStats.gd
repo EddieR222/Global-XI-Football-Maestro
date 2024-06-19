@@ -2,7 +2,7 @@ class_name  PlayerSeasonStats extends Resource
 
 """ Season Details """
 ## The Team Played for this Season
-@export var Team_ID: int
+@export var Team_ID: PackedInt32Array
 
 ## The Season
 ##Starting year
