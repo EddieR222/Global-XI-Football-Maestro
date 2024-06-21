@@ -64,6 +64,52 @@ const MID_RATING: Array[int] = [5, 30, 30, 30, 5];
 const HIGH_RATING: Array[int] = [4, 8, 8, 40, 40];
 
 
+""" Cache Elements  """
+# Territory cache
+var Territory_Cache: Dictionary
+
+# Team Cache
+var Team_Cache: Dictionary 
+
+
+# Cache For Names
+var First_Name_Cache: Dictionary 
+var Last_Name_Cache: Dictionary 
+
+
+
+
+
+
+
+
+func _init(gm: GameMap):
+	# Here we want to create a cache for all the information we will want to get later. This is in order to speed up the player creation later
+	
+	# Here we iter through all territories
+	for terr in gm.Territories:
+		# Here we set up the Territory Cachce
+		Territory_Cache[terr.Territory_ID] = terr;
+		
+		# Now we get the names for each Territory
+		var first_names := Array(terr.First_Names).map(func(name_id: int): return gm.get_name_by_id(name_id));
+		var last_names := Array(terr.Last_Names).map(func(name_id: int): return gm.get_name_by_id(name_id));
+		First_Name_Cache[terr.Territory_ID] = first_names;
+		Last_Name_Cache[terr.Territory_ID] = last_names;
+		
+	# Here we set up the Team Cache
+	for team in gm.Teams:
+		Team_Cache[team.ID] = team;
+		
+	# Now we set the game_map memeber
+	game_map = gm;
+		
+	
+
+
+
+
+
 ## This function will create the entire roster for a team if given a team id
 func generate_team_roster(team_id: int, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
 	# First we need to get the team information
@@ -98,7 +144,7 @@ func generate_team_roster(team_id: int, percent_local:= -1, percent_foreign := -
 	return player_roster
 
 ## This function generates N number of players for the given territory.[br]NO CLUB TEAM data will be given and most then be allocated as desired to teams
-func generate_territory_players(terr_id: int, n:= 1) -> Array[Player]:
+func generate_players_from_territory(terr_id: int, n:= 1) -> Array[Player]:
 	# Create array to store players
 	var player_roster: Array[Player] = [];
 	player_roster.resize(n);
@@ -112,18 +158,42 @@ func generate_territory_players(terr_id: int, n:= 1) -> Array[Player]:
 	return player_roster
 
 
+	
+
 ## This function generates players for all the teams in the territory passed in
-func generate_entire_territory(terr_id: int) -> Array[Player]:
+func generate_entire_territory_players(terr_id: int) -> Array[Player]:
+	# First we need to get a list of all the teams in this territory
+	
 	
 	
 	
 	return [];
+	
+	
+	
+func generate_entrie_database() -> Array[Player]:
+	#Generate the array that will hold all players
+	var player_list: Array[Player];
+	#var player_list_sq: Array[Array[Player]];
+	
+	
+	# Now we go through all Teams and generate players for them
+	for team in game_map.Teams:
+		player_list.append_array(generate_team_roster(team.ID));
+	#var task_id = WorkerThreadPool.add_group_task(generate_team_roster, enemies.size())
+	
+	
+	return player_list
+	
 
 
 ## This function will create one player with the given paramaters.
 func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 	# First create the instance of the player to be created
 	var player: Player = Player.new();
+	
+	# Set player age
+	player.set_player_age(age);
 	
 
 	# First we have to generate some random values
@@ -165,7 +235,7 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 	
 	# If Terr_ID is left empty, we will randomly choose a territory for the player
 	if terr_id == -1:
-		var territory_ids := game_map.Territories.map(func(terr: Territory): return terr.Territory_ID);
+		var territory_ids:  Array[int] = Territory_Cache.keys();
 		terr_id = territory_ids.pick_random();
 		
 		
@@ -174,7 +244,7 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 	if team_id == -1: # No team was given so just use Territory Rating as average rating 
 		# Set Nationality of Player
 		player.add_player_nationality(terr_id);
-		player_terr = game_map.get_territory_by_id(terr_id);
+		player_terr = Territory_Cache[terr_id];
 		
 		# Determine potential and ensure its withtin the range of 10 - 94
 		potential = randfn(66, TERRITORY_STD_DEV);
@@ -186,8 +256,8 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 		player.add_player_nationality(terr_id);
 		player.set_player_club_team(team_id);
 		
-		var player_team: Team = game_map.get_team_by_id(team_id);
-		player_terr = game_map.get_territory_by_id(terr_id);
+		var player_team: Team = Team_Cache[team_id]
+		player_terr = Territory_Cache[terr_id];
 		
 		# Use both team and nationality rating tp determine mean potential for player
 		var terr_rating_adjustment: int = roundi((player_terr.Rating - player_team.Rating) / 10.0);
@@ -218,8 +288,8 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 	
 	
 	# Now we get the player's name
-	var first_name_list: Array[String] = ["Agim","Agon","Agron","Arben"] #Array(player_terr.First_Names).map(func(name_id: int): return game_map.NameDirectory.get_name_by_id(name_id));
-	var last_name_list: Array[String] = ["Ababsa","Abada","Abbad","Abbas","Abbassi"]#Array(player_terr.Last_Names).map(func(name_id: int): return game_map.NameDirectory.get_name_by_id(name_id));
+	var first_name_list = First_Name_Cache[terr_id];
+	var last_name_list = Last_Name_Cache[terr_id];
 	var middle_chance: int = randi() % 101;
 	var first_name: String = "e"
 	var middle_name: String = "e"
@@ -230,9 +300,9 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 		middle_name = last_name_list.pick_random();
 			
 	if middle_chance < 50:
-		player.set_player_name(first_name + " " + middle_name + " " + last_name);
+		player.set_player_name(first_name.strip_edges() + " " + middle_name.strip_edges() + " " + last_name.strip_edges());
 	else:
-		player.set_player_name(first_name + " " + last_name);
+		player.set_player_name(first_name.strip_edges() + " " + last_name.strip_edges());
 		
 		
 	# Now we determine their skill move and weak foot star levels
@@ -279,7 +349,8 @@ func get_n_random_nationalities(terr_id: int, n: int) -> Array[int]:
 		random_nationalities.push_back(terr_ids[index]);
 	return random_nationalities;
 	
-
+## This function simply determines the number of stars for Skill Moves and Weak Foot. It calculates it using different weighted probability distrobutions depending
+## on the rating of the player. Will ALWAYS give at least 1 star and a maximum of 5
 func determine_stars(rating: int) -> int:
 	var star_distribution: Array[int] = [];
 	if rating < 33:
@@ -304,6 +375,8 @@ func determine_stars(rating: int) -> int:
 	return index + 1
 
 	
+	
+""" The following Functions are used to print the information in a Player instance """
 func print_player(p: Player) -> void:
 	var player_name: String = p.Name;
 	var player_age: String = String.num_int64(p.get_player_age());
@@ -315,8 +388,9 @@ func print_player(p: Player) -> void:
 	var player_weight: String = String.num_int64(p.get_player_weight());
 	var player_skill_stars: String = "*".repeat(p.get_player_skill_moves());
 	var player_weak_foot: String = "*".repeat(p.get_player_weak_foot());
+	var player_team: String = game_map.get_team_by_id(p.get_player_club_team()).Name
 	print(player_name + " " + player_age + " " + player_nationality + " " + player_height + " " + player_weight)
-	print(player_position + " " + player_overall + " " + player_potential + " " + player_skill_stars + " " + player_weak_foot)
+	print(player_team + " " + player_position + " " + player_overall + " " + player_potential + " " + player_skill_stars + " " + player_weak_foot)
 	
 	
 

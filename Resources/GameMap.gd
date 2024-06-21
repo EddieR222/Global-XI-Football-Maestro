@@ -38,8 +38,12 @@ class_name GameMap extends Resource
 
 @export_category("Name Details")
 
-## The Name Directory
-@export var NameDirectory: Name_Directory = Name_Directory.new();
+## The list of First_Names
+@export var First_Names: Array[NameS] = [];
+
+## The list of Last Names
+@export var Last_Names: Array[NameS] = [];
+
 
 """ Getter Functions """
 ## Function to get confed by inputted id. Returns null if id is NOT valid. All IDS start at 1
@@ -87,6 +91,52 @@ func get_player_by_id(id: int) -> Player:
 	# If valid, then return corresponding territory
 	return Players[id];
 	
+## Given the id of the name, this gets the name stored in the directory with that id
+func get_name_by_id(name_id: int) -> String:
+	var last_first_name: NameS = First_Names.back();
+	
+	if last_first_name.ID < name_id: # Then we know it is in last_names
+		var index: int = bsearch_names(First_Names, name_id);
+		if Last_Names.is_empty() || index < 0 || index >= Last_Names.size():
+			return "";
+		elif Last_Names[index].ID == name_id:
+			return Last_Names[index].text;
+		else:
+			return ""
+	else:
+		var index: int = bsearch_names(First_Names, name_id);
+		if First_Names.is_empty() || index < 0 || index >= First_Names.size():
+			return "";
+		elif First_Names[index].ID == name_id:
+			return First_Names[index].text;
+		else:
+			return ""
+			
+			
+
+func bsearch_names(arr: Array[NameS], name_id: int) -> int:
+	var low: int = 0;
+	var high: int = arr.size() - 1;
+	while low <= high:
+		var mid: int = low + (high - low) / 2;
+
+		# Check if x is present at mid
+		if arr[mid].ID == name_id:
+			return mid;
+
+		# If x greater, ignore left half
+		if arr[mid].ID < name_id:
+			low = mid + 1;
+
+		# If x is smaller, ignore right half
+		else:
+			high = mid - 1;
+
+	# If we reach here, then element was not present
+	return -1;
+
+
+
 """ Sorting and ID managment """
 ## This functions sorts the confederations in alphabetical order by name. This creates a copy and returns the sorted array.
 func sort_confederations(arr: Array[Confederation]) -> Array[Confederation]:
@@ -219,6 +269,34 @@ func add_player(player: Player) -> void:
 		player.ID = last_player.ID + 1;
 		
 	Players.push_back(player);
+
+## Add the name to the directory. Returns the name_id once the name is added
+func add_name(name: String, first_name: bool) -> int:
+	# First we need to ensure this name is valid. For this we basically just check that the length of it is greater than 1
+	if name.length() < 2:
+		return -1;
+		
+	# 
+	var new_name: NameS = NameS.new();
+	
+	new_name.text = name;
+	if first_name:
+		var final_name: NameS = First_Names.back();
+		if final_name == null:
+			new_name.ID = 0;
+		else:
+			new_name.ID = final_name.ID + 1;
+			
+		First_Names.append(new_name);
+	else:
+		var final_name: NameS = Last_Names.back();
+		if final_name == null:
+			new_name.ID = 0;
+		else:
+			new_name.ID = final_name.ID + 1;
+		Last_Names.append(new_name)
+			
+	return new_name.ID
 
 
 """ Remove or Erase By ID """

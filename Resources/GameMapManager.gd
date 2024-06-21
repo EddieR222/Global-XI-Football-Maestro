@@ -124,7 +124,7 @@ func read_csv_file(file_path: String) -> Array:
 			if line.size() == headers.size():
 				var entry = {}
 				for i in range(headers.size()):
-					entry[headers[i]] = line[i]
+					entry[headers[i].strip_edges()] = line[i]
 				data.append(entry)
 		file.close()
 	else:
@@ -133,8 +133,55 @@ func read_csv_file(file_path: String) -> Array:
 	return data
 
 # Example usage
-func get_csv_data():
+func get_csv_data() -> GameMap:
 	var csv_file_path = "res://Game Directories - All Confederations.csv"
 	var csv_data = read_csv_file(csv_file_path)
+	
+	var gm: GameMap = GameMap.new()
 	for entry in csv_data:
-		print(entry)
+		var confed: Confederation = Confederation.new();
+		confed.Name = entry["Name"]
+		confed.ID = entry["ID"].to_int();
+		confed.Level = entry["Level"].to_int();
+		confed.Territory_List =  PackedInt32Array(Array(entry["Territory_List"].split(",", false)).map(func(num: String): return num.to_int()));
+		confed.Owner_ID = entry["Owner_ID"].to_int();
+		confed.Children_ID =  PackedInt32Array(Array(entry["Children_ID"].split(",", false)).map(func(num: String): return num.to_int()));
+		gm.add_confederation(confed);
+	
+		
+	csv_file_path = "res://Game Directories - All Territories.csv"
+	csv_data = read_csv_file(csv_file_path)
+	for entry in csv_data:
+		var terr: Territory = Territory.new();
+		terr.Territory_Name = entry["Territory_Name"].strip_edges();
+		terr.Territory_ID = entry["Terrtory_ID"].to_int();
+		terr.CoTerritory_ID = entry["CoTerritory_ID"].to_int();
+		terr.Code = entry["Code"];
+		terr.Population = entry["Population"].to_float() / 1000000.0;
+		terr.Area = entry["Area"].to_float() / 1000;
+		terr.GDP = entry["GDP"].to_float() / 1000000000.0;
+		terr.First_Names = PackedInt32Array(Array(entry["First_Names"].split(",", false)).map(func(num: String): return num.to_int()));
+		terr.Last_Names = PackedInt32Array(Array(entry["Last_Names"].split(",", false)).map(func(num: String): return num.to_int()));
+		terr.Rating = entry["Rating"].to_int();
+		terr.League_Elo = entry["League_Elo"].to_float();
+		gm.add_territory(terr);
+	
+	csv_file_path = "res://Leagues around the world - Team Rating Calculations (1).csv"
+	csv_data = read_csv_file(csv_file_path)
+	for entry in csv_data:
+		var team: Team = Team.new();
+		team.Name = entry["Team_Name"]
+		team.ID = entry["Team_ID"];
+		team.Rating = entry["Final Overall Rating"];
+		gm.add_team(team);
+
+
+	csv_data = read_csv_file("res://Name Database - Just Names.csv")
+	for entry in csv_data:
+		gm.add_name(entry["First_Name"], true);
+		
+	for entry in csv_data:
+		gm.add_name(entry["Last_Name"], false);
+		
+
+	return gm; 
