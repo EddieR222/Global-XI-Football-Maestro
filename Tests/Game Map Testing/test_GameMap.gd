@@ -21,15 +21,6 @@ class TestTerritoryAdditionandSort:
 		edit.add_territory(terr_b);
 		edit.add_territory(terr_d);
 		
-		
-	func test_filter_keeps_sorted():
-		var arr = [1,2,3,4,5,6];
-		
-		# Now we filter
-		arr = arr.filter(func(num: int): return num != 3)
-		
-		# Assert
-		assert_eq(arr, [1,2,4,5,6], "Filter didn't maintain order")
 
 	func test_territories_sorted_correctly():
 		# If we add a territory with name "Z", the order of the territories should be A - B - D - Z after adding (since it automatically sorts)
@@ -54,11 +45,6 @@ class TestTerritoryAdditionandSort:
 		terr =  edit.Territories[3];
 		assert_eq(terr.Territory_Name, "Z", "GameMap Does Not Sort Correctly. Fourth territory should be 'Z'")
 	
-		
-		
-		
-		
-
 class TestConfederationAdditionandSort:
 	extends GutTest
 	
@@ -99,9 +85,7 @@ class TestConfederationAdditionandSort:
 		
 		confed = edit.Confederations[3];
 		assert_eq(confed.Name, "D", "GameMap Does Not Sort Correctly. Fourth Confederation should be 'D'")
-		
 
-		
 class TestTeamAdditionandSort:
 	extends GutTest
 

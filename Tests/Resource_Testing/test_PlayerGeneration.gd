@@ -92,7 +92,43 @@ class TestPlayerGeneration:
 		print("Function execution time: ", duration, " us")
 		print("Function execution time: ", float(duration) / 1000000.0, "secs")
 
-			#
+
+	func test_print_forgien_nation_weights():
+		p.print_foreign_nations_weights();
+		
+		
+	func test_player_mem():
+		var pl: Player_List = Player_List.new()
+		pl.Players = p.generate_players_from_territory(1, 100000);
+		pl.seconds = pl.Players;
+		pl.thirds = pl.Players;
+		
+		
+		ResourceSaver.save(pl, "user://save_files/players.res", 32);
+		
+		
+	func test_player_mem_works():
+		var players: Player_List = ResourceLoader.load("user://save_files/players.res") as Player_List;
+		for player in players.Players:
+			var ob: Player = player.get_ref();
+			print(ob.Name);
+			
+		
+		
+		
+	func test_player_num_mem():
+		var pl: Player_IDs = Player_IDs.new()
+		var arr: Array[Player] = p.generate_players_from_territory(1, 1000)
+		var pl_ids: Array[int];
+		for num in arr:
+			pl_ids.append(num.ID);
+			
+		print(pl_ids.size())
+		pl.Players = pl_ids
+		ResourceSaver.save(pl, "user://save_files/players.res");
+
+			
+			
 #class TestGettingRandomNations:
 	#extends GutTest
 	#

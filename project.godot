@@ -15,9 +15,16 @@ run/main_scene="res://Scenes/start_up.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Images/icon.svg"
 
+[autoload]
+
+LogDuck="*res://addons/LogDuck/LogDuck.gd"
+GodotLogger="*res://addons/logger/logger.gd"
+
 [debug]
 
-settings/stdout/print_fps=true
+file_logging/enable_file_logging=true
+file_logging/max_log_files=10
+settings/stdout/verbose_stdout=true
 
 [display]
 
@@ -26,15 +33,28 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/LogDuck/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Resources/": "yellow",
 "res://Tests/": "pink",
+"res://Tests/Editor_Testing/": "red",
 "res://Tests/Resource_Testing/": "yellow"
 }
+
+[input]
+
+Click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [rendering]
 

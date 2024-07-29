@@ -77,6 +77,10 @@ var First_Name_Cache: Dictionary
 var Last_Name_Cache: Dictionary 
 
 
+# Foreign Nationalities Cache
+var Foreign_Nation_Cache: Dictionary
+
+
 
 
 
@@ -85,6 +89,10 @@ var Last_Name_Cache: Dictionary
 
 func _init(gm: GameMap):
 	# Here we want to create a cache for all the information we will want to get later. This is in order to speed up the player creation later
+	
+	# Now we set the game_map memeber
+	game_map = gm;
+	
 	
 	# Here we iter through all territories
 	for terr in gm.Territories:
@@ -97,12 +105,15 @@ func _init(gm: GameMap):
 		First_Name_Cache[terr.Territory_ID] = first_names;
 		Last_Name_Cache[terr.Territory_ID] = last_names;
 		
+		
+		# Now we get the Foreign Nation Possbilities
+		Foreign_Nation_Cache[terr.Territory_ID] = get_random_nationalities(terr.Territory_ID);
+		
 	# Here we set up the Team Cache
 	for team in gm.Teams:
 		Team_Cache[team.ID] = team;
 		
-	# Now we set the game_map memeber
-	game_map = gm;
+	
 		
 	
 
@@ -136,9 +147,12 @@ func generate_team_roster(team_id: int, percent_local:= -1, percent_foreign := -
 	for i in range(num_local):
 		player_roster[i] = generate_player(STARTING_AGES.pick_random(), team_terr.Territory_ID, team_id);
 		
-	var foreign_territories: Array[int] = get_n_random_nationalities(team_terr.Territory_ID, num_foreign);
 	for j in range(num_local, STARTING_TEAM_PLAYER_NUMBER):
-		player_roster[j] = generate_player(STARTING_AGES.pick_random(), foreign_territories[j - num_local], team_id);
+		var terr_ids: Array = game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != team_terr.Territory_ID).map(func(terr: Territory): return terr.Territory_ID);
+		var weights_acc: Array[float] = Foreign_Nation_Cache[team_terr.Territory_ID];
+		var weight_threshold := randf_range(0.0, weights_acc.back());
+		var index: int = weights_acc.bsearch(weight_threshold);
+		player_roster[j] = generate_player(STARTING_AGES.pick_random(), terr_ids[index] , team_id);
 		
 	# Finally just return player list
 	return player_roster
@@ -194,6 +208,11 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 	
 	# Set player age
 	player.set_player_age(age);
+	
+	# Set Player Birthday
+	var current_date: Array[int] = game_map.Date;
+	player.set_player_birthdate(randi() % current_date[0], randi() % current_date[1], current_date[2] - age)
+	
 	
 
 	# First we have to generate some random values
@@ -316,20 +335,53 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 
 ## Given a territory id, this will return a random and likely nation for the league of the territory id passed in.[br]
 ## For the most part this will depend on randomness and the league elo of the territory and those below it
-func get_n_random_nationalities(terr_id: int, n: int) -> Array[int]:
+func get_random_nationalities(terr_id: int) -> Array[float]:
 	# First we simply need to get the territory passed in
 	var terr: Territory = game_map.get_territory_by_id(terr_id);
 	
 	# Now, we need to get the league elo ratings for all territories in the game
 	var terr_ids: Array = game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.Territory_ID);
+	terr_ids.sort();
 	var terr_league_elos: Array = game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.League_Elo);
-	
+	var confed_territories: Array = game_map.get_confeds_of_territory(terr_id).map(func(confed_id: int): return game_map.get_confed_by_id(confed_id));
 	
 	# Now we adjust the weights
-	# 1. If a country has a higher elo than our country, we decrease their odds by 70%
-	# 2. For countries with zero league elo, we make it 10 since they can be in any league
-	terr_league_elos.map(func(elo: int): if elo > terr.League_Elo: return elo * 0.3 elif elo < 1: return 10.0 else: return elo);
-	
+	# 1. If a country has a higher elo than our country, cap them to our countries elo and then decrease them on the ratio of their difference to the original elo
+	# 2. For countries with zero league elo, we make it 2 since they can be in any league
+	# 3. For countries that share a confederation with this country (excluding the world confed) we increase their chances by 50%
+	for index in range(terr_league_elos.size()):
+		var elo: int = terr_league_elos[index];
+		
+		if elo > terr.League_Elo:
+			terr_league_elos[index] = float(terr.League_Elo * (terr.League_Elo / elo));
+			
+		if elo < 1:
+			terr_league_elos[index] = 2.0;
+		
+	var curr_confed: Confederation;
+	var visited_terr: Array[int] = [terr.Territory_ID]
+	var close_ness_percent: float = 1.0;
+	while not confed_territories.is_empty():
+		# Get last confed so it is the bottom and where the country originates from (Example: India is in South Asia)
+		curr_confed = confed_territories.pop_back();
+		
+		# Now for each terr_id, we increase their chances to the maximum (terr.league_elo) and then slowly decrease form there
+		for id in curr_confed.Territory_List:
+			# Check if we already shifted values
+			if id in visited_terr:
+				continue
+				
+			# Now we simply find its index and change
+			var terr_elo_index: int = terr_ids.find(id);
+			var elo: float = terr_league_elos[terr_elo_index]
+			terr_league_elos[terr_elo_index] = max(elo, (terr.League_Elo * close_ness_percent)); # * (elo/terr.League_Elo));
+			visited_terr.append(id);
+			
+		close_ness_percent -= .10;
+			
+			
+			
+		
 	
 	# Now we need to do the weighted probabilities array
 	var weights_acc: Array[float] = [];
@@ -338,17 +390,9 @@ func get_n_random_nationalities(terr_id: int, n: int) -> Array[int]:
 	for i in weights_acc.size():
 		weights_sum += terr_league_elos[i]
 		weights_acc[i] = weights_sum
-	
-	
-	
-	# Finally, we get n random nationalities
-	var random_nationalities: Array[int];
-	for i in range(n):
-		var weight_threshold := randf_range(0.0, weights_acc.back());
-		var index: int = weights_acc.bsearch(weight_threshold);
-		random_nationalities.push_back(terr_ids[index]);
-	return random_nationalities;
-	
+		
+	return weights_acc;
+
 ## This function simply determines the number of stars for Skill Moves and Weak Foot. It calculates it using different weighted probability distrobutions depending
 ## on the rating of the player. Will ALWAYS give at least 1 star and a maximum of 5
 func determine_stars(rating: int) -> int:
@@ -393,4 +437,17 @@ func print_player(p: Player) -> void:
 	print(player_team + " " + player_position + " " + player_overall + " " + player_potential + " " + player_skill_stars + " " + player_weak_foot)
 	
 	
-
+func print_foreign_nations_weights():
+	for terr_id in Foreign_Nation_Cache.keys():
+		# Get Territory
+		var terr: Territory = game_map.get_territory_by_id(terr_id);
+		print(terr.Territory_Name);
+		
+		# Now we print the terr_id and their weight
+		var terr_ids: Array = Foreign_Nation_Cache.keys().filter(func(terr_in: int): return terr_in != terr.Territory_ID);
+		terr_ids.sort();
+		var weights: Array[float] = Foreign_Nation_Cache[terr_id];
+		for i in range(terr_ids.size()):
+			print(String.num_uint64(terr_ids[i]) + "/" + String.num(weights[i] - weights[maxi(i - 1, 0)]));
+			
+		

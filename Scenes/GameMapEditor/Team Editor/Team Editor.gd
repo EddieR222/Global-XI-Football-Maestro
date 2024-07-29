@@ -56,9 +56,7 @@ func load_game_map():
 		terr_list.set_item_custom_bg_color(index, Color(0.486, 0.416, 0.4));
 		
 		# Iterate through territoies
-		for terr_id: int in confed.Territory_List:
-			#Get Terr
-			var terr: Territory = game_map.get_territory_by_id(terr_id);
+		for terr: Territory in confed.Territory_List:
 			# Get Territory Name
 			var terr_name = terr.Territory_Name;
 			# Get Territory Flag or Icon
@@ -109,8 +107,7 @@ func load_territory_teams(terr: Territory) -> void:
 		#
 
 	# Now add all teams in territory selected
-	for team_id: int in terr.Club_Teams_Rankings:
-		var team: Team = game_map.get_team_by_id(team_id);
+	for team: Team in terr.Club_Teams_Rankings:
 		# Get team name and logo
 		var team_name = team.Name;
 		var logo: Image = team.get_team_logo();

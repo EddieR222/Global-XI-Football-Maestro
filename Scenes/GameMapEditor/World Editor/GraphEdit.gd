@@ -43,6 +43,9 @@ func _ready():
 	terr_edit_node = new_terr_edit_node
 	world_graph.add_node(world_confed_node)
 	
+	# Log that World Node and Territory Editor have been established
+	LogDuck.d("Territory Editor and World Node have been added");
+	
 	# Add GameMap to World Graph
 	world_graph.game_map = game_map
 	
@@ -61,34 +64,25 @@ func establish_world_node() -> GraphNode:
 	add_child(world_confed_node);
 	world_confed_node.position_offset.x = get_viewport().get_mouse_position().x
 	
-	# Now we name this Node as "World" and ensure this isn't changeable
-	var line_edit: LineEdit = world_confed_node.get_node("HBoxContainer2/LineEdit")
-	line_edit.text = "World"
-	line_edit.editable = false;
+	# This function sets some values such as confed text, level number, and connections
+	world_confed_node.set_as_world_node();
 	
-	# Now we Edit the Level Number Label to show this node is the base node: "Level: 0"
-	var label: Label = world_confed_node.get_node("HBoxContainer2/Label")
-	label.text = "Level: 0";
 	
-	# Now we enable the slots, simialr to other nodes but this one can't have connections OUT of but only IN
-	world_confed_node.set_slot(0, true, 0, Color(0,1,0,1), false, 0,  Color(1,0,0,1), null, null, true)
-
 	# Here we connect all needed signals
 	connect_signals_from_confed_node(world_confed_node);
 	
 	# Now we make the confederation info for this node which will be stored in WorldMap;
 	var world_confed_info = Confederation.new(); 
 	world_confed_info.Level = 0;
-	world_confed_info.Owner_ID = -1;
-	world_confed_info.ID = 0;
+	world_confed_info.Owner = -1;
 	world_confed_info.Name = "World"
 	
 	# Update the info into GraphNode info
 	world_confed_node.confed = world_confed_info;
 	
 	# Give it GameMap
-	world_confed_node.game_map = game_map
 	game_map.add_confederation(world_confed_info)
+	world_confed_node.game_map = game_map
 	
 	# Finally return the world node
 	return world_confed_node
@@ -127,8 +121,7 @@ func save_territory() -> void:
 	# First we need to grab the current territory information displayed on the territory edit node
 	var curr_territory: Territory = terr_edit_node.get_territory();
 	
-
-	# Save to itemlist
+	# Display changes to itemlist
 	curr_node_open_edit.set_selected_territory(curr_territory);
 	
 	#Sort all Territories
@@ -136,8 +129,7 @@ func save_territory() -> void:
 	
 	# Now we need to display the changes in ItemList
 	curr_node_open_edit.reflect_territory_changes();
-	world_graph.propagate_territory_addition(curr_territory.Territory_ID, curr_node_open_edit.confed.ID)
-	#world_map.propagate_country_list(world_map.graph_nodes[node_open_edit]);
+	world_graph.propagate_territory_addition(curr_territory.ID, curr_node_open_edit.confed.ID);
 	
 func load_territory(selected_index: int ) -> void:
 	# First we grab the territory info
@@ -150,8 +142,9 @@ func load_territory(selected_index: int ) -> void:
 The following are Signal Handlers that pertain to the addition and deletion of confederations nodes
 """
 
-# Called when we press the "ADD CONFEDERATION" button
-func _on_add_confed_node_pressed():
+## Called when we press the "ADD CONFEDERATION" button
+## Creates the new node correctly and add its to scene tree
+func _on_add_confed_node_pressed() -> void:
 	
 	# Get Node from preloaded scene, and add to tree
 	var new_node: GraphNode = confed_node.instantiate(); 
@@ -160,16 +153,15 @@ func _on_add_confed_node_pressed():
 	# Now we connect all needed signals 
 	connect_signals_from_confed_node(new_node);
 	var new_confed: Confederation = Confederation.new();
-	new_confed.ID = 0;
 	new_confed.Name = "New Confederation";
+	new_confed.Owner = -1;
 	new_confed.Level = 1;
-	new_confed.Owner_ID = -1;
-		
-	# Now we add this node to the node_tracker so we can track it
-	new_node.confed = new_confed;
 	
 	# Add Confederation to GameMap
 	game_map.add_confederation(new_confed);
+		
+	# Now we set confed of graphnode
+	new_node.confed = new_confed;
 	
 	# Give new node a game map
 	new_node.game_map = game_map
@@ -178,13 +170,19 @@ func _on_add_confed_node_pressed():
 	world_graph.add_node(new_node);
 	
 	# Make it by deault level 1
-	var label: Label = new_node.get_node("HBoxContainer2/Label")
-	label.text = "Level: 1";
+	new_node.set_confed_level(1);
 	
 	#Enable Slots for all added nodes
 	enable_slots(new_node);
 	
-func _on_delete_node_pressed():
+	# Log addition of confed and GraphNode
+	LogDuck.d("Added new GraphNode with the following Confed: [color=green]Name: {name} | ID: {id} | Level: {level} | Owner: {owner}  ".format({"name": new_node.confed.Name, "id": new_node.confed.ID, "level": new_node.confed.Level, "owner": new_node.confed.Owner}))
+
+
+## Called when we press the "DELETE CONFEDERATION" button
+## Ensures we don't delete what we dont want to (ex: World Node, Territory Editor Node, etc)
+## Then simply makes the confirmation dialog visible	
+func _on_delete_node_pressed() -> void:
 	# Validate A GraphNode is even selected
 	if curr_node_selected == null:
 		return
@@ -196,21 +194,26 @@ func _on_delete_node_pressed():
 	# Validate Terr Edit Node isn't deleted
 	if curr_node_selected == terr_edit_node:
 		return
-			
+	
+	# Makes the confirmation dialog box visible to the player
 	get_node("../../ConfirmationDialog").visible = true;
 
+
+## This is after the player presses "CONFIRM" on the confirmation dialog
+## This confirms the user is willing to delete the confed node so here we actually delete it
 func _on_confirmation_dialog_confirmed() -> void:
 	# We need to delete all the territories that exist in the node
-	var territory_list: Array[int] = curr_node_selected.confed.Territory_List;
-	for terr_id: int in territory_list:
-		if world_graph.has_lower_dependencies(terr_id, curr_node_selected.confed.ID):
+	var territory_list: Array[Territory] = curr_node_selected.confed.Territory_List;
+	for terr: Territory in territory_list:
+		if world_graph.has_lower_dependencies(terr.ID, curr_node_selected.confed.ID):
 			# IF yes dependnce, only propagate deletion
-			world_graph.propagate_territory_deletion(terr_id, curr_node_selected.confed.ID);
+			world_graph.propagate_territory_deletion(terr.ID, curr_node_selected.confed.ID);
 		else:
 			# If no dependence, delete and propagate deletion
-			world_graph.propagate_territory_deletion(terr_id, curr_node_selected.confed.ID);
-			game_map.erase_territories_by_id(terr_id);
-	
+			world_graph.propagate_territory_deletion(terr.ID, curr_node_selected.confed.ID);
+			game_map.erase_territory_by_id(terr.ID);
+			
+			
 	# Remove GraphNode from graph
 	var id: int = curr_node_selected.confed.ID
 	world_graph.remove_node(id)
@@ -221,12 +224,15 @@ func _on_confirmation_dialog_confirmed() -> void:
 	#Free the GraphNode
 	curr_node_selected.free();
 	
-	# Set it equal to null
+	# Set it equal to null, so next time we click a confed node we can set it to that
 	curr_node_selected = null;
 	
 """ 
 The following function handles 
 """
+
+## This runs when the user clicks the "EDIT TERRITORY" button.
+## This will make the Edit Territory Node visible and this node will follow the confed node that opened it until it is closed
 func _on_edit_territory_pressed():
 	#First we check that the territory edit isn't currently open, if it is open
 	# then we do nothing as the user needs to close previous instance by pressing the 
@@ -236,7 +242,7 @@ func _on_edit_territory_pressed():
 	
 	# Now we check if curr_node_open_edit is null, if yes, then we know that we are allowed to open the edit territory scene again
 	if curr_node_open_edit == null: 
-		# Here, we know no current node has territory edit open
+		# Here, we know current node doesnt have a territory selected to open the edit territory node for
 		if curr_node_selected.selected_index == -1:
 			return
 	else:
@@ -253,10 +259,10 @@ func _on_edit_territory_pressed():
 	terr_edit_node.visible = true;
 	
 	# Now we need to display the previously saved territory information
-	var previous_terr: Territory = curr_node_open_edit.get_selected_territory();
-	terr_edit_node.load_previous_territory_info(previous_terr);
+	var terr: Territory = curr_node_open_edit.get_selected_territory();
+	terr_edit_node.load_previous_territory_info(terr);
 	
-# This function changes the name of the confederation when the uses changes the input in the LineEdit for the confederation Node
+## This function changes the name of the confederation when the uses changes the input in the LineEdit for the confederation Node
 func _on_confed_name_changed(new_name: String) -> void:
 	# First we get the confederation ID to track which node we will be changing
 	curr_node_selected.confed.Name = new_name;
@@ -312,18 +318,18 @@ func _on_deleted_confirmed():
 	terr_edit_node.visible = false;
 
 	# IF Territory has lower dependences, then dont delete
-	if world_graph.has_lower_dependencies(curr_node_selected.get_selected_territory().Territory_ID, curr_node_selected.confed.ID):
+	if world_graph.has_lower_dependencies(curr_node_selected.get_selected_territory().ID, curr_node_selected.confed.ID):
 		get_node("../../AcceptDialog").visible = true;
 		return
 	
 	# If no dependence, delete and propragte deletion
-	world_graph.propagate_territory_deletion(curr_node_selected.get_selected_territory().Territory_ID, curr_node_selected.confed.ID);
+	world_graph.propagate_territory_deletion(curr_node_selected.get_selected_territory().ID, curr_node_selected.confed.ID);
 	
 	# Delete from Confed
-	curr_node_selected.confed.delete_territory(curr_node_selected.get_selected_territory().Territory_ID)
+	curr_node_selected.confed.delete_territory(curr_node_selected.get_selected_territory())
 	
 	# Delete from GameMap
-	game_map.erase_territories_by_id(curr_node_selected.get_selected_territory().Territory_ID)
+	game_map.erase_territory_by_id(curr_node_selected.get_selected_territory().ID)
 	
 	# Sort ItemList
 	curr_node_selected.reflect_territory_changes()
@@ -346,6 +352,8 @@ This function handles connections between Confederation Nodes
 func _on_connection_request(from_node, from_port, to_node, to_port):
 	# This ensures a player doesn't try to connect a node to itself (which doesn't make sense)
 	if from_node == to_node:
+		# We log that the connection request was denied
+		LogDuck.w("Connection Request Denied: Cannot Connect Node to itself")
 		return
 	
 	# Next we need to ensure a node doesn't connect to a lower level node, essentially not create a cycle
@@ -354,38 +362,41 @@ func _on_connection_request(from_node, from_port, to_node, to_port):
 	var curr_node: GraphNode = get_node(curr_node_path);
 	var owner_node: GraphNode = get_node(owner_node_path);
 	
-	if curr_node.confed.Level != 1 or curr_node.confed.Owner_ID != -1:
+	if curr_node.confed.Level != 1 or curr_node.confed.Owner != -1:
 		#We are connecting already connected node, we need to ensure it doesn't connect down
 		if owner_node.confed.Level >= curr_node.confed.Level:
+			LogDuck.w("Connection Request Denied: Cannot Connect Nodes to Node of Lower Level")
 			return
-	if curr_node.confed.Owner_ID != -1:
+	if curr_node.confed.Owner != -1:
+		LogDuck.w("Connection Request Denied: Cannot Connect already connected node")
 		return
-	
-	
+		
+	# Ensure we don't exceed Confederation Level of 10
+	var owner_level = owner_node.confed.Level
+	if owner_level == 10:
+		LogDuck.w("Reached Maximum Level of Confederations")
+		return
+
 	# Connect the nodes
 	connect_node(from_node, from_port, to_node, to_port);
 	
 	#  Now we get the level that the from_node should be
-	var owner_level = owner_node.confed.Level
-	print(owner_level)
-	if owner_level == 10:
-		#TODO: Have some way to notify the user of this
-		print("Can't Continue")
-		return
 	curr_node.set_confed_level(owner_level + 1);
 	
 	# Update Owner ID in Confed Node
 	var curr_confed: Confederation = game_map.get_confed_by_id(curr_node.confed.ID);
-	curr_confed.Level = owner_level + 1;
-	curr_confed.Owner_ID = owner_node.confed.ID;
+	curr_confed.Owner = owner_node.confed.ID;
 	
 	#Add curr_node to owner_node's children
 	var owner_confed: Confederation = game_map.get_confed_by_id(owner_node.confed.ID)
-	owner_confed.Children_ID.push_back(curr_node.confed.ID)
+	owner_confed.Children.push_back(curr_node.confed)
 	
 	# Now we put the territory list into the owner confederation
-	for terr_id: int in curr_confed.Territory_List:
-		world_graph.propagate_territory_addition(terr_id, curr_confed.ID)
+	for terr: Territory in curr_confed.Territory_List:
+		world_graph.propagate_territory_addition(terr.ID, curr_confed.ID)
+		
+		
+	LogDuck.d("Connection Successful: \n\tChild: {name} | ID: {id} | Level: {level} | Owner: {owner} \n\tOwner: {owner_name} | ID: {owner_id} | Level: {owner_level} | Owner: {owner_owner}".format({"name": curr_confed.Name, "id": curr_confed.ID, "level": curr_confed.Level, "owner": curr_confed.Owner, "owner_name": owner_confed.Name, "owner_id": owner_confed.ID, "owner_level": owner_confed.Level, "owner_owner": owner_confed.Owner}));
 	
 func _on_disconnection_request(from_node, from_port, to_node, to_port):
 	disconnect_node(from_node, from_port, to_node, to_port);
@@ -416,7 +427,6 @@ func _on_node_entered(confed_id: int):
 	for node: GraphNode in world_graph.graph_nodes:
 		node.selected = false
 	
-		
 	# Finally set new entered node as selected
 	curr_node_selected.selected = true
 

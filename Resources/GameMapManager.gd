@@ -132,56 +132,107 @@ func read_csv_file(file_path: String) -> Array:
 	
 	return data
 
+
+func convert_to_territory_array(input_array: Array) -> Array[Territory]:
+	var territory_array: Array[Territory] = []
+	for element in input_array:
+		if element is Territory:
+			territory_array.append(element)
+	return territory_array
+func convert_to_confed_array(input_array: Array) -> Array[Confederation]:
+	var territory_array: Array[Confederation] = []
+	for element in input_array:
+		if element is Confederation:
+			territory_array.append(element)
+	return territory_array
+	
 # Example usage
 func get_csv_data() -> GameMap:
-	var csv_file_path = "res://Game Directories - All Confederations.csv"
+	var gm: GameMap = GameMap.new();
+	var csv_file_path = "res://Leagues around the world - Team Rating Calculations (1).csv" 
 	var csv_data = read_csv_file(csv_file_path)
-	
-	var gm: GameMap = GameMap.new()
-	for entry in csv_data:
-		var confed: Confederation = Confederation.new();
-		confed.Name = entry["Name"]
-		confed.ID = entry["ID"].to_int();
-		confed.Level = entry["Level"].to_int();
-		confed.Territory_List =  PackedInt32Array(Array(entry["Territory_List"].split(",", false)).map(func(num: String): return num.to_int()));
-		confed.Owner_ID = entry["Owner_ID"].to_int();
-		confed.Children_ID =  PackedInt32Array(Array(entry["Children_ID"].split(",", false)).map(func(num: String): return num.to_int()));
-		gm.add_confederation(confed);
-	
+	#
+	##First we have to Load the Teams
+	#for entry in csv_data:
+		#var team: Team = Team.new();
+		#team.Name = entry["Team_Name"]
+		#team.ID = entry["Team_ID"].to_int();
+		#team.Rating = entry["Final Overall Rating"];
+		#gm.add_team(team);
 		
+	# Second , we have to load the territories
 	csv_file_path = "res://Game Directories - All Territories.csv"
 	csv_data = read_csv_file(csv_file_path)
 	for entry in csv_data:
 		var terr: Territory = Territory.new();
-		terr.Territory_Name = entry["Territory_Name"].strip_edges();
-		terr.Territory_ID = entry["Terrtory_ID"].to_int();
-		terr.CoTerritory_ID = entry["CoTerritory_ID"].to_int();
+		terr.Name = entry["Territory_Name"].strip_edges();
+		
+		# Load Flag for Territory
+		var path: String = "user://Images/Territory Flags/"
+		var img: Image = Image.load_from_file(path + terr.Name + ".png");
+		terr.save_image_for_terr(img)
+		
 		terr.Code = entry["Code"];
-		terr.Population = entry["Population"].to_float() / 1000000.0;
-		terr.Area = entry["Area"].to_float() / 1000;
-		terr.GDP = entry["GDP"].to_float() / 1000000000.0;
-		terr.First_Names = PackedInt32Array(Array(entry["First_Names"].split(",", false)).map(func(num: String): return num.to_int()));
-		terr.Last_Names = PackedInt32Array(Array(entry["Last_Names"].split(",", false)).map(func(num: String): return num.to_int()));
+		terr.Population = entry["Population"].to_float() 
+		terr.Area = entry["Area"].to_float() 
+		terr.GDP = entry["GDP"].to_float()
+		#terr.First_Names = PackedInt32Array(Array(entry["First_Names"].split(",", false)).map(func(num: String): return num.to_int()));
+		#terr.Last_Names = PackedInt32Array(Array(entry["Last_Names"].split(",", false)).map(func(num: String): return num.to_int()));
 		terr.Rating = entry["Rating"].to_int();
 		terr.League_Elo = entry["League_Elo"].to_float();
 		gm.add_territory(terr);
-	
-	csv_file_path = "res://Leagues around the world - Team Rating Calculations (1).csv"
+		
+		
+		
+	csv_file_path = "res://Game Directories - All Confederations.csv"
 	csv_data = read_csv_file(csv_file_path)
 	for entry in csv_data:
-		var team: Team = Team.new();
-		team.Name = entry["Team_Name"]
-		team.ID = entry["Team_ID"];
-		team.Rating = entry["Final Overall Rating"];
-		gm.add_team(team);
-
-
-	csv_data = read_csv_file("res://Name Database - Just Names.csv")
-	for entry in csv_data:
-		gm.add_name(entry["First_Name"], true);
+		var confed: Confederation = Confederation.new();
+		confed.Name = entry["Name"]
+		confed.Level = entry["Level"].to_int();
+		var terr_nums := Array(entry["Territory_List"].split(",", false));
+		var terr_list:= terr_nums.map(func(num: String): return gm.get_territory_by_id(num.to_int()))
+		confed.Territory_List = convert_to_territory_array(terr_list)
+		
+		gm.add_confederation(confed);
 		
 	for entry in csv_data:
-		gm.add_name(entry["Last_Name"], false);
+		var confed_id: int = entry["ID"].to_int();
+		
+		# Get Corressponding Confed
+		var confed: Confederation = gm.get_confed_by_id(confed_id);
+		
+		confed.Owner =  entry["Owner_ID"].to_int();
+		
+		# Get Children once All Confederations have been added already
+		var confed_nums :=  Array(entry["Children_ID"].split(",", false));
+		var confed_list : = confed_nums.map(func(num: String): return gm.get_confed_by_id(num.to_int()));
+		confed.Children = convert_to_confed_array(confed_list);
+
 		
 
-	return gm; 
+	return gm 
+	
+	
+func get_map_info() -> Dictionary:
+	var csv_file_path = "res://Game Directories - All Territories.csv"
+	var csv_data = read_csv_file(csv_file_path)
+	var color_map: Dictionary;
+
+
+	for entry in csv_data:
+		var terr: Territory = Territory.new();
+		terr.Name = entry["Territory_Name"].strip_edges();
+		terr.Code = entry["Code"];
+		terr.Population = entry["Population"].to_float() 
+		terr.Area = entry["Area"].to_float() 
+		terr.GDP = entry["GDP"].to_float()
+		terr.Rating = entry["Rating"].to_int();
+		terr.League_Elo = entry["League_Elo"].to_float();
+		var color_nums = Array(entry["Color"].split(",")).map(func(num: String): return num.to_int());
+		color_map[Vector3i(color_nums[0], color_nums[1], color_nums[2])] = terr;
+		
+		
+
+		
+	return color_map

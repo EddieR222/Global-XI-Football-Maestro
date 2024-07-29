@@ -1,3 +1,9 @@
+Node2D
+Area2D
+Camera2D
+TextureRect
+PopupMenu
+OptionButton
 Label
 Button
 HBoxContainer
@@ -7,8 +13,3 @@ ConfirmationDialog
 Popup
 FileDialog
 LineEdit
-MarginContainer
-ReferenceRect
-ColorRect
-GridContainer
-TabContainer

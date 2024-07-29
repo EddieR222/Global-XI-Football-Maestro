@@ -10,16 +10,12 @@ class_name Team extends Resource
 @export var Name_Code: String;
 
 """ Regional Information """
-@export var Territory_ID: int;
 @export var City: String;
 
 """ Team Info """
 @export var Rating: int;
-@export var League_Name: String;
-@export var League_ID: int;
-@export var Stadium_ID: int;
-@export var Rivals_Name: String;
-@export var Rivals_ID: int
+@export var Team_Stadium: Stadium;
+
 
 
  
@@ -30,8 +26,8 @@ class_name Team extends Resource
 
 """ Player and Manager Info """
 @export var Manager_Name: String;
-@export var Manager_ID: int; 
-@export var Players: Array[int]
+@export var Manager_ID: int;
+@export var Players: Array[Player]
 
 
 ## Function to save the image in the filesystem for the given team. Will save image with new identifier

@@ -123,7 +123,6 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
-scroll_offset = Vector2(0, -31)
 zoom_min = 0.05
 zoom_max = 2.0
 show_zoom_label = true

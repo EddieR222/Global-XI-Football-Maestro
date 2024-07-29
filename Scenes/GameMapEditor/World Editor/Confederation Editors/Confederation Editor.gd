@@ -19,9 +19,10 @@ func set_selected_territory(t: Territory) -> void:
 	item_list.set_item_metadata(selected_index, t);
 		
 func set_confed_level(level: int):
-	print("Level Received: " + str(level))
+	# First we set the level of the confed stored
 	confed.Level = level;
 	
+	# Second, we set the level saved to the text on the confed graph node
 	var level_label: Label= get_node("HBoxContainer2/Label");
 	level_label.text = "Level: " + str(confed.Level);
 	
@@ -38,11 +39,9 @@ func set_confed(new_confed: Confederation) -> void:
 	
 	# Now we simply add and item for each territory in territory list, clear if needed
 	item_list.clear();
-	for terr_id: int in new_confed.Territory_List:
-		# Get Territory
-		var terr: Territory = game_map.get_territory_by_id(terr_id);
+	for terr: Territory in new_confed.Territory_List:
 		# Get Territory Name
-		var terr_name = terr.Territory_Name;
+		var terr_name = terr.Name;
 		# Get Territory Flag or Icon
 		var texture_normal
 		var flag = terr.get_territory_image();
@@ -59,12 +58,25 @@ func set_confed(new_confed: Confederation) -> void:
 		# Set Metadata
 		item_list.set_item_metadata(index, terr);
 		
+func set_as_world_node() -> void:
+	# Now we name this Node as "World" and ensure this isn't changeable
+	var confed_name_edit: LineEdit = get_node("HBoxContainer2/LineEdit");
+	confed_name_edit.text = "World";
+	confed_name_edit.editable = false;
 	
-
+	# Now we Edit the Level Number Label to show this node is the base node: "Level: 0"
+	var label: Label = get_node("HBoxContainer2/Label")
+	label.text = "Level: 0";
+	
+	# Now we enable the slots, simialr to other nodes but this one can't have connections OUT of but only IN
+	set_slot(0, true, 0, Color(0,1,0,1), false, 0,  Color(1,0,0,1), null, null, true)
+	
+	return
 """
 These functions handle signls from within scene
 """
 
+## This functions runs when the user clicks "ADD TERRITORY" button on any confed node
 func _on_add_territory_pressed():
 	# Add a blank territory item to ItemList
 	var texture: CompressedTexture2D = load("res://Images/icon.svg");
@@ -72,29 +84,26 @@ func _on_add_territory_pressed():
 	
 	# For the item in the ItemList, we create the Territory
 	var default_territory: Territory = Territory.new();
-	default_territory.Territory_Name = "Territory"
-	default_territory.CoTerritory_ID = -1;
+	default_territory.Name = "Territory"
 	default_territory.Area = 0;
 	default_territory.Population = 0;
 	default_territory.Code = ""
 	default_territory.GDP = 0;
 	default_territory.Rating = 0;
-	default_territory.League_Elo = 0;
-	
-	
-	#var current_terr_num : int = node.world_map.get_territory_num() + 1;
-	#print("Terr ID: " + str(current_terr_num))
-	#default_territory.Territory_ID = current_terr_num;
+	default_territory.League_Elo = 0.0;
 	
 	# Add New Territory to GameMap
 	game_map.add_territory(default_territory);
 	
 	# Add it to Territory List
-	confed.add_territory(default_territory.Territory_ID)
+	confed.add_territory(default_territory)
+	
+	# Log Territory
+	LogDuck.d("Territory Added to Confed")
 	
 	# Here we want to set the Territory ID as the next value
 	var node : GraphEdit = get_node("../../Confed Edit");
-	node.world_graph.propagate_territory_addition(default_territory.Territory_ID, confed.ID);
+	node.world_graph.propagate_territory_addition(default_territory.ID, confed.ID);
 	
 	# Set Metadata
 	item_list.set_item_metadata(index, default_territory);
@@ -120,11 +129,9 @@ func reflect_territory_changes():
 	
 	#We first need to go through and update the ItemList
 	item_list.clear();
-	for terr_id: int in confed.Territory_List:
-		# Get Territory
-		var terr: Territory = game_map.get_territory_by_id(terr_id);
+	for terr: Territory in confed.Territory_List:
 		# Get Territory Name
-		var terr_name = terr.Territory_Name;
+		var terr_name = terr.Name;
 		# Get Territory Flag or Icon
 		var texture_normal
 		var flag = terr.get_territory_image();

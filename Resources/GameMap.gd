@@ -3,13 +3,19 @@ class_name GameMap extends Resource
 ##
 ## This Class contains all the information for the game including territories, confederations, teams, tournaments, etc.
 ## It also contains a lot of useful functions for parsing and working with this data
+## WARNING Please only use the provided functions to interact with the data stored in this class. This helps ensure correctness
 
 ## The FileName Decided on in the World Editor
-@export var Filename: String
+@export var Filename: String:
+	get: return Filename;
+	set(name): Filename = name;
 
 @export_category("World Map")
 ## The Array that contains all Confederations. 
 @export var Confederations: Array[Confederation] = [];
+
+## This is simply a pointer to the World Node, just so we can quickly reference it
+@export var World_Confed: Confederation;
 
 ## The Array that contains all Territories. 
 @export var Territories: Array[Territory] = [];
@@ -31,22 +37,23 @@ class_name GameMap extends Resource
 
 @export_category("Time Details")
 ## The starting date
-@export var Start_Date: Array[int]
+@export var Date: Array[int] # Format of 0 = Month 1 = Day 2 = Year
 
-## The Year to Start
-@export var Starting_Year: int = 2024; #current year is default
 
-@export_category("Name Details")
+@export_category("Signals")
+## This signal is emitted when the ID of a confederation is changed. This allows us to efficently change any weak pointers (int) that point to confederations
+signal confed_id_changed;
 
-## The list of First_Names
-@export var First_Names: Array[NameS] = [];
 
-## The list of Last Names
-@export var Last_Names: Array[NameS] = [];
+## This signal is emitted when the ID of a Territory is changed. This allows us to efficently change any weak pointers (int) that point to Territory
+signal terr_id_changed;
 
+
+## This signal is emitted when the ID of a Team is changed. This allows us to efficently change any weak pointers (int) that point to Team
+signal team_id_changed;
 
 """ Getter Functions """
-## Function to get confed by inputted id. Returns null if id is NOT valid. All IDS start at 1
+## Function to get confed by inputted id. Returns null if id is NOT valid.
 func get_confed_by_id(id: int) -> Confederation:
 	# Check to see if id is valid, if not valid then return null
 	if id < 0 or id >= Confederations.size():
@@ -91,313 +98,485 @@ func get_player_by_id(id: int) -> Player:
 	# If valid, then return corresponding territory
 	return Players[id];
 	
-## Given the id of the name, this gets the name stored in the directory with that id
-func get_name_by_id(name_id: int) -> String:
-	var last_first_name: NameS = First_Names.back();
-	
-	if last_first_name.ID < name_id: # Then we know it is in last_names
-		var index: int = bsearch_names(First_Names, name_id);
-		if Last_Names.is_empty() || index < 0 || index >= Last_Names.size():
-			return "";
-		elif Last_Names[index].ID == name_id:
-			return Last_Names[index].text;
-		else:
-			return ""
-	else:
-		var index: int = bsearch_names(First_Names, name_id);
-		if First_Names.is_empty() || index < 0 || index >= First_Names.size():
-			return "";
-		elif First_Names[index].ID == name_id:
-			return First_Names[index].text;
-		else:
-			return ""
-			
-			
-
-func bsearch_names(arr: Array[NameS], name_id: int) -> int:
-	var low: int = 0;
-	var high: int = arr.size() - 1;
-	while low <= high:
-		var mid: int = low + (high - low) / 2;
-
-		# Check if x is present at mid
-		if arr[mid].ID == name_id:
-			return mid;
-
-		# If x greater, ignore left half
-		if arr[mid].ID < name_id:
-			low = mid + 1;
-
-		# If x is smaller, ignore right half
-		else:
-			high = mid - 1;
-
-	# If we reach here, then element was not present
-	return -1;
-
-
-
 """ Sorting and ID managment """
-## This functions sorts the confederations in alphabetical order by name. This creates a copy and returns the sorted array.
-func sort_confederations(arr: Array[Confederation]) -> Array[Confederation]:
-	# Create copy of arr
-	var copy_arr: Array[Confederation] = arr.duplicate(true); 
-	
+## This functions sorts the confederations in alphabetical order by name. Corrects all IDs to new order
+func sort_confederations() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	copy_arr.sort_custom(func(a: Confederation, b: Confederation): return a.Name.to_lower().strip_edges() < b.Name.to_lower().strip_edges());
+	Confederations.sort_custom(func(a: Confederation, b: Confederation): return a.Name.to_lower() < b.Name.to_lower());
 
+	# Now we reassign ID's based on new position in the Array
+	for new_index in range(Confederations.size()):
+		# Get the old ID of the confederation, should just be the ID
+		var old_id: int = Confederations[new_index].ID
+		# Now we quickly check if old_id is the same as new_index, in which case we can skip
+		if old_id == new_index:
+			continue
+		
+		## Now we manually change the ID 
+		#Confederations[new_index].ID = new_index;
+		
+		# Now we emit that the confed id has changed for all resources have a number pointer to the confederation
+		confed_id_changed.emit(old_id, -100);
+		confed_id_changed.emit(new_index, old_id);
+		confed_id_changed.emit(-100, new_index);
+		
+	# Log all Confederations and their new ID's
+	LogDuck.d("Confederations after Sorting")
+	for confed: Confederation in Confederations:
+		# Log Territory
+		LogDuck.d("[{id}]: [color=green]Name: {name} | Level: {level} | Owner: {owner}  ".format({"name": confed.Name, "id": confed.ID, "level": confed.Level, "owner":confed.Owner}))
 
-	return copy_arr;
-
-## This functions sorts the territories in alphabetical order by name. 
-func sort_territories(arr: Array[Territory]) -> Array[Territory]:
-	# Create copy of arr
-	var copy_arr: Array[Territory] = arr.duplicate(true); 
-	
+## This functions sorts the territories in alphabetical order by name. Corrects all IDs to new order
+func sort_territories() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	copy_arr.sort_custom(func(a: Territory, b: Territory): return a.Territory_Name.to_lower().strip_edges() < b.Territory_Name.to_lower().strip_edges());
+	Territories.sort_custom(func(a: Territory, b: Territory): return a.Name.to_lower() < b.Name.to_lower());
 	
-	return copy_arr;
+	# Now we reassign ID's based on new position in the Array
+	for new_index in range(Territories.size()):
+		var old_id: int = Territories[new_index].ID
+		Territories[new_index].ID = new_index;
+		terr_id_changed.emit(old_id, -100)
+		terr_id_changed.emit(new_index, old_id);
+		terr_id_changed.emit(-100, new_index);
+		
+		
+	# Log all Confederations and their new ID's
+	LogDuck.d("Territories after Sorting")
+	for terr: Territory in Territories:
+		# Log Territory
+		LogDuck.d("[{id}]: [color=green]Name: {name}  ".format({"name": terr.Name, "id": terr.ID}))
 
 ## This functions sorts the teams in alphabetical order by name. 
-func sort_teams(arr: Array[Team]) -> Array[Team]:
-	# Create copy of arr
-	var copy_arr: Array[Team] = arr.duplicate(true); 
-	
+func sort_teams() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	copy_arr.sort_custom(func(a: Team, b: Team): return a.Name.to_lower().strip_edges() < b.Name.to_lower().strip_edges());
+	Teams.sort_custom(func(a: Team, b: Team): return a.Name.to_lower() < b.Name.to_lower());
 	
-	return copy_arr
+	# Now we reassign ID's based on new position in the Array
+	for new_index in range(Teams.size()):
+		var old_id: int = Teams[new_index].ID
+		Teams[new_index].ID = new_index;
+		team_id_changed.emit(old_id, -100)
+		team_id_changed.emit(new_index, old_id);
+		team_id_changed.emit(-100, new_index);
 
 ## This functions sorts the tournaments in alphabetical order by name. 
-func sort_tournaments(arr: Array[Tournament]) -> Array[Tournament]:
-	# Create copy of arr
-	var copy_arr: Array[Tournament] = arr.duplicate(true); 
-	
+func sort_tournaments() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	copy_arr.sort_custom(func(a: Tournament, b: Tournament): return a.Name.to_lower().strip_edges() < b.Name.to_lower().strip_edges());
+	Tournaments.sort_custom(func(a: Tournament, b: Tournament): return a.Name.to_lower() < b.Name.to_lower());
 	
-	return copy_arr
+	# Now we reassign ID's based on new position in the Array
+	for new_index in range(Tournaments.size()):
+		Tournaments[new_index].ID = new_index;
 
 ## This function sorts the Players by Name in alphabetical order by name.
-func sort_players(arr: Array[Player]) -> Array[Player]:
-	# Create copy of arr
-	var copy_arr: Array[Player] = arr.duplicate(true); 
-	
+func sort_players() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	copy_arr.sort_custom(func(a: Player, b: Player): return a.Name < b.Name)
+	Players.sort_custom(func(a: Player, b: Player): return a.Name < b.Name);
 	
-	return copy_arr;
+	# Now we reassign ID's based on new position in the Array
+	for new_index in range(Players.size()):
+		Players[new_index].ID = new_index;
 
 """ Adding a new member """
 ## Adds the given confederation to the list of confederation
-## Automatically handles sorting and organizing ids
-func add_confederation(confed: Confederation) -> void:
-	if confed.Name == null:
-		return
+## Automatically handles sorting and organizing ids (sorts alphabetically)
+## Returns bool if Confederation was added successfully
+func add_confederation(confed: Confederation) -> bool:
+	if confed.Name.is_empty():
+		LogDuck.w("Adding Confederation Failed: Name String was empty")
+		return false;
+	
+	# Check if world confed
+	if confed.Level == 0:
+		World_Confed = confed;
+	
+	# Connect the Confederation to needed signals
+	confed.connect_signal(confed_id_changed);
+	confed.ID = -10
 		
 	# Add to array
-	if (Confederations.is_empty()):
-		confed.ID = 0;
-	else:	
-		var last_confed: Confederation = Confederations[Confederations.size() - 1];
-		confed.ID = last_confed.ID + 1;
-		
+	confed.Name.strip_edges();
 	Confederations.push_back(confed);
+	sort_confederations();
 	
+	# Log the Confederation
+	LogDuck.d("Added new Confederation to GameMap \n\t[color=green]Name: {name} \n\tID: {id} \n\tLevel: {level} \n\tOwner: {owner}\n".format({"name": confed.Name, "id": confed.ID, "level": confed.Level, "owner":confed.Owner}))
+		
+	# Now we return True to show we successfully added confederation to GameMap
+	return true
+
+## Adds the given Array of Confederations to the list of confederation
+## Automatically handles sorting and organizing ids (sorts alphabetically)
+## Returns bool if Confederations were added successfully
+func add_confederations(confeds: Array[Confederation]) -> bool:
+	# Validate all have valid names
+	for confed: Confederation in confeds:
+		if confed.Name.is_empty():
+			LogDuck.w("Adding Confederation Failed: Name String was empty")
+			return false
+		# Check if world confed
+		if confed.Level == 0:
+			World_Confed = confed;
+		
+	# Now we add to array and sort
+	Confederations.append_array(confeds);
+	sort_confederations();
+	
+	# Log all added Confederations
+	for confed: Confederation in confeds:
+		# Log the Confederation
+		LogDuck.d("Added new Confederation to GameMap \n\t[color=green]Name: {name} \n\tID: {id} \n\tLevel: {level} \n\tOwner: {owner}\n".format({"name": confed.Name, "id": confed.ID, "level": confed.Level, "owner":confed.Owner}))
+	
+	# Now we return True to show we successfully added the confederations to GameMap
+	return true
 
 ## Adds the given territory to the list of territories
 ## Automatically handles sorting and organizing ids
-func add_territory(terr: Territory) -> void:
-	if terr.Territory_Name == null:
-		return
+## Returns bool if Territory was added succesfully
+func add_territory(terr: Territory) -> bool:
+	if terr.Name.is_empty():
+		LogDuck.w("Adding Territory Failed: Name String was empty")
+		return false;
 		
 	# Add to array
-	if (Territories.is_empty()):
-		terr.Territory_ID = 0;
-	else:	
-		var last_terr: Territory = Territories[Territories.size() - 1];
-		terr.Territory_ID = last_terr.Territory_ID + 1;
-		
 	Territories.push_back(terr);
+	sort_territories();
 	
+	# Log Territory
+	LogDuck.d("Added new Territory to GameMap \n\t[color=green]Name: {name} \n\tID: {id}\n".format({"name": terr.Name, "id": terr.ID}))
+	
+	# Now we return True to show we successfully added confederation to GameMap
+	return true
+
+## Adds the given Array of Territories to the list of territories
+## Automatically handles sorting and organizing ids
+## Returns bool if Territories were added succesfully
+func add_territories(terrs: Array[Territory]) -> bool:
+	for terr in terrs:
+		if terr.Name.is_empty():
+			LogDuck.w("Adding Territory Failed: Name String was empty")
+			return false;
+		
+	# Add to array
+	Territories.append_array(terrs)
+	sort_territories();
+	
+	# Log all added Territories
+	for terr: Territory in terrs:
+		# Log Territory
+		LogDuck.d("Added new Territory to GameMap \n\t[color=green]Name: {name} \n\tID: {id}\n".format({"name": terr.Name, "id": terr.ID}))
+	
+	# Now we return True to show we successfully added territories to GameMap
+	return true
 
 ## Adds the given team to the list of teams
 ## Automatically handles sorting and organizing ids
-func add_team(team: Team) -> void:
-	if team.Name == null:
-		return
+## Returns bool if Team was added succesfully
+func add_team(team: Team) -> bool:
+	if team.Name.is_empty():
+		LogDuck.w("Adding Team Failed: Name String was empty")
+		return false
 		
 	# Add to array
-	if (Teams.is_empty()):
-		team.ID = 0;
-	else:	
-		var last_team: Team = Teams[Teams.size() - 1];
-		team.ID = last_team.ID + 1;
-		
 	Teams.push_back(team);
+	sort_teams();
 	
+	# Log Added team
+	LogDuck.d("Added new Team to GameMap \n\t[color=green]Name: {name} \n\tID: {id}\n".format({"name": team.Name, "id": team.ID}));
+	
+	
+	# Now we return True to show we successfully added Team
+	return true;
+
+## Adds the given aeeay of teams to the list of teams
+## Automatically handles sorting and organizing ids
+## Returns bool if Teams were added succesfully
+func add_teams(teams: Array[Team]) -> bool:
+	for team in teams:
+		if team.Name.is_empty():
+			LogDuck.w("Adding Team Failed: Name String was empty")
+			return false
+		
+	# Add to array
+	Teams.append_array(teams);
+	sort_teams();
+	
+	
+	# Now we return True to show we successfully added Teams
+	return true;
 
 ## Adds the given tournament to the list of tournaments
 ## Automatically handles sorting and organizing ids
-func add_tournament(tour: Tournament) -> void:
-	if tour.Name == null:
-		return
+## Returns bool if Tournament was added succesfully
+func add_tournament(tour: Tournament) -> bool:
+	if tour.Name.is_empty():
+		LogDuck.w("Adding Tournament Failed: Name String was empty")
+		return false
+
+	# Add it to List and sort
+	Tournaments.push_back(tour);
+	sort_tournaments();
+
+	# Now we return true to confirm we added successfully
+	return true
+
+## Adds the given Array of tournaments to the list of tournaments
+## Automatically handles sorting and organizing ids
+## Returns bool if Tournaments were added succesfully
+func add_tournaments(tours: Array[Tournament]) -> bool:
+	for tour in tours:
+		if tour.Name.is_empty():
+			LogDuck.w("Adding Tournament Failed: Name String was empty")
+			return false
 		
 	# Add to array
-	if (Tournaments.is_empty()):
-		tour.ID = 0;
-	else:	
-		var last_tour: Tournament = Tournaments[Tournaments.size() - 1];
-		tour.ID = last_tour.ID + 1;
-		
-	Tournaments.push_back(tour);
+	Tournaments.append_array(tours);
+	sort_tournaments();
 	
+	# Now we return True to show we successfully added Teams
+	return true;
 
-	
 ## Adds the given Player to the list of Players
 ## Automatically handles sorting and organizing ids
-func add_player(player: Player) -> void:
-	if player.Name == null:
-		return
+## Returns bool if Player was added succesfully
+func add_player(player: Player) -> bool:
+	if player.Name.is_empty():
+		LogDuck.w("Adding Player Failed: Name String was empty")
+		return false
 		
 	# Add to array
-	if (Players.is_empty()):
-		player.ID = 0;
-	else:	
-		var last_player: Player = Players[Players.size() - 1];
-		player.ID = last_player.ID + 1;
-		
 	Players.push_back(player);
-
-## Add the name to the directory. Returns the name_id once the name is added
-func add_name(name: String, first_name: bool) -> int:
-	# First we need to ensure this name is valid. For this we basically just check that the length of it is greater than 1
-	if name.length() < 2:
-		return -1;
-		
-	# 
-	var new_name: NameS = NameS.new();
+	sort_players();
 	
-	new_name.text = name;
-	if first_name:
-		var final_name: NameS = First_Names.back();
-		if final_name == null:
-			new_name.ID = 0;
-		else:
-			new_name.ID = final_name.ID + 1;
+	# Log Added Player
+	LogDuck.d("Added new Player to GameMap \n\t[color=green]Name: {name} \n\tID: {id}\n".format({"name": player.Name, "id": player.ID}))
+	
+	# Now we return True to show we successfully added Teams
+	return true;
+
+## Adds the given Array of Players to the list of Players
+## Automatically handles sorting and organizing ids
+## Returns bool if Players were added succesfully
+func add_players(ps: Array[Player]) -> bool:
+	for player in ps:
+		if player.Name.is_empty():
+			LogDuck.w("Adding Player Failed: Name String was empty")
+			return false;
 			
-		First_Names.append(new_name);
-	else:
-		var final_name: NameS = Last_Names.back();
-		if final_name == null:
-			new_name.ID = 0;
-		else:
-			new_name.ID = final_name.ID + 1;
-		Last_Names.append(new_name)
-			
-	return new_name.ID
+	# Now we add them to Players
+	Players.append_array(ps);
+	sort_players();
+	
+	# Now we return true to confirm we added successfully
+	return true;
 
 
-""" Remove or Erase By ID """
+""" Remove or Erase By ID """ #Have to expand
 ## This functions erases the confederation by id (the confed id). 
 ## Array automatically will sort and organize id's after deletion
-func erase_confederation_by_id(id: int) -> void:
+## This returns a bool value to indicate if confederation was erased successfully
+func erase_confederation_by_id(id: int) -> bool:
 	if id < 0 or id >= Confederations.size():
-		return
+		LogDuck.w("Erasing Confederation Failed: Passed in ID is invalid")
+		return false
 		
-	# Get index of id we want to remove
-	var remove_index: int = Confederations.bsearch_custom(id, func(confed: Confederation): return confed.ID == id, true)
+	# Log Confederation before deleting 
+	var confed: Confederation = Confederations[id];
+	LogDuck.d("Erasing Confederation from GameMap: [color=green]\n\tName: {name}\n\tID: {id}\n\tLevel: {level}\n\tOwner: {owner}".format({"name": confed.Name, "id": confed.ID, "level": confed.Level, "owner": confed.Owner}));
+	var owner_confed: Confederation = get_confed_by_id(confed.Owner)
+	var confed_children: Array[Confederation] = confed.Children;
+
+	# Now we must also delete any references to this Confederation
+	# We can do this by getting 1) Getting rid of Owner Pointers to this node via its Children
+	for child: Confederation in confed_children:
+		child.Owner = -1;
+	# 2) We delete the pointers to this node for it's owner node (if any) to this node
+	if owner_confed != null:
+		owner_confed.Children.erase(confed)
+		
+	
+	# Now we delete it now that all pointers to this confederation is 1 (then zero once we delete it)
+	Confederations.remove_at(id);
+	sort_confederations();
 	
 	
+	# Now we return to confirm we removed confederation
+	return true;
+
+## This functions erases the confederation by reference to the reference itself 
+## Array automatically will sort and organize id's after deletion
+## This returns a bool value to indicate if confederation was erased successfully	
+func erase_confederation(confed: Confederation) -> bool:
+	var confed_deleted: bool = erase_confederation_by_id(confed.ID)
 	
-	# Now we ensure the remove_index is valid and that the value is the one we are looking for
-	if (remove_index < 0 or remove_index >= Confederations.size()):
-		return #remove_index is out of range so ignore
-	
-	if (Confederations[remove_index].ID == id):
-		Confederations.remove_at(remove_index);
-	
+	# Now we return to confirm we removed confederation (even if not present we can be well assured it isn't present anymore)
+	return confed_deleted;
+
 ## This functions erases the territory by id (the territory id). 
 ## Array automatically will sort and organize id's after deletion
-func erase_territories_by_id(id: int) -> void:
+## This returns a bool value to indicate if Territory was erased successfully	
+func erase_territory_by_id(id: int) -> bool:
 	if id < 0 or id >= Territories.size():
-		return
+		return false;
 		
-	# Get index of id we want to remove
-	var remove_index: int = Territories.bsearch_custom(id, func(terr: Territory): return terr.Territory_ID == id, true)
+	Territories.remove_at(id);
+	sort_territories();
 	
+	# Now we return to confirm we removed territory
+	return true;
+
+## This functions erases the territory by reference to the territory itself
+## Array automatically will sort and organize id's after deletion
+## This returns a bool value to indicate if Territory was erased successfully	
+func erase_territory(terr: Territory) -> bool:
+	var terr_deleted: bool = erase_territory_by_id(terr.ID)
 	
-	
-	# Now we ensure the remove_index is valid and that the value is the one we are looking for
-	if (remove_index < 0 or remove_index >= Territories.size()):
-		return #remove_index is out of range so ignore
-	
-	if (Territories[remove_index].Territory_ID == id):
-		Territories.remove_at(remove_index);
-	
+	# Now we return to confirm we removed territory
+	return terr_deleted;
+
 ## This functions erases the team by id (the team id). 
 ## Array automatically will sort and organize id's after deletion
-func erase_team_by_id(id: int) -> void:
+## This returns a bool value to indicate if Team was erased successfully	
+func erase_team_by_id(id: int) -> bool:
 	if id < 0 or id >= Teams.size():
-		return
+		return false
 		
-	# Get index of id we want to remove
-	var remove_index: int = Teams.bsearch_custom(id, func(team: Team): return team.ID == id, true)
+		
+	Teams.remove_at(id);
+	sort_teams();
 	
-	# Now we ensure the remove_index is valid and that the value is the one we are looking for
-	if (remove_index < 0 or remove_index >= Teams.size()):
-		return #remove_index is out of range so ignore
-	if (Teams[remove_index].ID == id):
-		Teams.remove_at(remove_index);
+	#Now we return to confirm we removed the team
+	return true;
+
+## This functions erases the team by reference to the Team itself
+## Array automatically will sort and organize id's after deletion
+## This returns a bool value to indicate if Team was erased successfully	
+func erase_team(team: Team) -> bool:
+	Teams.erase(team);
+	sort_teams();
 	
+	# Now we return to confirm we removed territory
+	return true;
+
 ## This functions erases the tournament by id (the tournament id). 
 ## Array automatically will sort and organize id's after deletion
-func erase_tournament_by_id(id: int) -> void:
+func erase_tournament_by_id(id: int) -> bool:
 	if id < 0 or id >= Tournaments.size():
-		return
-		
-# Get index of id we want to remove
-	var remove_index: int = Tournaments.bsearch_custom(id, func(tour: Tournament): return tour.ID == id, true)
+		return false
+
+	# Erase and sort
+	Tournaments.remove_at(id);
+	sort_tournaments();
 	
-	# Now we ensure the remove_index is valid and that the value is the one we are looking for
-	if (remove_index < 0 or remove_index >= Tournaments.size()):
-		return #remove_index is out of range so ignore
-	
-	if (Tournaments[remove_index].ID == id):
-		Tournaments.remove_at(remove_index);
+	# Now return true to confirm we erased the team
+	return true
 
 ## This functions erases the player by id (the player id). 
 ## Array automatically will sort and organize id's after deletion
-func erase_player_by_id(id: int) -> void:
+## This returns a bool value to indicate if Player was erased successfully	
+func erase_player_by_id(id: int) -> bool:
 	if id < 0 or id >= Players.size():
-		return
+		return false;
+		
+	# Remove it
+	Players.remove_at(id);
+	sort_players();
 	
-	# Get index of id we want to remove
-	var remove_index: int = Players.bsearch_custom(id, func(player: Player): return player.ID == id, true)
+	# Return true to confirm we deleted it
+	return true;
+
+## This functions erases the player by reference 
+## Array automatically will sort and organize id's after deletion
+## This returns a bool value to indicate if Player was erased successfully	
+func erase_player(player: Player) -> bool:
+	Players.erase(player);
+	sort_players();
+
+	# Now we return to confirm we removed Player
+	return true;
+		
+		
+""" Functions to return Confederations """
+## This function will traverse the confederations until it finds the first instance of the territory id.[br]
+## This will return an array of confed id for all confederations (level 1+) that contain the country. Left to right means increasing level
+func get_confeds_of_territory(terr_id: int) -> Array[Confederation]:
+	# First we need to start at the top of the confederation graph
+	var queue: Array[Confederation] = [World_Confed];
+	var path: Array[Confederation] = [];
+	var curr_confed: Confederation;
+	var terr: Territory = get_territory_by_id(terr_id);
 	
-	# Now we ensure the remove_index is valid and that the value is the one we are looking for
-	if (remove_index < 0 or remove_index >= Players.size()):
-		return #remove_index is out of range so ignore
 	
-	if (Players[remove_index].ID == id):
-		Players.remove_at(remove_index);
+	while not queue.is_empty():
+		# Get the curr confed by popping from front
+		curr_confed = queue.pop_front();
+		
+		# Now we check if current confed has children
+		for child: Confederation in curr_confed.Children:
+			# Now we only go to child if they have our desired territory in their territory list
+			if terr in child.Territory_List:
+				queue.append(child)
+				path.append(child)
+		
+		
+	return path;
+
+
+func get_confeds_with_condition(c: Callable) -> Array[Confederation]:
+	# First we need to start at the top of the confederation graph
+	var queue: Array[Confederation] = [World_Confed];
+	var path: Array[Confederation] = [World_Confed];
+	var curr_confed: Confederation;
+	
+	while not queue.is_empty():
+		# Get the curr confed by popping from front
+		curr_confed = queue.pop_front();
+		
+		# Now we check if current confed has children
+		for child: Confederation in curr_confed.Children:
+			# Now we only go to child if they have our desired territory in their territory list
+			if c.call():
+				queue.append(child)
+				path.append(child)
+		
+		
+	return path;
+
+""" Functions to get Territories """
+func get_territories_in_confed(confed_id: int) -> Array[Territory]:
+	# First we validate the confed_id passed in
+	var confed: Confederation = get_confed_by_id(confed_id);
+	if confed == null:
+		return []; 
+	
+	var territories_list: Array[Territory];
+	var queue: Array[Confederation] = [confed]
+	var curr_confed: Confederation;
+	# Setup Iteration Needs
+	while not queue.is_empty():
+		curr_confed = queue.pop_front();
+			
+		# Now we get the territories saved here, adding them to our returning list ensuring no duplicates
+		for terr: Territory in curr_confed.Territory_List:
+			if not territories_list.has(terr):
+				territories_list.append(terr)
+	
+		# Now we iterate to children by adding them to the queue
+		queue.append_array(curr_confed.Children);
+
+	# Once we exit, we know we have all territories in confed 
+	return territories_list;
 
 """ Functions to Get Set of Teams """
 ## Get the Teams that are in the Tournament. Returns an empty array if error
 func get_tournament_teams(tour_id: int) -> Array[Team]:
-	# Verify ID
-	if tour_id < 0 or tour_id >= Tournaments.size():
-		return [];
-		
-	# Get the Tournament
+	# Get the Tournament and verify
 	var tour: Tournament = get_tournament_by_id(tour_id);
-	var teams_in_tour: Array[int] = tour.Teams;
+	if tour == null:
+		return [];
+	var teams_in_tour: Array[Team] = tour.Teams;
 	
-	# Get Team for each Team ID
-	var teams: Array[Team] = teams_in_tour.map(func(a: int): return get_team_by_id(a));
-	
-	return teams;
+	return teams_in_tour;
 
 ## Get the Teams that are in the Territory (not including the National Team). Returns an empty array if error
 func get_territory_teams(terr_id: int) -> Array[Team]:
@@ -407,25 +586,19 @@ func get_territory_teams(terr_id: int) -> Array[Team]:
 		
 	# Get Territory
 	var terr: Territory = get_territory_by_id(terr_id);
-	var club_list: Array[int] = terr.Club_Teams_Rankings;
-
-	# Get Teams in Territory
-	var club_teams: Array[Team] = club_list.map(func(a: int): return get_team_by_id(a));
-	
-	return club_teams;
-
-
+	if terr == null:
+		return [];
+		
+	return terr.Club_Teams_Rankings
 
 """ Functions to Get Set of Players """
-
 ## Get the Players for the given team id. Returns an empty array if error
 func get_team_roster(team_id: int) -> Array[Player]:
 	# Get Team
 	var team: Team = get_team_by_id(team_id);
 	
 	if team != null:
-		var team_roster: Array[Player] = team.Players.map(func(a: int): return get_player_by_id(a));
-		return team_roster
+		return team.Players;
 	
 	return [];
 	
@@ -437,7 +610,6 @@ func get_tournament_players(tour_id: int) -> Array[Player]:
 		
 	# Get the Teams
 	var teams: Array[Team] = get_tournament_teams(tour_id);
-	
 	
 	# Now get players in each team
 	var player_roster: Array[Player] = [];
@@ -452,7 +624,5 @@ func get_territory_pool(terr_id: int) -> Array[Player]:
 	var territory_pool: Array[Player] = Players.filter(func(a: Player): return terr_id in a.Nationalities);
 	
 	return territory_pool;
-
-
 
 

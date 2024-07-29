@@ -13,10 +13,10 @@ func add_node(new_node: GraphNode) -> void:
 		return
 		
 	# Ensure Node has name
-	if new_node.confed.Name == null:
+	if new_node.confed.Name.is_empty():
 		return
 	
-	# Add to Array	
+	# Push to back
 	graph_nodes.push_back(new_node)
 		
 	# Sort Graphnodes
@@ -30,10 +30,10 @@ func add_edge(a: GraphNode, b: GraphNode) -> void:
 		return
 	
 	# Make B the Owner of A	
-	a.confed.Owner_ID = b.confed.ID;
+	a.confed.Owner = b.confed.ID;
 
 	# Make A the Child of B
-	b.confed.Children_ID.push_back(a.confd.ID);
+	b.confed.Children.push_back(a.confd);
 
 """ Removing or Erasing GraphNode """
 ## Removes the GraphNode at given index (confed_id)
@@ -88,15 +88,14 @@ func get_territory_list(confed_id: int) -> Array[int]:
 func has_lower_dependencies(terr_id: int, node_id: int) -> bool:
 	
 	var node: GraphNode = get_node_by_id(node_id);
+	var terr: Territory = game_map.get_territory_by_id(terr_id)
 	var confed: Confederation = node.confed;
 	
-	var childrens: Array[int] = confed.Children_ID;
+	var childrens: Array[Confederation] = confed.Children;
 	
 	# Go through all children, and ensure they don't have lower dependencies
-	for child: int in childrens:
-		var curr_confed : Confederation = game_map.get_confed_by_id(child)
-		
-		if terr_id in curr_confed.Territory_List:
+	for child: Confederation in childrens:
+		if terr in child.Territory_List:
 			return true
 	
 	return false
@@ -113,22 +112,29 @@ func propagate_territory_addition(terr_id: int, node_id: int) -> void:
 	if terr_id < 0 or node_id < 0 or node_id >= graph_nodes.size():
 		return
 		
+	var terr: Territory =game_map.get_territory_by_id(terr_id)
+	
+	# Log Territory we will be propagating
+	LogDuck.d("Territory we will be Propagating: [color=green]Name: {name} | ID: {id}  ".format({"name": terr.Name, "id": terr.ID}))
+		
 	# Get Desired node
 	var curr_node: GraphNode = get_node_by_id(node_id);
 	var curr_confed: Confederation
 	# Setup Iteration Needs
 	while curr_node.confed.Level >= 0:
 		# Break when we reach end
-		if curr_node.confed.Owner_ID == -1:
+		if curr_node.confed.Owner == -1:
 			break
-			
-			
+	
 		# Get Owner Node
-		var owner_node: GraphNode = get_node_by_id(curr_node.confed.Owner_ID)
+		var owner_node: GraphNode = get_node_by_id(curr_node.confed.Owner)
+		
 		
 		# Place it in Owner if not already there
-		if terr_id not in owner_node.confed.Territory_List:
-			owner_node.confed.add_territory(terr_id)
+		if terr not in owner_node.confed.Territory_List:
+			owner_node.confed.add_territory(terr)
+			# Log Owner Node to Propagate
+			LogDuck.d("Territory Added to Confed: [color=green]Name: {name} | ID: {id} | Level: {level} | Owner: {owner}  ".format({"name": owner_node.confed.Name, "id": owner_node.confed.ID, "level": owner_node.confed.Level, "owner": owner_node.confed.Owner}))
 			
 		
 		owner_node.reflect_territory_changes();
@@ -142,18 +148,22 @@ func propagate_territory_deletion(terr_id: int, node_id: int) -> void:
 	# Get Desired node
 	var curr_node: GraphNode = get_node_by_id(node_id);
 	var curr_confed: Confederation
+	
+	# Get Passed in Territory 
+	var terr: Territory = game_map.get_territory_by_id(terr_id)
+	
 	# Setup Iteration Needs
 	while curr_node.confed.Level >= 0:
 		# Break when we reach end
-		if curr_node.confed.Owner_ID == -1:
+		if curr_node.confed.Owner == -1:
 			break
 			
 		# Get Owner Node
-		var owner_node: GraphNode = get_node_by_id(curr_node.confed.Owner_ID)
+		var owner_node: GraphNode = get_node_by_id(curr_node.confed.Owner)
 		
 		# Place it in Owner if not already there
-		if terr_id in owner_node.confed.Territory_List:
-			owner_node.confed.delete_territory(terr_id)
+		if terr in owner_node.confed.Territory_List:
+			owner_node.confed.delete_territory(terr);
 			
 		owner_node.reflect_territory_changes();	
 		curr_node = owner_node

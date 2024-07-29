@@ -11,25 +11,39 @@ extends Resource
 ## The unique ID for the territory. All of the game code uses this ID 
 ## to identify the territory. 
 @export 
-var Territory_ID: int;
+var ID: int:
+	get:
+		return ID
+	set(value):
+		ID = value;
 
 ## The name for the territory
 @export 
-var Territory_Name: String;
+var Name: String:
+	get: return Name;
+	set(name):
+		Name = name;
 
-## The CoTerritory ID for this territory.[br]
+## The CoTerritory for this territory.[br]
 ## CoTerritories are for special cases where this country is part of another country.[br]
 ## For example, Hawaii is a part of the United States of America but it is included as its own
 ## territory, meaning all hawaiian players can play for both Hawaii or the United States.[br]
 ## In other words, CoTerritories are the "owner" of this territory
+## NOTE NEVER use this to point two territories to each other
 @export 
-var CoTerritory_ID: int;
+var CoTerritory: Territory:
+	get: return CoTerritory;
+	set(terr): CoTerritory = terr;
 
 ## The CODE is the Three Letter Code Name that will be used to display on the scoreboard during the match.[br]
 ## It should always be three letters and similar to the territory name itself.[br]
 ## For example, the code for CANADA is CAN
 @export 
-var Code: String;
+var Code: String:
+	get: return Code;
+	set(code): 
+		if code.length() > 4: return 
+		else: Code = code
 
 ## The Path in the User folder where the flag is being stored. We use this string to both store and retrieve the 
 ## flag that the user stores for this territory.[br]
@@ -42,17 +56,22 @@ var Flag_Path: String;
 ## The population of the territory. The units will be in millions so if the number here is 2 then the population
 ## of this territory is 2 million
 @export 
-var Population: float; # In Millions
+var Population: float: # In Millions
+	get: return Population;
+	set(pop): Population = pop;
 
 ## The Area of the territory. The units will be in Thousands Square Meters so if the number here is 10 then the 
 ## area is 10,000 square meters
 @export 
-var Area: float; #In Thousands
-
+var Area: float: #In Thousands
+	get: return Area;
+	set(area): Area = area;
 ## The GDP of the territory. The units are in Billions so if the number is 10 then the GDP
 ## of this territory is 10 Billion 
 @export 
-var GDP: float; # In Billions
+var GDP: float: # In Millions
+	get: return GDP;
+	set(gdp): GDP = gdp;
 
 
 @export_category("Name Directory")
@@ -60,12 +79,26 @@ var GDP: float; # In Billions
 ## This is the list of First Names to use for this territory.[br]
 ## The array contains the Name_ID which is used to get it from the Name Directory.
 @export 
-var First_Names: PackedInt32Array;
+var First_Names: Array[String]:
+	get: return First_Names;
+	set(names): 
+		for name in names:
+			if name.length() < 2:
+				return
+			
+		First_Names = names;
 
 ## This is the list of Last Names to use for this territory.[br]
 ## The array contains the Name_ID which is used to get it from the Name Directory.
 @export 
-var Last_Names: PackedInt32Array;
+var Last_Names: Array[String]:
+	get: return Last_Names;
+	set(names): 
+		for name in names:
+			if name.length() < 2:
+				return
+			
+		Last_Names = names;
 
 
 @export_category("Ratings")
@@ -73,49 +106,67 @@ var Last_Names: PackedInt32Array;
 ## The Rating of the National Team for this territory. This number is the average of all players and the ratings will
 ## follow the Bell Curve of probability. The Rating should be between 0 - 100 but more releastically between 20 - 65
 @export
-var Rating: float;
+var Rating: float:
+	get: return Rating;
+	set(rating): 
+		if rating < 0 or rating > 100:
+			return
+		else:
+			Rating = rating;
 
 ## The Rating (or Elo to be exact) of the Domestic League in this territory. This Elo is a good marker of how strong the league
 ## is compared to the other leagues around the world. This value will either decrease or increase depending on the performance of the teams against
 ## teams of other leagues. The higher the number the better the domestic league
 @export
-var League_Elo: float;
+var League_Elo: float:
+	get: return League_Elo;
+	set(elo): 
+		if elo < 0:
+			return
+		else:
+			League_Elo = elo;
 
 
 @export_category("Tournaments")
 
 ## The Tournament IDs of the leagues for this territory. These will used to gather the Tournament Details for the Leagues
 @export
-var Leagues: PackedInt32Array;
+var Leagues: Array[Tournament];
 
 ## The Tournament ID of the League Cup. This can be thought of as the Domestic Cup of the League. If there is not a League Cup then this will be -1
 @export
-var League_Cup: int = -1 #index inside of Tournaments
+var League_Cup: Tournament
 
 ## The Tournament ID of the Super Cup. If there is not a Super Cup then this will be -1
 @export
-var Super_Cup: int = -1 #index inside of Tournaments 
+var Super_Cup: Tournament
 
 ## The other tournaments within this Territory. This will include anything besides the Leagues, Super Cup, and Domestic Cup.[br]
 ## For example, the Carabao Cup isn't the Domestic Cup but still a tournament hosted in the English Leagues
 @export
-var Tournaments: PackedInt32Array;
+var Tournaments: Array[Tournament];
 
 @export_category("Teams")
 
 ## The Team ID of the National Team for this territory. If no National Team, the ID here will be -1
 @export
-var National_Team: int = -1;
+var National_Team: Team
 
 ## The Team IDs of all Club Teams inside this territory. For ranking purposes, this list will also be ranked according to how strong each team is.[br]
 ## If empty, there are no Club Teams for this territory
 @export
-var Club_Teams_Rankings: PackedInt32Array;
+var Club_Teams_Rankings: Array[Team]:
+	get: return Club_Teams_Rankings;
+	set(teams): Club_Teams_Rankings = teams;
 
 
 ## Function to save the image in the filesystem for the given terr_id. Will save image with new identifier
 ## if territory doesn't have a flag saved, otherwise it will overwrite the previous image
 func save_image_for_terr(image: Image) -> void:
+	# Validate
+	if image == null:
+		return
+	
 	# First we need to resize the image and compress it before it can be stored
 	image.resize(120, 80, 2);
 	image.compress(Image.COMPRESS_BPTC);
@@ -141,11 +192,11 @@ func get_territory_image() -> Image:
 	
 	# Load Image
 	if FileAccess.file_exists(load_path):
-		var image_data_compressed: CompressedTexture2D = load(load_path);
-		var image_data: Image = image_data_compressed.get_image()
-		if image_data == null:
+		var image_data_compressed: Image = Image.load_from_file(load_path);
+		if image_data_compressed == null:
 			return null
-		return image_data;
+		image_data_compressed.decompress();
+		return image_data_compressed;
 	else:
 		return null
 		

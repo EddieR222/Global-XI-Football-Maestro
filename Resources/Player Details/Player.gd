@@ -51,18 +51,16 @@ var Key_Details: int = 0;
 
 
 ## The Nationalities of the Player (array of territory ids)
-@export var Nationalities: PackedInt32Array;
+@export var Nationalities: Array[int];
 
 ## The Positions of the Player  (array of Positons Enums)
 ## Every 8 bits will be a new position (8 bits means that position will be a variant of 255 positions)
 ## For a total of 8 positions possible per player (most will have 1, 2, 3)
 @export var Positions: int
 
-## The Team ID of the team the player currently plays for both
-## First 32 bits are the Club Team
-## Last 32 bits are the National Team
+## The Teams of the player currently plays for both
 @export
-var Team_IDs: int
+var Teams: int
 
 
 """ Key Details """
@@ -85,9 +83,6 @@ var Team_IDs: int
 @export var Months_Injured: float;
 
 """ Current Season Stats """
-## The Class that Contains all the Stats for the Current Season
-@export var Overall_Season_Stats: PlayerSeasonStats
-
 ## The Stats for Each Individal Tournaments
 @export var Tournament_Stats: Array[PlayerSeasonStats]
 
@@ -100,6 +95,18 @@ var Team_IDs: int
 
 ## Trophies Won
 @export var Trophies_Won: Dictionary;
+
+
+## This is a constructor that allows us to initiate a Player with a name.
+func _init(name := ""):
+	Name = name;
+	
+	# Connect Territory to Player, so we change the weak pointer here
+	connect("terr_id_changed", _on_territory_id_changed)
+	
+	# Connect Team to Player, so we change the weak pointer here
+	connect("team_id_changed", _on_team_id_changed)
+
 
 
 """ Player Setter Functions """
@@ -276,21 +283,29 @@ func set_players_positions(positions: Array[int]) -> void:
 
 ## Sets the player's club team by saving team_id of club
 func set_player_club_team(team_id: int) -> void:
-	# Get Bits Ready
+	# Save the team
+	if team_id < 0:
+		return
+		
+	# Now we set it but first we have to manipulate the bits
 	var team_bits: int = team_id & 0xFFFFFFFF;
 	
-	# Set the bits
-	Team_IDs &= ~(0xFFFFFFFF);
-	Team_IDs |= team_bits;
+	# Now we set the bits
+	Key_Details &= ~(0xFF << 32);
+	Key_Details |= (team_bits << 32);
 	
-## Sets the player's club team by saving team_id of club
+## Sets the player's club team by saving team of club
 func set_player_national_team(team_id: int) -> void:
-	# Get Bits Ready
+	# Get and Save Team
+	if team_id < 0:
+		return
+		
+	# Now we set it but first we have to manipulate the bits
 	var team_bits: int = team_id & 0xFFFFFFFF;
 	
-	# Set the bits
-	Team_IDs &= ~(0xFFFFFFFF << 32);
-	Team_IDs |= (team_bits << 32);
+	# Now we set the bits
+	Key_Details &= ~(0xFF);
+	Key_Details |= (team_bits);
 
 ## Sets the market value of the player
 func set_player_market_value(value: float) -> void:
@@ -382,16 +397,16 @@ func get_player_morale() -> int: return (Key_Details >> 47) & 0xFF;
 func get_player_sharpness() -> int: return (Key_Details >> 55) & 0xFF;
 
 ## Gets the list of player's nationalities
-func get_player_nationalities() -> PackedInt32Array: return Nationalities;
+func get_player_nationalities() -> Array[int]: return Nationalities;
 
 ## Gets the positions of the player given by the Position Number
 func get_player_positions() -> int: return Positions & 0xFF; #CHANGE THIS!!
 
 ## Gets the player's club team ID
-func get_player_club_team() -> int: return (Team_IDs & 0xFFFFFFFF);
+func get_player_club_team() -> int: return (Teams >> 32) & 0xFFFFFFFF;
 
 ## Gets the player's national team ID
-func get_player_national_team() -> int: return (Team_IDs >> 32) & 0xFFFFFFFF;
+func get_player_national_team() -> int: return Teams & 0xFFFFFFFF;
 
 ## Gets the market value of the player
 func get_player_market_value() -> float: return Market_Value;
@@ -413,7 +428,24 @@ func get_player_month_injured() -> float: return Months_Injured;
 
 
 
-func print_player():
-	print("Name: " + Name);
-	print("Overall: " + String.num_int64(get_player_overall_rating()) + "Potential: " + String.num_int64(get_player_potential_rating()));
-	print("Nation: " + String.num_int64(get_player_nationalities()[0]));
+
+""" Signal Functions """
+func _on_territory_id_changed(old_id: int, new_id: int) -> void:
+	for index in range(Nationalities.size()):
+		if Nationalities[index] == old_id:
+			Nationalities[index] == new_id;
+			return #There can only be once instance of each id, so return early now
+			
+func _on_team_id_changed(old_id: int, new_id: int) -> void:
+	var club_id: int = get_player_club_team();
+	var national_id: int = get_player_national_team();
+	
+	if club_id == old_id:
+		set_player_club_team(new_id);
+		return #There can only be once instance of each id, so return early now
+		
+	if national_id == old_id:
+		set_player_national_team(new_id);
+		return #There can only be once instance of each id, so return early now
+			
+

@@ -730,8 +730,7 @@ func get_confed_national_teams(confed: Confederation) -> Array[Team]:
 		curr_confed = queue.pop_front();
 		
 		# For Curr_Confed, get the national teams
-		for terr_id: int in curr_confed.Territory_List:
-			var terr: Territory = game_map.get_territory_by_id(terr_id);
+		for terr: Territory in curr_confed.Territory_List:
 			if terr.National_Team not in national_teams:
 				national_teams.push_back(terr.National_Team);
 
@@ -764,8 +763,7 @@ func get_territory_club_teams(terr_id: int) -> Array[Team]:
 	var club_teams: Array[Team] = [];
 	
 	var terr: Territory = game_map.get_territory_by_id(terr_id);
-	for team_id: int in terr.Club_Teams_Rankings:
-		var team: Team = game_map.get_team_by_id(team_id)
+	for team Team in terr.Club_Teams_Rankings:
 		club_teams.push_back(team);
 	
 	return club_teams

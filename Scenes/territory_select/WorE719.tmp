@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv230xqhwrkmr"]
+
+[ext_resource type="Script" path="res://Scenes/territory_select/WorldMapSelector.gd" id="1_qi5qp"]
+[ext_resource type="Texture2D" uid="uid://idhk62dx2o3b" path="res://Scenes/territory_select/World_Map.png" id="1_xj73q"]
+
+[node name="WorldMapSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qi5qp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xj73q")
+expand_mode = 1
