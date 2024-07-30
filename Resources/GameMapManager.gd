@@ -146,6 +146,13 @@ func convert_to_confed_array(input_array: Array) -> Array[Confederation]:
 			territory_array.append(element)
 	return territory_array
 	
+func convert_to_string_array(input_array: Array) -> Array[String]:
+	var territory_array: Array[String] = []
+	for element in input_array:
+		if element is String:
+			territory_array.append(element)
+	return territory_array
+	
 # Example usage
 func get_csv_data() -> GameMap:
 	var gm: GameMap = GameMap.new();
@@ -164,8 +171,12 @@ func get_csv_data() -> GameMap:
 	csv_file_path = "res://Game Directories - All Territories.csv"
 	csv_data = read_csv_file(csv_file_path)
 	for entry in csv_data:
+		
+		
+		
 		var terr: Territory = Territory.new();
 		terr.Name = entry["Territory_Name"].strip_edges();
+
 		
 		# Load Flag for Territory
 		var path: String = "user://Images/Territory Flags/"
@@ -176,11 +187,25 @@ func get_csv_data() -> GameMap:
 		terr.Population = entry["Population"].to_float() 
 		terr.Area = entry["Area"].to_float() 
 		terr.GDP = entry["GDP"].to_float()
-		#terr.First_Names = PackedInt32Array(Array(entry["First_Names"].split(",", false)).map(func(num: String): return num.to_int()));
-		#terr.Last_Names = PackedInt32Array(Array(entry["Last_Names"].split(",", false)).map(func(num: String): return num.to_int()));
+		terr.First_Names = convert_to_string_array(entry["First_Names"].split(",", false))
+		terr.Last_Names = convert_to_string_array(entry["Last_Names"].split(",", false))
 		terr.Rating = entry["Rating"].to_int();
 		terr.League_Elo = entry["League_Elo"].to_float();
 		gm.add_territory(terr);
+		
+	# Now we go through all the territories once added to add in coterritories
+	for entry in csv_data:
+		var terr_id: int = entry["ID"].to_int();
+		var coterr_id: int = entry["CoTerritory_ID"].to_int();
+		
+		# Now lets get the territories
+		var terr: Territory = gm.get_territory_by_id(terr_id)
+		var coterr: Territory = gm.get_territory_by_id(coterr_id);
+		
+		# Finally we set it as the CoTerritory
+		if coterr != null:
+			terr.CoTerritory = coterr;
+		
 		
 		
 		

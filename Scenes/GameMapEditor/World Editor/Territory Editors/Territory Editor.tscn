@@ -102,7 +102,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
+text_overrun_behavior = 2
+clip_text = true
 expand_icon = true
+fit_to_longest_item = false
 script = ExtResource("6_54ipa")
 
 [node name="Code Name" type="Label" parent="VBoxContainer2/GridContainer"]
@@ -134,8 +137,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_s7mqb")
+step = 0.01
 allow_greater = true
 alignment = 1
+update_on_text_changed = true
 suffix = "Million"
 script = ExtResource("10_pnqgx")
 
@@ -152,8 +157,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_s7mqb")
+step = 0.01
 allow_greater = true
 alignment = 1
+update_on_text_changed = true
 suffix = "Thousand"
 script = ExtResource("11_2p2gd")
 
@@ -169,8 +176,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_s7mqb")
+step = 0.01
 allow_greater = true
 alignment = 1
+update_on_text_changed = true
 suffix = "Million"
 script = ExtResource("12_s8dq1")
 

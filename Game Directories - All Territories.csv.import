@@ -2,14 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://bs86nvoe0j4nv"
+uid="uid://oyggm3w8ydl6"
 
 [deps]
 
-files=["res://Game Directories - All Territories.Terrtory_ID.translation", "res://Game Directories - All Territories.CoTerritory_ID.translation", "res://Game Directories - All Territories. Color.translation", "res://Game Directories - All Territories.Code.translation", "res://Game Directories - All Territories.Flag.translation", "res://Game Directories - All Territories.Population.translation", "res://Game Directories - All Territories.Area.translation", "res://Game Directories - All Territories.GDP.translation", "res://Game Directories - All Territories.First.translation", "res://Game Directories - All Territories.Last.translation", "res://Game Directories - All Territories.Rating .translation", "res://Game Directories - All Territories.League.translation", "res://Game Directories - All Territories.Top.translation"]
+files=["res://Game Directories - All Territories.ID.translation", "res://Game Directories - All Territories.CoTerritory_ID.translation", "res://Game Directories - All Territories. Color.translation", "res://Game Directories - All Territories.Code.translation", "res://Game Directories - All Territories.Flag.translation", "res://Game Directories - All Territories.Population.translation", "res://Game Directories - All Territories.Area.translation", "res://Game Directories - All Territories.GDP.translation", "res://Game Directories - All Territories.First.translation", "res://Game Directories - All Territories.Last.translation", "res://Game Directories - All Territories.Rating .translation", "res://Game Directories - All Territories.League.translation", "res://Game Directories - All Territories.Top.translation"]
 
 source_file="res://Game Directories - All Territories.csv"
-dest_files=["res://Game Directories - All Territories.Terrtory_ID.translation", "res://Game Directories - All Territories.CoTerritory_ID.translation", "res://Game Directories - All Territories. Color.translation", "res://Game Directories - All Territories.Code.translation", "res://Game Directories - All Territories.Flag.translation", "res://Game Directories - All Territories.Population.translation", "res://Game Directories - All Territories.Area.translation", "res://Game Directories - All Territories.GDP.translation", "res://Game Directories - All Territories.First.translation", "res://Game Directories - All Territories.Last.translation", "res://Game Directories - All Territories.Rating .translation", "res://Game Directories - All Territories.League.translation", "res://Game Directories - All Territories.Top.translation"]
+dest_files=["res://Game Directories - All Territories.ID.translation", "res://Game Directories - All Territories.CoTerritory_ID.translation", "res://Game Directories - All Territories. Color.translation", "res://Game Directories - All Territories.Code.translation", "res://Game Directories - All Territories.Flag.translation", "res://Game Directories - All Territories.Population.translation", "res://Game Directories - All Territories.Area.translation", "res://Game Directories - All Territories.GDP.translation", "res://Game Directories - All Territories.First.translation", "res://Game Directories - All Territories.Last.translation", "res://Game Directories - All Territories.Rating .translation", "res://Game Directories - All Territories.League.translation", "res://Game Directories - All Territories.Top.translation"]
 
 [params]
 

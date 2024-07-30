@@ -99,10 +99,33 @@ func has_lower_dependencies(terr_id: int, node_id: int) -> bool:
 			return true
 	
 	return false
+	
+## This functions returns whether the node passed in is connected to the World Node	
+func connected_to_world_node(node_id: int) -> bool:
+	# Validate IDs
+	if node_id < 0 or node_id >= graph_nodes.size():
+		return false
+		
+	# Now we get the node
+	var curr_node: GraphNode = get_node_by_id(node_id);
 
+	# Setup Iteration Needs
+	while curr_node.confed.Level > 0:
+		# Break when we reach end
+		if curr_node.confed.Owner == -1:
+			break
+	
+		# Get Owner Node
+		var owner_node: GraphNode = get_node_by_id(curr_node.confed.Owner)
+		
+	
+		curr_node = owner_node
 
-
-
+	# Finally, here we should have the world node
+	if curr_node.confed.Name == "World":
+		return true
+	else:
+		return false
 
 
 """ Functions that have to propagate the entire graph """

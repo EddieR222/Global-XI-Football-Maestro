@@ -97,15 +97,15 @@ func _on_code_name_text_text_changed(new_text: String) -> void:
 
 ## This value changes Population saved when the user changes it in the edit territory
 func _on_pop_val_value_changed(value: float) -> void:
-	territory.Population = value
+	territory.Population = value * 1_000_000;
 	
 ## This function is called when the user changes the area value
 func _on_area_val_value_changed(value: float) -> void:
-	territory.Area = value
+	territory.Area = value * 1_000;
 
 ## This function is called when the user changes the GDP value	
 func _on_gdp_val_value_changed(value: float) -> void:
-	territory.GDP = value
+	territory.GDP = value * 1_000_000
 
 ## This function is called when the user changes the First Name List
 func _on_first_name_list_text_changed() -> void:

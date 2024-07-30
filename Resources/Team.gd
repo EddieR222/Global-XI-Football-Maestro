@@ -16,13 +16,9 @@ class_name Team extends Resource
 @export var Rating: int;
 @export var Team_Stadium: Stadium;
 
-
-
- 
 """ Club History """
 @export var Trophies: Array
 @export var League_History: Array
-
 
 """ Player and Manager Info """
 @export var Manager_Name: String;

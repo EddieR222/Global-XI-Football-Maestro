@@ -124,9 +124,6 @@ func _on_delete_territory_pressed():
 
 	
 func reflect_territory_changes():
-	# First, we sort the ids of the terr in stored in confed
-	confed.Territory_List.sort();
-	
 	#We first need to go through and update the ItemList
 	item_list.clear();
 	for terr: Territory in confed.Territory_List:
@@ -147,6 +144,9 @@ func reflect_territory_changes():
 		
 		# Set Metadata
 		item_list.set_item_metadata(index, terr);
+		
+		
+	item_list.sort_items_by_text();
 
 """
 The function below will alphabetize and reorganize the dictionary

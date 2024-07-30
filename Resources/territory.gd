@@ -56,9 +56,7 @@ var Flag_Path: String;
 ## The population of the territory. The units will be in millions so if the number here is 2 then the population
 ## of this territory is 2 million
 @export 
-var Population: float: # In Millions
-	get: return Population;
-	set(pop): Population = pop;
+var Population: float; # In Millions
 
 ## The Area of the territory. The units will be in Thousands Square Meters so if the number here is 10 then the 
 ## area is 10,000 square meters

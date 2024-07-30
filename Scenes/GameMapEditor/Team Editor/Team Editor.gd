@@ -1,7 +1,7 @@
 extends Node
 
 """ Packed Scenes """
-const GAME_MAP_EDITOR: PackedScene = preload("res://Scenes/GameMapEditor/GameMapEditor.tscn")
+#const GAME_MAP_EDITOR: PackedScene = preload("res://Scenes/GameMapEditor/GameMapEditor.tscn")
 
 """ File Saving and Loading Info """
 var FileName : String; 
@@ -58,7 +58,7 @@ func load_game_map():
 		# Iterate through territoies
 		for terr: Territory in confed.Territory_List:
 			# Get Territory Name
-			var terr_name = terr.Territory_Name;
+			var terr_name = terr.Name;
 			# Get Territory Flag or Icon
 			var texture_normal
 			var flag = terr.get_territory_image();
@@ -184,13 +184,11 @@ func _on_add_team_pressed() -> void:
 	var team: Team = Team.new();
 	
 	#Get currently selected Territory
-	var terr: Territory = game_map.get_territory_by_id(selected_terr); ##ALERT; Change this to get metadata as we have empty items on itemlist
+	var terr: Territory = terr_list.get_item_metadata(selected_terr)
 	
 	#Store Default Information for a new Team in this territory
 	team.Name = "Team Name"
-	team.Territory_Name = terr.Territory_Name;
-	team.Territory_ID = terr.Territory_ID;
-	team.ID = game_map.Teams.size();
+	team.ID = -10;
 	
 	#Add it to itemlist
 	var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
@@ -337,4 +335,4 @@ func _on_go_back_button_pressed():
 	game_map_manager.save_game_map(game_map, "selected_game_map");
 	
 	# Now switch scenes
-	get_tree().change_scene_to_packed(GAME_MAP_EDITOR)
+	#get_tree().change_scene_to_packed(GAME_MAP_EDITOR)

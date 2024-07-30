@@ -31,8 +31,8 @@ Functions below are responsible for saving and loading the WorldMap to user data
 func load_selected_gamemap():
 	#Load the World Map from Disk
 	var game_map_manager: GameMapManager = GameMapManager.new();
-	#var file_map : GameMap = game_map_manager.load_game_map_with_filename("selected_game_map")
-	var file_map: GameMap = game_map_manager.get_csv_data();
+	var file_map : GameMap = game_map_manager.load_game_map_with_filename("selected_game_map")
+	#var file_map: GameMap = game_map_manager.get_csv_data();
 	if file_map == null:
 		return
 		
@@ -102,6 +102,14 @@ func load_selected_gamemap():
 	# Set FileName
 	get_node("VBoxContainer/HBoxContainer/FileName").text = file_map.Filename;
 	
+	# Now we sort all countries in all nodes
+	for node: GraphNode in world_map.graph_nodes:
+		# Get the item list of the GraphNode
+		var item_list: ItemList = node.get_node("HBoxContainer/ItemList");
+		
+		# Now we just sort the coutnries in the itemlist
+		item_list.sort_items_by_text();
+	
 func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> void:
 	# We iter through all trees and redraw connections
 	for curr_level: int in range(1, 10):
@@ -118,6 +126,39 @@ func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> vo
 
 ## When the user wants to go back to the Main GameMap Editor Menu
 func _on_go_back_button_pressed():
+	# Before we do anything, we must first go through and validate the territories and confederations
+	var error_message: String = "Please Fix the Following Errors Before Saving:"
+	
+	# 1. Make sure all confed nodes are connected to the world node
+	for node: GraphNode in graph_edit.world_graph.graph_nodes:
+		if not graph_edit.world_graph.connected_to_world_node(node.confed.ID):
+			error_message += "\n\t- {name}: Not Connected to World Node in some way".format({"name": node.confed.Name});
+		
+	# 2. Every Territory needs the bare minimum of one first and last names and a country rating of > 0
+	# we also want to ensure no Territory is simply named Territory (meaning the user didn't give it a name)
+	for terr: Territory in graph_edit.game_map.Territories:
+		if terr.First_Names.size() < 1:
+			error_message += "\n\t- {name}: Needs at Least One First Name".format({"name": terr.Name})
+		if terr.Last_Names.size() < 1:
+			error_message += "\n\t- {name}: Needs at Least One Last Name".format({"name": terr.Name})
+		if terr.Rating < 1:
+			error_message += "\n\t- {name}: Needs at Least A Country Rating of >1".format({"name": terr.Name})
+		if terr.Name == "Territory":
+			error_message += "\n\t- {name}: Needs a valid Country Name".format({"name": terr.Name})
+	
+	# Now, if any error was detecting, we need to exit early and display the errors
+	if error_message != "Please Fix the Following Errors Before Saving:":
+		var error_dialog: AcceptDialog = get_node("ScrollContainer/Error");
+		
+		# Give it Error Messages
+		error_dialog.dialog_text = error_message
+		
+		# Make it visible
+		error_dialog.visible = true
+		
+		# Exit Function Early
+		return
+	
 	# First we must save the file to the selected_game_map file
 	var game_map_manager: GameMapManager = GameMapManager.new();
 	game_map_manager.save_game_map(graph_edit.game_map, "selected_game_map");
