@@ -191,15 +191,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 fixed_icon_size = Vector2i(75, 75)
 
-[node name="World Map File Dialog" type="FileDialog" parent="."]
-title = "Open a File"
-initial_position = 2
-ok_button_text = "Open"
-dialog_hide_on_ok = true
-file_mode = 0
-access = 1
-root_subfolder = "save_files/"
-
 [node name="Delete Team Confirmation" type="ConfirmationDialog" parent="."]
 initial_position = 2
 dialog_text = "Are you sure you want to delete?"
@@ -223,6 +214,5 @@ use_native_dialog = true
 [connection signal="pressed" from="VBoxContainer/Editor Bar/VBoxContainer/HBoxContainer/Add Team" to="." method="_on_add_team_pressed"]
 [connection signal="pressed" from="VBoxContainer/Editor Bar/VBoxContainer/HBoxContainer/Delete Team" to="." method="_on_delete_team_pressed"]
 [connection signal="item_selected" from="VBoxContainer/Editor Bar/VBoxContainer/Team List" to="." method="_on_team_list_item_selected"]
-[connection signal="file_selected" from="World Map File Dialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="confirmed" from="Delete Team Confirmation" to="." method="_on_confirmation_dialog_confirmed"]
 [connection signal="file_selected" from="Logo File Dialog" to="." method="_on_logo_file_dialog_file_selected"]

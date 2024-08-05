@@ -17,21 +17,8 @@ func _ready():
 
 
 """
-The following Functions Handle the Saving and Loading of Files
+The following Functions Handle the  Loading of GameMaps
 """
-
-func _on_save_file_pressed():
-	print("Saving..")
-	
-	# Sort teams before saving
-	game_map.sort_teams();
-	
-	var saver: GameMapManager = GameMapManager.new();
-	
-	# Finally, save it to file
-	saver.save_game_map(game_map, FileName);
-
-	
 func load_game_map():
 	# Load the data saved in Disk
 	var game_map_manager: GameMapManager = GameMapManager.new();
@@ -39,23 +26,24 @@ func load_game_map():
 	game_map = file_map;
 	
 	
-	#Change the FileName to display what the name of file was, so user can automatically
-	#save changes easily
+	#Change the FileName to display what the name of file was, so user can see current GameMap open
 	FileName =  "selected_game_map";
 	var file_name_label: Label = get_node("VBoxContainer/Title Bar/FileName");
 	file_name_label.text = FileName
 
 	# Iter through each confed	
 	for confed: Confederation in game_map.Confederations:
-
+		# Skip World Confed
 		if confed.Level != 1:
 			continue
+		
 		# Add Confed Item, its not selectable and Gray Background
 		var confed_name = confed.Name;
 		var index: int = terr_list.add_item(confed_name, null, false);
 		terr_list.set_item_custom_bg_color(index, Color(0.486, 0.416, 0.4));
 		
 		# Iterate through territoies
+		confed.Territory_List.sort_custom(func(a: Territory, b: Territory): return a.Name.to_lower() < b.Name.to_lower())
 		for terr: Territory in confed.Territory_List:
 			# Get Territory Name
 			var terr_name = terr.Name;
@@ -76,8 +64,6 @@ func load_game_map():
 			
 	
 
-func _on_line_edit_text_changed(new_text: String):
-	FileName = new_text
 	
 """
 These functions deal with the ItemList for Teams
@@ -87,24 +73,24 @@ func load_territory_teams(terr: Territory) -> void:
 	team_list.clear();
 	
 	# Add National Team if territory has one
-	#if terr.National_Team != -1:
-		#var team: Team = game_map.get_team_by_id(terr.National_Team);
-		## Get team name and logo
-		#var team_name = team.Name;
-		#var logo: Image = team.get_team_logo();
-		#var texture_normal
-		#if logo != null:
-			#logo.decompress();
-			#texture_normal = ImageTexture.create_from_image(logo);
-		#else:
-			#var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
-			#texture_normal = default_icon;
-			#
-		## Add Team to Item List
-		#var index: int = team_list.add_item(team_name, texture_normal, true);
-		## Set Metadata for item
-		#team_list.set_item_metadata(index, team);
-		#
+	if terr.National_Team != null:
+		# Get team name and logo
+		var team: Team = terr.National_Team
+		var team_name = team.Name;
+		var logo: Image = terr.get_territory_image();
+		var texture_normal
+		if logo != null:
+			logo.decompress();
+			texture_normal = ImageTexture.create_from_image(logo);
+		else:
+			var default_icon: CompressedTexture2D = load("res://Images/icon.svg");
+			texture_normal = default_icon;
+			
+		# Add Team to Item List
+		var index: int = team_list.add_item(team_name, texture_normal, true);
+		# Set Metadata for item
+		team_list.set_item_metadata(index, team);
+		
 
 	# Now add all teams in territory selected
 	for team: Team in terr.Club_Teams_Rankings:
@@ -126,6 +112,10 @@ func load_territory_teams(terr: Territory) -> void:
 
 	#Once we have added all teams, simply sort
 	team_list.sort_items_by_text();
+	
+	# Finally, we automatically select the team in the first position
+	# Since each Territory has a national team, there will ALWAYS be at least one team per terrritory
+	team_list.select(0, true)
 """
 The function below are to change the index when the user selects a new territory or team
 """
@@ -141,7 +131,7 @@ func _on_team_list_item_selected(index: int) -> void:
 	#We need to display the territory selected
 	var team: Team = team_list.get_item_metadata(index)
 	
-	#Call Group to display territory
+	#Call Group to display teeam selected
 	get_tree().call_group("Team_Info", "team_selected", team)
 	
 	# We also need to relfect any logo, team_name, or ID changes to previously selected teams
@@ -200,6 +190,9 @@ func _on_add_team_pressed() -> void:
 	# Add Team to GameMap
 	game_map.add_team(team);
 	
+	# Add Team to Territory
+	terr.add_club_team(team)
+	
 	#Reflect Changes
 	reflect_team_changes();
 	team_list.sort_items_by_text();
@@ -215,12 +208,16 @@ func _on_confirmation_dialog_confirmed():
 	# Get Selected Team ID
 	var team_id: int = team_list.get_selected_items()[0];
 	var team: Team = team_list.get_item_metadata(team_id);
+	var terr: Territory = terr_list.get_item_metadata(terr_list.get_selected_items()[0])
 
 	# Delete the team from the Team List
 	team_list.remove_item(team_id);
 	
 	# Delete from entire GameMap
 	game_map.erase_team_by_id(team.ID);
+	
+	# Delete Team from Terr
+	terr.remove_club_team(team)
 	
 	reflect_team_changes();
 	team_list.sort_items_by_text();

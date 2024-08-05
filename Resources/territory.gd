@@ -208,3 +208,29 @@ func get_num_import_files(image_folder_path: String) -> int:
 			num_imports += 1;
 			
 	return num_imports
+	
+	
+func add_club_team(team: Team) -> bool:
+	# First check if Team is valid
+	if team.Name.is_empty():
+		return false
+		
+	# Now we add it to Club Team Rankings
+	Club_Teams_Rankings.push_back(team);
+	
+	# Now we simply sort the Clubs
+	Club_Teams_Rankings.sort_custom(func(a: Team, b:Team): return a.Name.to_lower() < b.Name.to_lower());
+	
+	# Finally return true to confirm Team has been added
+	return true
+
+func remove_club_team(team: Team) -> bool:
+	# Validate
+	if team == null:
+		return false
+		
+	# Now we delete
+	Club_Teams_Rankings.erase(team);
+	
+	# Confirm Deletion
+	return true

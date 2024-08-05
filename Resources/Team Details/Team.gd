@@ -11,18 +11,19 @@ class_name Team extends Resource
 
 """ Regional Information """
 @export var City: String;
+@export var _Territory: int;
 
 """ Team Info """
 @export var Rating: int;
 @export var Team_Stadium: Stadium;
+@export var Gender: bool;
 
 """ Club History """
 @export var Trophies: Array
 @export var League_History: Array
 
 """ Player and Manager Info """
-@export var Manager_Name: String;
-@export var Manager_ID: int;
+@export var _Manager: Manager
 @export var Players: Array[Player]
 
 

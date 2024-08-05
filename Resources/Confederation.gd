@@ -83,6 +83,9 @@ func add_territory(terr: Territory) -> void:
 	# Now we can add it to the list
 	Territory_List.append(terr);
 	
+	# Sort them by alphabetical order
+	Territory_List.sort_custom(func(a: Territory, b: Territory): return a.Name.to_lower() < b.Name.to_lower());
+	
 		
 	
 func delete_territory(terr: Territory) -> void:
