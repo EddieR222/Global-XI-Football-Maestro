@@ -35,7 +35,7 @@ func save_image_for_team(image: Image) -> void:
 	image.compress(Image.COMPRESS_BPTC);
 	
 	# Second we need to get the current number of territory flags in "Territory Flags" folder
-	var logo_path: String = "user://Images/Team Logos/";
+	var logo_path: String = "res://Images/Default Team Logos/"           #"user://Images/Team Logos/";
 	var num_images: int = get_num_import_files(logo_path);
 	print(num_images)
 

@@ -153,9 +153,7 @@ var National_Team: Team
 ## The Team IDs of all Club Teams inside this territory. For ranking purposes, this list will also be ranked according to how strong each team is.[br]
 ## If empty, there are no Club Teams for this territory
 @export
-var Club_Teams_Rankings: Array[Team]:
-	get: return Club_Teams_Rankings;
-	set(teams): Club_Teams_Rankings = teams;
+var Club_Teams_Rankings: Array[Team];
 
 
 ## Function to save the image in the filesystem for the given terr_id. Will save image with new identifier

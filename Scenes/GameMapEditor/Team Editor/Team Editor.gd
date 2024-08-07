@@ -14,6 +14,7 @@ var FileName : String;
 
 func _ready():
 	load_game_map();
+	load_default_territory_flags("C:/Team Logos", "");
 
 
 """
@@ -284,46 +285,81 @@ func _on_spin_box_value_changed(value: int) -> void:
 	var selected_index: int = team_list.get_selected_items()[0];
 	var team: Team = team_list.get_item_metadata(selected_index)
 	team.Rating = value
-#func automatic_team_upload(terr: Territory) -> void:
-	##First we must load in the SQL Database
-	#var database = SQLite.new();
-	#database.path = "C:/Rust_Projects/FootballProject/Team Breakdown.db"
-	#database.open_db();	
-	#
-	#
-	## Now we need to get each row
-	#var result = database.select_rows("team_data", "Nation = '" + terr.Territory_Name + "'", ["*"]);
-	#for team_info: Dictionary in result:
-		## For each team_infp, we need to create a team
-		#var team: Team = Team.new();
-		#
-		## Now we need to add the team info from the sql database
-		#team.Name = team_info["Team_Name"];
-		#
-		## Add it to gamemap
-		#game_map.add_team(team)
-		#
-		#var nation: String = terr.Territory_Name
-		#team.Territory_Name = terr.Territory_Name
-		#team.Territory_ID = terr.Territory_ID
-			#
-		#
-		## Now we add team logo if we have it
-		#var index = team_info["index"];
-		#var path = "C:/Rust_Projects/Team_Logos/" + str(index) + ".png";
-		#
-		#if FileAccess.file_exists(path):
-			#var logo: Image = Image.load_from_file(path);
-			#if logo != null:
-				#logo.resize(150, 150, 2);
-				#team.save_image_for_team(logo)
-		##Finally, we add it to respective country list
-		## Add it to terr club rankings
-		#terr.Club_Teams_Rankings.push_back(team.ID);
-			#
 
+
+func load_default_territory_flags(dir: String, store_dir: String) -> bool:
+	#First we must make sure the the passed in directory even exists
+	if not DirAccess.dir_exists_absolute(dir):
+		return false
 		
-
+	# Now we can open it
+	var team_logos_dir: DirAccess = DirAccess.open(dir)
+	
+	# Now we have to get the list of territories in this directory
+	var dir_territories: PackedStringArray = team_logos_dir.get_directories();
+	
+	# Now for each territory we see if it has anything in the directory and save team logos present
+	for terr: Territory in game_map.Territories:
+		# We see if terr is present 
+		if terr.Name not in dir_territories:
+			print(terr.Name + " is not present!")
+			continue
+			
+		# Now we have to go through the leagues of the territory
+		var leagues: PackedStringArray = DirAccess.get_directories_at(dir + "/" + terr.Name)
+		for league: String in leagues:
+			# Now for each league we can either have the teams right away or split into groups, we behave different depending if groups are present
+			var groups: PackedStringArray = DirAccess.get_directories_at(dir + "/" + terr.Name + "/" + league)
+			if groups.size() > 0:
+				# This means groups are present so we add them to the directories to iterate through 
+				for group: String in groups:
+					# Now we need to get the files in each group
+					var team_logos: PackedStringArray = DirAccess.get_files_at(dir + "/" + terr.Name + "/" + league + "/" + group)
+					for team_logo: String in team_logos:
+						# First we create a new Team
+						var team: Team = Team.new();
+						team.Name = team_logo.get_file().get_basename();
+						
+						# Get image
+						var logo: Image = Image.load_from_file(dir + "/" + terr.Name + "/" + league + "/" + group + "/" + team_logo)
+						if logo == null:
+							print("Had issue with loading logo for " + team.Name)
+							continue
+						
+						# Now we save logo
+						team.save_image_for_team(logo);
+						
+						# Now add to GameMap
+						game_map.add_team(team)
+						
+						# Add Team to territory
+						terr.Club_Teams_Rankings.push_back(team)
+			else:
+				# Now we need to get the files in each group
+					var team_logos: PackedStringArray = DirAccess.get_files_at(dir + "/" + terr.Name + "/" + league)
+					for team_logo: String in team_logos:
+						# First we create a new Team
+						var team: Team = Team.new();
+						team.Name = team_logo.get_file().get_basename();
+						
+						# Get image
+						var logo: Image = Image.load_from_file(dir + "/" + terr.Name + "/" + league + "/" + team_logo)
+						if logo == null:
+							print("Had issue with loading logo for " + team.Name)
+							continue
+							
+							
+						# Now we save logo
+						team.save_image_for_team(logo);
+						
+						# Now add to GameMap
+						game_map.add_team(team)
+						
+						# Add Team to territory
+						terr.Club_Teams_Rankings.push_back(team)
+	
+	
+	return true
 
 ## Runs when the user clicks the "Go Back" Button, simply takes them back to the GameMap Editor. All changes here are saved to "selected_game_map.res" file
 func _on_go_back_button_pressed():
