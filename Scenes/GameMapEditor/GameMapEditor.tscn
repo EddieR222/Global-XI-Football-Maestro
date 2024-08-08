@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/GameMapEditor/GameMapEditor.gd" id="1_kgi45"]
 [ext_resource type="Theme" uid="uid://etm0dk2bjjr1" path="res://Textures/main_menu.tres" id="1_rfdc0"]
-[ext_resource type="Theme" uid="uid://dijeqj7meug53" path="res://GameMapMenuButton.tres" id="3_ogpwo"]
+[ext_resource type="Theme" uid="uid://dijeqj7meug53" path="res://Textures/GameMapMenuButton.tres" id="3_ogpwo"]
 [ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Images/Icons/world_icon.png.png" id="4_ytkey"]
 [ext_resource type="Texture2D" uid="uid://crqayvu5gcmqw" path="res://Images/Icons/team_logo_icon.png" id="5_hfpht"]
 [ext_resource type="Texture2D" uid="uid://ds7vxc8b1nn10" path="res://Images/Icons/player_icon.png" id="6_6iico"]

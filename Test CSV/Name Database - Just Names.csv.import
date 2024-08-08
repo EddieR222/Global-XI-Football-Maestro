@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bh34tpojnqbjt"
+
+[deps]
+
+files=["res://Test CSV/Name Database - Just Names.First.translation", "res://Test CSV/Name Database - Just Names.Name_ID.translation", "res://Test CSV/Name Database - Just Names.Last.translation"]
+
+source_file="res://Test CSV/Name Database - Just Names.csv"
+dest_files=["res://Test CSV/Name Database - Just Names.First.translation", "res://Test CSV/Name Database - Just Names.Name_ID.translation", "res://Test CSV/Name Database - Just Names.Last.translation"]
+
+[params]
+
+compress=true
+delimiter=0

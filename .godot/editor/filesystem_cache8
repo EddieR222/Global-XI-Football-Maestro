@@ -1,59 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1723078435
-Control.gd::GDScript::-1::1718562424::0::1::::<>Control<>::
-Game Directories - All Confederations.Children_ID.translation::OptimizedTranslation::1509990455469050590::1722294828::0::1::::<><>::
-Game Directories - All Confederations.csv::Translation::8278917077771324048::1722294822::1722294828::1::::<><>::
-Game Directories - All Confederations.ID.translation::OptimizedTranslation::3388281981166174838::1722294828::0::1::::<><>::
-Game Directories - All Confederations.Level.translation::OptimizedTranslation::7773438544191376797::1722294828::0::1::::<><>::
-Game Directories - All Confederations.Owner_ID.translation::OptimizedTranslation::6925320519781527064::1722294828::0::1::::<><>::
-Game Directories - All Confederations.Territory.translation::OptimizedTranslation::3985098628627775287::1722294828::0::1::::<><>::
-Game Directories - All Territories. Color.translation::OptimizedTranslation::2053318879478107373::1722294828::0::1::::<><>::
-Game Directories - All Territories.Area.translation::OptimizedTranslation::7749001586358663898::1722294828::0::1::::<><>::
-Game Directories - All Territories.Code.translation::OptimizedTranslation::7779587867962969691::1722294828::0::1::::<><>::
-Game Directories - All Territories.CoTerritory_ID.translation::OptimizedTranslation::5853682711039554307::1722294828::0::1::::<><>::
-Game Directories - All Territories.csv::Translation::1032564568329267121::1722294822::1722294828::1::::<><>::
-Game Directories - All Territories.First.translation::OptimizedTranslation::6445067852486141289::1722294828::0::1::::<><>::
-Game Directories - All Territories.Flag.translation::OptimizedTranslation::3933562931182310745::1722294828::0::1::::<><>::
-Game Directories - All Territories.GDP.translation::OptimizedTranslation::251534514244122611::1722294828::0::1::::<><>::
-Game Directories - All Territories.ID.translation::OptimizedTranslation::8332811259394822993::1722294828::0::1::::<><>::
-Game Directories - All Territories.Last.translation::OptimizedTranslation::1935682864665398336::1722294828::0::1::::<><>::
-Game Directories - All Territories.League.translation::OptimizedTranslation::8933289362374880367::1722294828::0::1::::<><>::
-Game Directories - All Territories.Population.translation::OptimizedTranslation::5388629816891857810::1722294828::0::1::::<><>::
-Game Directories - All Territories.Rating .translation::OptimizedTranslation::3082919618033079981::1722294828::0::1::::<><>::
-Game Directories - All Territories.Top.translation::OptimizedTranslation::8370180944767309299::1722294828::0::1::::<><>::
+::res://::1723109628
 GameMapMenuButton.tres::Theme::7739624163338901520::1722303870::0::1::::<><>::
-icon.svg::CompressedTexture2D::4715473616569385960::1718562430::1718562430::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Champions League Wins.translation::OptimizedTranslation::5252405315639410115::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Confederation ELO Points.translation::OptimizedTranslation::8917720332284151971::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Conference League Wins.translation::OptimizedTranslation::4611733407987001829::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Contenital.translation::OptimizedTranslation::7482448771284568888::1718839929::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).csv::Translation::7072047434292530630::1718839924::1718839930::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Current Position Bottom.translation::OptimizedTranslation::4873952708570543303::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Domestic Cup Wins.translation::OptimizedTranslation::5813435400885067429::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Europa League Wins.translation::OptimizedTranslation::2217010889923161182::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Final Elo Rating.translation::OptimizedTranslation::8864069981510714549::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Final Overall Rating.translation::OptimizedTranslation::7146885254580472229::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Final Ranking.translation::OptimizedTranslation::1425451331313216863::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).League Wins.translation::OptimizedTranslation::8424617664792714517::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).League.translation::OptimizedTranslation::3880595398647088573::1718839929::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Market.translation::OptimizedTranslation::6825785130308124::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Nation.translation::OptimizedTranslation::8353878593404357835::1718839929::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).National ELO Points.translation::OptimizedTranslation::4955405045245291608::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).National League ELO Points.translation::OptimizedTranslation::9067756405767755809::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Online Ranking Elo.translation::OptimizedTranslation::8005109892833112413::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Past Continental Points .translation::OptimizedTranslation::4007542595880018494::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Past Domestic Points.translation::OptimizedTranslation::3807951875330550196::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Ranking.translation::OptimizedTranslation::4384014540745429605::1718839929::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Star Rating.translation::OptimizedTranslation::8509432087336457678::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Super Cup Wins.translation::OptimizedTranslation::6470275885374316866::1718839930::0::1::::<><>::
-Leagues around the world - Team Rating Calculations (1).Team.translation::OptimizedTranslation::4065747246853120453::1718839929::0::1::::<><>::
-Name Database - Just Names.csv::Translation::2937340699051857465::1718844178::1718844184::1::::<><>::
-Name Database - Just Names.First.translation::OptimizedTranslation::4153119877923474851::1718844184::0::1::::<><>::
-Name Database - Just Names.Last.translation::OptimizedTranslation::4935438500978673501::1718844184::0::1::::<><>::
-Name Database - Just Names.Name_ID.translation::OptimizedTranslation::5815784148634720608::1718844184::0::1::::<><>::
 README.md::TextFile::-1::1718562430::0::1::::<><>::
-test_scene.gd::GDScript::-1::1722135097::0::1::::TestScene<>Control<>::
-test_scene.tscn::PackedScene::-1::1722135097::0::1::::<><>::
 ::res://addons/::1722144677
 ::res://addons/draggablesprite2d/::1718562430
 plugin.cfg::TextFile::-1::1718562430::0::1::::<><>::
@@ -112,7 +60,7 @@ gdsqlite.gdextension::GDExtension::-1::1718562430::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1718562430::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1718562430::0::1::::<><>::
 plugin.cfg::TextFile::-1::1718562430::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1723078428
+::res://addons/godot-sqlite/bin/::1723104917
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1718562430
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1718562430
 ::res://addons/goutte.unicode/::1718562430
@@ -11689,7 +11637,7 @@ team_logo_icon.png::CompressedTexture2D::5999125747609041686::1718562424::171856
 tournament_icon.png::CompressedTexture2D::1369045791143387575::1718562424::1718562424::1::::<><>::
 trophy_icon.png::CompressedTexture2D::5720681252933950031::1718562424::1718562424::1::::<><>::
 world_icon.png.png::CompressedTexture2D::7011507300605697420::1718562424::1718562424::1::::<><>::
-::res://Resources/::1723090611
+::res://Resources/::1723091742
 Confederation.gd::GDScript::-1::1722367090::0::1::::Confederation<>Resource<>::
 GameMap.gd::GDScript::-1::1722220591::0::1::::GameMap<>Resource<>::
 GameMapManager.gd::GDScript::-1::1722292886::0::1::::GameMapManager<>Resource<>::
@@ -11702,11 +11650,12 @@ Stadium.gd::GDScript::-1::1718562430::0::1::::Stadium<>Resource<>::
 territory.gd::GDScript::-1::1722996247::0::1::::Territory<>Resource<>::
 Tournament.gd::GDScript::-1::1719731529::0::1::::Tournament<>Resource<>::
 WorldMapGraph.gd::GDScript::-1::1722284698::0::1::::WorldMapGraph<>Node<>::
-::res://Resources/Aesthetic Details/::1723090611
 ::res://Resources/Player Details/::1722218596
 Player.gd::GDScript::-1::1722218596::0::1::::Player<>Resource<>::
 PlayerManager.gd::GDScript::-1::1719674897::0::1::::PlayerManager<>Resource<>::
 PlayerSeasonStats.gd::GDScript::-1::1718579429::0::1::::PlayerSeasonStats<>Resource<>::
+::res://Resources/Settings/::1723094335
+Settings.gd::GDScript::-1::1723094335::0::1::::Settings<>Node<>::
 ::res://Resources/Team Details/::1723028168
 Team.gd::GDScript::-1::1723028168::0::1::::Team<>Resource<>::
 TeamTournamentStats.gd::GDScript::-1::1722391587::0::1::::TeamTournamentStats<>Resource<>::
@@ -11726,7 +11675,8 @@ my_script.gd::GDScript::-1::1718562430::0::1::::<>RefCounted<>::
 safe_resource.tres::Resource/Resource::989706826449730690::1718562430::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
 saved_game.gd::GDScript::-1::1718562430::0::1::::SRLSavedGame<>Resource<>::
 unsafe_resource.tres::Resource/Resource::6448094193986199902::1718562430::0::1::::<><>::res://safe_resource_loader_example/saved_game.gd
-::res://Scenes/::1720322875
+::res://Scenes/::1723109443
+Control.gd::GDScript::-1::1718562424::0::1::::<>Control<>::
 game_mode.tscn::PackedScene::6152867077861201729::1718562430::0::1::::<><>::
 start_up.gd::GDScript::-1::1718562430::0::1::::<>Control<>::
 start_up.tscn::PackedScene::5474885288116163727::1718755234::0::1::::<><>::uid://cgxy8edcrbqnw::::res://Images/start_up_background.jpg<>res://Scenes/start_up.gd
@@ -11751,9 +11701,9 @@ Rating Value.gd::GDScript::-1::1718562430::0::1::::<>SpinBox<>::
 T ID.gd::GDScript::-1::1718562430::0::1::::<>SpinBox<>::
 Territory Name Edit.gd::GDScript::-1::1720219060::0::1::::<>LineEdit<>::
 TextureButton.gd::GDScript::-1::1718562430::0::1::::<>TextureButton<>::
-::res://Scenes/GameMapEditor/::1723079345
+::res://Scenes/GameMapEditor/::1723109635
 GameMapEditor.gd::GDScript::-1::1718562430::0::1::::<>Control<>::
-GameMapEditor.tscn::PackedScene::4945358785978659714::1722304030::0::1::::<><>::res://Scenes/GameMapEditor/GameMapEditor.gd<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>uid://dijeqj7meug53::::res://GameMapMenuButton.tres<>uid://c65ora8j2a8su::::res://Images/Icons/world_icon.png.png<>uid://crqayvu5gcmqw::::res://Images/Icons/team_logo_icon.png<>uid://ds7vxc8b1nn10::::res://Images/Icons/player_icon.png<>uid://trf8pxoqve84::::res://Images/Icons/tournament_icon.png<>uid://b8uu5pwkliayf::::res://Images/Icons/stadium_icon.png<>uid://ofmn2c28o1yp::::res://Images/Icons/manager_icon.png<>uid://dtfa3dj15ee2f::::res://Images/Icons/football_kit_icon.png<>uid://cnre1w2nfyinf::::res://Images/Icons/trophy_icon.png
+GameMapEditor.tscn::PackedScene::4945358785978659714::1723109635::0::1::::<><>::res://Scenes/GameMapEditor/GameMapEditor.gd<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>uid://dijeqj7meug53::::res://GameMapMenuButton.tres<>uid://c65ora8j2a8su::::res://Images/Icons/world_icon.png.png<>uid://crqayvu5gcmqw::::res://Images/Icons/team_logo_icon.png<>uid://ds7vxc8b1nn10::::res://Images/Icons/player_icon.png<>uid://trf8pxoqve84::::res://Images/Icons/tournament_icon.png<>uid://b8uu5pwkliayf::::res://Images/Icons/stadium_icon.png<>uid://ofmn2c28o1yp::::res://Images/Icons/manager_icon.png<>uid://dtfa3dj15ee2f::::res://Images/Icons/football_kit_icon.png<>uid://cnre1w2nfyinf::::res://Images/Icons/trophy_icon.png
 ::res://Scenes/GameMapEditor/League Editor/::1720384163
 League Editor.gd::GDScript::-1::1718562430::0::1::::<>Control<>::
 League Editor.tscn::PackedScene::6547776654348197887::1719814035::0::1::::<><>::res://Scenes/GameMapEditor/League Editor/League Editor.gd<>res://Scenes/GameMapEditor/League Editor/Tournament Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TextureButton.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Name.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/League Tournament ID.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/SpinBox.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Host Country Input.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Every N Years Input.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/StartDayInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/EndDayInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentLogo.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TournamentName.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tournament ID.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourImportanceInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourHostCountryInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/Tour Every N Years Input.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourStartDayInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndMonthInput.gd<>res://Scenes/GameMapEditor/League Editor/Misc Scripts/TourEndDayInput.gd
@@ -11791,13 +11741,14 @@ SingleKnockOutNode.tscn::PackedScene::5942002964185257488::1718562430::0::1::::<
 SpecificTeamPopPanel.gd::GDScript::-1::1718562430::0::1::::<>PopupPanel<>::
 TeamsList.gd::GDScript::-1::1718562430::0::1::::<>ItemList<>::
 TournamentSelection.gd::GDScript::-1::1718562430::0::1::::<>OptionButton<>::
-::res://Scenes/GameMapEditor/New Team Editor/::1723083827
-Team Editor 2.tscn::PackedScene::174819667336499039::1723083827::0::1::::<><>::
+::res://Scenes/GameMapEditor/New Team Editor/::1723099838
+Team Editor 2.gd::GDScript::-1::1723093206::0::1::::<>Control<>::
+Team Editor 2.tscn::PackedScene::174819667336499039::1723099838::0::1::::<><>::res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd
 ::res://Scenes/GameMapEditor/Player Editor/::1718562430
 PlayerEditor.tscn::PackedScene::5819171660964311173::1718562430::0::1::::<><>::
-::res://Scenes/GameMapEditor/Team Editor/::1723083826
+::res://Scenes/GameMapEditor/Team Editor/::1723099837
 Team Editor.gd::GDScript::-1::1723079114::0::1::::<>Node<>::
-Team Editor.tscn::PackedScene::5428947114430059492::1723083826::0::1::::<><>::res://Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
+Team Editor.tscn::PackedScene::5428947114430059492::1723099837::0::1::::<><>::res://Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
 ::res://Scenes/GameMapEditor/Team Editor/Misc Scripts/::1718562430
 City Input.gd::GDScript::-1::1718562430::0::1::::<>LineEdit<>::
 Logo.gd::GDScript::-1::1718562430::0::1::::<>TextureButton<>::
@@ -11833,6 +11784,58 @@ RegionArea.gd::GDScript::-1::1720479202::0::1::::<>Area2D<>::
 RegionArea.tscn::PackedScene::8337881817944772829::1720486753::0::1::::<><>::res://Scenes/territory_select/territory_area/RegionArea.gd
 ::res://Singletons/::1723027448
 uuid.gd::GDScript::-1::1723027448::0::1::::<>Node<>::
+::res://Test CSV/::1723109591
+Game Directories - All Confederations.Children_ID.translation::OptimizedTranslation::1509990455469050590::1723109495::0::1::::<><>::
+Game Directories - All Confederations.csv::Translation::8278917077771324048::1722294822::1723109495::1::::<><>::
+Game Directories - All Confederations.ID.translation::OptimizedTranslation::3388281981166174838::1723109495::0::1::::<><>::
+Game Directories - All Confederations.Level.translation::OptimizedTranslation::7773438544191376797::1723109495::0::1::::<><>::
+Game Directories - All Confederations.Owner_ID.translation::OptimizedTranslation::6925320519781527064::1723109495::0::1::::<><>::
+Game Directories - All Confederations.Territory.translation::OptimizedTranslation::3985098628627775287::1723109495::0::1::::<><>::
+Game Directories - All Territories. Color (2).translation::OptimizedTranslation::2971156862318827747::1723109498::0::1::::<><>::
+Game Directories - All Territories. Color.translation::OptimizedTranslation::2053318879478107373::1723109565::0::1::::<><>::
+Game Directories - All Territories.Area (2).translation::OptimizedTranslation::3576469184196453698::1723109498::0::1::::<><>::
+Game Directories - All Territories.Area.translation::OptimizedTranslation::7749001586358663898::1723109565::0::1::::<><>::
+Game Directories - All Territories.Code (2).translation::OptimizedTranslation::4069916455609128423::1723109498::0::1::::<><>::
+Game Directories - All Territories.Code.translation::OptimizedTranslation::7779587867962969691::1723109565::0::1::::<><>::
+Game Directories - All Territories.CoTerritory_ID.translation::OptimizedTranslation::5853682711039554307::1723109565::0::1::::<><>::
+Game Directories - All Territories.csv::Translation::1032564568329267121::1722294822::1723109565::1::::<><>::
+Game Directories - All Territories.First.translation::OptimizedTranslation::6445067852486141289::1723109565::0::1::::<><>::
+Game Directories - All Territories.Flag.translation::OptimizedTranslation::3933562931182310745::1723109565::0::1::::<><>::
+Game Directories - All Territories.GDP.translation::OptimizedTranslation::251534514244122611::1723109565::0::1::::<><>::
+Game Directories - All Territories.ID.translation::OptimizedTranslation::8332811259394822993::1723109565::0::1::::<><>::
+Game Directories - All Territories.Last.translation::OptimizedTranslation::1935682864665398336::1723109565::0::1::::<><>::
+Game Directories - All Territories.League.translation::OptimizedTranslation::8933289362374880367::1723109565::0::1::::<><>::
+Game Directories - All Territories.Population.translation::OptimizedTranslation::5388629816891857810::1723109565::0::1::::<><>::
+Game Directories - All Territories.Rating .translation::OptimizedTranslation::3082919618033079981::1723109565::0::1::::<><>::
+Game Directories - All Territories.Top.translation::OptimizedTranslation::8370180944767309299::1723109565::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Champions League Wins.translation::OptimizedTranslation::5252405315639410115::1723109574::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Confederation ELO Points.translation::OptimizedTranslation::8917720332284151971::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Conference League Wins.translation::OptimizedTranslation::4611733407987001829::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Contenital.translation::OptimizedTranslation::7482448771284568888::1723109574::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).csv::Translation::7072047434292530630::1718839924::1723109575::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Current Position Bottom.translation::OptimizedTranslation::4873952708570543303::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Domestic Cup Wins.translation::OptimizedTranslation::5813435400885067429::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Europa League Wins.translation::OptimizedTranslation::2217010889923161182::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Final Elo Rating.translation::OptimizedTranslation::8864069981510714549::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Final Overall Rating.translation::OptimizedTranslation::7146885254580472229::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Final Ranking.translation::OptimizedTranslation::1425451331313216863::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).League Wins.translation::OptimizedTranslation::8424617664792714517::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).League.translation::OptimizedTranslation::3880595398647088573::1723109574::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Market.translation::OptimizedTranslation::6825785130308124::1723109574::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Nation.translation::OptimizedTranslation::8353878593404357835::1723109574::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).National ELO Points.translation::OptimizedTranslation::4955405045245291608::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).National League ELO Points.translation::OptimizedTranslation::9067756405767755809::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Online Ranking Elo.translation::OptimizedTranslation::8005109892833112413::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Past Continental Points .translation::OptimizedTranslation::4007542595880018494::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Past Domestic Points.translation::OptimizedTranslation::3807951875330550196::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Ranking.translation::OptimizedTranslation::4384014540745429605::1723109574::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Star Rating.translation::OptimizedTranslation::8509432087336457678::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Super Cup Wins.translation::OptimizedTranslation::6470275885374316866::1723109575::0::1::::<><>::
+Leagues around the world - Team Rating Calculations (1).Team.translation::OptimizedTranslation::4065747246853120453::1723109574::0::1::::<><>::
+Name Database - Just Names.csv::Translation::2937340699051857465::1718844178::1723109591::1::::<><>::
+Name Database - Just Names.First.translation::OptimizedTranslation::4153119877923474851::1723109590::0::1::::<><>::
+Name Database - Just Names.Last.translation::OptimizedTranslation::4935438500978673501::1723109591::0::1::::<><>::
+Name Database - Just Names.Name_ID.translation::OptimizedTranslation::5815784148634720608::1723109591::0::1::::<><>::
 ::res://Tests/::1722145285
 ::res://Tests/Editor_Testing/::1722234202
 ::res://Tests/Editor_Testing/WorldMapEditor_Testing/::1722235005
@@ -11843,5 +11846,6 @@ test_TerritoryEditor.gd::GDScript::-1::1718562430::0::1::::<>GutTest<>::
 ::res://Tests/Resource_Testing/::1719369483
 test_Player.gd::GDScript::-1::1718562430::0::1::::<>GutTest<>::
 test_PlayerGeneration.gd::GDScript::-1::1719369483::0::1::::<>GutTest<>::
-::res://Textures/::1718562430
+::res://Textures/::1723109635
+GameMapMenuButton.tres::Theme::-1::1722303870::0::1::::<><>::
 main_menu.tres::Theme::320751974886637368::1718562430::0::1::::<><>::

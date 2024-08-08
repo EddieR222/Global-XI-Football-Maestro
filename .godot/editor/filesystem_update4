@@ -1,5 +1,57 @@
-res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
-res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
+res://Test CSV/Game Directories - All Confederations.ID.translation
+res://Test CSV/Game Directories - All Confederations.Level.translation
+res://Test CSV/Game Directories - All Confederations.Territory.translation
+res://Test CSV/Game Directories - All Confederations.Owner_ID.translation
+res://Test CSV/Game Directories - All Confederations.Children_ID.translation
+res://Game Directories - All Territories.ID.translation
+res://Game Directories - All Territories.CoTerritory_ID.translation
+res://Game Directories - All Territories.Flag.translation
+res://Game Directories - All Territories.Population.translation
+res://Game Directories - All Territories.GDP.translation
+res://Game Directories - All Territories.First.translation
+res://Game Directories - All Territories.Last.translation
+res://Game Directories - All Territories.Rating .translation
+res://Game Directories - All Territories.League.translation
+res://Game Directories - All Territories.Top.translation
+res://Test CSV/Game Directories - All Territories.ID.translation
+res://Test CSV/Game Directories - All Territories.CoTerritory_ID.translation
+res://Test CSV/Game Directories - All Territories. Color.translation
+res://Test CSV/Game Directories - All Territories.Code.translation
+res://Test CSV/Game Directories - All Territories.Flag.translation
+res://Test CSV/Game Directories - All Territories.Population.translation
+res://Test CSV/Game Directories - All Territories.Area.translation
+res://Test CSV/Game Directories - All Territories.GDP.translation
+res://Test CSV/Game Directories - All Territories.First.translation
+res://Test CSV/Game Directories - All Territories.Last.translation
+res://Test CSV/Game Directories - All Territories.Rating .translation
+res://Test CSV/Game Directories - All Territories.League.translation
+res://Test CSV/Game Directories - All Territories.Top.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Team.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Contenital.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Nation.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).League.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Ranking.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Market.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Champions League Wins.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Europa League Wins.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Conference League Wins.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).League Wins.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Domestic Cup Wins.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Super Cup Wins.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Confederation ELO Points.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).National ELO Points.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).National League ELO Points.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Past Domestic Points.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Past Continental Points .translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Current Position Bottom.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Online Ranking Elo.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Final Elo Rating.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Final Ranking.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Final Overall Rating.translation
+res://Test CSV/Leagues around the world - Team Rating Calculations (1).Star Rating.translation
+res://Test CSV/Name Database - Just Names.First.translation
+res://Test CSV/Name Database - Just Names.Name_ID.translation
+res://Test CSV/Name Database - Just Names.Last.translation
 res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
-res://Resources/Settings/Settings.gd
-res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd
+res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
+res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://oyggm3w8ydl6"
+
+[deps]
+
+files=["res://Test CSV/Game Directories - All Territories.ID.translation", "res://Test CSV/Game Directories - All Territories.CoTerritory_ID.translation", "res://Test CSV/Game Directories - All Territories. Color.translation", "res://Test CSV/Game Directories - All Territories.Code.translation", "res://Test CSV/Game Directories - All Territories.Flag.translation", "res://Test CSV/Game Directories - All Territories.Population.translation", "res://Test CSV/Game Directories - All Territories.Area.translation", "res://Test CSV/Game Directories - All Territories.GDP.translation", "res://Test CSV/Game Directories - All Territories.First.translation", "res://Test CSV/Game Directories - All Territories.Last.translation", "res://Test CSV/Game Directories - All Territories.Rating .translation", "res://Test CSV/Game Directories - All Territories.League.translation", "res://Test CSV/Game Directories - All Territories.Top.translation"]
+
+source_file="res://Test CSV/Game Directories - All Territories.csv"
+dest_files=["res://Test CSV/Game Directories - All Territories.ID.translation", "res://Test CSV/Game Directories - All Territories.CoTerritory_ID.translation", "res://Test CSV/Game Directories - All Territories. Color.translation", "res://Test CSV/Game Directories - All Territories.Code.translation", "res://Test CSV/Game Directories - All Territories.Flag.translation", "res://Test CSV/Game Directories - All Territories.Population.translation", "res://Test CSV/Game Directories - All Territories.Area.translation", "res://Test CSV/Game Directories - All Territories.GDP.translation", "res://Test CSV/Game Directories - All Territories.First.translation", "res://Test CSV/Game Directories - All Territories.Last.translation", "res://Test CSV/Game Directories - All Territories.Rating .translation", "res://Test CSV/Game Directories - All Territories.League.translation", "res://Test CSV/Game Directories - All Territories.Top.translation"]
+
+[params]
+
+compress=true
+delimiter=0
