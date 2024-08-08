@@ -4,19 +4,6 @@
 ![Logo of Global XI Football Maestro](https://github.com/EddieR222/Global-XI-Football-Maestro/blob/main/Images/Global_XI_Football_Maestro_Logo.JPG "Global XI Football Maestro")
 
 
-<p align="center">
-&bull; <a href="#introduction">Introduction</a> &nbsp;<br/>
-&bull;<a href="#features">Features</a> &nbsp;<br/>
-&bull;<a href="#technologies">Technologies</a> &nbsp;<br/>
-&bull;<a href="#current state">Current State</a> &nbsp;<br/>
-&bull;<a href="#rules">Rules</a> &nbsp;<br/>
-&bull;<a href="#how to contribute">How to Contribute</a> &nbsp;<br/>
-&bull;<a href="#about godot">About Godot</a> &nbsp;<br/>
-&bull;<a href="#discord">Discord</a>&nbsp;<br/>
-&bull;<a href="#donations">Donations</a> &nbsp;<br/>
-
-
-
 # Introduction
 
 Welcome to Global XI Football Maestro, a work in progress alternative football game with one principle in mind: Football Is For Everyone. Football should be enjoyed by everyone regardless of background, financial status, or location. For this reason, Global XI Football Maestro is going to be a **Free** and **Open Source** football game that aims to start a community of players all working together to make the best version a football game can be.
