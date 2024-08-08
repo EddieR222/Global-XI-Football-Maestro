@@ -18,7 +18,8 @@ config/icon="res://Images/icon.svg"
 [autoload]
 
 LogDuck="*res://addons/LogDuck/LogDuck.gd"
-GodotLogger="*res://addons/logger/logger.gd"
+uuid="*res://Singletons/uuid.gd"
+GameSettings="*res://Resources/Settings/Settings.gd"
 
 [debug]
 

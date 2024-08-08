@@ -5,7 +5,8 @@ class_name Team extends Resource
 @export var Name: String;
 @export var Display_Name: String;
 @export var Nick_Name: String;
-@export var Logo_Path: String;  ## ALERT The Images will now be stored in the user:// file system, the image will be in the folder "Team Logos" and will simply be the ID.png
+const Logo_Path_Dir: String = "user://Images/Team Logos/";
+@export var Logo_Filename: String;  ## ALERT The Images will now be stored in the user:// file system, the image will be in the folder "Team Logos" and will simply be the ID.png
 @export var ID: int;
 @export var Name_Code: String;
 
@@ -29,29 +30,35 @@ class_name Team extends Resource
 
 ## Function to save the image in the filesystem for the given team. Will save image with new identifier
 ## if team doesn't have a flag saved, otherwise it will overwrite the previous image
-func save_image_for_team(image: Image) -> void:
-	# First we need to resize the image and compress it before it can be stored
-	image.resize(120, 80, 2);
-	image.compress(Image.COMPRESS_BPTC);
+func save_image_for_team(image: Image) -> bool:
+	# First we need to validate that the image passed in is valid
+	if image == null:
+		return false;
+		
+	# Second, if team already has a logo saved, we need to ensure we delete it in order to ensure we don't leave unneeded images
+	if Logo_Filename != null and not Logo_Filename.is_empty():
+		DirAccess.remove_absolute(Logo_Path_Dir + Logo_Filename)
 	
-	# Second we need to get the current number of territory flags in "Territory Flags" folder
+	# Now we need to resize the image
+	image.resize(120, 80, 2);
+	
+	# Now we need to get the current number of territory flags in "Territory Flags" folder
 	var logo_path: String = "res://Images/Default Team Logos/"           #"user://Images/Team Logos/";
-	var num_images: int = get_num_import_files(logo_path);
-	print(num_images)
 
 	# Now we need to save this image using the number unique identifier or previous name is already located
-	var save_path: String = logo_path + str(num_images + 1) + ".png";
-	if Logo_Path.begins_with(logo_path):
-		save_path = Logo_Path;
-	image.save_png(save_path);
+	var save_path: String = logo_path + uuid.v4() + ".png";
+	var error: Error = image.save_png(save_path);
+	if error != OK:
+		return false
 	
 	# Now we save this path inside of the terr to have forever. We will also use this path to delete the image
-	Logo_Path = save_path;
+	Logo_Filename = save_path;
+	return true
 
 ## Get the image for this team. Null is returned if no image exists for this Team
 func get_team_logo() -> Image:
 	# Generate Load Path
-	var load_path: String = Logo_Path
+	var load_path: String = Logo_Filename
 	
 	# Load Image
 	if FileAccess.file_exists(load_path):

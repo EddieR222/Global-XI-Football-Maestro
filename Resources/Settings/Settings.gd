@@ -1,0 +1,23 @@
+class_name Settings
+extends Node
+
+""" Default Color Values """
+const DEFAULT_PRIMARY_COLOR: Color = Color(1.0/255.0, 22.0/255.0, 56.0/255.0);
+const DEFAULT_SECONDARY_COLOR: Color = Color(32.0/255.0, 28.0/255.0, 53.0/255.0);
+const DEFAULT_TERTIARY_COLOR: Color = Color(48.0/255.0, 74.0/255.0, 62.0/255.0);
+
+const DEFAULT_PRIMARY_CONTRAST_COLOR: Color = Color(184.0/255.0, 0.0, 28.0/255.0);
+const DEFAULT_SECONDARY_CONTRAST_COLOR: Color = Color(176.0/255.0, 176.0/255.0, 7.0/255.0);
+
+const DEFAULT_PRIMARY_TEXT_COLOR: Color = Color(254.0/255.0, 250.0/255.0, 224.0/225.0);
+const DEFAULT_SECONDARY_TEXT_COLOR: Color = Color(233.0/255.0, 237.0/255.0, 201.0/255.0);
+
+# TEXT SIZE
+const EXTRA_SMALL_FONTSIZE: int = 12
+const SMALL_FONTSIZE: int = 20;
+const MEDIUM_FONTSIZE: int = 32;
+const LARGE_FONTSIZE: int = 40;
+const EXTRA_LARGE_FONTSIZE: int = 50;
+
+# 
+

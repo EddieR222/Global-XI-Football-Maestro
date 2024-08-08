@@ -288,6 +288,11 @@ func _on_spin_box_value_changed(value: int) -> void:
 
 
 func load_default_territory_flags(dir: String, store_dir: String) -> bool:
+	# For now we want to clear the teams in the gamemap
+	game_map.Teams.clear();
+	for terr: Territory in game_map.Territories:
+		terr.Club_Teams_Rankings.clear();
+	
 	#First we must make sure the the passed in directory even exists
 	if not DirAccess.dir_exists_absolute(dir):
 		return false
@@ -297,6 +302,8 @@ func load_default_territory_flags(dir: String, store_dir: String) -> bool:
 	
 	# Now we have to get the list of territories in this directory
 	var dir_territories: PackedStringArray = team_logos_dir.get_directories();
+	
+	var local_teams: Array[Team] = []
 	
 	# Now for each territory we see if it has anything in the directory and save team logos present
 	for terr: Territory in game_map.Territories:
@@ -322,15 +329,12 @@ func load_default_territory_flags(dir: String, store_dir: String) -> bool:
 						
 						# Get image
 						var logo: Image = Image.load_from_file(dir + "/" + terr.Name + "/" + league + "/" + group + "/" + team_logo)
-						if logo == null:
-							print("Had issue with loading logo for " + team.Name)
-							continue
-						
-						# Now we save logo
-						team.save_image_for_team(logo);
+						if logo != null:
+							# Now we save logo
+							team.save_image_for_team(logo);
 						
 						# Now add to GameMap
-						game_map.add_team(team)
+						local_teams.push_back(team)
 						
 						# Add Team to territory
 						terr.Club_Teams_Rankings.push_back(team)
@@ -353,12 +357,12 @@ func load_default_territory_flags(dir: String, store_dir: String) -> bool:
 						team.save_image_for_team(logo);
 						
 						# Now add to GameMap
-						game_map.add_team(team)
+						local_teams.push_back(team)
 						
 						# Add Team to territory
 						terr.Club_Teams_Rankings.push_back(team)
 	
-	
+	game_map.add_teams(local_teams)
 	return true
 
 ## Runs when the user clicks the "Go Back" Button, simply takes them back to the GameMap Editor. All changes here are saved to "selected_game_map.res" file
