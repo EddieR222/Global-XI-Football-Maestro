@@ -90,11 +90,11 @@ There are many ways to contribute to this project. This game will benefit from a
 
 You can add anything! This can range from UI ideas, Team Kits, Player Animations, and even music. Any submissions can be added to the Github directly (via a fork) but can also be sent via the Discord channel as well. If adding via Github, please insert any submissions into the AssestDonation Folder and then submit a PR :) 
 
-## ⚙️ **If you are a Technical Type ** ⚙️
+## 🧑‍💻 **If you are Technical** 🧑‍💻
 
 You can contribute anyway you like! This can range from suggesting mathematical models, better data management, programming, and even website design. Please check any open issues in the Issues tab to see what you can contribute to. There are also project talks in the Discord to get a better idea of what currently needs help. In fact, we will attempt to label some issues as Beginner Issues so first time contributors can get their first contribution in. 
 
-## Anyone
+## ✨ **Anyone** ✨
 
 Anyone can still help even if they aren't creative or technical, you can help generate new ideas, finding bugs in the game, promoting the game, adding to the wiki, or even just researching leagues and teams around the globe. For a full list of ways to help please check out the Discord :)
 
