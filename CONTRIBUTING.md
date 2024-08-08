@@ -2,11 +2,11 @@
 
 ### Welcome to Global XI Football Maestro 
 
->Thank you for considering contributing to Global XI Football Meastro. Any contributions help and every contribution is greatly appreciated :)
+>Thank you for considering contributing to Global XI Football Maestro. Any contributions help and every contribution is greatly appreciated :)
 
 ### Make Sure to Read these Guidelines
 
->In order to keep the construction of this game as smooth as possible, it is important to follow these guidelines layed out here. To both respect all other contributers and to ensure the game gets done as quickly and smoothly as possible please read till the end of these guidelines to ensure your contributions are helpful :)
+>In order to keep the construction of this game as smooth as possible, it is important to follow these guidelines laid out here. To both respect all other contributors and to ensure the game gets done as quickly and smoothly as possible please read till the end of these guidelines to ensure your contributions are helpful :)
 
 ### Contributions We Need!
 
@@ -51,7 +51,7 @@ Before you make your first contribution, ensure to find the easiest ways to cont
 >If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
 
 # Getting started
-### How to sumbit a contribution
+### How to submit a contribution
 How you write this is up to you, but some things you may want to include:
 
 
@@ -103,13 +103,13 @@ The best way to suggest a feature is to answer the following question as well
 
 # Code review process
 ### How a contribution gets accepted after it’s been submitted.
-The founder of this Game or Selected Modderator will need to accept the contribution first before it can be submitted. The hope is that at least once a week the moderators will go through the pull requests. 
+The founder of this Game or Selected Moderator will need to accept the contribution first before it can be submitted. The hope is that at least once a week the moderators will go through the pull requests. 
 If feedback is given and there is no new developments to the PR after a month, the pull request may be closed due to inactivity
 
 # Community
 ### Discord 
 
-Please use the offical discord for connecting to the rest of the community and to get a better sense of how the game is going. This discord also serves other functions such as brainstorming, trouble shooting, football discussions, and questions. 
+Please use the official discord for connecting to the rest of the community and to get a better sense of how the game is going. This discord also serves other functions such as brainstorming, troubleshooting, football discussions, and questions. 
 The link to join should be in the homepage of the repo. 
 
 ### Email
@@ -117,6 +117,4 @@ The link to join should be in the homepage of the repo.
 If not able to use Discord, emailing the founder is also possible by emailing globalxifootballmaestro@gmail.com. Please send important messages here :)
 
 ### Future
-The hope is if the community gets big enough a website and reddit page may be made so more discussion about the game can be made. For now please be patient and following the rules above! Thank you :)
-
-
+The hope is if the community gets big enough a website and reddit page may be made so more discussion about the game can be made. For now please be patient and follow the rules above! Thank you :)
