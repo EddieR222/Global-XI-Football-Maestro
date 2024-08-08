@@ -5,15 +5,15 @@
 
 
 <p align="center">
-<a href="#introduction">Introduction</a> &nbsp;&bull;&nbsp;
-<a href="#features">Features</a> &nbsp;&bull;&nbsp;
-<a href="#technologies">Technologies</a> &nbsp;&bull;&nbsp;
-<a href="#current state">Current State</a> &nbsp;&bull;&nbsp;
-<a href="#rules">Rules</a> &nbsp;&bull;&nbsp;
-<a href="#how to contribute">How to Contribute</a> &nbsp;&bull;&nbsp;
-<a href="#about godot">About Godot</a> &nbsp;&bull;&nbsp;
-<a href="#discord">Discord</a> &nbsp;&bull;&nbsp;
-<a href="#donations">Donations</a> &nbsp;&bull;&nbsp;
+&bull; <a href="#introduction">Introduction</a> &nbsp;<br/>
+&bull;<a href="#features">Features</a> &nbsp;<br/>
+&bull;<a href="#technologies">Technologies</a> &nbsp;<br/>
+&bull;<a href="#current state">Current State</a> &nbsp;<br/>
+&bull;<a href="#rules">Rules</a> &nbsp;<br/>
+&bull;<a href="#how to contribute">How to Contribute</a> &nbsp;<br/>
+&bull;<a href="#about godot">About Godot</a> &nbsp;<br/>
+&bull;<a href="#discord">Discord</a>&nbsp;<br/>
+&bull;<a href="#donations">Donations</a> &nbsp;<br/>
 
 
 
