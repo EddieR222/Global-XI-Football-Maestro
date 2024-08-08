@@ -37,9 +37,9 @@ In order for this community to remain fun and productive, please abide by the ru
 # Your First Contribution
 Before you make your first contribution, ensure to find the easiest ways to contribute first. Issues should be label as the following
 
-Beginner issues - issues which should only require a few lines of code, and a test or two. Perfect for first contributions
-Help wanted issues - issues which should be a bit more involved than beginner issues.
-Critical issues - issues that may be complex and/or must be resolved as soon as possible
+Beginner issues - issues which should only require a few lines of code, and a test or two. Perfect for first contributions <br />
+Help wanted issues - issues which should be a bit more involved than beginner issues. <br />
+Critical issues - issues that may be complex and/or must be resolved as soon as possible <br />
 
 
 Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
