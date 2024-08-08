@@ -1,7 +1,7 @@
 # Global XI Football Maestro
 
 
-![Logo of Global XI Football Maestro](https://github.com/EddieR222/Global-XI-Football-Maestro/blob/main/Images/Global_XI_Football_Maestro_Logo.JPG "Global XI Football Maestro")
+![Logo of Global XI Football Maestro](https://github.com/EddieR222/Global-XI-Football-Maestro/blob/main/Images/Global_XI_Football_Maestro_Logo.JPG "Global XI Football Maestro" )
 
 
 # Introduction
