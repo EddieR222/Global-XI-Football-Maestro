@@ -73,11 +73,11 @@ These rules will also apply to the discord if you choose to join. A basic summar
 
 There are many ways to contribute to this project. This game will benefit from additions from all types of people. Below there are some suggestions to contributing but to see a full ruleset of **HOW** to contribute, please read the [Contribution](CONTRIBUTION.md) page. As the community grows and the project becomes more complex, new contribution guidelines may be added.
 
-## 🎨 **If you are Creative** 🎨
+## 🎨 **Creative Individuals** 🎨
 
 You can add anything! This can range from UI ideas, Team Kits, Player Animations, and even music. Any submissions can be added to the Github directly (via a fork) but can also be sent via the Discord channel as well. If adding via Github, please insert any submissions into the AssestDonation Folder and then submit a PR :) 
 
-## 🧑‍💻 **If you are Technical** 🧑‍💻
+## 🧑‍💻 **Technical Individuals** 🧑‍💻
 
 You can contribute anyway you like! This can range from suggesting mathematical models, better data management, programming, and even website design. Please check any open issues in the Issues tab to see what you can contribute to. There are also project talks in the Discord to get a better idea of what currently needs help. In fact, we will attempt to label some issues as Beginner Issues so first time contributors can get their first contribution in. 
 
