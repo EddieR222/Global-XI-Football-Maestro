@@ -2,11 +2,11 @@
 
 ### Welcome to Global XI Football Maestro 
 
->Thank you for considering contributing to Global XI Football Maestro. Any contributions help and every contribution is greatly appreciated :)
+Thank you for considering contributing to Global XI Football Maestro. Any contributions help and every contribution is greatly appreciated :)
 
 ### Make Sure to Read these Guidelines
 
->In order to keep the construction of this game as smooth as possible, it is important to follow these guidelines laid out here. To both respect all other contributors and to ensure the game gets done as quickly and smoothly as possible please read till the end of these guidelines to ensure your contributions are helpful :)
+In order to keep the construction of this game as smooth as possible, it is important to follow these guidelines laid out here. To both respect all other contributors and to ensure the game gets done as quickly and smoothly as possible please read till the end of these guidelines to ensure your contributions are helpful :)
 
 ### Contributions We Need!
 
@@ -42,27 +42,27 @@ Before you make your first contribution, ensure to find the easiest ways to cont
 > Critical issues - issues that may be complex and/or must be resolved as soon as possible
 
 
-> Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+Working on your first Pull Request? You can learn how from this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
 
 
->At this point, you're ready to make your changes! Feel free to ask for help; everyone is a beginner at first :smile_cat:
->
->If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
+At this point, you're ready to make your changes! Feel free to ask for help; everyone is a beginner at first :smile_cat:
+
+If a maintainer asks you to "rebase" your PR, they're saying that a lot of code has changed, and that you need to update your branch so it's easier to merge.
 
 # Getting started
 ### How to submit a contribution
 How you write this is up to you, but some things you may want to include:
 
 
-* To test code, please install the 
+* To test code, please install the GUT addon in the godot asset library
 
 
->For something that is bigger than a one or two line fix:
+For something that is bigger than a one or two line fix:
 
->1. Create your own fork of the code
->2. Do the changes in your fork
->3. If you like the change and think the project could use it:
+1. Create your own fork of the code
+2. Do the changes in your fork
+3. If you like the change and think the project could use it:
     * Be sure you have followed the code style for the project.
     * Send a pull request
 
@@ -79,18 +79,18 @@ How you write this is up to you, but some things you may want to include:
 
 # How to report a bug
 ### Security Vulnerabilities
-> If you find a security vulnerability, do NOT open an issue. Email globalxifootballmaestro@gmail.com instead.
+If you find a security vulnerability, do NOT open an issue. Email globalxifootballmaestro@gmail.com instead.
 
 ### How to file a bug report.
 
 
-> When filing an issue, make sure to answer these five questions:
->
-> 1. What version of Godot are you using?
-> 2. What operating system and processor architecture are you using?
-> 3. What did you do?
-> 4. What did you expect to see?
-> 5. What did you see instead?
+When filing an issue, make sure to answer these five questions:
+
+1. What version of Godot are you using?
+2. What operating system and processor architecture are you using?
+3. What did you do?
+4. What did you expect to see?
+5. What did you see instead?
 
 # How to suggest a feature or enhancement
 ### Discord
