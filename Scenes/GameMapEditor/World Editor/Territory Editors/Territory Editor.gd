@@ -55,7 +55,6 @@ func load_coterritory_popup(curr_terr: Territory) -> void:
 		var flag: Image = terr.get_territory_image();
 		var texture: Texture2D;
 		if flag != null:
-			flag.decompress();
 			texture = ImageTexture.create_from_image(flag);
 		else:
 			var default_icon: CompressedTexture2D = load("res://Images/icon.svg");

@@ -1,10 +1,10 @@
 class_name Team extends Resource
 
 
+
 """ Identifying Information """
 @export var Name: String;
-@export var Display_Name: String;
-@export var Nick_Name: String;
+@export var Nickname: String;
 const Logo_Path_Dir: String = "user://Images/Team Logos/";
 @export var Logo_Filename: String;  ## ALERT The Images will now be stored in the user:// file system, the image will be in the folder "Team Logos" and will simply be the ID.png
 @export var ID: int;
@@ -16,8 +16,18 @@ const Logo_Path_Dir: String = "user://Images/Team Logos/";
 
 """ Team Info """
 @export var Rating: int;
-@export var Team_Stadium: Stadium;
+@export var _Stadium: Stadium;
 @export var Gender: bool;
+
+""" Team Priorities """
+enum PRIORITY {VERY_LOW = 0, LOW = 1, MEDIUM = 2, HIGH = 3, VERY_HIGH = 4, CRITICAL = 5};
+## All the priorities by default will be VERY_LOW
+@export var Youth_Development: PRIORITY = PRIORITY.VERY_LOW;
+@export var Financial_Stability: PRIORITY = PRIORITY.VERY_LOW;
+@export var Reputation_Branding: PRIORITY = PRIORITY.VERY_LOW;
+@export var Facility_Maintenance: PRIORITY = PRIORITY.VERY_LOW;
+@export var Domestic_Success: PRIORITY = PRIORITY.VERY_LOW;
+@export var International_Success: PRIORITY = PRIORITY.VERY_LOW;
 
 """ Club History """
 @export var Trophies: Array
@@ -43,7 +53,7 @@ func save_image_for_team(image: Image) -> bool:
 	image.resize(120, 80, 2);
 	
 	# Now we need to get the current number of territory flags in "Territory Flags" folder
-	var logo_path: String = "res://Images/Default Team Logos/"           #"user://Images/Team Logos/";
+	var logo_path: String = "user://Images/Team Logos/";
 
 	# Now we need to save this image using the number unique identifier or previous name is already located
 	var save_path: String = logo_path + uuid.v4() + ".png";
@@ -57,18 +67,14 @@ func save_image_for_team(image: Image) -> bool:
 
 ## Get the image for this team. Null is returned if no image exists for this Team
 func get_team_logo() -> Image:
-	# Generate Load Path
-	var load_path: String = Logo_Filename
-	
 	# Load Image
-	if FileAccess.file_exists(load_path):
-		var image_data_compressed: CompressedTexture2D = load(load_path);
-		var image_data: Image = image_data_compressed.get_image()
-		if image_data == null:
-			return null
-		return image_data;
-	else:
-		return null
+	if FileAccess.file_exists(Logo_Filename):
+		var image: Image = Image.load_from_file(Logo_Filename)
+		if image != null:
+			return image
+	
+	
+	return null
 	
 	
 func get_num_import_files(image_folder_path: String) -> int:

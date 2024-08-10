@@ -291,7 +291,7 @@ func set_player_club_team(team_id: int) -> void:
 	var team_bits: int = team_id & 0xFFFFFFFF;
 	
 	# Now we set the bits
-	Key_Details &= ~(0xFF << 32);
+	Key_Details &= ~(0xFFFFFFFF << 32);
 	Key_Details |= (team_bits << 32);
 	
 ## Sets the player's club team by saving team of club
@@ -304,7 +304,7 @@ func set_player_national_team(team_id: int) -> void:
 	var team_bits: int = team_id & 0xFFFFFFFF;
 	
 	# Now we set the bits
-	Key_Details &= ~(0xFF);
+	Key_Details &= ~(0xFFFFFFFF);
 	Key_Details |= (team_bits);
 
 ## Sets the market value of the player

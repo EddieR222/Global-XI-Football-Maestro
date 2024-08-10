@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqxiwcetehsp"]
+[gd_scene load_steps=6 format=3 uid="uid://cqxiwcetehsp"]
 
 [ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd" id="1_yc1mq"]
 [ext_resource type="Texture2D" uid="uid://cn614eycgw6h8" path="res://Images/Backgrounds/Background_4.svg" id="2_n65gf"]
 [ext_resource type="Texture2D" uid="uid://c6frbihfvpaip" path="res://Images/Icons/NO_LOGO_ICON.png" id="3_o1bwb"]
 [ext_resource type="Texture2D" uid="uid://u8b4eq4emf77" path="res://Images/Icons/ArrowIcon.svg" id="4_h3qbe"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/LogoInput.gd" id="4_it5nu"]
 [ext_resource type="Texture2D" uid="uid://dtfa3dj15ee2f" path="res://Images/Icons/football_kit_icon.png" id="5_7pnu8"]
-[ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd" id="5_fdve5"]
 
 [node name="TeamEditor2" type="Control"]
 layout_mode = 3
@@ -45,7 +43,7 @@ size_flags_vertical = 3
 [node name="GoBackButton" type="Button" parent="MarginContainer/VBoxContainer/TitleBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "<- Go Back
+text = "<- Go Back to Menu
 "
 flat = true
 
@@ -90,10 +88,8 @@ text = "Add new Team"
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
-current_tab = 1
 
 [node name="Identity" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Body" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Identity"]
@@ -117,16 +113,12 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="LogoWhiteBackground" type="ColorRect" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/LogoButtonMargin"]
-layout_mode = 2
-
-[node name="LogoInput" type="TextureButton" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/LogoButtonMargin" groups=["T_Info"]]
+[node name="LogoInput" type="TextureButton" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/LogoButtonMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("3_o1bwb")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("4_it5nu")
 
 [node name="TeamNameMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName"]
 layout_mode = 2
@@ -137,7 +129,7 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 30
 
-[node name="TeamNameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/TeamNameMargin" groups=["T_Info"]]
+[node name="TeamNameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/TeamNameMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -146,7 +138,6 @@ placeholder_text = "Team Name"
 alignment = 1
 max_length = 50
 clear_button_enabled = true
-script = ExtResource("5_fdve5")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails"]
 layout_mode = 2
@@ -180,7 +171,7 @@ size_flags_vertical = 6
 text = "Nickname: "
 horizontal_alignment = 1
 
-[node name="NicknameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails" groups=["T_Info"]]
+[node name="NicknameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -550,6 +541,7 @@ visible = false
 layout_mode = 2
 
 [node name="Players" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players"]
@@ -562,15 +554,9 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails"]
 layout_mode = 2
-size_flags_vertical = 6
 text = "Team Formation"
 horizontal_alignment = 1
 uppercase = true
-
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 13.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer"]
 layout_mode = 2
@@ -601,9 +587,6 @@ ok_button_text = "Retry"
 dialog_text = "Loading the selected Logo for the Team has failed"
 
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/TitleBar/CountrySelectionInput" to="." method="_on_country_selection_input_item_selected"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/TitleBar/TeamSelectionInput" to="." method="_on_team_selection_input_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/LogoButtonMargin/LogoInput" to="." method="_on_logo_input_pressed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/TeamNameMargin/TeamNameInput" to="." method="_on_team_name_input_text_changed"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails/NicknameInput" to="." method="_on_nickname_input_text_changed"]
 [connection signal="file_selected" from="TeamLogoFileDialg" to="." method="_on_team_logo_file_dialg_file_selected"]
 [connection signal="confirmed" from="TeamLogoFailure" to="." method="_on_team_logo_failure_confirmed"]
