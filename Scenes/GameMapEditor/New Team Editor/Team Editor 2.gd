@@ -10,10 +10,23 @@ var selected_team: Team;
 """ Dialogs """
 @onready var team_logo_file_dialog: FileDialog = get_node("TeamLogoFileDialg");
 
+""" GameMap """
+var gm: GameMap;
+
+""" Player Tab """
+var player_manager: PlayerManager;
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# First thing we want to do is load the countries
 	load_gamemap();
+	
+	# Get the Player Manager ready in case the player wants to generate players
+	player_manager = PlayerManager.new(gm)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,6 +39,7 @@ func load_gamemap() -> void:
 	
 	# Now we simply load the selected_game_map.res
 	var game_map: GameMap = game_map_manager.load_game_map_with_filename("selected_game_map");
+	gm = game_map;
 	
 	# Now we need to load in the country list for the country option button
 	# First we adjust the visuals for the popup menu
@@ -166,3 +180,31 @@ func _on_nickname_input_text_changed(new_text: String) -> void:
 	if selected_team != null:
 		selected_team.Nickname = new_text;
 	return
+
+
+
+
+""" Player Tab Inputs """
+func _on_generate_player_pressed() -> void:
+	## Before we start generating players, we need to get the current option for the TeamList View
+	var player_teamlist_view: OptionButton = get_node("MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar/PlayerViewOptions")
+	var player_teamlist_view_id: int = player_teamlist_view.get_selected_id()
+	if player_teamlist_view_id == -1:
+		return
+		
+	var players: Array[Player];
+	match player_teamlist_view_id:
+		0: # Squad Only
+			players = player_manager.generate_team_roster(selected_team.ID, 11);
+		1: # Squad and Substitutes
+			players = player_manager.generate_team_roster(selected_team.ID, 23);
+		2: # Whole Team
+			players = player_manager.generate_team_roster(selected_team.ID);
+		3:
+			players = player_manager.generate_team_roster(selected_team.ID, 10);
+		4:
+			players = player_manager.generate_team_roster(selected_team.ID, 10);
+			
+		
+	
+	pass # Replace with function body.

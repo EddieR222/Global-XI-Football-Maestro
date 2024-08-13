@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqxiwcetehsp"]
+[gd_scene load_steps=10 format=3 uid="uid://cqxiwcetehsp"]
 
 [ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd" id="1_yc1mq"]
 [ext_resource type="Texture2D" uid="uid://cn614eycgw6h8" path="res://Images/Backgrounds/Background_4.svg" id="2_n65gf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dtfa3dj15ee2f" path="res://Images/Icons/football_kit_icon.png" id="5_7pnu8"]
 [ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd" id="5_fdve5"]
 [ext_resource type="PackedScene" uid="uid://beetdrw2lnnfp" path="res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn" id="8_a5yv0"]
+[ext_resource type="Texture2D" uid="uid://csdsado3ilnxg" path="res://Images/Backgrounds/field.png" id="8_b4umv"]
 
 [node name="TeamEditor2" type="Control"]
 layout_mode = 3
@@ -581,11 +582,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Field" type="ColorRect" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
+[node name="Field" type="TextureRect" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0.0784314, 1, 0.388235, 0.458824)
+texture = ExtResource("8_b4umv")
+expand_mode = 1
 
 [node name="SubSep" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
 layout_mode = 2
@@ -662,7 +664,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar"]
+[node name="GeneratePlayer" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar"]
 layout_mode = 2
 text = "Generate Players for Current View"
 
@@ -703,10 +705,13 @@ initial_position = 1
 ok_button_text = "Retry"
 dialog_text = "Loading the selected Logo for the Team has failed"
 
+[node name="ConfirmPlayerGeneration" type="ConfirmationDialog" parent="."]
+
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/TitleBar/CountrySelectionInput" to="." method="_on_country_selection_input_item_selected"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/TitleBar/TeamSelectionInput" to="." method="_on_team_selection_input_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/LogoButtonMargin/LogoInput" to="." method="_on_logo_input_pressed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/TeamNameMargin/TeamNameInput" to="." method="_on_team_name_input_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails/NicknameInput" to="." method="_on_nickname_input_text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar/GeneratePlayer" to="." method="_on_generate_player_pressed"]
 [connection signal="file_selected" from="TeamLogoFileDialg" to="." method="_on_team_logo_file_dialg_file_selected"]
 [connection signal="confirmed" from="TeamLogoFailure" to="." method="_on_team_logo_failure_confirmed"]

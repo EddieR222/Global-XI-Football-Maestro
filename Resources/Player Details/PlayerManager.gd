@@ -65,64 +65,21 @@ const HIGH_RATING: Array[int] = [4, 8, 8, 40, 40];
 
 
 """ Cache Elements  """
-# Territory cache
-var Territory_Cache: Dictionary
-
-# Team Cache
-var Team_Cache: Dictionary 
-
-
-# Cache For Names
-var First_Name_Cache: Dictionary 
-var Last_Name_Cache: Dictionary 
-
-
 # Foreign Nationalities Cache
 var Foreign_Nation_Cache: Dictionary
 
 
-
-
-
-
-
-
 func _init(gm: GameMap):
-	# Here we want to create a cache for all the information we will want to get later. This is in order to speed up the player creation later
-	
 	# Now we set the game_map memeber
 	game_map = gm;
-	
-	
+
 	# Here we iter through all territories
 	for terr in gm.Territories:
-		# Here we set up the Territory Cachce
-		Territory_Cache[terr.Territory_ID] = terr;
-		
-		# Now we get the names for each Territory
-		var first_names := Array(terr.First_Names).map(func(name_id: int): return gm.get_name_by_id(name_id));
-		var last_names := Array(terr.Last_Names).map(func(name_id: int): return gm.get_name_by_id(name_id));
-		First_Name_Cache[terr.Territory_ID] = first_names;
-		Last_Name_Cache[terr.Territory_ID] = last_names;
-		
-		
 		# Now we get the Foreign Nation Possbilities
-		Foreign_Nation_Cache[terr.Territory_ID] = get_random_nationalities(terr.Territory_ID);
-		
-	# Here we set up the Team Cache
-	for team in gm.Teams:
-		Team_Cache[team.ID] = team;
-		
-	
-		
-	
-
-
-
-
+		Foreign_Nation_Cache[terr.ID] = get_random_nationalities(terr.ID);
 
 ## This function will create the entire roster for a team if given a team id
-func generate_team_roster(team_id: int, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
+func generate_team_roster(team_id: int, num:= -1, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
 	# First we need to get the team information
 	var team: Team = game_map.get_team_by_id(team_id);
 	
@@ -137,12 +94,21 @@ func generate_team_roster(team_id: int, percent_local:= -1, percent_foreign := -
 		percent_local = 100 - percent_foreign;
 		
 	# Calculate the number of local and foreign based on percentages passed in or estimated
-	var num_local: int = roundi(STARTING_TEAM_PLAYER_NUMBER * (percent_local / 100.0))
-	var num_foreign: int = STARTING_TEAM_PLAYER_NUMBER - num_local;
+	var num_local: int;
+	var num_foreign: int;
+	if num != -1:
+		num_local = roundi(num * (percent_local / 100.0))
+		num_foreign = num - num_local;
+	else:
+		num_local = roundi(STARTING_TEAM_PLAYER_NUMBER * (percent_local / 100.0))
+		num_foreign = STARTING_TEAM_PLAYER_NUMBER - num_local;
 	
 	# Now we simply call the create player function with the number of local and number of foreign
 	var player_roster: Array[Player] = [];
-	player_roster.resize(STARTING_TEAM_PLAYER_NUMBER);
+	if num != -1:
+		player_roster.resize(num);
+	else:
+		player_roster.resize(STARTING_TEAM_PLAYER_NUMBER)
 	
 	for i in range(num_local):
 		player_roster[i] = generate_player(STARTING_AGES.pick_random(), team_terr.Territory_ID, team_id);
@@ -213,12 +179,9 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 	var current_date: Array[int] = game_map.Date;
 	player.set_player_birthdate(randi() % current_date[0], randi() % current_date[1], current_date[2] - age)
 	
-	
-
 	# First we have to generate some random values
 	var position_chance: int = randi() % 101; #get random integer between 0 and 100
 	var foot_chance: int = randi() % 101;
-	
 	
 	# Now we determine position, height, and weight
 	# Here height and weight use a normal distribution using the const mean and std dev defined above
@@ -247,23 +210,19 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 
 	# Now we need to determine the player's rating. We do this by using the player's nationality
 	# and their team's average rating 
-	
 	var player_terr : Territory;
 	var potential: float;
 	
 	
 	# If Terr_ID is left empty, we will randomly choose a territory for the player
 	if terr_id == -1:
-		var territory_ids:  Array[int] = Territory_Cache.keys();
-		terr_id = territory_ids.pick_random();
-		
-		
+		terr_id = game_map.Territories.pick_random().ID;
 		
 		
 	if team_id == -1: # No team was given so just use Territory Rating as average rating 
 		# Set Nationality of Player
 		player.add_player_nationality(terr_id);
-		player_terr = Territory_Cache[terr_id];
+		player_terr = game_map.get_territory_by_id(terr_id);
 		
 		# Determine potential and ensure its withtin the range of 10 - 94
 		potential = randfn(66, TERRITORY_STD_DEV);
@@ -275,8 +234,8 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 		player.add_player_nationality(terr_id);
 		player.set_player_club_team(team_id);
 		
-		var player_team: Team = Team_Cache[team_id]
-		player_terr = Territory_Cache[terr_id];
+		var player_team: Team = game_map.get_team_by_id(team_id)
+		player_terr = game_map.get_territory_by_id(terr_id)
 		
 		# Use both team and nationality rating tp determine mean potential for player
 		var terr_rating_adjustment: int = roundi((player_terr.Rating - player_team.Rating) / 10.0);
@@ -307,16 +266,14 @@ func generate_player(age: int, terr_id := -1, team_id := -1) -> Player:
 	
 	
 	# Now we get the player's name
-	var first_name_list = First_Name_Cache[terr_id];
-	var last_name_list = Last_Name_Cache[terr_id];
 	var middle_chance: int = randi() % 101;
 	var first_name: String = "e"
 	var middle_name: String = "e"
 	var last_name: String = "e"
 	while first_name == last_name || middle_name == last_name || middle_name == first_name:
-		first_name = first_name_list.pick_random();
-		last_name = last_name_list.pick_random();
-		middle_name = last_name_list.pick_random();
+		first_name = player_terr.First_Names.pick_random();
+		last_name = player_terr.Last_Names.pick_random();
+		middle_name = player_terr.Last_Names.pick_random();
 			
 	if middle_chance < 50:
 		player.set_player_name(first_name.strip_edges() + " " + middle_name.strip_edges() + " " + last_name.strip_edges());
