@@ -8,6 +8,9 @@ class_name Player extends Resource
 ## The Name of the Player
 @export var Name: String
 
+## The Beginning of the Face Path 
+const Face_Path_Dir: String = "user://Images/Player Faces/";
+
 ## The Path for the Player's Face Image
 @export var Face_Path: String;
 
@@ -81,6 +84,13 @@ var Teams: int
 
 ## The Number of Months out for injury
 @export var Months_Injured: float;
+
+## The current stamina of the player
+@export var Stamina: int;
+
+## The Shirt Number of the Player in the current team
+@export var Club_Shirt_Number: int;
+@export var National_Team_Number: int;
 
 """ Current Season Stats """
 ## The Stats for Each Individal Tournaments
@@ -349,6 +359,40 @@ func set_player_month_injured(months: float) -> void:
 		
 	Months_Injured = months;
 
+## Function to save the image in the filesystem for the given team. Will save image with new identifier
+## if team doesn't have a flag saved, otherwise it will overwrite the previous image
+func save_image_for_player(image: Image) -> bool:
+	# First we need to validate that the image passed in is valid
+	if image == null:
+		return false;
+		
+	# Second, if team already has a logo saved, we need to ensure we delete it in order to ensure we don't leave unneeded images
+	if Face_Path != null and not Face_Path.is_empty():
+		DirAccess.remove_absolute(Face_Path_Dir + Face_Path)
+	
+	# Now we need to resize the image
+	image.resize(720, 720, 2);
+	
+	# Now we need to save this image using the number unique identifier or previous name is already located
+	var new_uuid: String = uuid.v4()
+	var save_path: String = Face_Path_Dir + new_uuid + ".png";
+	var error: Error = image.save_png(save_path);
+	if error != OK:
+		return false
+	
+	# Now we save this path inside of the terr to have forever. We will also use this path to delete the image
+	Face_Path = new_uuid + ".png"
+	return true
+
+## Get the image for this team. Null is returned if no image exists for this Team
+func get_player_face() -> Image:
+	# Load Image
+	if FileAccess.file_exists(Face_Path_Dir + Face_Path):
+		var image: Image = Image.load_from_file(Face_Path_Dir + Face_Path)
+		if image != null:
+			return image
+	return null
+	
 
 """ Getter Functions """
 ## Call to get Player Name

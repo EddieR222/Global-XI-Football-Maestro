@@ -73,11 +73,13 @@ enum TITLES {
 
 
 """ Contract Info """
-
-@export  
+## This is the date that the contract started
+@export var Start_Date: int
 
 
 """ Setters """
+
+## Sets the Staff Id of the Staff Member 
 func set_staff_id(id: int) -> bool:
 	# Ensure ID is within range of unsigned 32 bit number
 	if id < 0 or id > 4_294_967_295:
@@ -91,13 +93,20 @@ func set_staff_id(id: int) -> bool:
 	Team_AND_Staff_ID |= (id_bits);
 	return true
 	
+## Sets the Team ID that the Staff Member works for (set to -1 to symbolize not working for any team)
 func set_team_id(id: int) -> bool:
-	# Ensure ID is within range of unsigned 32 bit number
-	if id < 0 or id > 4_294_967_295:
+	# Ensure ID is within range of unsigned 32 bit number 
+	# INFO -1 is a valid set ID in order to symbolize the staff member doesn't work for anyone
+	# but since this number is unsigned, the value stored will be the MAX unsigned 32 bit number
+	if id < -1 or id >= 4_294_967_295:
 		return false
-		
+	
 	# Get the bottom 32 bits
-	var id_bits: int = id & 0xFFFFFFFF;
+	var id_bits: int;
+	if id == -1: # SPECIAL CASE
+		id_bits = 0xFFFFFFFF;
+	else:
+		id_bits = id & 0xFFFFFFFF;
 	
 	# Now we clear the bits (in case we had a value previouslt) and then set bits
 	Team_AND_Staff_ID &= ~(0xFFFFFFFF << 32);
@@ -106,4 +115,17 @@ func set_team_id(id: int) -> bool:
 
 
 """ Getters """
+## Get the Staff ID of the Staff Member
+func get_staff_id() -> int:
+	return (Team_AND_Staff_ID) & 0xFFFFFFFF;
+
+## Get the Team ID of the Staff Member. Returns -1 if Staff Member is not employed by ANY team
+func get_team_id() -> int:
+	var team_id: int = (Team_AND_Staff_ID >> 32) & 0xFFFFFFFF;
+	
+	if team_id == 0xFFFFFFFF:
+		return -1;
+	else:
+		return team_id;
+
 

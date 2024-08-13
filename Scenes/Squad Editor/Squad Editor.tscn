@@ -23,17 +23,8 @@ text = "Team Formation"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="GraphEdit" type="GraphEdit" parent="VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 12.0
-show_grid = false
-zoom_min = 1.0
-zoom_max = 1.0
-zoom_step = 0.0
-minimap_enabled = false
-show_menu = false
-show_zoom_buttons = false
-show_grid_buttons = false
-show_minimap_button = false
-show_arrange_button = false
+color = Color(0.349065, 0.349065, 0.349065, 1)

@@ -1,14 +1,12 @@
-res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
+res://Scenes/Squad Editor/character_body_2d.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
+res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
 res://Scenes/GameMapEditor/World Editor/World Editor.tscn
 res://Scenes/Squad Editor/Squad Editor.tscn
-res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd
-res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd
-res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
-res://Scenes/GameMapEditor/New Team Editor/LogoInput.gd
-res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd
-res://Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd
-res://Resources/Team Details/Team.gd
-res://Resources/Staff Details/Staff.gd
+res://Scenes/Squad Editor/SquadPlayer.gd
 res://Resources/Player Details/Player.gd
+res://Scenes/Squad Editor/SquadPlayer.tscn
+res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
+res://Scenes/Squad Editor/SquadPlayer/Misc Scripts/PlayerFace.gd
+res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd

@@ -10,8 +10,6 @@ var selected_team: Team;
 """ Dialogs """
 @onready var team_logo_file_dialog: FileDialog = get_node("TeamLogoFileDialg");
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# First thing we want to do is load the countries
