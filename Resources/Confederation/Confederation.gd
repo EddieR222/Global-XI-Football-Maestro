@@ -22,13 +22,13 @@ var Name: String:
 
 ## The unique ID number to identify this confederation. Most of the code should use this ID to work with confederations
 @export
-var ID: int:
+var ID: int: ## 32 bit unsigned number
 	get: return ID;
 	set(new_id): 
 		ID = new_id;
 
 ## The Level of the Confederation. Only the World Confederation can be level 0, other additions by the user
-## will all start at level 1 and build on top of that. 
+## will all start at level 1 and up to level 9
 @export
 var Level: int;
 
@@ -55,18 +55,19 @@ var Confed_Tournaments: Array[Tournament];
 @export
 var Super_Cup: int = -1
 
-## DO NOT USE
+## The Tournament ID of the Cup for this Confederation. For larger Confederations this can be thought of as the top Cup of the Confederation.
+## Ex. In UEFA, the top cup would be the Champions League.  
 @export var Cup: int = -1
 
-@export_category("Rankings")
+## The list of ID for the Leagues within this Confederation. In addition, this will be ranked by how strong the leagues are 
+@export
+var League_Rankings: Array[Tournament];
+
+@export_category("Team Rankings")
 
 ## The list of ID for all the National Teams within this Confederation. In additon, this list is sorted by the how strong each national team is
 @export 
 var National_Teams_Rankings: Array[Team];
-
-## The list of ID for the Leagues within this Confederation. In addition, this will be ranked by how strong the leagues are 
-@export
-var National_League_Rankings: Array[Tournament];
 
 ## The list of IDs for the Club Teams within this Confederation. In addition, this will be ranked by how strong the club teams are.
 @export

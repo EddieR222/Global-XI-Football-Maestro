@@ -37,68 +37,9 @@ func load_game_map_with_filename(filename: String) -> GameMap:
 	
 	return game_map
 
-## This functions goes through all team logos and ensures the path for the images follows the natural order. This is to ensure there are not huge gaps
-## in the flag unique id. Doing this regularly helps to ensure the user can store up to 9223372036854775807 team logos (depending on their storage)
-func organize_team_images() -> void:
-	# First we need to access the folder that holds the Territoy Flags
-	var logo_path: String = logo_folder
-	var logo_folder_access: DirAccess = DirAccess.open(logo_path);
-	
-	# Now we need to ensure all natural numbers (starting from 1) are in the territory flag folder
-	var logo_id: int = 1;
-	for old_file_path: String in logo_folder_access.get_files():
-		var new_file_path: String = logo_folder + str(logo_id) + ".png";
-		if old_file_path != new_file_path:
-			# Doesn't follow natural order, so make it follow it by swapping it for new file path
-			# Get team with path
-			# First we need to get all the save files.
-			var save_file_folder: DirAccess = DirAccess.open(game_map_folder);
-			var game_map_list: PackedStringArray = save_file_folder.get_files();
-			
-			# Now we need to go through all gamemaps 
-			for game_map_path: String in game_map_list:
-				var game_map: GameMap = load_game_map(game_map_path);
-				
-				# Now we need to iter through the curr game_map and see if we find a team with the given path
-				for team: Team in game_map.Teams:
-					if team.Logo_Path == old_file_path:
-						team.Logo_Path = new_file_path;
-						logo_folder_access.rename(old_file_path, new_file_path);
-						save_game_map(game_map, game_map.Filename);
-				
-		logo_id += 1;
-		
 
-## This functions goes through all territory flags and ensures the path for the images follows the natural order. This is to ensure there are not huge gaps
-## in the flag unique id. Doing this regularly helps to ensure the user can store up to 9223372036854775807 territory flags (depending on their storage)
-func organize_territory_images() -> void:
-	# First we need to access the folder that holds the Team Logos
-	var flag_path: String = flag_folder
-	var flag_folder_access: DirAccess = DirAccess.open(flag_path);
-	
-	# Now we need to ensure all natural numbers (starting from 1) are in the territory flag folder
-	var flag_id: int = 1;
-	for old_file_path: String in flag_folder_access.get_files():
-		var new_file_path: String = flag_path + str(flag_id) + ".png";
-		if old_file_path != new_file_path:
-			# Doesn't follow natural order, so make it follow it by swapping it for new file path
-			# Get team with path
-			
-			# First we need to get all the save files.
-			var save_file_folder: DirAccess = DirAccess.open(game_map_folder);
-			var game_map_list: PackedStringArray = save_file_folder.get_files();
-			
-			# Now we need to go through all gamemaps 
-			for game_map_path: String in game_map_list:
-				var game_map: GameMap = load_game_map(game_map_path);
-				
-				# Now we need to iter through the curr game_map and see if we find a team with the given path
-				for terr: Territory in game_map.Territories:
-					if terr.Flag_Path == old_file_path:
-						terr.Flag_Path = new_file_path;
-						flag_folder_access.rename(old_file_path, new_file_path);
-						save_game_map(game_map, game_map.Filename);
-		flag_id += 1;
+
+
 
 
 

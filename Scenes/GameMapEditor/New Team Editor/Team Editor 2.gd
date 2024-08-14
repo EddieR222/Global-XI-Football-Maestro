@@ -38,7 +38,8 @@ func load_gamemap() -> void:
 	var game_map_manager: GameMapManager = GameMapManager.new();
 	
 	# Now we simply load the selected_game_map.res
-	var game_map: GameMap = game_map_manager.load_game_map_with_filename("selected_game_map");
+	#var game_map: GameMap = game_map_manager.load_game_map_with_filename("selected_game_map");
+	var game_map: GameMap = GameMap.new()
 	gm = game_map;
 	
 	# Now we need to load in the country list for the country option button
@@ -83,9 +84,9 @@ func load_gamemap() -> void:
 			# Add Metadata for easier management (item added will also be added to end so we now -1 will work)
 			terr_selection.set_item_metadata(-1, terr);
 			
-	# Now that we have added all confed and their territories, lets select the first country option by defacto
-	terr_selection.select(1)
-	terr_selection.item_selected.emit(1)
+	## Now that we have added all confed and their territories, lets select the first country option by defacto
+	#terr_selection.select(1)
+	#terr_selection.item_selected.emit(1)
 	
 	return
 
@@ -207,4 +208,9 @@ func _on_generate_player_pressed() -> void:
 			
 		
 	
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_entered():
+	print("Mouse Entered")
 	pass # Replace with function body.
