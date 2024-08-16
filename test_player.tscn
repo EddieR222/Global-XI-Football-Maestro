@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://64gwri0tb6us"]
+
+[ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Images/Icons/world_icon.png.png" id="1_nbl3k"]
+[ext_resource type="Script" path="res://Control.gd" id="2_c232p"]
+
+[node name="Control" type="TextureRect"]
+custom_minimum_size = Vector2(75, 75)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1077.0
+offset_bottom = -573.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nbl3k")
+expand_mode = 1
+script = ExtResource("2_c232p")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqxiwcetehsp"]
+[gd_scene load_steps=9 format=3 uid="uid://cqxiwcetehsp"]
 
 [ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd" id="1_yc1mq"]
 [ext_resource type="Texture2D" uid="uid://cn614eycgw6h8" path="res://Images/Backgrounds/Background_4.svg" id="2_n65gf"]
@@ -7,11 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/LogoInput.gd" id="4_it5nu"]
 [ext_resource type="Texture2D" uid="uid://dtfa3dj15ee2f" path="res://Images/Icons/football_kit_icon.png" id="5_7pnu8"]
 [ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd" id="5_fdve5"]
-[ext_resource type="PackedScene" uid="uid://beetdrw2lnnfp" path="res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn" id="8_a5yv0"]
-[ext_resource type="Texture2D" uid="uid://csdsado3ilnxg" path="res://Images/Backgrounds/field.png" id="8_b4umv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrdc4"]
-size = Vector2(120, 40)
+[ext_resource type="PackedScene" uid="uid://wg1tcvk27p26" path="res://Scenes/Squad Editor/Tactics Editor.tscn" id="8_7y0oe"]
 
 [node name="TeamEditor2" type="Control"]
 layout_mode = 3
@@ -563,132 +559,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Players" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+[node name="Players" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("8_7y0oe")]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TeamFormationDetails" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VScrollBar" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails"]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="TeamFormation" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Field" type="TextureRect" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
-custom_minimum_size = Vector2(400, 400)
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("8_b4umv")
-expand_mode = 1
-
-[node name="GoalKeeperArea" type="Area2D" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/Field"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/Field/GoalKeeperArea"]
-position = Vector2(235, 375)
-shape = SubResource("RectangleShape2D_vrdc4")
-
-[node name="SubSep" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
-layout_mode = 2
-size_flags_vertical = 2
-text = "Substitues"
-vertical_alignment = 1
-uppercase = true
-
-[node name="SubArea" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 6
-
-[node name="UI" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/SubArea" instance=ExtResource("8_a5yv0")]
-layout_mode = 2
-
-[node name="UI2" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/SubArea" instance=ExtResource("8_a5yv0")]
-layout_mode = 2
-
-[node name="UI3" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/SubArea" instance=ExtResource("8_a5yv0")]
-layout_mode = 2
-
-[node name="UI4" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/SubArea" instance=ExtResource("8_a5yv0")]
-layout_mode = 2
-
-[node name="UI5" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/SubArea" instance=ExtResource("8_a5yv0")]
-layout_mode = 2
-
-[node name="UI6" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/SubArea" instance=ExtResource("8_a5yv0")]
-layout_mode = 2
-
-[node name="UI7" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/SubArea" instance=ExtResource("8_a5yv0")]
-layout_mode = 2
-
-[node name="ReserveSep" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
-layout_mode = 2
-size_flags_vertical = 2
-text = "RESERVES"
-vertical_alignment = 1
-uppercase = true
-
-[node name="ReserveArea" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation"]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 6
-
-[node name="PlayerListArea" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="TitleBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PlayerViewOptions" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar"]
-layout_mode = 2
-alignment = 1
-item_count = 5
-selected = 2
-popup/item_0/text = "Squad Only"
-popup/item_0/id = 0
-popup/item_1/text = "Squad + Subs"
-popup/item_1/id = 1
-popup/item_2/text = "Whole Team"
-popup/item_2/id = 2
-popup/item_3/text = "Loaned Out Players"
-popup/item_3/id = 3
-popup/item_4/text = "Loaned In Players"
-popup/item_4/id = 4
-
-[node name="BlankSpace" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 5.0
-
-[node name="GeneratePlayer" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar"]
-layout_mode = 2
-text = "Generate Players for Current View"
-
-[node name="PlayerListButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/PlayerListButtons"]
-layout_mode = 2
-
-[node name="PlayerList" type="ItemList" parent="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 10.0
 
 [node name="History" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -706,6 +578,7 @@ ok_button_text = "Open"
 dialog_hide_on_ok = true
 file_mode = 0
 access = 2
+show_hidden_files = true
 use_native_dialog = true
 
 [node name="TeamLogoFailure" type="AcceptDialog" parent="."]
@@ -721,7 +594,5 @@ dialog_text = "Loading the selected Logo for the Team has failed"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/LogoButtonMargin/LogoInput" to="." method="_on_logo_input_pressed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/LogoAndName/TeamNameMargin/TeamNameInput" to="." method="_on_team_name_input_text_changed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails/NicknameInput" to="." method="_on_nickname_input_text_changed"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/TeamFormationDetails/VScrollBar/TeamFormation/Field/GoalKeeperArea" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Players/HBoxContainer/PlayerListArea/TitleBar/GeneratePlayer" to="." method="_on_generate_player_pressed"]
 [connection signal="file_selected" from="TeamLogoFileDialg" to="." method="_on_team_logo_file_dialg_file_selected"]
 [connection signal="confirmed" from="TeamLogoFailure" to="." method="_on_team_logo_failure_confirmed"]

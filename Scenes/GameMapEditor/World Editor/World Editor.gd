@@ -20,7 +20,7 @@ Preload Nodes that we will instantiate later
 
 func _ready():
 	# Here we want to load the "SelectedFile" file to load the selected GameMap in the GameMap Editor
-	load_selected_gamemap();
+	load_gamemap();
 	#pass
 
 
@@ -28,10 +28,9 @@ func _ready():
 """
 Functions below are responsible for saving and loading the WorldMap to user data. 
 """
-func load_selected_gamemap():
+func load_gamemap():	
 	#Load the World Map from Disk
-	var game_map_manager: GameMapManager = GameMapManager.new();
-	var file_map : GameMap = game_map_manager.load_game_map_with_filename("selected_game_map")
+	var file_map : GameMap = GameMapManager.game_map
 	#var file_map: GameMap = game_map_manager.get_csv_data();
 	if file_map == null:
 		return
@@ -44,17 +43,15 @@ func load_selected_gamemap():
 
 	# Start Graph Resource
 	var world_map: WorldMapGraph = graph_edit.world_graph #WorldMapGraph.new() 
-	world_map.game_map = file_map;
 	
 	
 	# Iter through the confederations
 	for confed: Confederation in file_map.Confederations:
-		var world_confed_node: GraphNode
 		# Establish Special World Node
 		if confed.Level == 0:
 			#Establish World Node
-			world_confed_node = graph_edit.establish_world_node();
-			world_confed_node.game_map = file_map
+			var world_confed_node: GraphNode
+			world_confed_node = graph_edit.establish_world_node(true);
 			world_confed_node.set_confed(confed);
 			world_map.add_node(world_confed_node);
 			
@@ -62,7 +59,6 @@ func load_selected_gamemap():
 			var terr_edit_node: GraphNode = terr_node.instantiate();
 			graph_edit.add_child(terr_edit_node);
 			terr_edit_node.visible = false;
-			terr_edit_node.game_map = file_map
 			
 			# Now we connect the territory edit node to the correct signals here
 			graph_edit.connect_signals_from_territory_node(terr_edit_node);
@@ -81,8 +77,6 @@ func load_selected_gamemap():
 		graph_edit.connect_signals_from_confed_node(new_node)
 		# Set the new confed and display Name, Level, And Territories
 		new_node.set_confed(confed)
-		# Give the new node a copy of gamemap
-		new_node.game_map = file_map
 		#Add it to graph_nodes to keep track of it
 		world_map.add_node(new_node);
 		#Enable Slots for all added nodes
@@ -94,13 +88,12 @@ func load_selected_gamemap():
 	
 	# Set Graph Edit's world
 	graph_edit.world_graph = world_map;
-	graph_edit.game_map = file_map;
 	
 	# Arrange Nodes
 	graph_edit.arrange_nodes();
 	
 	# Set FileName
-	get_node("VBoxContainer/HBoxContainer/FileName").text = file_map.Filename;
+	get_node("VBoxContainer/HBoxContainer/FileName").text = file_map.File_Name;
 	
 	# Now we sort all countries in all nodes
 	for node: GraphNode in world_map.graph_nodes:
@@ -136,7 +129,7 @@ func _on_go_back_button_pressed():
 		
 	# 2. Every Territory needs the bare minimum of one first and last names and a country rating of > 0
 	# we also want to ensure no Territory is simply named Territory (meaning the user didn't give it a name)
-	for terr: Territory in graph_edit.game_map.Territories:
+	for terr: Territory in GameMapManager.game_map.Territories:
 		if terr.First_Names.size() < 1:
 			error_message += "\n\t- {name}: Needs at Least One First Name".format({"name": terr.Name})
 		if terr.Last_Names.size() < 1:
@@ -160,8 +153,7 @@ func _on_go_back_button_pressed():
 		return
 	
 	# First we must save the file to the selected_game_map file
-	var game_map_manager: GameMapManager = GameMapManager.new();
-	game_map_manager.save_game_map(graph_edit.game_map, "selected_game_map");
+	GameMapManager.save_game_map();
 	
 	# Now switch scenes
 	#get_tree().change_scene_to_packed(GAME_MAP_EDITOR)

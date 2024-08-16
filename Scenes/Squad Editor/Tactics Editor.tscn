@@ -1,0 +1,248 @@
+[gd_scene load_steps=5 format=3 uid="uid://wg1tcvk27p26"]
+
+[ext_resource type="Texture2D" uid="uid://csdsado3ilnxg" path="res://Images/Backgrounds/field.png" id="1_qx7xf"]
+[ext_resource type="Script" path="res://Scenes/Squad Editor/Tactics Editor.gd" id="1_xpt86"]
+[ext_resource type="Script" path="res://Scenes/Squad Editor/LW.gd" id="3_yqm8q"]
+[ext_resource type="Script" path="res://Scenes/Squad Editor/ST.gd" id="4_a146v"]
+
+[node name="Players" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 2
+script = ExtResource("1_xpt86")
+
+[node name="Formation" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="TeamFormationDetails" type="VBoxContainer" parent="Formation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Formation/TeamFormationDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label" type="Label" parent="Formation/TeamFormationDetails/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+text = "Team Formation"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CheckButton" type="CheckButton" parent="Formation/TeamFormationDetails/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit Mode"
+
+[node name="TeamFormation" type="HBoxContainer" parent="Formation/TeamFormationDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="FieldandSquad" type="AspectRatioContainer" parent="Formation/TeamFormationDetails/TeamFormation"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+ratio = 0.66
+
+[node name="Field" type="TextureRect" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_qx7xf")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 23
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 23
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer"]
+layout_mode = 2
+
+[node name="LeftField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_yqm8q")
+
+[node name="LM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="LB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="Middle Field" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.6
+
+[node name="ST" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("4_a146v")
+
+[node name="CF" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SS" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CAM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="CM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="CDM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="CB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.55
+
+[node name="SW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="GK" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="RightField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LW2" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="LW3" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="SubsArea" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea"]
+layout_mode = 2
+text = "Subsitutes"
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+vertical_scroll_mode = 2
+
+[node name="SubArea" type="GridContainer" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerInfoAndListArea" type="VBoxContainer" parent="Formation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+
+[node name="TitleBar" type="HBoxContainer" parent="Formation/PlayerInfoAndListArea"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="PlayerViewOptions" type="OptionButton" parent="Formation/PlayerInfoAndListArea/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 5
+selected = 2
+popup/item_0/text = "Squad Only"
+popup/item_0/id = 0
+popup/item_1/text = "Squad + Subs"
+popup/item_1/id = 1
+popup/item_2/text = "Whole Team"
+popup/item_2/id = 2
+popup/item_3/text = "Loaned Out Players"
+popup/item_3/id = 3
+popup/item_4/text = "Loaned In Players"
+popup/item_4/id = 4
+
+[node name="BlankSpace" type="MarginContainer" parent="Formation/PlayerInfoAndListArea/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="GeneratePlayer" type="Button" parent="Formation/PlayerInfoAndListArea/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Generate Players for Current View"
+
+[node name="PlayerListButtons" type="HBoxContainer" parent="Formation/PlayerInfoAndListArea"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Button" type="Button" parent="Formation/PlayerInfoAndListArea/PlayerListButtons"]
+layout_mode = 2
+text = "Load Players"
+
+[node name="PlayerList" type="ItemList" parent="Formation/PlayerInfoAndListArea"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Player Comparision" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="Formation/PlayerInfoAndListArea/PlayerListButtons/Button" to="." method="_on_button_pressed"]

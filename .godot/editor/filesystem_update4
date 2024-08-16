@@ -1,14 +1,12 @@
-res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
+res://Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
-res://Resources/Confederation/CompressedConfederation.gd
-res://Resources/Confederation/Confederation.gd
-res://Resources/Team Details/CompressedTeam.gd
-res://Resources/Territory/territory.gd
-res://Resources/Territory/CompressedTerritory.gd
-res://Resources/Team Details/Team.gd
-res://Resources/Team Details/TeamTactics.gd
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
+res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
 res://Scenes/GameMapEditor/World Editor/World Editor.tscn
 res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
-res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd
-res://Resources/GameMap/GameMapManager.gd
+res://Scenes/Squad Editor/Tactics Editor.gd
+res://Scenes/Squad Editor/LW.gd
+res://Resources/Team Details/DefaultFormations.gd
+res://Scenes/Squad Editor/Field.gd
+res://Scenes/Squad Editor/ST.gd
+res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd

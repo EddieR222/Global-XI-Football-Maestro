@@ -9,10 +9,6 @@ extends GraphNode
 ## The local saved territory information
 @onready var territory: Territory = Territory.new();
 
-## The local saved GameMap, only needed for some information. This should NOT change GameMap directly
-@onready var game_map: GameMap;
-
-
 const COTERRITORY_INPUT: String = "VBoxContainer2/GridContainer/CoTerritory Input"
 
 """
@@ -47,7 +43,7 @@ func load_coterritory_popup(curr_terr: Territory) -> void:
 	
 	
 	# Now we need to add all the territories that the user has currently created
-	for terr: Territory in game_map.Territories:
+	for terr: Territory in GameMapManager.game_map.Territories:
 		# In order to not allow a territory to be a CoTerritory of itself, we skip the passed in terr
 		if terr.ID == curr_terr.ID:
 			continue

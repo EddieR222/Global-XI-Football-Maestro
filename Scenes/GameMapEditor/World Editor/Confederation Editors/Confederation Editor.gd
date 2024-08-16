@@ -2,7 +2,6 @@ extends GraphNode
 
 @export var selected_index: int = -1;
 var confed: Confederation = Confederation.new();
-var game_map: GameMap;
 
 """ ItemList """
 @onready var item_list: ItemList = get_node("HBoxContainer/ItemList");
@@ -93,7 +92,7 @@ func _on_add_territory_pressed():
 	default_territory.League_Elo = 0.0;
 	
 	# Add New Territory to GameMap
-	game_map.add_territory(default_territory);
+	GameMapManager.game_map.add_territory(default_territory);
 	
 	# Add it to Territory List
 	confed.add_territory(default_territory)
@@ -166,7 +165,7 @@ func _on_line_edit_text_changed(new_text):
 	confed.Name = new_text;
 	
 	# Sort Confederations again, since the name of this confed has changed
-	game_map.sort_confederations();
+	GameMapManager.game_map.sort_confederations();
 	
 	# Emit signal as button press counts as GraphNode selected
 	graphnode_selected.emit(confed.ID);

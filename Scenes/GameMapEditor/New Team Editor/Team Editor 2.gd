@@ -21,11 +21,12 @@ var player_manager: PlayerManager;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pass
 	# First thing we want to do is load the countries
-	load_gamemap();
+	#load_gamemap();
 	
 	# Get the Player Manager ready in case the player wants to generate players
-	player_manager = PlayerManager.new(gm)
+	#player_manager = PlayerManager.new(gm)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -213,4 +214,4 @@ func _on_generate_player_pressed() -> void:
 
 func _on_area_2d_mouse_entered():
 	print("Mouse Entered")
-	pass # Replace with function body.
+

@@ -1,55 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://beetdrw2lnnfp"]
+[gd_scene load_steps=5 format=3 uid="uid://beetdrw2lnnfp"]
 
 [ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd" id="1_3nyqf"]
 [ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Images/Icons/world_icon.png.png" id="2_vun3s"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/Misc Scripts/PlayerFace.gd" id="3_rlpc2"]
-[ext_resource type="Texture2D" uid="uid://bcutvjeoacok5" path="res://Images/Icons/NO_FLAG_ICON.png" id="4_dw3fi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb1hc"]
-size = Vector2(75, 75)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj6bi"]
 bg_color = Color(0, 0.717198, 0.381764, 1)
 
 [node name="UI" type="VBoxContainer"]
-custom_minimum_size = Vector2(75, 75)
-offset_right = 75.0
-offset_bottom = 75.0
+custom_minimum_size = Vector2(125, 100)
+offset_right = 125.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="SquadPlayer" type="CharacterBody2D" parent="."]
-position = Vector2(37.5, 37.5)
-input_pickable = true
+mouse_filter = 0
+theme_override_constants/separation = 0
 script = ExtResource("1_3nyqf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SquadPlayer"]
-shape = SubResource("RectangleShape2D_sb1hc")
 
 [node name="KeyInfo" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 12.0
+size_flags_stretch_ratio = 5.0
+theme_override_constants/separation = 0
 
-[node name="BlankSpace" type="MarginContainer" parent="KeyInfo"]
+[node name="Rating" type="Label" parent="KeyInfo" groups=["Squad_Info"]]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.7
-
-[node name="Stamina" type="ProgressBar" parent="KeyInfo" groups=["Squad_Info"]]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 0.25
-theme_override_styles/fill = SubResource("StyleBoxFlat_kj6bi")
-value = 78.0
-fill_mode = 3
-show_percentage = false
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 16
+text = "95"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="PlayerFaceContainer" type="AspectRatioContainer" parent="KeyInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 5.0
+size_flags_stretch_ratio = 2.0
 
 [node name="PlayerFace" type="TextureRect" parent="KeyInfo/PlayerFaceContainer" groups=["Squad_Info"]]
 layout_mode = 2
@@ -58,46 +44,31 @@ expand_mode = 1
 stretch_mode = 5
 script = ExtResource("3_rlpc2")
 
-[node name="Details" type="VBoxContainer" parent="KeyInfo"]
+[node name="Position" type="Label" parent="KeyInfo" groups=["Squad_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
-
-[node name="Rating" type="Label" parent="KeyInfo/Details" groups=["Squad_Info"]]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 9
-text = "95"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Position" type="Label" parent="KeyInfo/Details" groups=["Squad_Info"]]
-layout_mode = 2
-theme_override_font_sizes/font_size = 7
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.55
+theme_override_font_sizes/font_size = 12
 text = "RWB"
 horizontal_alignment = 1
+vertical_alignment = 2
 
-[node name="FlagContainer" type="AspectRatioContainer" parent="KeyInfo/Details"]
+[node name="Stamina" type="ProgressBar" parent="." groups=["Squad_Info"]]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="TerritoryFlag" type="TextureRect" parent="KeyInfo/Details/FlagContainer" groups=["Squad_Info"]]
-layout_mode = 2
-texture = ExtResource("4_dw3fi")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BlankSpace" type="MarginContainer" parent="KeyInfo/Details"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.75
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_kj6bi")
+value = 78.0
+fill_mode = 3
+show_percentage = false
 
 [node name="NumberAndName" type="Label" parent="." groups=["Squad_Info"]]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 12
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 16
 text = "12 B.Silva"
 horizontal_alignment = 1
 vertical_alignment = 1

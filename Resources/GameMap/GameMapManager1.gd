@@ -1,4 +1,9 @@
-class_name GameMapManager extends Resource
+class_name GameMapManagement extends Node
+
+""" GameMap """
+@export var game_map: GameMap;
+
+
 
 """ Constants """
 ## This is the folder where territory images will be held. Save and load territory flags from this folder
@@ -14,44 +19,40 @@ const game_map_folder: String = "user://save_files/"
 
 
 
-## This function simply takes in a GameMap Resource and saves it.
-## Images inside are compressed and the entire file is compressed too.
-func save_game_map(game_map: GameMap, filename: String) -> void:
+## This function will save the internal GameMap instance to the provided filename.
+## This ensures to covert the gamemap to a compressed gamemap before saving
+func save_game_map() -> void:
 	# Given a game_map, we need to zip
-	var save_path: String = game_map_folder + str(filename) + ".res";
+	var save_path: String = game_map_folder + str(game_map.File_Name) + ".res";
 	ResourceSaver.save(game_map, save_path, 32);
 
-
 ## This function loads the specific filename given. If error occurs, returns null;
-func load_game_map(path: String) -> GameMap:
+func load_game_map(path: String) -> bool:
 	# Load the GameMap from the User Folder
-	var game_map: GameMap = load(path) as GameMap;
-
-	# Return GameMap
-	return game_map;
+	var gm: GameMap = load(path) as GameMap;
 	
-func load_game_map_with_filename(filename: String) -> GameMap:
+	# Now we check if we loaded the GameMap correctly
+	if gm == null:
+		return false
+
+	# Set Game Map Internally and return that we loaded it successfully
+	game_map = gm
+	return true
+	
+func load_game_map_with_filename(filename: String) -> bool:
 	# Create Path Name
 	var load_path: String = "user://save_files/{filename}.res".format({"filename": filename})
-	var game_map: GameMap = load(load_path) as GameMap;
+	var gm: GameMap = load(load_path) as GameMap;
 	
-	return game_map
+	# Now we check if we loaded the GameMap correctly
+	if gm == null:
+		return false
 
+	# Set Game Map Internally and return that we loaded it successfully
+	game_map = gm
+	return true
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Function to read a CSV file and return its contents as an array of dictionaries
+## Function to read a CSV file and return its contents as an array of dictionaries
 func read_csv_file(file_path: String) -> Array:
 	var data = []
 	var file = FileAccess.open(file_path, FileAccess.READ)
@@ -85,8 +86,7 @@ func convert_to_confed_array(input_array: Array) -> Array[Confederation]:
 	for element in input_array:
 		if element is Confederation:
 			territory_array.append(element)
-	return territory_array
-	
+	return territory_array	
 func convert_to_string_array(input_array: Array) -> Array[String]:
 	var territory_array: Array[String] = []
 	for element in input_array:
@@ -95,9 +95,9 @@ func convert_to_string_array(input_array: Array) -> Array[String]:
 	return territory_array
 	
 # Example usage
-func get_csv_data() -> GameMap:
+func get_csv_data() -> bool:
 	var gm: GameMap = GameMap.new();
-	var csv_file_path = "res://Leagues around the world - Team Rating Calculations (1).csv" 
+	var csv_file_path = "res://Test CSV/Leagues around the world - Team Rating Calculations (1).csv" 
 	var csv_data = read_csv_file(csv_file_path)
 	#
 	##First we have to Load the Teams
@@ -109,7 +109,7 @@ func get_csv_data() -> GameMap:
 		#gm.add_team(team);
 		
 	# Second , we have to load the territories
-	csv_file_path = "res://Game Directories - All Territories.csv"
+	csv_file_path = "res://Test CSV/Game Directories - All Territories.csv"
 	csv_data = read_csv_file(csv_file_path)
 	for entry in csv_data:
 		
@@ -150,7 +150,7 @@ func get_csv_data() -> GameMap:
 		
 		
 		
-	csv_file_path = "res://Game Directories - All Confederations.csv"
+	csv_file_path = "res://Test CSV/Game Directories - All Confederations.csv"
 	csv_data = read_csv_file(csv_file_path)
 	for entry in csv_data:
 		var confed: Confederation = Confederation.new();
@@ -177,28 +177,5 @@ func get_csv_data() -> GameMap:
 
 		
 
-	return gm 
-	
-	
-func get_map_info() -> Dictionary:
-	var csv_file_path = "res://Game Directories - All Territories.csv"
-	var csv_data = read_csv_file(csv_file_path)
-	var color_map: Dictionary;
-
-
-	for entry in csv_data:
-		var terr: Territory = Territory.new();
-		terr.Name = entry["Territory_Name"].strip_edges();
-		terr.Code = entry["Code"];
-		terr.Population = entry["Population"].to_float() 
-		terr.Area = entry["Area"].to_float() 
-		terr.GDP = entry["GDP"].to_float()
-		terr.Rating = entry["Rating"].to_int();
-		terr.League_Elo = entry["League_Elo"].to_float();
-		var color_nums = Array(entry["Color"].split(",")).map(func(num: String): return num.to_int());
-		color_map[Vector3i(color_nums[0], color_nums[1], color_nums[2])] = terr;
-		
-		
-
-		
-	return color_map
+	game_map = gm
+	return true;

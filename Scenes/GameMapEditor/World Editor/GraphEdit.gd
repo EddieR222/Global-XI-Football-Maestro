@@ -7,8 +7,6 @@ const TERRITORY_NODE : String = "res://Scenes/GameMapEditor/World Editor/Territo
 All known issues still:
 	Converting to more sustainable documentation and model of data retention
 """
-
-@export var game_map: GameMap = GameMap.new()
 @export var world_graph: WorldMapGraph = WorldMapGraph.new();
 @export var curr_node_selected: GraphNode;
 @export var curr_node_open_edit: GraphNode;
@@ -26,30 +24,32 @@ Preload Nodes that we will instantiate later
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# We want to establish the world node and ensure it has the right properties
-	var world_confed_node: GraphNode = establish_world_node();
-	
-	# We also have to instantiate the country editor, there will only be one in the entire document and it will follow 
-	# the confederation node that activated it.
-	var new_terr_edit_node: GraphNode = terr_node.instantiate();
-	add_child(new_terr_edit_node);
-	new_terr_edit_node.visible = 0;
-	new_terr_edit_node.game_map = game_map;
-	
-	# Now we connect the territory edit node to the correct signals here
-	connect_signals_from_territory_node(new_terr_edit_node);
-	
-	#Finally store these to be ablet to manipulate later
-	terr_edit_node = new_terr_edit_node
-	world_graph.add_node(world_confed_node)
-	
-	# Log that World Node and Territory Editor have been established
-	LogDuck.d("Territory Editor and World Node have been added");
-	
-	# Add GameMap to World Graph
-	world_graph.game_map = game_map
-	
-	
+	# For testing
+	var worked: bool = GameMapManager.get_csv_data();
+	if worked:
+		print(true)
+	if GameMapManager.game_map.Confederations.size() == 0:
+		# We want to establish the world node and ensure it has the right properties
+		var world_confed_node: GraphNode = establish_world_node(false);
+		
+		# We also have to instantiate the country editor, there will only be one in the entire document and it will follow 
+		# the confederation node that activated it.
+		var new_terr_edit_node: GraphNode = terr_node.instantiate();
+		add_child(new_terr_edit_node);
+		new_terr_edit_node.visible = 0;
+		
+		# Now we connect the territory edit node to the correct signals here
+		connect_signals_from_territory_node(new_terr_edit_node);
+		
+		#Finally store these to be ablet to manipulate later
+		terr_edit_node = new_terr_edit_node
+		world_graph.add_node(world_confed_node)
+		
+		# Log that World Node and Territory Editor have been established
+		LogDuck.d("Territory Editor and World Node have been added");
+		
+		
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -58,7 +58,7 @@ func _process(delta):
 		terr_edit_node.position = curr_node_open_edit.position + Vector2(curr_node_open_edit.size.x, 0) * zoom;
 	
 		
-func establish_world_node() -> GraphNode:
+func establish_world_node(gm: bool) -> GraphNode:
 	#First we simply instantiate the Node into the scene tree
 	var world_confed_node: GraphNode = confed_node.instantiate();
 	add_child(world_confed_node);
@@ -81,8 +81,8 @@ func establish_world_node() -> GraphNode:
 	world_confed_node.confed = world_confed_info;
 	
 	# Give it GameMap
-	game_map.add_confederation(world_confed_info)
-	world_confed_node.game_map = game_map
+	if not gm:
+		GameMapManager.game_map.add_confederation(world_confed_info)
 	
 	# Finally return the world node
 	return world_confed_node
@@ -125,7 +125,7 @@ func save_territory() -> void:
 	curr_node_open_edit.set_selected_territory(curr_territory);
 	
 	#Sort all Territories
-	game_map.sort_territories();
+	GameMapManager.game_map.sort_territories();
 	
 	# Now we need to display the changes in ItemList
 	curr_node_open_edit.reflect_territory_changes();
@@ -158,14 +158,11 @@ func _on_add_confed_node_pressed() -> void:
 	new_confed.Level = 1;
 	
 	# Add Confederation to GameMap
-	game_map.add_confederation(new_confed);
+	GameMapManager.game_map.add_confederation(new_confed);
 		
 	# Now we set confed of graphnode
 	new_node.confed = new_confed;
-	
-	# Give new node a game map
-	new_node.game_map = game_map
-	 
+
 	# Add GraphNode to WorldMapGraph
 	world_graph.add_node(new_node);
 	
@@ -211,7 +208,7 @@ func _on_confirmation_dialog_confirmed() -> void:
 		else:
 			# If no dependence, delete and propagate deletion
 			world_graph.propagate_territory_deletion(terr.ID, curr_node_selected.confed.ID);
-			game_map.erase_territory_by_id(terr.ID);
+			GameMapManager.game_map.erase_territory_by_id(terr.ID);
 			
 			
 	# Remove GraphNode from graph
@@ -219,7 +216,7 @@ func _on_confirmation_dialog_confirmed() -> void:
 	world_graph.remove_node(id)
 	
 	# Erase Node from GameMap
-	game_map.erase_confederation_by_id(id);
+	GameMapManager.game_map.erase_confederation_by_id(id);
 	
 	#Free the GraphNode
 	curr_node_selected.free();
@@ -329,7 +326,7 @@ func _on_deleted_confirmed():
 	curr_node_selected.confed.delete_territory(curr_node_selected.get_selected_territory())
 	
 	# Delete from GameMap
-	game_map.erase_territory_by_id(curr_node_selected.get_selected_territory().ID)
+	GameMapManager.game_map.erase_territory_by_id(curr_node_selected.get_selected_territory().ID)
 	
 	# Sort ItemList
 	curr_node_selected.reflect_territory_changes()
@@ -384,11 +381,11 @@ func _on_connection_request(from_node, from_port, to_node, to_port):
 	curr_node.set_confed_level(owner_level + 1);
 	
 	# Update Owner ID in Confed Node
-	var curr_confed: Confederation = game_map.get_confed_by_id(curr_node.confed.ID);
+	var curr_confed: Confederation = GameMapManager.game_map.get_confed_by_id(curr_node.confed.ID);
 	curr_confed.Owner = owner_node.confed.ID;
 	
 	#Add curr_node to owner_node's children
-	var owner_confed: Confederation = game_map.get_confed_by_id(owner_node.confed.ID)
+	var owner_confed: Confederation = GameMapManager.game_map.get_confed_by_id(owner_node.confed.ID)
 	owner_confed.Children.push_back(curr_node.confed)
 	
 	# Now we put the territory list into the owner confederation

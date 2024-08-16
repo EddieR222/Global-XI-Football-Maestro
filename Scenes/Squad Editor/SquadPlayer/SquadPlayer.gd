@@ -1,35 +1,35 @@
-extends CharacterBody2D
-## This is the node structure that forms the Player Details Display for when building a squad
+extends VBoxContainer
 
-
-## The player being displayed
 var player: Player;
 
-var can_grab: bool = false;
-var grabbed_offset: Vector2 = Vector2();
+signal squad_player_swapped(at_position: Vector2, data)
 
-func _input(event):
-	if event is InputEventMouseButton:
-		can_grab = event.pressed;
-		grabbed_offset = position - get_global_mouse_position();
-		
-func _process(delta: float):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_grab:
-		position = get_global_mouse_position() + grabbed_offset;
-
-
-
-func set_player(input_player: Player) -> bool:
-	# Validate that Player has name
-	if input_player.Name.is_empty():
-		return false;
-		
-	# Now we just set player
-	player = input_player;	
+func _get_drag_data(at_position: Vector2) -> Control:
+	# We are getting a duplicate of this node
+	var copy_node: Control = self.duplicate();
 	
+	# This centers the drag preview around mouse (instead of the top left corner)
+	var c: Control = Control.new()
+	#c.global_position = copy_node.global_position
+	copy_node.global_position = copy_node.global_position - (0.5 * copy_node.size)
+	
+	c.add_child(copy_node)
+
+	# Pass in this duplicate so the drag preview is this entire scene
+	set_drag_preview(c)
+
+	# And now we want to return the duplicate
+	return self
+	
+	
+func _can_drop_data(at_position: Vector2, data) -> bool:
+	# Check position if it is relevant to you
+	# Otherwise, just check data
 	return true
 	
+func _drop_data(at_position: Vector2, data):
+	squad_player_swapped.emit(at_position, data);
+
+
 	
-func display_player_info() -> void:
-	# First thing first, we need to display the face of the player
-	pass
+

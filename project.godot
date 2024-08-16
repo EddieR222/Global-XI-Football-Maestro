@@ -13,10 +13,10 @@ config_version=5
 config/name="Global XI Football Maestro"
 run/main_scene="res://Scenes/start_up.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://Images/icon.svg"
 
 [autoload]
 
+GameMapManager="*res://Resources/GameMap/GameMapManager1.gd"
 LogDuck="*res://addons/LogDuck/LogDuck.gd"
 uuid="*res://Singletons/uuid.gd"
 GameSettings="*res://Resources/Settings/Settings.gd"
@@ -29,8 +29,12 @@ settings/stdout/verbose_stdout=true
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/energy_saving/keep_screen_on=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/icon=""
 
 [editor_plugins]
 

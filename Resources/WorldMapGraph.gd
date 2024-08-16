@@ -1,7 +1,6 @@
 class_name WorldMapGraph extends Node
 
 @export var graph_nodes: Array[GraphNode];
-@export var game_map: GameMap;
 
 
 """
@@ -88,7 +87,7 @@ func get_territory_list(confed_id: int) -> Array[int]:
 func has_lower_dependencies(terr_id: int, node_id: int) -> bool:
 	
 	var node: GraphNode = get_node_by_id(node_id);
-	var terr: Territory = game_map.get_territory_by_id(terr_id)
+	var terr: Territory = GameMapManager.game_map.get_territory_by_id(terr_id)
 	var confed: Confederation = node.confed;
 	
 	var childrens: Array[Confederation] = confed.Children;
@@ -135,7 +134,7 @@ func propagate_territory_addition(terr_id: int, node_id: int) -> void:
 	if terr_id < 0 or node_id < 0 or node_id >= graph_nodes.size():
 		return
 		
-	var terr: Territory =game_map.get_territory_by_id(terr_id)
+	var terr: Territory = GameMapManager.game_map.get_territory_by_id(terr_id)
 	
 	# Log Territory we will be propagating
 	LogDuck.d("Territory we will be Propagating: [color=green]Name: {name} | ID: {id}  ".format({"name": terr.Name, "id": terr.ID}))
@@ -173,7 +172,7 @@ func propagate_territory_deletion(terr_id: int, node_id: int) -> void:
 	var curr_confed: Confederation
 	
 	# Get Passed in Territory 
-	var terr: Territory = game_map.get_territory_by_id(terr_id)
+	var terr: Territory = GameMapManager.game_map.get_territory_by_id(terr_id)
 	
 	# Setup Iteration Needs
 	while curr_node.confed.Level >= 0:
