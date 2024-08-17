@@ -5,7 +5,7 @@ var squad: Array[VBoxContainer];
 var subs: Array[VBoxContainer];
 
 @onready var field_texture: TextureRect = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/Field");
-@onready var field: HBoxContainer = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer");
+@onready var field: HBoxContainer = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox");
 @onready var sub_area: GridContainer = get_node("Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/SubArea")
 
 @onready var formations: DefaultFormations = DefaultFormations.new()
@@ -15,7 +15,8 @@ var subs: Array[VBoxContainer];
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# First we need to get the formation saved by team
-	pass
+	call_deferred("load_squad_formation")
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -55,8 +56,6 @@ func drop_data(at_position: Vector2, data):
 		
 
 	field.add_child(data)
-	
-
 	
 func find_swap(possible_position: Vector2, data: VBoxContainer) -> VBoxContainer:
 	for squad_square: VBoxContainer in squad:
@@ -125,7 +124,6 @@ func load_squad_formation():
 		# Now we push into subs
 		subs.push_back(new_squad_player)
 
-		
 
 ## This converts the relative positions to global positions and also accounting for center to top_left conversion
 func convert_relative_to_global(relative: Vector2, global_rect: Rect2) -> Vector2:

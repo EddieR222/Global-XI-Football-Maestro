@@ -1,12 +1,24 @@
-res://Scenes/Squad Editor/Tactics Editor.tscn
+res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
 res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
-res://Scenes/GameMapEditor/World Editor/World Editor.tscn
-res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
-res://Scenes/Squad Editor/Tactics Editor.gd
-res://Scenes/Squad Editor/LW.gd
-res://Resources/Team Details/DefaultFormations.gd
-res://Scenes/Squad Editor/Field.gd
-res://Scenes/Squad Editor/ST.gd
+res://Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd
+res://Scenes/Squad Editor/LW.gd
+res://Scenes/Squad Editor/LM.gd
+res://Scenes/Squad Editor/LWB.gd
+res://Scenes/Squad Editor/LB.gd
+res://Scenes/Squad Editor/ST.gd
+res://Scenes/Squad Editor/CF.gd
+res://Scenes/Squad Editor/SS.gd
+res://Scenes/Squad Editor/CAM.gd
+res://Scenes/Squad Editor/CM.gd
+res://Scenes/Squad Editor/CDM.gd
+res://Scenes/Squad Editor/CB.gd
+res://Scenes/Squad Editor/SW.gd
+res://Scenes/Squad Editor/GK.gd
+res://Scenes/Squad Editor/RW.gd
+res://Scenes/Squad Editor/RM.gd
+res://Scenes/Squad Editor/RWB.gd
+res://Scenes/Squad Editor/RB.gd
+res://Scenes/Squad Editor/Tactics Editor.gd

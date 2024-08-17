@@ -91,10 +91,8 @@ text = "Add new Team"
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
-current_tab = 3
 
 [node name="Identity" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Body" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Identity"]
@@ -560,6 +558,7 @@ visible = false
 layout_mode = 2
 
 [node name="Players" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("8_7y0oe")]
+visible = false
 layout_mode = 2
 
 [node name="History" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]

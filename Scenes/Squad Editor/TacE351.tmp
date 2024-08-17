@@ -1,24 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://wg1tcvk27p26"]
+[gd_scene load_steps=5 format=3 uid="uid://wg1tcvk27p26"]
 
 [ext_resource type="Texture2D" uid="uid://csdsado3ilnxg" path="res://Images/Backgrounds/field.png" id="1_qx7xf"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/Tactics Editor.gd" id="1_xpt86"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/LW.gd" id="3_yqm8q"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/ST.gd" id="4_a146v"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/LM.gd" id="4_ct2oa"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/LWB.gd" id="5_r8mxl"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/LB.gd" id="6_xutua"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/CF.gd" id="8_bqyhl"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/SS.gd" id="9_5racx"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/CAM.gd" id="10_5pjed"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/CM.gd" id="11_5ilxx"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/CDM.gd" id="12_gvr7d"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/CB.gd" id="13_b1hvs"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/SW.gd" id="14_rcrlh"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/GK.gd" id="15_q0fds"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/RW.gd" id="16_gdak3"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/RM.gd" id="17_4qrx8"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/RWB.gd" id="18_pvq8y"]
-[ext_resource type="Script" path="res://Scenes/Squad Editor/RB.gd" id="19_1udva"]
 
 [node name="Players" type="TabContainer"]
 anchors_preset = 15
@@ -87,121 +72,102 @@ theme_override_constants/margin_top = 23
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 23
 
-[node name="FieldBox" type="HBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
 
-[node name="LeftField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox"]
+[node name="LeftField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 0
 
-[node name="LW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+[node name="LW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_yqm8q")
 
-[node name="LM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+[node name="LM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("4_ct2oa")
 
-[node name="LWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+[node name="LWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
-script = ExtResource("5_r8mxl")
 
-[node name="LB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+[node name="LB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/LeftField"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
-script = ExtResource("6_xutua")
 
-[node name="Middle Field" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox"]
+[node name="Middle Field" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.6
-theme_override_constants/separation = 0
 
-[node name="ST" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="ST" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("4_a146v")
 
-[node name="CF" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="CF" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("8_bqyhl")
 
-[node name="SS" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="SS" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("9_5racx")
 
-[node name="CAM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="CAM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
-script = ExtResource("10_5pjed")
 
-[node name="CM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="CM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
-script = ExtResource("11_5ilxx")
 
-[node name="CDM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="CDM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
-script = ExtResource("12_gvr7d")
 
-[node name="CB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="CB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.55
-script = ExtResource("13_b1hvs")
 
-[node name="SW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="SW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
-script = ExtResource("14_rcrlh")
 
-[node name="GK" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+[node name="GK" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/Middle Field"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
-script = ExtResource("15_q0fds")
 
-[node name="RightField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox"]
+[node name="RightField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 0
 
-[node name="RW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+[node name="Panel" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("16_gdak3")
 
-[node name="RM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+[node name="LW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("17_4qrx8")
 
-[node name="RWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+[node name="LW2" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
-script = ExtResource("18_pvq8y")
 
-[node name="RB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+[node name="LW3" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/HBoxContainer/RightField"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
-script = ExtResource("19_1udva")
 
 [node name="SubsArea" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation"]
 layout_mode = 2
