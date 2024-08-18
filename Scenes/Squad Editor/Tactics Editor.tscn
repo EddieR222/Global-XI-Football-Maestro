@@ -261,22 +261,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Generate Players for Current View"
 
-[node name="PlayerListButtons" type="HBoxContainer" parent="Formation/PlayerInfoAndListArea"]
+[node name="PlayerTable" type="GridContainer" parent="Formation/PlayerInfoAndListArea"]
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Button" type="Button" parent="Formation/PlayerInfoAndListArea/PlayerListButtons"]
-layout_mode = 2
-text = "Load Players"
-
-[node name="PlayerList" type="ItemList" parent="Formation/PlayerInfoAndListArea"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 10.0
 
 [node name="Player Comparision" type="HBoxContainer" parent="."]
 visible = false
 layout_mode = 2
-
-[connection signal="pressed" from="Formation/PlayerInfoAndListArea/PlayerListButtons/Button" to="." method="_on_button_pressed"]
