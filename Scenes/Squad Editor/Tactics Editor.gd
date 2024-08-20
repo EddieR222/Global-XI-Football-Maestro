@@ -8,6 +8,9 @@ var subs: Array[VBoxContainer];
 @onready var field: HBoxContainer = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox");
 @onready var sub_area: GridContainer = get_node("Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/SubArea")
 
+""" Panels """
+@onready var field_panels: Array[Panel] = [%LW, %LM, %LWB, %LB, %ST, %CF, %SS, %CAM, %CM, %CDM, %CB, %SW, %GK, %RW, %RM, %RWB, %RB ]
+
 @onready var formations: DefaultFormations = DefaultFormations.new()
 
 @onready var squad_player: PackedScene = preload("res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn");
@@ -23,45 +26,115 @@ func _process(delta):
 	pass
 	
 """ For Dropping into SquadPlayers """
+## This function will be called whenever a player is dropped onto a player square. This is true even for on field players or subs
+## so we need to handle these cases accordingly
 func drop_data(at_position: Vector2, data):
-	# First we need to check if player is attempting to swap
+	# We need to see which player is attempting to be swapped
 	var swap_player: VBoxContainer = find_swap(at_position, data)
-	if swap_player == null:
-		# No, so negate this drag attempt
-		return
 	
-	# Yes the player is attempting to swap, so we need to find out where data 
-	# is from, whether it is a squad, sub, or reserve
-	# First, we can quickly check if it is a squad player
-	if data in squad:
-		# Yes data is squad player, so we simply swap positions
-		var temp_position: Vector2 = data.position
-		data.position = swap_player.position
-		swap_player.position = temp_position;
-		return
-	elif data in subs:
-		# Yes data is a sub player, so we simply swap positions
-		var new_position: Vector2 = swap_player.position
-		swap_child_in_grid(sub_area, data, swap_player)
-		data.position = new_position;
+	
+	# Now we check if the swap_player is in the squad
+	if swap_player in squad:
+		# The player has moved the drag preview on top of a player on the field 
+		# Yes the player is attempting to swap, so we need to find out where data 
+		# is from, whether it is a squad, sub, or reserve
+		# INFO: We don't need to validate rules as swapping with an infield player (regardless
+		# of if data is another field player, sub, or even reserve) since swapping 
+		# a. Doesn't change the number of infield players
+		# b. Even if GK is swapped, we still have a new GK so GK remains :)
 		
-		# Now we have to make data as top level and swap_player as not top level
-		data.top_level = true;
-		swap_player.top_level = false;
-		
-		# Now we add data into squad and swap_player to subs
-	else:
-		# Yes, data is a reserve player
-		print("Reserve")
-		
+		# First, we can quickly check if it is a squad player
+		if data in squad: # INFO: Field player swap with Field player
+			if data.name == swap_player.name: # If the player is on own player, just move the player
+				# Yes, player is attempting to simply move an in field player to another
+				# area of the field, no swapping so we simply move the player
+				# to the new position
+				
+				# Since we drag from the middle of the drag preview, we need to calculate
+				# the new top corner based on the center position
+				var top_left_corner_pos: Vector2 = at_position - (0.5 * data.size) 
+				
+				# Now we simply move the player to this new position, ensuring the Rect2 of
+				# the player remains inside the field texture (done by clamping)
+				var field_rect: Rect2 = field.get_global_rect();
+				data.global_position = top_left_corner_pos.clamp(field_rect.position, field_rect.end)
+				
+				# Now we need to find which panel has this new position
+				for positions: Panel in field_panels:
+					if positions.get_global_rect().has_point(data.global_position):
+						# Now we have found the position panel, we can assign a new position
+						print("Position Changed")
+				return
+				
+				
+			else:	
+				# Yes data is squad player, so we simply swap positions
+				# Here we are assuming the positions are correct already
+				var temp_position: Vector2 = data.position
+				data.position = swap_player.position
+				swap_player.position = temp_position;
+				return
+		elif data in subs:  # INFO: Sub player swap with Field player
+			# Yes data is a sub player, so first we add field player into grid container
+			# in the same index as the data player was in
+			var new_position: Vector2 = swap_player.global_position
+			swap_child_in_grid(sub_area, data, swap_player)
+			
+			# Now we have to make data as top level and swap_player as not top level
+			data.top_level = true;
+			swap_player.top_level = false;
+			
+			# Finally, place sub into field where swapped player was
+			data.global_position = new_position;
+			#swap_player.position = Vector2(0,0)
+			
+			# Now we add data into squad and swap_player to subs
+			squad.push_back(data)
+			squad.erase(swap_player)
+			
+			subs.push_back(swap_player)
+			subs.erase(data)
+		else:
+			# Yes, data is a reserve player
+			# Not yet implemented
+			return
+	elif swap_player in subs:
+		if data in squad:
+			var new_position: Vector2 = data.global_position
+			swap_child_in_grid(sub_area, swap_player, data)
+			
+			# Now we have to make data as top level and swap_player as not top level
+			swap_player.top_level = true;
+			data.top_level = false;
+			
+			# Finally, place sub into field where swapped player was
+			swap_player.global_position = new_position;
+			
+			# Now we add data into squad and swap_player to subs
+			squad.push_back(swap_player)
+			squad.erase(data)
+			
+			subs.push_back(data)
+			subs.erase(swap_player)
+		elif data in subs:
+			# Here we are simply switching spots of subs
+			swap_places_in_grid(sub_area, data, swap_player)
+			print("Done")
+			
+		else:
+			print("reserve")
 
-	field.add_child(data)
-	
+
+## This function will run to check if the player has dropped a player square onto another player square.[br]
+## Returns null if no player is at the drop point
 func find_swap(possible_position: Vector2, data: VBoxContainer) -> VBoxContainer:
 	for squad_square: VBoxContainer in squad:
 		if squad_square.get_global_rect().has_point(possible_position):
 			return squad_square
 			
+	for sub_square: VBoxContainer in subs:
+		if sub_square.get_global_rect().has_point(possible_position):
+			return sub_square
 	return null
 			
 func swap_child_in_grid(grid_container: GridContainer, old_child: Control, new_child: Control):
@@ -78,18 +151,40 @@ func swap_child_in_grid(grid_container: GridContainer, old_child: Control, new_c
 		print("Index out of range")
 		return
 	
-	# Remove the old child from the GridContainer
+	# Remove the old child from the GridContainer and reparent with field
 	grid_container.remove_child(old_child)
+	field_texture.add_child(old_child)
+	
+	
 	
 	# Insert the new child at the same index
 	# Add the new child temporarily at the end
+	field_texture.remove_child(new_child)
 	grid_container.add_child(new_child)
+	#new_child.position = Vector2(0,0)
 	
 	# Move the new child to the specified index
 	grid_container.move_child(new_child, index)
 	
 	# Ensure the grid updates its layout
 	grid_container.queue_sort()
+	
+func swap_places_in_grid(grid_container: GridContainer, child_1: Control, child_2: Control):
+	# Get the old child at the specified index
+	var child_1_index: int;
+	var child_2_index: int;
+	var children = grid_container.get_children()
+	
+	for i in range(grid_container.get_child_count()):
+		var child = grid_container.get_child(i)
+		if child == child_1:
+			child_1_index = i
+		if child == child_2:
+			child_2_index = i
+			
+	# Move the new child to the specified index
+	grid_container.move_child(child_1, child_1_index)
+	grid_container.move_child(child_2, child_2_index)
 
 
 ## This function takes prepares the Squad Formation, Subs, and TableList for the whole team

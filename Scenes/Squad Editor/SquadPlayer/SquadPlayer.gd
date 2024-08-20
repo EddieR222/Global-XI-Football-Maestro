@@ -33,7 +33,8 @@ func _can_drop_data(at_position: Vector2, data) -> bool:
 	return true
 	
 func _drop_data(at_position: Vector2, data):
-	squad_player_swapped.emit(at_position, data);
+	var global_at_position: Vector2 = self.get_global_rect().position + at_position
+	squad_player_swapped.emit(global_at_position, data);
 
 
 	

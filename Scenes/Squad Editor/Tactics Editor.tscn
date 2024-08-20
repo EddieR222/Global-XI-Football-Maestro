@@ -97,23 +97,27 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="LW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_yqm8q")
 
 [node name="LM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("4_ct2oa")
 
 [node name="LWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 script = ExtResource("5_r8mxl")
 
 [node name="LB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
@@ -126,51 +130,60 @@ size_flags_stretch_ratio = 2.6
 theme_override_constants/separation = 0
 
 [node name="ST" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("4_a146v")
 
 [node name="CF" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("8_bqyhl")
 
 [node name="SS" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("9_5racx")
 
 [node name="CAM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
 script = ExtResource("10_5pjed")
 
 [node name="CM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 script = ExtResource("11_5ilxx")
 
 [node name="CDM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
 script = ExtResource("12_gvr7d")
 
 [node name="CB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.55
 script = ExtResource("13_b1hvs")
 
 [node name="SW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
 script = ExtResource("14_rcrlh")
 
 [node name="GK" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
@@ -182,22 +195,26 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="RW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("16_gdak3")
 
 [node name="RM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("17_4qrx8")
 
 [node name="RWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 script = ExtResource("18_pvq8y")
 
 [node name="RB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.75
@@ -263,6 +280,8 @@ text = "Generate Players for Current View"
 
 [node name="PlayerTable" type="GridContainer" parent="Formation/PlayerInfoAndListArea"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
 
 [node name="Player Comparision" type="HBoxContainer" parent="."]
 visible = false
