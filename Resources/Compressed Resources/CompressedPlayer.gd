@@ -59,10 +59,7 @@ var Key_Details: int = 0;
 ## The Positions of the Player  (array of Positons Enums)
 ## Every 8 bits will be a new position (8 bits means that position will be a variant of 255 positions)
 ## For a total of 8 positions possible per player (most will have 1, 2, 3)
-@export var Positions: Array[int]
-
-## The position is the player is actually played in
-@export var Position: int
+@export var Positions: int
 
 ## The Teams of the player currently plays for both
 @export
@@ -282,11 +279,17 @@ func add_player_nationality(terr_id: int) -> void:
 
 ## Sets the positions of the player given by the Position Number
 func set_players_positions(positions: Array[int]) -> void:
-	pass
-	
-func set_player_position(position: int) -> bool:
-	Position = position;
-	return true
+	var max_range: int = min(positions.size(), 8);
+	for iter in range(max_range):
+		# Get position
+		var curr_position: int = positions[iter];
+		
+		# Ready by masking
+		var pos_bits: int = curr_position & 0xFF;
+		
+		# Set the bits
+		Positions &= ~(0xFF << (iter * 8));
+		Positions |= (pos_bits << (iter * 8) );
 
 ## Sets the player's club team by saving team_id of club
 func set_player_club_team(team_id: int) -> void:
@@ -441,30 +444,7 @@ func get_player_sharpness() -> int: return (Key_Details >> 55) & 0xFF;
 func get_player_nationalities() -> Array[int]: return Nationalities;
 
 ## Gets the positions of the player given by the Position Number
-func get_player_positions() -> Array[String]: 
-	var POSITION_CONVERSION: Dictionary = {
-	0: "GK",
-	1: "LWB",
-	2: "LB",
-	3: "CB",
-	4: "RB",
-	5: "RWB",
-	6: "LM",
-	7: "CM",
-	8: "CDM",
-	9: "CAM",
-	10: "RM",
-	11: "LW",
-	12: "CF",
-	13: "ST",
-	14: "RW" };
-	
-	var position_strings: Array[String];
-	
-	for position: int in Positions:
-		position_strings.push_back(POSITION_CONVERSION[position])
-		
-	return position_strings
+func get_player_positions() -> int: return Positions & 0xFF; #CHANGE THIS!!
 
 ## Gets the player's club team ID
 func get_player_club_team() -> int: return (Teams >> 32) & 0xFFFFFFFF;

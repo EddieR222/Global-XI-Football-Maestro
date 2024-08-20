@@ -161,7 +161,6 @@ func swap_child_in_grid(grid_container: GridContainer, old_child: Control, new_c
 	# Add the new child temporarily at the end
 	field_texture.remove_child(new_child)
 	grid_container.add_child(new_child)
-	#new_child.position = Vector2(0,0)
 	
 	# Move the new child to the specified index
 	grid_container.move_child(new_child, index)
