@@ -7,6 +7,7 @@ class_name Team extends Resource
 @export var Nickname: String;
 const Logo_Path_Dir: String = "user://Images/Team Logos/";
 @export var Logo_Filename: String;  ## ALERT The Images will now be stored in the user:// file system, the image will be in the folder "Team Logos" and will simply be the ID.png
+@export var Owner_Team: Team;
 
 ## The Team ID of this team. It is a 32 bit number meaning the MAXIMUM number of Teams allowd in game is 2,147,483,647 (unlikely to ever meet this number)
 @export var ID: int;
@@ -37,11 +38,15 @@ enum PRIORITY {VERY_LOW = 0, LOW = 1, MEDIUM = 2, HIGH = 3, VERY_HIGH = 4, CRITI
 @export var Trophies: Array
 @export var League_History: Array
 
-""" Player and Manager Info """
+""" Staff Info """
 @export var _Manager: Manager
-@export var Players: Array[Player]
+
 
 """ Team Tactics """
+@export var Starting_XI: Array[Player]
+@export var Subs: Array[Player]
+@export var Reserves: Array[Player];
+
 
 ## Function to save the image in the filesystem for the given team. Will save image with new identifier
 ## if team doesn't have a flag saved, otherwise it will overwrite the previous image

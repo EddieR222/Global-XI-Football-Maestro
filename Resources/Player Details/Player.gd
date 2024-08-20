@@ -3,7 +3,7 @@ class_name Player extends Resource
 """ Identifying Information """
 
 ## The Unique ID of the Player
-@export var ID: int; #64 bits
+@export var ID: int; #32 bits
 
 ## The Name of the Player
 @export var Name: String

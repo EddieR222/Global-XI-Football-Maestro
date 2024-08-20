@@ -3,24 +3,14 @@ res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
 res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
 res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
-res://Scenes/Squad Editor/LW.gd
-res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd
-res://Scenes/Squad Editor/Tactics Editor.gd
-res://Resources/Compressed Resources/CompressedPlayer.gd
 res://Resources/Player Details/Player.gd
-res://Scenes/Squad Editor/LB.gd
-res://Scenes/Squad Editor/LM.gd
-res://Scenes/Squad Editor/LWB.gd
-res://Scenes/Squad Editor/ST.gd
-res://Scenes/Squad Editor/CF.gd
-res://Scenes/Squad Editor/SS.gd
-res://Scenes/Squad Editor/CAM.gd
-res://Scenes/Squad Editor/CM.gd
-res://Scenes/Squad Editor/CDM.gd
-res://Scenes/Squad Editor/CB.gd
-res://Scenes/Squad Editor/SW.gd
-res://Scenes/Squad Editor/GK.gd
-res://Scenes/Squad Editor/RW.gd
-res://Scenes/Squad Editor/RM.gd
-res://Scenes/Squad Editor/RWB.gd
-res://Scenes/Squad Editor/RB.gd
+res://Scenes/Table/table_cell_icon_and_text.tscn
+res://Scenes/Table/table_cell_icon_and_text.gd
+res://Scenes/Table/table_cell_text.tscn
+res://Scenes/Table/table_cell_text.gd
+res://Scenes/Table/table.tscn
+res://Scenes/Table/table.gd
+res://Scenes/Table/table_header_cell.tscn
+res://Scenes/Table/table_header_cell.gd
+res://Scenes/Table/table_row.tscn
+res://Resources/Team Details/Team.gd

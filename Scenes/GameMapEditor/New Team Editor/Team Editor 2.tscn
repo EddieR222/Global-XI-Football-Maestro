@@ -102,7 +102,6 @@ size_flags_vertical = 3
 [node name="KeyDetails" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
 
 [node name="LogoAndName" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Identity/Body/KeyDetails"]
 layout_mode = 2
