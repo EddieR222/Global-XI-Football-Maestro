@@ -33,6 +33,26 @@ const POSITION_CONVERSION: Dictionary = {
 	16: "RW" 
 };
 
+const POSITION_RELATIONS: Dictionary = {
+	0: [],
+	1: [2,2,2,3,6,6,7],
+	2: [1,1,1,3,5,5],
+	3: [4,4,4,2,5,9],
+	4: [3],
+	5: [6,6,6,2,2,3],
+	6: [5,5,5,11,1,1,3],
+	7: [12,1,11,11,8],
+	8: [9,10,11,7],
+	9: [8,3],
+	10: [13,14,15,12,16,11,7],
+	11: [7,7,8,16,6],
+	12: [7,7,16,15,14],
+	13: [14,15,10,12,16],
+	14: [15,15,16,12,13],
+	15: [14,14,12,16,13],
+	16: [12,12,14,15,11] 
+};
+
 
 # Height Constants
 const AVG_GK_HEIGHT: float = 190.0 #in cm
@@ -197,34 +217,12 @@ func generate_player(parameters: Dictionary) -> Player:
 	var current_date: Array[int] = game_map.Date;
 	player.BirthDate = [randi() % current_date[0], randi() % current_date[1], current_date[2] - age]
 	
-	# First we have to generate some random values
-	var position_chance: int = randi() % 101; #get random integer between 0 and 100
-	var foot_chance: int = randi() % 101;
-	
-	# Now we determine position, height, and weight
-	# Here height and weight use a normal distribution using the const mean and std dev defined above
-	if position_chance < 10:
-		player.set_players_positions([0]);
-		player.set_player_height(roundi(randfn(AVG_GK_HEIGHT, HEIGHT_STD_DEV)));
-		player.set_player_weight(roundi(randfn(AVG_GK_WEIGHT, WEIGHT_STD_DEV)));
-	elif position_chance < 37:
-		player.set_players_positions([DEFENSE_POSITION_PROBABILITIES.pick_random()]);
-		player.set_player_height(roundi(randfn(AVG_DEF_HEIGHT, HEIGHT_STD_DEV)));
-		player.set_player_weight(roundi(randfn(AVG_DEF_WEIGHT, WEIGHT_STD_DEV)));
-	elif position_chance < 73:
-		player.set_players_positions([MIDFIELD_POSITION_PROBABILITIES.pick_random()]);
-		player.set_player_height(roundi(randfn(AVG_MID_HEIGHT, HEIGHT_STD_DEV)));
-		player.set_player_weight(roundi(randfn(AVG_MID_WEIGHT, WEIGHT_STD_DEV)));
-	else:
-		player.set_players_positions([ATTACK_POSITION_PROBABILITIES.pick_random()]);
-		player.set_player_height(roundi(randfn(AVG_ATT_HEIGHT, HEIGHT_STD_DEV)));
-		player.set_player_weight(roundi(randfn(AVG_ATT_WEIGHT, WEIGHT_STD_DEV)));
+	# Now we determine the position(s) of the player (whether passed in or not)
+	determine_player_position_and_rating(pos, player);
 
 	# Now we determine whether the player is left or right footed
-	if foot_chance < 15:
-		player.set_player_foot(false);
-	else:
-		player.set_player_foot(true);
+	var foot_chance: int = randi() % 101;
+	player.Right_Foot = true if foot_chance < 15 else false;
 
 	# Now we need to determine the player's rating. We do this by using the player's nationality
 	# and their team's average rating 
@@ -397,38 +395,48 @@ func determine_stars(rating: int) -> int:
 	
 func determine_player_position_and_rating(pos: int, player: Player) -> void:
 	
-	
-	if pos == -1:
-		# First we have to generate some random values
-		var position_chance: int = randi() % 101; #get random integer between 0 and 100
-		var foot_chance: int = randi() % 101;
-		
-		# Now we determine position, height, and weight
-		# Here height and weight use a normal distribution using the const mean and std dev defined above
-		if position_chance < 10:
-			player.set_players_positions([0]);
-			player.set_player_height(roundi(randfn(AVG_GK_HEIGHT, HEIGHT_STD_DEV)));
-			player.set_player_weight(roundi(randfn(AVG_GK_WEIGHT, WEIGHT_STD_DEV)));
-		elif position_chance < 37:
-			player.set_players_positions([DEFENSE_POSITION_PROBABILITIES.pick_random()]);
-			player.set_player_height(roundi(randfn(AVG_DEF_HEIGHT, HEIGHT_STD_DEV)));
-			player.set_player_weight(roundi(randfn(AVG_DEF_WEIGHT, WEIGHT_STD_DEV)));
-		elif position_chance < 73:
-			player.set_players_positions([MIDFIELD_POSITION_PROBABILITIES.pick_random()]);
-			player.set_player_height(roundi(randfn(AVG_MID_HEIGHT, HEIGHT_STD_DEV)));
-			player.set_player_weight(roundi(randfn(AVG_MID_WEIGHT, WEIGHT_STD_DEV)));
-		else:
-			player.set_players_positions([ATTACK_POSITION_PROBABILITIES.pick_random()]);
-			player.set_player_height(roundi(randfn(AVG_ATT_HEIGHT, HEIGHT_STD_DEV)));
-			player.set_player_weight(roundi(randfn(AVG_ATT_WEIGHT, WEIGHT_STD_DEV)));
+	# First we have to generate some random values
+	var position_chance: int = randi() % 101; #get random integer between 0 and 100
+	if pos == 0:
+		position_chance = 9;
+	elif pos < 7:
+		position_chance = 35;
+	elif pos < 12:
+		position_chance = 70;
 	else:
-		if pos == 0:
-			player.set_players_positions([0]);
-			player.set_player_height(roundi(randfn(AVG_GK_HEIGHT, HEIGHT_STD_DEV)));
-			player.set_player_weight(roundi(randfn(AVG_GK_WEIGHT, WEIGHT_STD_DEV)));
-		else:
-			
-			return
+		position_chance = 90
+		
+
+	# Now we determine position, height, and weight
+	# Here height and weight use a normal distribution using the const mean and std dev defined above
+	if position_chance < 10:
+		player.Positions = [0];
+		player.Height = roundi(randfn(AVG_GK_HEIGHT, HEIGHT_STD_DEV));
+		player.Weight = roundi(randfn(AVG_GK_WEIGHT, WEIGHT_STD_DEV));
+	elif position_chance < 37:
+		player.Positions = [pos] if pos != -1 else [DEFENSE_POSITION_PROBABILITIES.pick_random()];
+		player.Height = roundi(randfn(AVG_DEF_HEIGHT, HEIGHT_STD_DEV));
+		player.Weight = roundi(randfn(AVG_DEF_WEIGHT, WEIGHT_STD_DEV));
+	elif position_chance < 73:
+		player.Positions = [pos] if pos != -1 else [MIDFIELD_POSITION_PROBABILITIES.pick_random()];
+		player.Height = roundi(randfn(AVG_MID_HEIGHT, HEIGHT_STD_DEV));
+		player.Weight = roundi(randfn(AVG_MID_WEIGHT, WEIGHT_STD_DEV));
+	else:
+		player.Positions = [pos] if pos != -1 else [ATTACK_POSITION_PROBABILITIES.pick_random()];
+		player.Height = roundi(randfn(AVG_ATT_HEIGHT, HEIGHT_STD_DEV));
+		player.Weight = roundi(randfn(AVG_ATT_WEIGHT, WEIGHT_STD_DEV));
+
 	
-	return
+	# Now we will decide if the player shoule have a second or even third alternative positions
+	var multiple_position_chance: int = randi() % 101;
+	if multiple_position_chance < 40:
+		var related_positions: Array[int] = POSITION_RELATIONS[player.Positions[0]];
+		player.Positions.push_back(related_positions.pick_random())
+		related_positions.filter(func(e: int): return e != player.Positions[1])
+		if multiple_position_chance < 6:
+			player.Positions.push_back(related_positions.pick_random())
+			
+			
+	# Now we are done with deciding position(s) for the player
+	return 
 		

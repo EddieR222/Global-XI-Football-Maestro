@@ -1,6 +1,5 @@
 res://Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
-res://Resources/Player Details/Player.gd
 res://Resources/Player Details/PlayerManager.gd
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
 res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
