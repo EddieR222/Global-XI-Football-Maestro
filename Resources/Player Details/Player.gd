@@ -17,23 +17,18 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## The NickName of the Player
 @export var NickName: String
 
-## The BirthDate of the Player, stored as an integer in the (Month, Day, Year) format
-## Month:      Bits 0-3   (month 1-12)
-## Day:        Bits 4-11  (day 1-31)
-## Year:       Bits 12-61 (year)
-@export var BirthDate: int;
+## The BirthDate of the Player, stored as an array of integers in the format of (Month, Day, Year)
+@export var BirthDate: Array[int];
 
-## This contains a large amount of key details of the player.[br]
-## Every 8 bits contain different info about the player.[br]
-## Age:        Bits 0-7   (in years)[br]
-## Height:     Bits 8-15  (in cm)[br]
-## Weight:     Bits 16-23 (in kg)[br]
-## Rating:     Bits 24-31 (overall rating)[br]
-## Potential:  Bits 32-39 (potential)[br]
-## Foot:       Bits 40 (0= right, 1 = left)[br]
-## Skill Move: Bits 41-43 (1-5 stars)[br]
-## Weak Foot:  Bits 44-46 (1-5 stars)[br]
-## Morale:     Bits 47-54 (morale)[br]
+@export var Age: int;
+@export var Height: int; # in cms 
+@export var Weight: int; # in Kgs
+@export var Overall: int; #out of 100
+@export var Potential: int; #out of 100
+@export var Right_Foot: bool; # whether player is right foot dominate
+@export var Skill_Moves: int; #out of 5 stars
+@export var Weak_Foot: int; #out of 5 stars
+
 ## Current Player Morale, how motivated or happy is the player. 
 ## The BreakDown of the Morale is as follows
 ## 1. Morale > 90  Very Happy
@@ -41,7 +36,9 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## 3. Morale > 25  Neutral
 ## 4. Morale < 25  UnHappy
 ## 5. Morale < 10  Very UnHappy
-## Sharpness:  Bits 55-62 (sharpness)[br]
+@export var Morale: int;
+
+
 ## The current Sharpness of the Player.
 ## The BreakDown of the Sharpness is as follows
 ## 1. Sharpness > 90  Very Fit
@@ -49,24 +46,20 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## 3. Sharpness > 25  Neutral
 ## 4. Sharpness < 25  UnFit
 ## 5. Sharpness < 10  Very UnFit
-@export
-var Key_Details: int = 0;
+@export var Sharpness: int;
 
 
 ## The Nationalities of the Player (array of territory ids)
 @export var Nationalities: Array[int];
 
 ## The Positions of the Player  (array of Positons Enums)
-## Every 8 bits will be a new position (8 bits means that position will be a variant of 255 positions)
-## For a total of 8 positions possible per player (most will have 1, 2, 3)
 @export var Positions: Array[int]
 
-## The position is the player is actually played in
-@export var Position: int
-
 ## The Teams of the player currently plays for both
-@export
-var Teams: int
+@export var Club_Team: int;
+
+## The National Team of the Player (array of eligable, in order of preference by player)
+@export var National_Teams: Array[int]
 
 
 """ Key Details """
