@@ -3,8 +3,6 @@ class_name GameMapManagement extends Node
 """ GameMap """
 @export var game_map: GameMap;
 
-
-
 """ Constants """
 ## This is the folder where territory images will be held. Save and load territory flags from this folder
 const flag_folder: String = "user://Images/Territory Flags/";
@@ -14,10 +12,6 @@ const logo_folder: String = "user://Images/Team Logos/";
 
 ## This is the folder where all GameMap files will be saved. Save and Load GameMaps from this folder
 const game_map_folder: String = "user://save_files/"
-
-
-
-
 
 ## This function will save the internal GameMap instance to the provided filename.
 ## This ensures to covert the gamemap to a compressed gamemap before saving
@@ -93,7 +87,7 @@ func convert_to_string_array(input_array: Array) -> Array[String]:
 		if element is String:
 			territory_array.append(element)
 	return territory_array
-	
+
 # Example usage
 func get_csv_data() -> bool:
 	var gm: GameMap = GameMap.new();

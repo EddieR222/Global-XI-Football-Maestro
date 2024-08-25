@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://wg1tcvk27p26"]
+[gd_scene load_steps=21 format=3 uid="uid://wg1tcvk27p26"]
 
 [ext_resource type="Texture2D" uid="uid://csdsado3ilnxg" path="res://Images/Backgrounds/field.png" id="1_qx7xf"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/Tactics Editor.gd" id="1_xpt86"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scenes/Squad Editor/RM.gd" id="17_4qrx8"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/RWB.gd" id="18_pvq8y"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/RB.gd" id="19_1udva"]
+[ext_resource type="PackedScene" uid="uid://0ibe2y5qi3fp" path="res://Scenes/Table/table.tscn" id="20_n13ar"]
 
 [node name="Players" type="TabContainer"]
 self_modulate = Color(0, 0, 0, 1)
@@ -299,28 +300,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Generate Players for Current View"
 
-[node name="PlayerTableColumns" type="HBoxContainer" parent="Formation/PlayerInfoAndListArea"]
+[node name="Control" parent="Formation/PlayerInfoAndListArea" instance=ExtResource("20_n13ar")]
 layout_mode = 2
-
-[node name="PositionTableButton" type="Button" parent="Formation/PlayerInfoAndListArea/PlayerTableColumns"]
-layout_mode = 2
-text = "Position"
-
-[node name="Name" type="Button" parent="Formation/PlayerInfoAndListArea/PlayerTableColumns"]
-layout_mode = 2
-text = "Name"
-
-[node name="Age" type="Button" parent="Formation/PlayerInfoAndListArea/PlayerTableColumns"]
-layout_mode = 2
-text = "Age"
-
-[node name="Overall" type="Button" parent="Formation/PlayerInfoAndListArea/PlayerTableColumns"]
-layout_mode = 2
-
-[node name="ItemList" type="ItemList" parent="Formation/PlayerInfoAndListArea"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
+size_flags_stretch_ratio = 10.0
 
 [node name="Player Comparision" type="HBoxContainer" parent="."]
 visible = false

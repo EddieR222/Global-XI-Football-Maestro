@@ -82,7 +82,7 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 @export var Months_Injured: float;
 
 ## The current stamina of the player
-@export var Stamina: int;
+@export var Stamina_Level: int;
 
 ## The Shirt Number of the Player in the current team
 @export var Club_Shirt_Number: int;
@@ -101,6 +101,63 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 
 ## Trophies Won
 @export var Trophies_Won: Dictionary;
+
+""" Player Stats """
+
+@export_category("Technical Ability")
+@export var Corners: int; #Set Pieces
+@export var Crossing: int; #Corossing
+@export var Dribbling: int; #Ball Control
+@export var Finishing: int; #Shooting
+@export var First_Touch: int; #Ball Control
+@export var Free_Kicks: int; #Set Pieces
+@export var Heading: int; # Aerial
+@export var Long_Shots: int; #Shooting
+@export var Long_Throws: int; #Throwing
+@export var Marking: int; #Defending
+@export var Passing: int; #Passing
+@export var Penalties: int; #Set Pieces
+@export var Tackling: int; #Defending
+@export var Technique: int; #Crossing
+
+@export_category("Mental Ability")
+@export var Aggression: int #Mentality
+@export var Anticipation: int #Movement
+@export var Bravery: int #Leadership
+@export var Composure: int; #Final Third
+@export var Concentration: int; #Mentality
+@export var Decisions: int; #Movement
+@export var Determination: int; #Strength
+@export var Flair: int; #Final Third
+@export var Leadership: int; #Leadership
+@export var Off_The_Ball: int; #Movement
+@export var Positioning: int; #Defending
+@export var Teamwork: int; #Leadership
+@export var Vision: int; #Passing
+@export var Work_Rate: int; #Endurance
+
+@export_category("Physical Ability")
+@export var Acceleration: int; #Speed
+@export var Agility: int; #Speed
+@export var Balance: int; #Strength
+@export var Jumping: int; #Aerial
+@export var Natural_Fitness: int; #Endurance
+@export var Pace: int; #Speed
+@export var Stamina: int; #Endurance
+@export var Strength: int; #Strength
+#Height and Weight as well
+
+
+## This will return 
+func get_condensed_player_stats() -> Dictionary:
+	return {};
+	
+
+
+
+
+
+
 
 
 ## This is a constructor that allows us to initiate a Player with a name.
@@ -134,4 +191,5 @@ func _on_team_id_changed(old_id: int, new_id: int) -> void:
 		National_Teams[national_id.find(old_id)] = new_id
 		return #There can only be once instance of each id, so return early now
 			
+""" Loading and Saving Player Face """
 

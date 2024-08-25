@@ -49,8 +49,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.55
-theme_override_font_sizes/font_size = 12
-text = "RWB"
+theme_override_font_sizes/font_size = 14
+text = "CDM"
 horizontal_alignment = 1
 vertical_alignment = 2
 

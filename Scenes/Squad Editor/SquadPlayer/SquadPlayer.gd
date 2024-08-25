@@ -26,7 +26,7 @@ func _get_drag_data(at_position: Vector2) -> Control:
 	# And now we want to return the duplicate
 	return self
 	
-	
+
 func _can_drop_data(at_position: Vector2, data) -> bool:
 	# Check position if it is relevant to you
 	# Otherwise, just check data

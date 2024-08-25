@@ -4,10 +4,8 @@ class_name PlayerManager extends Resource
 """ Game Map """
 @export var game_map: GameMap;
 
-
 """ Some constants for generating players """
 const STARTING_TEAM_PLAYER_NUMBER: int = 35;
-
 
 # Position Constants
 const DEFENSE_POSITION_PROBABILITIES: Array[int] = [3,3,3,3,3,3,2,2,5,5,1,6,4];
