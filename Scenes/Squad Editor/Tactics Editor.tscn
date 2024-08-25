@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Scenes/Squad Editor/RB.gd" id="19_1udva"]
 
 [node name="Players" type="TabContainer"]
+self_modulate = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

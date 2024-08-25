@@ -46,6 +46,7 @@ enum PRIORITY {VERY_LOW = 0, LOW = 1, MEDIUM = 2, HIGH = 3, VERY_HIGH = 4, CRITI
 @export var Starting_XI: Array[Player]
 @export var Subs: Array[Player]
 @export var Reserves: Array[Player];
+@export var Team_Tactics: TeamTactics
 
 
 ## Function to save the image in the filesystem for the given team. Will save image with new identifier

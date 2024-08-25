@@ -32,6 +32,25 @@ const POSITION_CONVERSION: Dictionary = {
 	15: "ST",
 	16: "RW" 
 };
+const POSITION_NAME_CONVERSION: Dictionary = {
+	"GK": 0,
+	"LWB": 1,
+	"LB": 2,
+	"CB": 3,
+	"SW": 4,
+	"RB": 5,
+	"RWB": 6,
+	"LM": 7,
+	"CM": 8,
+	"CDM": 9,
+	"CAM": 10,
+	"RM": 11,
+	"LW": 12,
+	"SS": 13,
+	"CF": 14,
+	"ST": 15,
+	"RW": 16
+};
 
 const POSITION_RELATIONS: Dictionary = {
 	0: [],
@@ -101,95 +120,287 @@ func _init(gm: GameMap):
 		# Now we get the Foreign Nation Possbilities
 		Foreign_Nation_Cache[terr.ID] = get_random_nationalities(terr.ID);
 
-### This function will create the entire roster for a team if given a team id
-#func generate_team_roster(team_id: int, num:= -1, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
-	## First we need to get the team information
-	#var team: Team = game_map.get_team_by_id(team_id);
-	#
-	## Now we want to get the team rating and territory
-	#var team_rating: int = team.Rating;
-	#var team_terr: Territory = game_map.get_territory_by_id(team.Territory_ID);
-	#
-	## Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
-	## to how many are local and how many are foreign
-	#if percent_local == -1 && percent_foreign == -1:
-		#percent_foreign = roundi(66 * (team_rating / 85));
-		#percent_local = 100 - percent_foreign;
-		#
-	## Calculate the number of local and foreign based on percentages passed in or estimated
-	#var num_local: int;
-	#var num_foreign: int;
-	#if num != -1:
-		#num_local = roundi(num * (percent_local / 100.0))
-		#num_foreign = num - num_local;
-	#else:
-		#num_local = roundi(STARTING_TEAM_PLAYER_NUMBER * (percent_local / 100.0))
-		#num_foreign = STARTING_TEAM_PLAYER_NUMBER - num_local;
-	#
-	## Now we simply call the create player function with the number of local and number of foreign
-	#var player_roster: Array[Player] = [];
-	#if num != -1:
-		#player_roster.resize(num);
-	#else:
-		#player_roster.resize(STARTING_TEAM_PLAYER_NUMBER)
-	#
-	#for i in range(num_local):
-		#player_roster[i] = generate_player(STARTING_AGES.pick_random(), team_terr.Territory_ID, team_id);
-		#
-	#for j in range(num_local, STARTING_TEAM_PLAYER_NUMBER):
-		#var terr_ids: Array = game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != team_terr.Territory_ID).map(func(terr: Territory): return terr.Territory_ID);
-		#var weights_acc: Array[float] = Foreign_Nation_Cache[team_terr.Territory_ID];
-		#var weight_threshold := randf_range(0.0, weights_acc.back());
-		#var index: int = weights_acc.bsearch(weight_threshold);
-		#player_roster[j] = generate_player(STARTING_AGES.pick_random(), terr_ids[index] , team_id);
-		#
-	## Finally just return player list
-	#return player_roster
-#
-### This function generates N number of players for the given territory.[br]NO CLUB TEAM data will be given and most then be allocated as desired to teams
-#func generate_players_from_territory(terr_id: int, n:= 1) -> Array[Player]:
-	## Create array to store players
-	#var player_roster: Array[Player] = [];
-	#player_roster.resize(n);
-	#
-	#
-	## Now we simply generate n number of players
-	#for i in range(n):
-		#player_roster[i] = generate_player(STARTING_AGES.pick_random(), terr_id)
-	#
-	## Now just return
-	#return player_roster
-#
-#
-	#
-#
-### This function generates players for all the teams in the territory passed in
-#func generate_entire_territory_players(terr_id: int) -> Array[Player]:
-	## First we need to get a list of all the teams in this territory
-	#
-	#
-	#
-	#
-	#return [];
-	#
-	#
-	#
-#func generate_entrie_database() -> Array[Player]:
-	##Generate the array that will hold all players
-	#var player_list: Array[Player];
-	##var player_list_sq: Array[Array[Player]];
-	#
-	#
-	## Now we go through all Teams and generate players for them
-	#for team in game_map.Teams:
-		#player_list.append_array(generate_team_roster(team.ID));
-	##var task_id = WorkerThreadPool.add_group_task(generate_team_roster, enemies.size())
-	#
-	#
-	#return player_list
-	#
-#
+""" Mass Generating Functions """
+## This function will create the entire roster for a team if given a team id
+func generate_team_roster(team_id: int, num:= -1, percent_local:= -1, percent_foreign := -1) -> Dictionary:
+	# First we need to get the team information
+	var team: Team = GameMapManager.game_map.get_team_by_id(team_id);
+	
+	# Now we want to get the team rating and territory
+	var team_rating: int = team.Rating;
+	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	
+	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
+	# to how many are local and how many are foreign
+	if percent_local == -1 && percent_foreign == -1:
+		percent_foreign = roundi(66 * (team_rating / 85));
+		percent_local = 100 - percent_foreign;
+		
+	# Now we simply call the generate functions for different things
+	var return_dict: Dictionary = {
+		"Squad": generate_team_squad(team_id, percent_local, percent_foreign),
+		"Subs": generate_team_subs(team_id, percent_local, percent_foreign),
+		"Reserves": generate_team_reserves(team_id, percent_local, percent_foreign)
+	}
+	
+	return return_dict
 
+## This function generates N number of players for the given territory.[br]NO CLUB TEAM data will be given and most then be allocated as desired to teams
+func generate_players_from_territory(terr_id: int, n:= 1) -> Array[Player]:
+	# Create array to store players
+	var player_roster: Array[Player] = [];
+	player_roster.resize(n);
+	
+	
+	# Now we simply generate n number of players
+	for i in range(n):
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": -1,
+			"Terr_ID": terr_id,
+			"Team_ID": -1,
+			"Average Adjustment": 0.0,
+			"Potential": -1
+		}
+		player_roster[i] = generate_player(parameters)
+	
+	# Now just return
+	return player_roster
+
+func generate_team_squad(team_id: int, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
+	# First we need to get the team information
+	var team: Team = GameMapManager.game_map.get_team_by_id(team_id);
+	
+	# Now we want to get the team rating and territory
+	var team_rating: int = team.Rating;
+	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	
+	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
+	# to how many are local and how many are foreign
+	if percent_local == -1 && percent_foreign == -1:
+		percent_foreign = roundi(66 * (team_rating / 85));
+		percent_local = 100 - percent_foreign;
+		
+	# Calculate the number of local and foreign based on percentages passed in or estimated	
+	var num_local: int = roundi(11 * (percent_local / 100.0))
+	var num_foreign: int = 11 - num_local;
+	
+	# Now we want to get the Team Formation and the positions needed
+	var positions: Array[String] = team.Team_Tactics.Position_Names;
+	positions.shuffle();
+	
+	# Prepare array to return with players
+	var player_roster: Array[Player];
+	player_roster.resize(11);
+
+	# Generate the local players
+	for i in range(num_local):
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": team_terr.ID,
+			"Team_ID": team.ID,
+			"Average Adjustment": 0.0,
+			"Potential": -1
+		}
+		player_roster[i] = generate_player(parameters);
+
+	# Generate the foregin players
+	for j in range(num_local, 11):
+		var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(t: Territory): return t.ID != team_terr.ID).map(func(ter: Territory): return ter.ID);
+		var weights_acc: Array[float] = Foreign_Nation_Cache[team_terr.ID];
+		var weight_threshold := randf_range(0.0, weights_acc.back());
+		var index: int = weights_acc.bsearch(weight_threshold);
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": terr_ids[index],
+			"Team_ID": team.ID,
+			"Average Adjustment": 0.0,
+			"Potential": -1
+		}
+		player_roster[j] = generate_player(parameters);
+
+	return player_roster
+
+func generate_team_subs(team_id: int, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
+	# First we need to get the team information
+	var team: Team = GameMapManager.game_map.get_team_by_id(team_id);
+	
+	# Now we want to get the team rating and territory
+	var team_rating: int = team.Rating;
+	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	
+	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
+	# to how many are local and how many are foreign
+	if percent_local == -1 && percent_foreign == -1:
+		percent_foreign = roundi(66 * (team_rating / 85));
+		percent_local = 100 - percent_foreign;
+		
+	# Calculate the number of local and foreign based on percentages passed in or estimated	
+	var num_local: int = roundi(12 * (percent_local / 100.0))
+	var num_foreign: int = 12 - num_local;
+	
+	# Now we want to get the Team Formation and the positions needed
+	var positions: Array[String] = team.Team_Tactics.Position_Names;
+	var extra_sub_position: String = positions.pick_random();
+	positions.push_back(extra_sub_position);
+	positions.shuffle();
+	
+	# Prepare array to return with players
+	var player_roster: Array[Player];
+	player_roster.resize(12);
+
+	# Generate the local players
+	for i in range(num_local):
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": team_terr.ID,
+			"Team_ID": team.ID,
+			"Average Adjustment": 2.0,
+			"Potential": -1
+		}
+		player_roster[i] = generate_player(parameters);
+
+	# Generate the foregin players
+	for j in range(num_local, 12):
+		var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(t: Territory): return t.ID != team_terr.ID).map(func(ter: Territory): return ter.ID);
+		var weights_acc: Array[float] = Foreign_Nation_Cache[team_terr.ID];
+		var weight_threshold := randf_range(0.0, weights_acc.back());
+		var index: int = weights_acc.bsearch(weight_threshold);
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": terr_ids[index],
+			"Team_ID": team.ID,
+			"Average Adjustment": 2.0,
+			"Potential": -1
+		}
+		player_roster[j] = generate_player(parameters);
+
+	return player_roster
+
+func generate_team_reserves(team_id: int, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
+	# First we need to get the team information
+	var team: Team = GameMapManager.game_map.get_team_by_id(team_id);
+	
+	# Now we want to get the team rating and territory
+	var team_rating: int = team.Rating;
+	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	
+	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
+	# to how many are local and how many are foreign
+	if percent_local == -1 && percent_foreign == -1:
+		percent_foreign = roundi(66 * (team_rating / 85));
+		percent_local = 100 - percent_foreign;
+		
+	# Calculate the number of local and foreign based on percentages passed in or estimated
+	var reserve_size: int = STARTING_TEAM_PLAYER_NUMBER - 23
+	var num_local: int = roundi(reserve_size * (percent_local / 100.0))
+	var num_foreign: int = reserve_size - num_local;
+	
+	# Now we want to get the Team Formation and the positions needed
+	var positions: Array[String] = team.Team_Tactics.Position_Names;
+	var copy: Array[String] = team.Team_Tactics.Position_Names;
+	while positions.size() < reserve_size: 
+		positions.push_back(copy.pick_random());
+	positions.shuffle();
+	
+	# Prepare array to return with players
+	var player_roster: Array[Player];
+	player_roster.resize(reserve_size);
+
+	# Generate the local players
+	for i in range(num_local):
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": team_terr.ID,
+			"Team_ID": team.ID,
+			"Average Adjustment": 5.0,
+			"Potential": -1
+		}
+		player_roster[i] = generate_player(parameters);
+
+	# Generate the foregin players
+	for j in range(num_local, reserve_size):
+		var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(t: Territory): return t.ID != team_terr.ID).map(func(ter: Territory): return ter.ID);
+		var weights_acc: Array[float] = Foreign_Nation_Cache[team_terr.ID];
+		var weight_threshold := randf_range(0.0, weights_acc.back());
+		var index: int = weights_acc.bsearch(weight_threshold);
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": terr_ids[index],
+			"Team_ID": team.ID,
+			"Average Adjustment": 5.0,
+			"Potential": -1
+		}
+		player_roster[j] = generate_player(parameters);
+
+	return player_roster
+
+func generate_youth_academy(team_id: int, num: int, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
+	# First we need to get the team information
+	var team: Team = GameMapManager.game_map.get_team_by_id(team_id);
+	
+	# Now we want to get the team rating and territory
+	var team_rating: int = team.Rating;
+	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	
+	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
+	# to how many are local and how many are foreign
+	if percent_local == -1 && percent_foreign == -1:
+		percent_foreign = roundi(66 * (team_rating / 85));
+		percent_local = 100 - percent_foreign;
+		
+	# Calculate the number of local and foreign based on percentages passed in or estimated	
+	var num_local: int = roundi(12 * (percent_local / 100.0))
+	var num_foreign: int = 12 - num_local;
+	
+	# Now we want to get the Team Formation and the positions needed
+	var positions: Array[String] = team.Team_Tactics.Position_Names;
+	var extra_sub_position: String = positions.pick_random();
+	positions.push_back(extra_sub_position);
+	positions.shuffle();
+	
+	# Prepare array to return with players
+	var player_roster: Array[Player];
+	player_roster.resize(12);
+
+	# Generate the local players
+	for i in range(num_local):
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": team_terr.ID,
+			"Team_ID": team.ID,
+			"Average Adjustment": 2.0,
+			"Potential": -1
+		}
+		player_roster[i] = generate_player(parameters);
+
+	# Generate the foregin players
+	for j in range(num_local, 12):
+		var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(t: Territory): return t.ID != team_terr.ID).map(func(ter: Territory): return ter.ID);
+		var weights_acc: Array[float] = Foreign_Nation_Cache[team_terr.ID];
+		var weight_threshold := randf_range(0.0, weights_acc.back());
+		var index: int = weights_acc.bsearch(weight_threshold);
+		var parameters: Dictionary = {
+			"Age": STARTING_AGES.pick_random(),
+			"Pos": POSITION_NAME_CONVERSION[positions.pop_back()],
+			"Terr_ID": terr_ids[index],
+			"Team_ID": team.ID,
+			"Average Adjustment": 2.0,
+			"Potential": -1
+		}
+		player_roster[j] = generate_player(parameters);
+
+	return player_roster
+	
+	
+""" Generate Single Player """
 ## This function will create one player with the given paramaters.[br]
 ## The parameters are passed in via a dictionary that is built depending on what we want to do[br]
 ## Parameters:[br]
@@ -197,13 +408,16 @@ func _init(gm: GameMap):
 ## Pos: int
 ## Terr_ID: int
 ## Team_ID: int
-
+## Average Adjustment: float
+## Potential: int
 func generate_player(parameters: Dictionary) -> Player:
 	# First thing first, we need to get all the parameter values
 	var age: int = parameters["Age"]
 	var pos: int = parameters["Pos"]
 	var terr_id: int = parameters["Terr_ID"]
 	var team_id: int = parameters["Team_ID"]
+	var average_adjustment: float = parameters["Average Adjustment"]
+	var potential_override: int = parameters["Potential"]
 	
 	# Next, create the instance of the player to be created
 	var player: Player = Player.new();
@@ -212,100 +426,35 @@ func generate_player(parameters: Dictionary) -> Player:
 	# var x = (value) if (expression) else (value)
 	player.Age = age if age != null else STARTING_AGES.pick_random();
 		
-	
 	# Set Player Birthday
 	var current_date: Array[int] = game_map.Date;
 	player.BirthDate = [randi() % current_date[0], randi() % current_date[1], current_date[2] - age]
 	
 	# Now we determine the position(s) of the player (whether passed in or not)
-	determine_player_position_and_rating(pos, player);
+	determine_player_position(pos, player);
 
 	# Now we determine whether the player is left or right footed
-	var foot_chance: int = randi() % 101;
+	var foot_chance: int = randi() % 100;
 	player.Right_Foot = true if foot_chance < 15 else false;
 
-	# Now we need to determine the player's rating. We do this by using the player's nationality
-	# and their team's average rating 
-	var player_terr : Territory;
-	var potential: float;
-	
-	
-	# If Terr_ID is left empty, we will randomly choose a territory for the player
-	if terr_id == -1:
-		terr_id = game_map.Territories.pick_random().ID;
+	# Now we determine the player's nationality (or nationalities) 
+	determine_player_nationality(terr_id, player);
 		
-		
-	if team_id == -1: # No team was given so just use Territory Rating as average rating 
-		# Set Nationality of Player
-		player.add_player_nationality(terr_id);
-		player_terr = game_map.get_territory_by_id(terr_id);
-		
-		# Determine potential and ensure its withtin the range of 10 - 94
-		potential = randfn(66, TERRITORY_STD_DEV);
-		while potential > 94 || potential < 10:
-			potential = randfn(player_terr.Rating, TERRITORY_STD_DEV);
-			
-	else: # Team is given so use that and Territory Rating to determine mean potential for player
-		# Set Nationality AND Team of Player
-		player.add_player_nationality(terr_id);
-		player.set_player_club_team(team_id);
-		
-		var player_team: Team = game_map.get_team_by_id(team_id)
-		player_terr = game_map.get_territory_by_id(terr_id)
-		
-		# Use both team and nationality rating tp determine mean potential for player
-		var terr_rating_adjustment: int = roundi((player_terr.Rating - player_team.Rating) / 10.0);
-		var mean_rating: float =  float(player_team.Rating + terr_rating_adjustment);
-		
-		
-		# Find potential rating and ensure its within range of 10-94
-		potential = randfn(mean_rating, POTENTIAL_STD_DEV);
-		while potential > 94 || potential < 10:
-			potential = randfn(mean_rating, POTENTIAL_STD_DEV);
-			
-	# Save Player's Potential
-	player.set_player_potential_rating(roundi(potential));
-	
+	# Now we determine the Potential and Overall of the Player
+	determine_player_ratings(team_id, potential_override, player, average_adjustment);
 
-	# Now find current rating based on age
-	var curr_rating: int = 0;
-	while curr_rating > potential || curr_rating < 1:
-		if age < 20:
-			curr_rating = roundi(randfn(potential / BELOW_20_DIVISOR, RATING_STD_DEV));
-		elif age < 26: 
-			curr_rating = roundi(randfn(potential / AT_20_DIVISOR, RATING_STD_DEV));
-		elif age < 33: 
-			curr_rating = roundi(randfn(potential, RATING_STD_DEV));
-		else:
-			curr_rating = roundi(randfn(potential, RATING_STD_DEV) - ((age - 32) * 1.2) );
-	player.set_player_overall_rating(curr_rating);
-	
-	
-	# Now we get the player's name
-	var middle_chance: int = randi() % 101;
-	var first_name: String = "e"
-	var middle_name: String = "e"
-	var last_name: String = "e"
-	while first_name == last_name || middle_name == last_name || middle_name == first_name:
-		first_name = player_terr.First_Names.pick_random();
-		last_name = player_terr.Last_Names.pick_random();
-		middle_name = player_terr.Last_Names.pick_random();
-			
-	if middle_chance < 50:
-		player.set_player_name(first_name.strip_edges() + " " + middle_name.strip_edges() + " " + last_name.strip_edges());
-	else:
-		player.set_player_name(first_name.strip_edges() + " " + last_name.strip_edges());
-		
+	# Now we get the player name
+	determine_player_name(player)
 		
 	# Now we determine their skill move and weak foot star levels
-	player.set_player_skill_moves(determine_stars(curr_rating));
-	player.set_player_weak_foot(determine_stars(curr_rating));
-		
+	player.Skill_Moves = determine_stars(player.Overall);
+	player.Weak_Foot = determine_stars(player.Overall);
 		
 	# Finally return player we created
 	return player
 		
 
+""" Generating Single Player Helper Functions """
 ## Given a territory id, this will return a random and likely nation for the league of the territory id passed in.[br]
 ## For the most part this will depend on randomness and the league elo of the territory and those below it
 func get_random_nationalities(terr_id: int) -> Array[float]:
@@ -391,12 +540,12 @@ func determine_stars(rating: int) -> int:
 		print("ERROR")
 	return index + 1
 
-	
-	
-func determine_player_position_and_rating(pos: int, player: Player) -> void:
+## This function takes in a position and a Player and determines what their position should be. This also determines the height and weight of the player based on their position.[br]
+## There is also a small chance that the player can have mulltiple positions
+func determine_player_position(pos: int, player: Player) -> void:
 	
 	# First we have to generate some random values
-	var position_chance: int = randi() % 101; #get random integer between 0 and 100
+	var position_chance: int = randi() % 100; #get random integer between 0 and 100
 	if pos == 0:
 		position_chance = 9;
 	elif pos < 7:
@@ -428,7 +577,7 @@ func determine_player_position_and_rating(pos: int, player: Player) -> void:
 
 	
 	# Now we will decide if the player shoule have a second or even third alternative positions
-	var multiple_position_chance: int = randi() % 101;
+	var multiple_position_chance: int = randi() % 100;
 	if multiple_position_chance < 40:
 		var related_positions: Array[int] = POSITION_RELATIONS[player.Positions[0]];
 		player.Positions.push_back(related_positions.pick_random())
@@ -439,4 +588,110 @@ func determine_player_position_and_rating(pos: int, player: Player) -> void:
 			
 	# Now we are done with deciding position(s) for the player
 	return 
+
+## This function determines the nationalities of the player. This takes care of CoTerritories and even a small chance to get a random additional territory
+func determine_player_nationality(terr_id: int, player: Player) -> void:
+	# First, if no territory is given, we need to randomly select a territory for it
+	if terr_id == -1:
+		terr_id = game_map.Territories.pick_random().ID;
 		
+	# Now, we can be sure that the terr_id is a valid county and we can add it as a nationality
+	player.Nationalities = [terr_id];
+	
+	# Now, we see if the territory has any CoTerritories
+	var terr: Territory = GameMapManager.game_map.get_territory_by_id(terr_id)
+	if terr.CoTerritory != null:
+		player.Nationalities.push_back(terr.CoTerritory.ID);
+		
+	# Regardless of CoTerritories, there is a small chance players have another nationality
+	var random_nation_chancee: int = randi() % 101;
+	if random_nation_chancee < 20:
+		var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(t: Territory): return t.ID != terr.ID).map(func(t: Territory): return t.ID);
+		var weights_acc: Array[float] = Foreign_Nation_Cache[terr.ID];
+		var weight_threshold := randf_range(0.0, weights_acc.back());
+		var index: int = weights_acc.bsearch(weight_threshold);
+		player.Nationalities.push_back(terr_ids[index]);
+		
+	
+	return
+
+## This function determines the Potential and Overall of the player depending on random values such as nationalities, club team, and other factors
+func determine_player_ratings(team_id: int, potential_override: int,  player: Player, average_adjustment:= 0.0) -> void:
+	var potential: float;
+	# There are two ways to determine potential, one is by the override if that was given a value. 
+	if potential_override >= 0:
+		# This is the override, we simply give the player the potential which was passed in
+		player.Potential = potential_override
+	else:
+		# Here we calculate the base_rating for the player based on their nationalities
+		var player_nationality_rating: Array = player.Nationalities.map(func(id: int): return GameMapManager.game_map.get_territory_by_id(id).Rating);
+		var base_rating: int = player_nationality_rating.pop_front();
+		for rating in player_nationality_rating:
+			var adjustment: int = roundi(float(rating - base_rating) / 10.0);
+			base_rating += adjustment
+	
+		if team_id == -1: 
+			# No team was given so just use Territory Rating as average rating 
+			# Determine potential and ensure its withtin the range of 10 - 94
+			potential = randfn(base_rating, TERRITORY_STD_DEV);
+			while potential > 94.0 || potential < 10.0:
+				potential = randfn(base_rating, TERRITORY_STD_DEV);
+				
+		else:
+			# Team is given so use that and Territory Rating to determine mean potential for player
+			player.Club_Team = team_id
+			var player_team: Team = GameMapManager.game_map.get_team_by_id(team_id)
+			
+			# Use both team and nationality rating tp determine mean potential for player
+			var terr_rating_adjustment: int = roundi((base_rating - player_team.Rating) / 10.0);
+			var mean_rating: float =  float(player_team.Rating + terr_rating_adjustment);
+			
+			# Find potential rating and ensure its within range of 10-94
+			potential = randfn(mean_rating, POTENTIAL_STD_DEV);
+			while potential > 94.0 || potential < 10.0:
+				potential = randfn(mean_rating, POTENTIAL_STD_DEV);
+				
+		# Save Player's Potential
+		player.Potential = roundi(potential)
+	
+
+	# Now find current rating based on age
+	var curr_rating: int = 0;
+	while curr_rating > player.Potential || curr_rating < 1:
+		if player.Age < 20:
+			curr_rating = roundi(randfn((player.Potential / BELOW_20_DIVISOR) - average_adjustment, RATING_STD_DEV));
+		elif player.Age < 26: 
+			curr_rating = roundi(randfn((player.Potential / AT_20_DIVISOR) - average_adjustment, RATING_STD_DEV));
+		elif player.Age < 33: 
+			curr_rating = roundi(randfn(player.Potential - average_adjustment, RATING_STD_DEV));
+		else:
+			curr_rating = roundi(randfn(player.Potential - average_adjustment, RATING_STD_DEV) * (1.0 -  ((player.Age - 32) * 1.2) ));
+	player.Overall = curr_rating
+	
+	return
+
+## This function determines the Full Name of the Player
+func determine_player_name(player: Player) -> void:
+	# Get player terr
+	var player_terr: Territory = GameMapManager.game_map.get_territory_by_id(player.Nationalities[0]);
+	
+	# Now we get the player's name
+	var middle_chance: int = randi() % 101;
+	var first_name: String = "e"
+	var middle_name: String = "e"
+	var last_name: String = "e"
+	while first_name == last_name || middle_name == last_name || middle_name == first_name:
+		first_name = player_terr.First_Names.pick_random();
+		last_name = player_terr.Last_Names.pick_random();
+		middle_name = player_terr.Last_Names.pick_random();
+			
+	if middle_chance < 50:
+		player.Name =  first_name.strip_edges() + " " + middle_name.strip_edges() + " " + last_name.strip_edges();
+	else:
+		player.Name = first_name.strip_edges() + " " + last_name.strip_edges();
+
+func determine_player_face(player: Player) -> void:
+	# First we need to load a player face randomly
+	# INFO: For now, we use premade generated faces
+	
+	return

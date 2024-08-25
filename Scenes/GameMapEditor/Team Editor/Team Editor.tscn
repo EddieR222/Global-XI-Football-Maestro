@@ -202,6 +202,7 @@ ok_button_text = "Open"
 dialog_hide_on_ok = true
 file_mode = 0
 access = 2
+show_hidden_files = false
 use_native_dialog = true
 
 [connection signal="pressed" from="VBoxContainer/Title Bar/GoBackButton" to="." method="_on_go_back_button_pressed"]
