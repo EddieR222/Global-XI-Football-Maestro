@@ -1,0 +1,484 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhs7nypb65elu"]
+
+[ext_resource type="Texture2D" uid="uid://c6frbihfvpaip" path="res://Images/Icons/NO_LOGO_ICON.png" id="1_pc0a0"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/LogoInput.gd" id="2_p0vik"]
+[ext_resource type="Script" path="res://Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd" id="3_xl5rq"]
+[ext_resource type="Texture2D" uid="uid://u8b4eq4emf77" path="res://Images/Icons/ArrowIcon.svg" id="4_eaor4"]
+[ext_resource type="Texture2D" uid="uid://dtfa3dj15ee2f" path="res://Images/Icons/football_kit_icon.png" id="5_7slar"]
+
+[node name="Identity" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Body" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="KeyDetails" type="VBoxContainer" parent="Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="LogoAndName" type="HBoxContainer" parent="Body/KeyDetails"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="LogoButtonMargin" type="MarginContainer" parent="Body/KeyDetails/LogoAndName"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LogoWhiteBackground" type="ColorRect" parent="Body/KeyDetails/LogoAndName/LogoButtonMargin"]
+layout_mode = 2
+
+[node name="LogoInput" type="TextureButton" parent="Body/KeyDetails/LogoAndName/LogoButtonMargin" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_pc0a0")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_p0vik")
+
+[node name="TeamNameMargin" type="MarginContainer" parent="Body/KeyDetails/LogoAndName"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 30
+
+[node name="TeamNameInput" type="LineEdit" parent="Body/KeyDetails/LogoAndName/TeamNameMargin" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Team Name"
+alignment = 1
+max_length = 50
+clear_button_enabled = true
+script = ExtResource("3_xl5rq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Body/KeyDetails"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/KeyDetails/MarginContainer"]
+layout_mode = 2
+
+[node name="KeyDetailsCategory" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Key Details"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="KeyDetails" type="GridContainer" parent="Body/KeyDetails/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+columns = 2
+
+[node name="Nickname" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Nickname: "
+horizontal_alignment = 1
+
+[node name="NicknameInput" type="LineEdit" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails" groups=["T_Info"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "NickName"
+alignment = 1
+
+[node name="NameCode" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Name Code:"
+horizontal_alignment = 1
+
+[node name="NameCodeInput" type="LineEdit" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "3 or 4 Letter Name Code"
+alignment = 1
+
+[node name="City" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "City:"
+horizontal_alignment = 1
+
+[node name="CityInput" type="LineEdit" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "City"
+alignment = 1
+
+[node name="Rating" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Rating:"
+horizontal_alignment = 1
+
+[node name="RatingInput" type="SpinBox" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+step = 0.01
+alignment = 1
+
+[node name="MasterTeam" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+text = "Master Team"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterTeamInput" type="OptionButton" parent="Body/KeyDetails/MarginContainer/VBoxContainer/KeyDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TeamPrioritiesCategory" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Team Priorities"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TeamPrriorities" type="GridContainer" parent="Body/KeyDetails/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+columns = 2
+
+[node name="YouthDevelopment" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Youth Development"
+horizontal_alignment = 1
+
+[node name="YouthDevelopmentInput" type="OptionButton" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+item_count = 6
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Very High"
+popup/item_4/id = 4
+popup/item_5/text = "Critical"
+popup/item_5/id = 5
+
+[node name="FinancialStability" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Financial Stability"
+horizontal_alignment = 1
+
+[node name="FinancialStabilityInput" type="OptionButton" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+item_count = 6
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Very High"
+popup/item_4/id = 4
+popup/item_5/text = "Critical"
+popup/item_5/id = 5
+
+[node name="Reputation" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+text = "Reputation and Branding"
+horizontal_alignment = 1
+
+[node name="ReputationInput" type="OptionButton" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+item_count = 6
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Very High"
+popup/item_4/id = 4
+popup/item_5/text = "Critical"
+popup/item_5/id = 5
+
+[node name="FacilityMaintenance" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+text = "Facility Maintenance"
+horizontal_alignment = 1
+
+[node name="FacilityMaintenanceInput" type="OptionButton" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+item_count = 6
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Very High"
+popup/item_4/id = 4
+popup/item_5/text = "Critical"
+popup/item_5/id = 5
+
+[node name="DomesticSuccess" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+text = "Domestic Success
+"
+horizontal_alignment = 1
+
+[node name="DomesticSuccessInput" type="OptionButton" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+item_count = 6
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Very High"
+popup/item_4/id = 4
+popup/item_5/text = "Critical"
+popup/item_5/id = 5
+
+[node name="InternationalSuccess" type="Label" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+text = "International Success
+"
+horizontal_alignment = 1
+
+[node name="InternationalSuccessInput" type="OptionButton" parent="Body/KeyDetails/MarginContainer/VBoxContainer/TeamPrriorities"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+item_count = 6
+selected = 0
+allow_reselect = true
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Very High"
+popup/item_4/id = 4
+popup/item_5/text = "Critical"
+popup/item_5/id = 5
+
+[node name="Kit" type="VBoxContainer" parent="Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TeamKitTitle" type="Label" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.25
+text = "Team Kits"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.2
+text = "Home Kit"
+horizontal_alignment = 1
+
+[node name="HomeKitSelection" type="HBoxContainer" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GoBack" type="TextureButton" parent="Body/Kit/HomeKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
+
+[node name="HomeKit" type="TextureRect" parent="Body/Kit/HomeKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_7slar")
+expand_mode = 1
+
+[node name="GoForward" type="TextureButton" parent="Body/Kit/HomeKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.2
+text = "Away Kit
+"
+horizontal_alignment = 1
+
+[node name="AwayKitSelection" type="HBoxContainer" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GoBack" type="TextureButton" parent="Body/Kit/AwayKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
+
+[node name="HomeKit" type="TextureRect" parent="Body/Kit/AwayKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_7slar")
+expand_mode = 1
+
+[node name="GoForward" type="TextureButton" parent="Body/Kit/AwayKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.2
+text = "Third Kit
+"
+horizontal_alignment = 1
+
+[node name="ThirdKitSelection" type="HBoxContainer" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GoBack" type="TextureButton" parent="Body/Kit/ThirdKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
+
+[node name="HomeKit" type="TextureRect" parent="Body/Kit/ThirdKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_7slar")
+expand_mode = 1
+
+[node name="GoForward" type="TextureButton" parent="Body/Kit/ThirdKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label4" type="Label" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.2
+text = "Goalkeeper Kit"
+horizontal_alignment = 1
+
+[node name="GoalKeeperKitSelection" type="HBoxContainer" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GoBack" type="TextureButton" parent="Body/Kit/GoalKeeperKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
+
+[node name="HomeKit" type="TextureRect" parent="Body/Kit/GoalKeeperKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_7slar")
+expand_mode = 1
+
+[node name="GoForward" type="TextureButton" parent="Body/Kit/GoalKeeperKitSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_eaor4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BottomMargin" type="CenterContainer" parent="Body/Kit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1

@@ -10,8 +10,6 @@ var selected_team: Team;
 """ Dialogs """
 @onready var team_logo_file_dialog: FileDialog = get_node("TeamLogoFileDialg");
 
-""" GameMap """
-var gm: GameMap;
 
 """ Player Tab """
 var player_manager: PlayerManager;
@@ -21,9 +19,11 @@ var player_manager: PlayerManager;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	#load_default_teams("C:/Team Logos", "");
+	
+	#pass
 	# First thing we want to do is load the countries
-	#load_gamemap();
+	load_gamemap();
 	
 	# Get the Player Manager ready in case the player wants to generate players
 	#player_manager = PlayerManager.new(gm)
@@ -35,13 +35,7 @@ func _process(delta):
 
 ## Load in the GameMap and Fill in Country Selection Option Button
 func load_gamemap() -> void:
-	# First we need to create an instance of GameMapManager
-	var game_map_manager: GameMapManager = GameMapManager.new();
-	
-	# Now we simply load the selected_game_map.res
-	#var game_map: GameMap = game_map_manager.load_game_map_with_filename("selected_game_map");
-	var game_map: GameMap = GameMap.new()
-	gm = game_map;
+	GameMapManager.load_game_map_with_filename("");
 	
 	# Now we need to load in the country list for the country option button
 	# First we adjust the visuals for the popup menu
@@ -57,7 +51,7 @@ func load_gamemap() -> void:
 	team_selection_popup.add_theme_font_size_override("font_size", 25);
 	
 	# Now we load all the countries
-	for confed: Confederation in game_map.Confederations:
+	for confed: Confederation in GameMapManager.game_map.Confederations:
 		# We only want the level 1 confederations (like UEFA, AFC, CONMEBOL, etc..)
 		if confed.Level != 1:
 			continue
@@ -193,25 +187,110 @@ func _on_generate_player_pressed() -> void:
 	var player_teamlist_view_id: int = player_teamlist_view.get_selected_id()
 	if player_teamlist_view_id == -1:
 		return
-		
-	var players: Array[Player];
-	match player_teamlist_view_id:
-		0: # Squad Only
-			players = player_manager.generate_team_roster(selected_team.ID, 11);
-		1: # Squad and Substitutes
-			players = player_manager.generate_team_roster(selected_team.ID, 23);
-		2: # Whole Team
-			players = player_manager.generate_team_roster(selected_team.ID);
-		3:
-			players = player_manager.generate_team_roster(selected_team.ID, 10);
-		4:
-			players = player_manager.generate_team_roster(selected_team.ID, 10);
-			
+		#
+	#var players: Array[Player];
+	#match player_teamlist_view_id:
+		#0: # Squad Only
+			#players = player_manager.generate_team_roster(selected_team.ID, 11);
+		#1: # Squad and Substitutes
+			#players = player_manager.generate_team_roster(selected_team.ID, 23);
+		#2: # Whole Team
+			#players = player_manager.generate_team_roster(selected_team.ID);
+		#3:
+			#players = player_manager.generate_team_roster(selected_team.ID, 10);
+		#4:
+			#players = player_manager.generate_team_roster(selected_team.ID, 10);
+			#
 		
 	
 	pass # Replace with function body.
 
+	
+	
+func load_default_teams(dir: String, store_dir: String) -> bool:
+	GameMapManager.load_game_map_with_filename("")
 
-func _on_area_2d_mouse_entered():
-	print("Mouse Entered")
+
+	# For now we want to clear the teams in the gamemap
+	GameMapManager.game_map.Teams.clear();
+	for terr: Territory in GameMapManager.game_map.Territories:
+		terr.Club_Teams_Rankings.clear();
+	
+	#First we must make sure the the passed in directory even exists
+	if not DirAccess.dir_exists_absolute(dir):
+		return false
+		
+	# Now we can open it
+	var team_logos_dir: DirAccess = DirAccess.open(dir)
+	
+	# Now we have to get the list of territories in this directory
+	var dir_territories: PackedStringArray = team_logos_dir.get_directories();
+	
+	var local_teams: Array[Team] = []
+	
+	# Now for each territory we see if it has anything in the directory and save team logos present
+	for terr: Territory in GameMapManager.game_map.Territories:
+		# We see if terr is present 
+		if terr.Name not in dir_territories:
+			print(terr.Name + " is not present!")
+			continue
+			
+		# Now we have to go through the leagues of the territory
+		var leagues: PackedStringArray = DirAccess.get_directories_at(dir + "/" + terr.Name)
+		for league: String in leagues:
+			# Now for each league we can either have the teams right away or split into groups, we behave different depending if groups are present
+			var groups: PackedStringArray = DirAccess.get_directories_at(dir + "/" + terr.Name + "/" + league)
+			if groups.size() > 0:
+				# This means groups are present so we add them to the directories to iterate through 
+				for group: String in groups:
+					# Now we need to get the files in each group
+					var team_logos: PackedStringArray = DirAccess.get_files_at(dir + "/" + terr.Name + "/" + league + "/" + group)
+					for team_logo: String in team_logos:
+						# First we create a new Team
+						var team: Team = Team.new();
+						team.Name = team_logo.get_file().get_basename();
+						
+						# Get image
+						var logo: Image = Image.load_from_file(dir + "/" + terr.Name + "/" + league + "/" + group + "/" + team_logo)
+						if logo != null:
+							# Now we save logo
+							team.save_image_for_team(logo);
+						
+						# Now add to GameMap
+						local_teams.push_back(team)
+						
+						# Add Team to territory
+						terr.Club_Teams_Rankings.push_back(team)
+			else:
+				# Now we need to get the files in each group
+					var team_logos: PackedStringArray = DirAccess.get_files_at(dir + "/" + terr.Name + "/" + league)
+					for team_logo: String in team_logos:
+						# First we create a new Team
+						var team: Team = Team.new();
+						team.Name = team_logo.get_file().get_basename();
+						
+						# Get image
+						var logo: Image = Image.load_from_file(dir + "/" + terr.Name + "/" + league + "/" + team_logo)
+						if logo == null:
+							print("Had issue with loading logo for " + team.Name)
+							continue
+							
+							
+						# Now we save logo
+						team.save_image_for_team(logo);
+						
+						# Now add to GameMap
+						local_teams.push_back(team)
+						
+						# Add Team to territory
+						terr.Club_Teams_Rankings.push_back(team)
+	
+	GameMapManager.game_map.add_teams(local_teams)
+	return true
+
+
+## Runs when the user clicks the Back Button trying to exit to GameMapEditor
+func _on_go_back_button_pressed():
+	GameMapManager.save_game_map();
+
 

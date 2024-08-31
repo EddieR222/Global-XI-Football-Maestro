@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://beetdrw2lnnfp"]
+[gd_scene load_steps=9 format=3 uid="uid://beetdrw2lnnfp"]
 
 [ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd" id="1_3nyqf"]
+[ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/Rating.gd" id="2_4gbdf"]
 [ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Images/Icons/world_icon.png.png" id="2_vun3s"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/Misc Scripts/PlayerFace.gd" id="3_rlpc2"]
+[ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/Position.gd" id="4_uvvkk"]
+[ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/NumberAndName.gd" id="6_n684e"]
+[ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/Stamina.gd" id="6_yxavq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj6bi"]
 bg_color = Color(0, 0.717198, 0.381764, 1)
@@ -31,6 +35,7 @@ theme_override_font_sizes/font_size = 16
 text = "95"
 horizontal_alignment = 1
 vertical_alignment = 2
+script = ExtResource("2_4gbdf")
 
 [node name="PlayerFaceContainer" type="AspectRatioContainer" parent="KeyInfo"]
 layout_mode = 2
@@ -53,6 +58,7 @@ theme_override_font_sizes/font_size = 14
 text = "CDM"
 horizontal_alignment = 1
 vertical_alignment = 2
+script = ExtResource("4_uvvkk")
 
 [node name="Stamina" type="ProgressBar" parent="." groups=["Squad_Info"]]
 layout_mode = 2
@@ -62,6 +68,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_kj6bi")
 value = 78.0
 fill_mode = 3
 show_percentage = false
+script = ExtResource("6_yxavq")
 
 [node name="NumberAndName" type="Label" parent="." groups=["Squad_Info"]]
 layout_mode = 2
@@ -72,3 +79,4 @@ theme_override_font_sizes/font_size = 16
 text = "12 B.Silva"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_n684e")

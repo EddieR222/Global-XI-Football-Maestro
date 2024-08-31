@@ -63,24 +63,22 @@ func save_image_for_team(image: Image) -> bool:
 	# Now we need to resize the image
 	image.resize(120, 80, 2);
 	
-	# Now we need to get the current number of territory flags in "Territory Flags" folder
-	var logo_path: String = "user://Images/Team Logos/";
-
 	# Now we need to save this image using the number unique identifier or previous name is already located
-	var save_path: String = logo_path + uuid.v4() + ".png";
+	var file_name: String =  uuid.v4() + ".png"
+	var save_path: String = Logo_Path_Dir + file_name;
 	var error: Error = image.save_png(save_path);
 	if error != OK:
 		return false
 	
 	# Now we save this path inside of the terr to have forever. We will also use this path to delete the image
-	Logo_Filename = save_path;
+	Logo_Filename = file_name;
 	return true
 
 ## Get the image for this team. Null is returned if no image exists for this Team
 func get_team_logo() -> Image:
 	# Load Image
-	if FileAccess.file_exists(Logo_Filename):
-		var image: Image = Image.load_from_file(Logo_Filename)
+	if FileAccess.file_exists(Logo_Path_Dir + Logo_Filename):
+		var image: Image = Image.load_from_file(Logo_Path_Dir + Logo_Filename)
 		if image != null:
 			return image
 	

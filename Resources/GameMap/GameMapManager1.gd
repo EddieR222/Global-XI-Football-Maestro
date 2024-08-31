@@ -3,6 +3,7 @@ class_name GameMapManagement extends Node
 """ GameMap """
 @export var game_map: GameMap;
 
+
 """ Constants """
 ## This is the folder where territory images will be held. Save and load territory flags from this folder
 const flag_folder: String = "user://Images/Territory Flags/";
@@ -88,6 +89,20 @@ func convert_to_string_array(input_array: Array) -> Array[String]:
 			territory_array.append(element)
 	return territory_array
 
+
+func load_csv_save(folder: String) -> bool:
+	# First, we need to create a new GameMap instance
+	var gm: GameMap = GameMap.new();
+	game_map = gm
+	
+	# Now we need to load the CSV files one by one
+	# First we will start with the Confederations and Territories CSVs
+	load_confederations_and_territories(folder)
+	
+	
+	return true
+
+
 # Example usage
 func get_csv_data() -> bool:
 	var gm: GameMap = GameMap.new();
@@ -169,7 +184,77 @@ func get_csv_data() -> bool:
 		var confed_list : = confed_nums.map(func(num: String): return gm.get_confed_by_id(num.to_int()));
 		confed.Children = convert_to_confed_array(confed_list);
 
-		
-
 	game_map = gm
 	return true;
+	
+	
+func load_confederations_and_territories(folder: String) -> void:
+	# First we need to load the territories
+	var csv_file_path: String = "res://Test CSV/Game Directories - All Territories.csv"
+	var csv_data := read_csv_file(csv_file_path)
+	for entry in csv_data:
+		
+		
+		
+		var terr: Territory = Territory.new();
+		terr.Name = entry["Territory_Name"].strip_edges();
+
+		
+		# Load Flag for Territory
+		var path: String = "user://Images/Territory Flags/"
+		var img: Image = Image.load_from_file(path + terr.Name + ".png");
+		terr.save_image_for_terr(img)
+		
+		terr.Code = entry["Code"];
+		terr.Population = entry["Population"].to_float() 
+		terr.Area = entry["Area"].to_float() 
+		terr.GDP = entry["GDP"].to_float()
+		terr.First_Names = convert_to_string_array(entry["First_Names"].split(",", false))
+		terr.Last_Names = convert_to_string_array(entry["Last_Names"].split(",", false))
+		terr.Rating = entry["Rating"].to_int();
+		terr.League_Elo = entry["League_Elo"].to_float();
+		game_map.add_territory(terr);
+		
+	# Now we go through all the territories once added to add in coterritories
+	for entry in csv_data:
+		var terr_id: int = entry["ID"].to_int();
+		var coterr_id: int = entry["CoTerritory_ID"].to_int();
+		
+		# Now lets get the territories
+		var terr: Territory = game_map.get_territory_by_id(terr_id)
+		var coterr: Territory = game_map.get_territory_by_id(coterr_id);
+		
+		# Finally we set it as the CoTerritory
+		if coterr != null:
+			terr.CoTerritory = coterr;
+			
+			
+	# Finally, we load the Confederations
+	csv_file_path = "res://Test CSV/Game Directories - All Confederations.csv"
+	csv_data = read_csv_file(csv_file_path)
+	for entry in csv_data:
+		var confed: Confederation = Confederation.new();
+		confed.Name = entry["Name"]
+		confed.Level = entry["Level"].to_int();
+		var terr_nums := Array(entry["Territory_List"].split(",", false));
+		var terr_list:= terr_nums.map(func(num: String): return game_map.get_territory_by_id(num.to_int()))
+		confed.Territory_List = convert_to_territory_array(terr_list)
+		
+		game_map.add_confederation(confed);
+		
+	for entry in csv_data:
+		var confed_id: int = entry["ID"].to_int();
+		
+		# Get Corressponding Confed
+		var confed: Confederation = game_map.get_confed_by_id(confed_id);
+		
+		confed.Owner =  entry["Owner_ID"].to_int();
+		
+		# Get Children once All Confederations have been added already
+		var confed_nums :=  Array(entry["Children_ID"].split(",", false));
+		var confed_list : = confed_nums.map(func(num: String): return game_map.get_confed_by_id(num.to_int()));
+		confed.Children = convert_to_confed_array(confed_list);
+	pass
+
+
+

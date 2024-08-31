@@ -38,6 +38,12 @@ class_name GameMap extends Resource
 @export var Date: Array[int] # Format of 0 = Month 1 = Day 2 = Year
 
 
+""" Managers """
+#Player Manager
+@export var player_manager: PlayerManager = PlayerManager.new()
+
+
+
 @export_category("Signals")
 ## This signal is emitted when the ID of a confederation is changed. This allows us to efficently change any weak pointers (int) that point to confederations
 signal confed_id_changed;
@@ -100,7 +106,7 @@ func get_player_by_id(id: int) -> Player:
 ## This functions sorts the confederations in alphabetical order by name. Corrects all IDs to new order
 func sort_confederations() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	Confederations.sort_custom(func(a: Confederation, b: Confederation): return a.Name.to_lower() < b.Name.to_lower());
+	Confederations.sort_custom(func(a: Confederation, b: Confederation): return UnicodeNormalizer.normalize(a.Name.to_lower()) < UnicodeNormalizer.normalize(b.Name.to_lower()));
 
 	# Now we reassign ID's based on new position in the Array
 	for new_index in range(Confederations.size()):
@@ -127,7 +133,7 @@ func sort_confederations() -> void:
 ## This functions sorts the territories in alphabetical order by name. Corrects all IDs to new order
 func sort_territories() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	Territories.sort_custom(func(a: Territory, b: Territory): return a.Name.to_lower() < b.Name.to_lower());
+	Territories.sort_custom(func(a: Territory, b: Territory): return UnicodeNormalizer.normalize(a.Name.to_lower()) < UnicodeNormalizer.normalize(b.Name.to_lower()));
 	
 	# Now we reassign ID's based on new position in the Array
 	for new_index in range(Territories.size()):
@@ -147,7 +153,7 @@ func sort_territories() -> void:
 ## This functions sorts the teams in alphabetical order by name. 
 func sort_teams() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	Teams.sort_custom(func(a: Team, b: Team): return a.Name.to_lower() < b.Name.to_lower());
+	Teams.sort_custom(func(a: Team, b: Team): return UnicodeNormalizer.normalize(a.Name.to_lower()) < UnicodeNormalizer.normalize(b.Name.to_lower()));
 	
 	# Now we reassign ID's based on new position in the Array
 	for new_index in range(Teams.size()):
@@ -160,7 +166,7 @@ func sort_teams() -> void:
 ## This functions sorts the tournaments in alphabetical order by name. 
 func sort_tournaments() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	Tournaments.sort_custom(func(a: Tournament, b: Tournament): return a.Name.to_lower() < b.Name.to_lower());
+	Tournaments.sort_custom(func(a: Tournament, b: Tournament): return UnicodeNormalizer.normalize(a.Name.to_lower()) < UnicodeNormalizer.normalize(b.Name.to_lower()));
 	
 	# Now we reassign ID's based on new position in the Array
 	for new_index in range(Tournaments.size()):
@@ -169,7 +175,7 @@ func sort_tournaments() -> void:
 ## This function sorts the Players by Name in alphabetical order by name.
 func sort_players() -> void:
 	# Sort the array based on Name (Alphabetical Order)
-	Players.sort_custom(func(a: Player, b: Player): return a.Name < b.Name);
+	Players.sort_custom(func(a: Player, b: Player): return UnicodeNormalizer.normalize(a.Name.to_lower()) < UnicodeNormalizer.normalize(b.Name.to_lower()));
 	
 	# Now we reassign ID's based on new position in the Array
 	for new_index in range(Players.size()):

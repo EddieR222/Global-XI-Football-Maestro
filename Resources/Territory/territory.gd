@@ -32,6 +32,9 @@ extends Resource
 		if code.length() > 4: return 
 		else: Code = code
 
+const Flag_Path_Dir: String = "user://Images/Territory Flags/"
+
+
 ## The Path in the User folder where the flag is being stored. We use this string to both store and retrieve the 
 ## flag that the user stores for this territory.[br]
 ## Once the path is set, the previous flag will be OVERWRITTEN if a new flag is provided
@@ -135,56 +138,41 @@ var Club_Teams_Rankings: Array[Team];
 
 ## Function to save the image in the filesystem for the given terr_id. Will save image with new identifier
 ## if territory doesn't have a flag saved, otherwise it will overwrite the previous image
-func save_image_for_terr(image: Image) -> void:
-	# Validate
+func save_image_for_terr(image: Image) -> bool:
+	# First we need to validate that the image passed in is valid
 	if image == null:
-		return
+		return false;
+		
+	# Second, if team already has a logo saved, we need to ensure we delete it in order to ensure we don't leave unneeded images
+	if Flag_Path != null and not Flag_Path.is_empty():
+		DirAccess.remove_absolute(Flag_Path_Dir + Flag_Path)
 	
-	# First we need to resize the image and compress it before it can be stored
-	image.resize(120, 80, 2);
-	image.compress(Image.COMPRESS_BPTC);
+	# Now we need to resize the image
+	image.resize(120, 120, 2);
 	
-	# Second we need to get the current number of territory flags in "Territory Flags" folder
-	var flag_path: String = "user://Images/Territory Flags/";
-	var num_images: int = get_num_import_files(flag_path);
-	print(num_images)
-
 	# Now we need to save this image using the number unique identifier or previous name is already located
-	var save_path: String = flag_path + str(num_images + 1) + ".png";
-	if Flag_Path.begins_with(flag_path):
-		save_path = Flag_Path;
-	image.save_png(save_path);
+	var file_name: String = uuid.v4() + ".png"
+	var save_path: String = Flag_Path_Dir + file_name;
+	var error: Error = image.save_png(save_path);
+	if error != OK:
+		return false
 	
 	# Now we save this path inside of the terr to have forever. We will also use this path to delete the image
-	Flag_Path = save_path;
+	Flag_Path = file_name;
+	return true
 
 ## Function to load the image for this territory. Can return null if image doesn't exist so check for null upon return
 func get_territory_image() -> Image:
-	# Generate Load Path
-	var load_path: String = Flag_Path
-	
 	# Load Image
-	if FileAccess.file_exists(load_path):
-		var image_data_compressed: Image = Image.load_from_file(load_path);
-		if image_data_compressed == null:
-			return null
-		image_data_compressed.decompress();
-		return image_data_compressed;
-	else:
-		return null
-		
-func get_num_import_files(image_folder_path: String) -> int:
-	var flag_folder: DirAccess = DirAccess.open(image_folder_path);
-	var files: PackedStringArray= flag_folder.get_files_at(image_folder_path);
-	
-	var num_imports: int = 0;
-	for file: String in files:
-		if file.get_extension() == "png":
-			num_imports += 1;
-			
-	return num_imports
+	if FileAccess.file_exists(Flag_Path_Dir + Flag_Path):
+		var image: Image = Image.load_from_file(Flag_Path_Dir + Flag_Path)
+		if image != null:
+			return image
 	
 	
+	return null
+
+
 func add_club_team(team: Team) -> bool:
 	# First check if Team is valid
 	if team.Name.is_empty():

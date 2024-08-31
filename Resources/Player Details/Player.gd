@@ -55,6 +55,12 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## The Positions of the Player  (array of Positons Enums)
 @export var Positions: Array[int]
 
+## The current position for the player for their Club Team
+@export var Club_Position: int;
+
+## The current position for the player for their National Team
+@export var National_Position: int;
+
 ## The Teams of the player currently plays for both
 @export var Club_Team: int;
 

@@ -1,9 +1,6 @@
 class_name PlayerManager extends Resource
 
 
-""" Game Map """
-@export var game_map: GameMap;
-
 """ Some constants for generating players """
 const STARTING_TEAM_PLAYER_NUMBER: int = 35;
 
@@ -109,12 +106,9 @@ const HIGH_RATING: Array[int] = [4, 8, 8, 40, 40];
 var Foreign_Nation_Cache: Dictionary
 
 
-func _init(gm: GameMap):
-	# Now we set the game_map memeber
-	game_map = gm;
-
+func prepare_cache():
 	# Here we iter through all territories
-	for terr in gm.Territories:
+	for terr in GameMapManager.game_map.Territories:
 		# Now we get the Foreign Nation Possbilities
 		Foreign_Nation_Cache[terr.ID] = get_random_nationalities(terr.ID);
 
@@ -126,7 +120,7 @@ func generate_team_roster(team_id: int, num:= -1, percent_local:= -1, percent_fo
 	
 	# Now we want to get the team rating and territory
 	var team_rating: int = team.Rating;
-	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(team._Territory);
 	
 	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
 	# to how many are local and how many are foreign
@@ -171,7 +165,7 @@ func generate_team_squad(team_id: int, percent_local:= -1, percent_foreign := -1
 	
 	# Now we want to get the team rating and territory
 	var team_rating: int = team.Rating;
-	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(team._Territory);
 	
 	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
 	# to how many are local and how many are foreign
@@ -227,7 +221,7 @@ func generate_team_subs(team_id: int, percent_local:= -1, percent_foreign := -1)
 	
 	# Now we want to get the team rating and territory
 	var team_rating: int = team.Rating;
-	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(team._Territory);
 	
 	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
 	# to how many are local and how many are foreign
@@ -285,7 +279,7 @@ func generate_team_reserves(team_id: int, percent_local:= -1, percent_foreign :=
 	
 	# Now we want to get the team rating and territory
 	var team_rating: int = team.Rating;
-	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(team._Territory);
 	
 	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
 	# to how many are local and how many are foreign
@@ -345,7 +339,7 @@ func generate_youth_academy(team_id: int, num: int, percent_local:= -1, percent_
 	
 	# Now we want to get the team rating and territory
 	var team_rating: int = team.Rating;
-	var team_terr: Territory = game_map.get_territory_by_id(team._Territory);
+	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(team._Territory);
 	
 	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
 	# to how many are local and how many are foreign
@@ -425,7 +419,7 @@ func generate_player(parameters: Dictionary) -> Player:
 	player.Age = age if age != null else STARTING_AGES.pick_random();
 		
 	# Set Player Birthday
-	var current_date: Array[int] = game_map.Date;
+	var current_date: Array[int] = GameMapManager.game_map.Date;
 	player.BirthDate = [randi() % current_date[0], randi() % current_date[1], current_date[2] - age]
 	
 	# Now we determine the position(s) of the player (whether passed in or not)
@@ -457,13 +451,13 @@ func generate_player(parameters: Dictionary) -> Player:
 ## For the most part this will depend on randomness and the league elo of the territory and those below it
 func get_random_nationalities(terr_id: int) -> Array[float]:
 	# First we simply need to get the territory passed in
-	var terr: Territory = game_map.get_territory_by_id(terr_id);
+	var terr: Territory = GameMapManager.game_map.get_territory_by_id(terr_id);
 	
 	# Now, we need to get the league elo ratings for all territories in the game
-	var terr_ids: Array = game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.Territory_ID);
+	var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.Territory_ID);
 	terr_ids.sort();
-	var terr_league_elos: Array = game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.League_Elo);
-	var confed_territories: Array = game_map.get_confeds_of_territory(terr_id).map(func(confed_id: int): return game_map.get_confed_by_id(confed_id));
+	var terr_league_elos: Array = GameMapManager.game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.League_Elo);
+	var confed_territories: Array = GameMapManager.game_map.get_confeds_of_territory(terr_id).map(func(confed_id: int): return GameMapManager.game_map.get_confed_by_id(confed_id));
 	
 	# Now we adjust the weights
 	# 1. If a country has a higher elo than our country, cap them to our countries elo and then decrease them on the ratio of their difference to the original elo
@@ -591,7 +585,7 @@ func determine_player_position(pos: int, player: Player) -> void:
 func determine_player_nationality(terr_id: int, player: Player) -> void:
 	# First, if no territory is given, we need to randomly select a territory for it
 	if terr_id == -1:
-		terr_id = game_map.Territories.pick_random().ID;
+		terr_id = GameMapManager.game_map.Territories.pick_random().ID;
 		
 	# Now, we can be sure that the terr_id is a valid county and we can add it as a nationality
 	player.Nationalities = [terr_id];
@@ -693,3 +687,16 @@ func determine_player_face(player: Player) -> void:
 	# INFO: For now, we use premade generated faces
 	
 	return
+
+
+
+""" Static Functions """
+static func convert_to_string_position(pos: int) -> String:
+	if pos >= 0 and pos <= 16: 
+		return POSITION_CONVERSION[pos]
+	return ""
+	
+static func convert_to_int_position(pos: String) -> int:
+	if pos in POSITION_NAME_CONVERSION.keys():
+		return POSITION_NAME_CONVERSION[pos];
+	return -1;

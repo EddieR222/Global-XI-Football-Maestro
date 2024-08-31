@@ -1,6 +1,6 @@
 extends TabContainer
 
-
+var team: Team;
 var squad: Array[VBoxContainer];
 var subs: Array[VBoxContainer];
 
@@ -10,15 +10,13 @@ var subs: Array[VBoxContainer];
 
 """ Panels """
 @onready var field_panels: Array[Panel] = [%LW, %LM, %LWB, %LB, %ST, %CF, %SS, %CAM, %CM, %CDM, %CB, %SW, %GK, %RW, %RM, %RWB, %RB ]
-
 @onready var formations: DefaultFormations = DefaultFormations.new()
-
 @onready var squad_player: PackedScene = preload("res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# First we need to get the formation saved by team
-	call_deferred("load_squad_formation")
+	call_deferred("load_squad_formation", Team.new())
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,8 +24,7 @@ func _process(delta):
 	pass
 	
 """ For Dropping into SquadPlayers """
-## This function will be called whenever a player is dropped onto a player square. This is true even for on field players or subs
-## so we need to handle these cases accordingly
+## This function will be called whenever a player is dropped onto the empty soccer field.
 func drop_data(at_position: Vector2, data):
 	# We need to see which player is attempting to be swapped
 	var swap_player: VBoxContainer = find_swap(at_position, data)
@@ -136,7 +133,8 @@ func find_swap(possible_position: Vector2, data: VBoxContainer) -> VBoxContainer
 		if sub_square.get_global_rect().has_point(possible_position):
 			return sub_square
 	return null
-			
+
+
 func swap_child_in_grid(grid_container: GridContainer, old_child: Control, new_child: Control):
 	# Get the old child at the specified index
 	var index: int;
@@ -167,7 +165,7 @@ func swap_child_in_grid(grid_container: GridContainer, old_child: Control, new_c
 	
 	# Ensure the grid updates its layout
 	grid_container.queue_sort()
-	
+
 func swap_places_in_grid(grid_container: GridContainer, child_1: Control, child_2: Control):
 	# Get the old child at the specified index
 	var child_1_index: int;
@@ -187,9 +185,14 @@ func swap_places_in_grid(grid_container: GridContainer, child_1: Control, child_
 
 
 ## This function takes prepares the Squad Formation, Subs, and TableList for the whole team
-func load_squad_formation():
+func load_squad_formation(_team: Team) -> bool:
+	team = _team;
+	
 	# For now we load a default formation
 	var player_positions: Array = formations.formations["4-4-2"];
+	
+	# Generate Players for Squad
+	#var squad_players: Array[Player] = GameMapManager.game_map.player_manager.generate_team_squad(0, 100, 0)
 	
 	# Now For Each Player Position, we want to put each player into the field rect
 	for pos: Vector2 in player_positions:
@@ -204,10 +207,12 @@ func load_squad_formation():
 		new_squad_player.top_level = true
 		new_squad_player.global_position = global_pos;
 		new_squad_player.squad_player_swapped.connect(drop_data)
+		new_squad_player.relative_position = pos
+		#new_squad_player.player = squad_player.pop_back()
 		
 		# Now we push into squad
 		squad.push_back(new_squad_player)
-		
+
 	# Now we just load the subs
 	for i in range(12):
 		var new_squad_player: VBoxContainer = squad_player.instantiate()
@@ -217,7 +222,20 @@ func load_squad_formation():
 		
 		# Now we push into subs
 		subs.push_back(new_squad_player)
+	
+	return true
 
+## This function simply takes the existing 
+func redraw_squad() -> bool:
+	for player: VBoxContainer in squad:
+		var field_position: Vector2 = player.relative_position;
+		var field_rect: Rect2 = field.get_global_rect();
+		var field_global_position: Vector2 = convert_relative_to_global(field_position, field_rect);
+		player.global_position = field_global_position
+		
+		
+	return true
+		
 
 ## This converts the relative positions to global positions and also accounting for center to top_left conversion
 func convert_relative_to_global(relative: Vector2, global_rect: Rect2) -> Vector2:
@@ -230,7 +248,6 @@ func convert_relative_to_global(relative: Vector2, global_rect: Rect2) -> Vector
 	global_center -= 0.5 * Vector2(125, 100)
 	
 	return global_center
-	
 
 func convert_global_to_relative(global_pos: Vector2 , global_rect: Rect2) -> Vector2:
 	
@@ -244,5 +261,10 @@ func convert_global_to_relative(global_pos: Vector2 , global_rect: Rect2) -> Vec
 	
 
 
-func _on_button_pressed():
-	load_squad_formation()
+
+""" """
+
+#
+func _on_visibility_changed() -> void:
+	redraw_squad()
+
