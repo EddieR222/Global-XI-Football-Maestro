@@ -7,6 +7,7 @@ var subs: Array[VBoxContainer];
 @onready var field_texture: TextureRect = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/Field");
 @onready var field: HBoxContainer = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox");
 @onready var sub_area: GridContainer = get_node("Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/SubArea")
+@onready var player_table: ScrollContainer = get_node("Formation/PlayerInfoAndListArea/Control");
 
 """ Panels """
 @onready var field_panels: Array[Panel] = [%LW, %LM, %LWB, %LB, %ST, %CF, %SS, %CAM, %CM, %CDM, %CB, %SW, %GK, %RW, %RM, %RWB, %RB ]
@@ -230,6 +231,11 @@ func load_squad_formation(_team: Team) -> bool:
 		
 		# Now we push into subs
 		subs.push_back(new_squad_player)
+	
+	# Generate Players for Reserve
+	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(0, 30, 70, 20)
+	player_table.set_player_list(reserve_players)
+	
 	
 	return true
 

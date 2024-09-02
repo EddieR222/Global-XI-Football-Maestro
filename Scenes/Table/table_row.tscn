@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://wm3kt4ik25bf"]
 
 [node name="Control" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0

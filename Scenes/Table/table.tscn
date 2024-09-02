@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Table/table.gd" id="1_qlstr"]
 
-[node name="Control" type="VBoxContainer"]
+[node name="Table" type="ScrollContainer"]
+layout_direction = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,5 +11,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
 script = ExtResource("1_qlstr")
+
+[node name="Control" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Title" type="MarginContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RowScroll" type="ScrollContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="Control/RowScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0

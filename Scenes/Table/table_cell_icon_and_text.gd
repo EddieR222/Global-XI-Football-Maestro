@@ -6,9 +6,7 @@ func display_data(txt: String, img: Image) -> bool:
 	
 	# Second, we display the img or don't if image is null
 	if img != null:
-		var texture: Texture2D = Texture2D.new();
-		texture.create_from_image(img)
-		icon = texture
+		icon = ImageTexture.create_from_image(img)
 		return true
 	icon = null	
 	return false

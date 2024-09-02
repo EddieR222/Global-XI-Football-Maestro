@@ -21,5 +21,4 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_raqwj")
-text_overrun_behavior = 4
 script = ExtResource("1_3t5bd")

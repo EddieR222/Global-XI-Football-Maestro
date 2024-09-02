@@ -269,12 +269,12 @@ func generate_team_subs(team_id: int, percent_local:= -1, percent_foreign := -1)
 
 	return player_roster
 
-func generate_team_reserves(team_id: int, percent_local:= -1, percent_foreign := -1) -> Array[Player]:
+func generate_team_reserves(team_id: int, percent_local:= -1, percent_foreign := -1, num:= -1) -> Array[Player]:
 	# First we need to get the team information
 	var team: Team = GameMapManager.game_map.get_team_by_id(team_id);
 	
 	# Now we want to get the team rating and territory
-	var team_rating: int = team.Rating;
+	var team_rating: int = 60 #team.Rating;
 	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(team._Territory);
 	
 	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
@@ -284,13 +284,13 @@ func generate_team_reserves(team_id: int, percent_local:= -1, percent_foreign :=
 		percent_local = 100 - percent_foreign;
 		
 	# Calculate the number of local and foreign based on percentages passed in or estimated
-	var reserve_size: int = STARTING_TEAM_PLAYER_NUMBER - 23
+	var reserve_size: int = STARTING_TEAM_PLAYER_NUMBER - 23 if num == -1 else num
 	var num_local: int = roundi(reserve_size * (percent_local / 100.0))
 	var num_foreign: int = reserve_size - num_local;
 	
 	# Now we want to get the Team Formation and the positions needed
-	var positions: Array[String] = team.Team_Tactics.Position_Names;
-	var copy: Array[String] = team.Team_Tactics.Position_Names;
+	var positions: Array[String] = ["GK", "LB", "CB", "CB", "RB", "LM", "CM", "CM", "RM", "ST", "ST", "GK"] #team.Team_Tactics.Position_Names;
+	var copy: Array[String] = positions.duplicate(true) #team.Team_Tactics.Position_Names;
 	while positions.size() < reserve_size: 
 		positions.push_back(copy.pick_random());
 	positions.shuffle();
