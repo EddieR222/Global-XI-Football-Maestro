@@ -1,7 +1,10 @@
+MarginContainer
+OptionButton
+SpinBox
+Label
 Button
 VBoxContainer
 HBoxContainer
-Label
 ItemList
 GridContainer
 TabContainer
@@ -9,6 +12,3 @@ TabBar
 ScrollContainer
 TextureRect
 Panel
-MarginContainer
-CheckButton
-Control

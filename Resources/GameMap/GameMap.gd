@@ -37,13 +37,6 @@ class_name GameMap extends Resource
 ## The starting date
 @export var Date: Array[int] # Format of 0 = Month 1 = Day 2 = Year
 
-
-""" Managers """
-#Player Manager
-@export var player_manager: PlayerManager = PlayerManager.new()
-
-
-
 @export_category("Signals")
 ## This signal is emitted when the ID of a confederation is changed. This allows us to efficently change any weak pointers (int) that point to confederations
 signal confed_id_changed;

@@ -3,6 +3,9 @@ class_name GameMapManagement extends Node
 """ GameMap """
 @export var game_map: GameMap;
 
+""" Player Manager """
+@export var player_manager: PlayerManager = PlayerManager.new();
+
 
 """ Constants """
 ## This is the folder where territory images will be held. Save and load territory flags from this folder

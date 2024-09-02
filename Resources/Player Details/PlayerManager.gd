@@ -67,7 +67,6 @@ const POSITION_RELATIONS: Dictionary = {
 	16: [12,12,14,15,11] 
 };
 
-
 # Height Constants
 const AVG_GK_HEIGHT: float = 190.0 #in cm
 const AVG_DEF_HEIGHT: float = 184.0
@@ -75,14 +74,12 @@ const AVG_MID_HEIGHT: float = 177.0
 const AVG_ATT_HEIGHT: float = 174.0
 const HEIGHT_STD_DEV: float = 2.0
 
-
 # Weight Constants
 const AVG_GK_WEIGHT: float = 80.0 #in kg
 const AVG_DEF_WEIGHT: float = 75.0
 const AVG_MID_WEIGHT: float = 70.0
 const AVG_ATT_WEIGHT: float = 68.0
 const WEIGHT_STD_DEV: float = 5.0
-
 
 # Rating Constants
 const POTENTIAL_STD_DEV: float = 3.5;
@@ -99,7 +96,6 @@ const STARTING_AGES: Array[int] = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 2
 const LOW_RATING: Array[int] = [40, 40, 8, 8, 4];
 const MID_RATING: Array[int] = [5, 30, 30, 30, 5];
 const HIGH_RATING: Array[int] = [4, 8, 8, 40, 40];
-
 
 """ Cache Elements  """
 # Foreign Nationalities Cache
@@ -164,8 +160,8 @@ func generate_team_squad(team_id: int, percent_local:= -1, percent_foreign := -1
 	var team: Team = GameMapManager.game_map.get_team_by_id(team_id);
 	
 	# Now we want to get the team rating and territory
-	var team_rating: int = team.Rating;
-	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(team._Territory);
+	var team_rating: int = 60 #team.Rating;
+	var team_terr: Territory = GameMapManager.game_map.get_territory_by_id(40)   #team._Territory);
 	
 	# Now we have to consider if both num_local and num_foreign are both -1. In this case we take an estimation 
 	# to how many are local and how many are foreign
@@ -178,7 +174,7 @@ func generate_team_squad(team_id: int, percent_local:= -1, percent_foreign := -1
 	var num_foreign: int = 11 - num_local;
 	
 	# Now we want to get the Team Formation and the positions needed
-	var positions: Array[String] = team.Team_Tactics.Position_Names;
+	var positions: Array[String] = ["GK", "LB", "CB", "CB", "RB", "LM", "CM", "CM", "RM", "ST", "ST"] #team.Team_Tactics.Position_Names;
 	positions.shuffle();
 	
 	# Prepare array to return with players
@@ -234,7 +230,7 @@ func generate_team_subs(team_id: int, percent_local:= -1, percent_foreign := -1)
 	var num_foreign: int = 12 - num_local;
 	
 	# Now we want to get the Team Formation and the positions needed
-	var positions: Array[String] = team.Team_Tactics.Position_Names;
+	var positions: Array[String] =  ["GK", "LB", "CB", "CB", "RB", "LM", "CM", "CM", "RM", "ST", "ST", "GK"]#team.Team_Tactics.Position_Names;
 	var extra_sub_position: String = positions.pick_random();
 	positions.push_back(extra_sub_position);
 	positions.shuffle();
@@ -402,6 +398,7 @@ func generate_youth_academy(team_id: int, num: int, percent_local:= -1, percent_
 ## Team_ID: int
 ## Average Adjustment: float
 ## Potential: int
+# TODO: Figure out how to connet signals here 
 func generate_player(parameters: Dictionary) -> Player:
 	# First thing first, we need to get all the parameter values
 	var age: int = parameters["Age"]
@@ -410,6 +407,10 @@ func generate_player(parameters: Dictionary) -> Player:
 	var team_id: int = parameters["Team_ID"]
 	var average_adjustment: float = parameters["Average Adjustment"]
 	var potential_override: int = parameters["Potential"]
+	
+	# DEBUG
+	if pos == 8:
+		print("8!!")
 	
 	# Next, create the instance of the player to be created
 	var player: Player = Player.new();
@@ -437,6 +438,9 @@ func generate_player(parameters: Dictionary) -> Player:
 
 	# Now we get the player name
 	determine_player_name(player)
+	
+	# Now we get a random player face
+	determine_player_face(player)
 		
 	# Now we determine their skill move and weak foot star levels
 	player.Skill_Moves = determine_stars(player.Overall);
@@ -454,10 +458,10 @@ func get_random_nationalities(terr_id: int) -> Array[float]:
 	var terr: Territory = GameMapManager.game_map.get_territory_by_id(terr_id);
 	
 	# Now, we need to get the league elo ratings for all territories in the game
-	var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.Territory_ID);
+	var terr_ids: Array = GameMapManager.game_map.Territories.filter(func(terr: Territory): return terr.ID != terr_id).map(func(terr: Territory): return terr.ID);
 	terr_ids.sort();
-	var terr_league_elos: Array = GameMapManager.game_map.Territories.filter(func(terr: Territory): return terr.Territory_ID != terr_id).map(func(terr: Territory): return terr.League_Elo);
-	var confed_territories: Array = GameMapManager.game_map.get_confeds_of_territory(terr_id).map(func(confed_id: int): return GameMapManager.game_map.get_confed_by_id(confed_id));
+	var terr_league_elos: Array = GameMapManager.game_map.Territories.filter(func(terr: Territory): return terr.ID != terr_id).map(func(terr: Territory): return terr.League_Elo);
+	var confed_territories: Array = GameMapManager.game_map.get_confeds_of_territory(terr_id)
 	
 	# Now we adjust the weights
 	# 1. If a country has a higher elo than our country, cap them to our countries elo and then decrease them on the ratio of their difference to the original elo
@@ -473,30 +477,26 @@ func get_random_nationalities(terr_id: int) -> Array[float]:
 			terr_league_elos[index] = 2.0;
 		
 	var curr_confed: Confederation;
-	var visited_terr: Array[int] = [terr.Territory_ID]
+	var visited_terr: Array[int] = [terr.ID]
 	var close_ness_percent: float = 1.0;
 	while not confed_territories.is_empty():
 		# Get last confed so it is the bottom and where the country originates from (Example: India is in South Asia)
 		curr_confed = confed_territories.pop_back();
 		
 		# Now for each terr_id, we increase their chances to the maximum (terr.league_elo) and then slowly decrease form there
-		for id in curr_confed.Territory_List:
+		for curr_terr: Territory in curr_confed.Territory_List:
 			# Check if we already shifted values
-			if id in visited_terr:
+			if curr_terr.ID in visited_terr:
 				continue
 				
 			# Now we simply find its index and change
-			var terr_elo_index: int = terr_ids.find(id);
+			var terr_elo_index: int = terr_ids.find(curr_terr.ID);
 			var elo: float = terr_league_elos[terr_elo_index]
 			terr_league_elos[terr_elo_index] = max(elo, (terr.League_Elo * close_ness_percent)); # * (elo/terr.League_Elo));
-			visited_terr.append(id);
+			visited_terr.append(curr_terr.ID);
 			
 		close_ness_percent -= .10;
 			
-			
-			
-		
-	
 	# Now we need to do the weighted probabilities array
 	var weights_acc: Array[float] = [];
 	weights_acc.resize(terr_league_elos.size());
@@ -551,19 +551,29 @@ func determine_player_position(pos: int, player: Player) -> void:
 	# Now we determine position, height, and weight
 	# Here height and weight use a normal distribution using the const mean and std dev defined above
 	if position_chance < 10:
-		player.Positions = [0];
+		var positions_array: Array[int] = [0];
+		player.Positions = positions_array
 		player.Height = roundi(randfn(AVG_GK_HEIGHT, HEIGHT_STD_DEV));
 		player.Weight = roundi(randfn(AVG_GK_WEIGHT, WEIGHT_STD_DEV));
 	elif position_chance < 37:
-		player.Positions = [pos] if pos != -1 else [DEFENSE_POSITION_PROBABILITIES.pick_random()];
+		if pos != -1:
+			player.Positions = [pos]
+		else:
+			player.Positions = [DEFENSE_POSITION_PROBABILITIES.pick_random()]
 		player.Height = roundi(randfn(AVG_DEF_HEIGHT, HEIGHT_STD_DEV));
 		player.Weight = roundi(randfn(AVG_DEF_WEIGHT, WEIGHT_STD_DEV));
 	elif position_chance < 73:
-		player.Positions = [pos] if pos != -1 else [MIDFIELD_POSITION_PROBABILITIES.pick_random()];
+		if pos != -1:
+			player.Positions = [pos]
+		else:
+			player.Positions = [MIDFIELD_POSITION_PROBABILITIES.pick_random()]
 		player.Height = roundi(randfn(AVG_MID_HEIGHT, HEIGHT_STD_DEV));
 		player.Weight = roundi(randfn(AVG_MID_WEIGHT, WEIGHT_STD_DEV));
 	else:
-		player.Positions = [pos] if pos != -1 else [ATTACK_POSITION_PROBABILITIES.pick_random()];
+		if pos != -1:
+			player.Positions = [pos]
+		else:
+			player.Positions = [ATTACK_POSITION_PROBABILITIES.pick_random()]
 		player.Height = roundi(randfn(AVG_ATT_HEIGHT, HEIGHT_STD_DEV));
 		player.Weight = roundi(randfn(AVG_ATT_WEIGHT, WEIGHT_STD_DEV));
 
@@ -571,7 +581,7 @@ func determine_player_position(pos: int, player: Player) -> void:
 	# Now we will decide if the player shoule have a second or even third alternative positions
 	var multiple_position_chance: int = randi() % 100;
 	if multiple_position_chance < 40:
-		var related_positions: Array[int] = POSITION_RELATIONS[player.Positions[0]];
+		var related_positions: Array = POSITION_RELATIONS[player.Positions[0]];
 		player.Positions.push_back(related_positions.pick_random())
 		related_positions.filter(func(e: int): return e != player.Positions[1])
 		if multiple_position_chance < 6:
@@ -649,16 +659,15 @@ func determine_player_ratings(team_id: int, potential_override: int,  player: Pl
 
 	# Now find current rating based on age
 	var curr_rating: int = 0;
-	while curr_rating > player.Potential || curr_rating < 1:
-		if player.Age < 20:
-			curr_rating = roundi(randfn((player.Potential / BELOW_20_DIVISOR) - average_adjustment, RATING_STD_DEV));
-		elif player.Age < 26: 
-			curr_rating = roundi(randfn((player.Potential / AT_20_DIVISOR) - average_adjustment, RATING_STD_DEV));
-		elif player.Age < 33: 
-			curr_rating = roundi(randfn(player.Potential - average_adjustment, RATING_STD_DEV));
-		else:
-			curr_rating = roundi(randfn(player.Potential - average_adjustment, RATING_STD_DEV) * (1.0 -  ((player.Age - 32) * 1.2) ));
-	player.Overall = curr_rating
+	if player.Age < 20:
+		curr_rating = roundi(randfn((player.Potential / BELOW_20_DIVISOR) - average_adjustment, RATING_STD_DEV));
+	elif player.Age < 26: 
+		curr_rating = roundi(randfn((player.Potential / AT_20_DIVISOR) - average_adjustment, RATING_STD_DEV));
+	elif player.Age < 33: 
+		curr_rating = roundi(randfn(player.Potential - average_adjustment, RATING_STD_DEV));
+	else:
+		curr_rating = roundi(randfn(player.Potential - average_adjustment, RATING_STD_DEV) * (1.0 -  ((player.Age - 32) * 1.2) ));
+	player.Overall = curr_rating if curr_rating < 99 and curr_rating > 1 else -1
 	
 	return
 
@@ -685,8 +694,29 @@ func determine_player_name(player: Player) -> void:
 func determine_player_face(player: Player) -> void:
 	# First we need to load a player face randomly
 	# INFO: For now, we use premade generated faces
+	var player_face: Image = get_random_player_face("res://Images/PlayerFaces/");
+	player.save_face_for_player(player_face)
 	
 	return
+	
+func get_random_player_face(dir_path: String) -> Image:
+	# Open the directory
+	var dir: DirAccess = DirAccess.open(dir_path);
+	
+	# Get Files
+	var player_faces_orig = dir.get_files();
+	var player_faces: Array[String];
+	for file_name: String in player_faces_orig:
+		if not file_name.ends_with("import"):
+			player_faces.push_back(file_name)
+	
+	# Pick random one and load it
+	var random_image: Image = Image.load_from_file(dir_path + player_faces.pick_random())
+	
+	if random_image != null:
+		return random_image
+	
+	return null
 
 
 

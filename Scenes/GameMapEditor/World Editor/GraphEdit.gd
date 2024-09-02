@@ -25,7 +25,7 @@ Preload Nodes that we will instantiate later
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# For testing
-	var worked: bool = GameMapManager.get_csv_data();
+	var worked: bool = GameMapManager.load_game_map_with_filename("")
 	if worked:
 		print(true)
 	if GameMapManager.game_map.Confederations.size() == 0:

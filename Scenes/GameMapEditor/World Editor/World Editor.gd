@@ -15,14 +15,24 @@ Preload Nodes that we will instantiate later
 """ Packed Scene of GameMap Editor """
 #const GAME_MAP_EDITOR: PackedScene = preload("res://Scenes/GameMapEditor/GameMapEditor.tscn");
 
-
 @onready var graph_edit: GraphEdit = get_node("VBoxContainer/Confed Edit");
 
 func _ready():
 	# Here we want to load the "SelectedFile" file to load the selected GameMap in the GameMap Editor
 	load_gamemap();
 	#pass
-
+	# Load the Current Year for Starting Year as default (user can change this later)
+	var time_dict: Dictionary = Time.get_datetime_dict_from_system(false);
+	var year: int = time_dict["year"];
+	
+	# Now we save this in the GameMap
+	GameMapManager.game_map.Date = [12, 31 , year];
+	
+	# Now we load this into the spinbox
+	var current_year_spinbox: SpinBox = get_node("VBoxContainer/HBoxContainer/YearInput")
+	current_year_spinbox.get_line_edit().text = str(year);
+	current_year_spinbox.apply()
+	 
 
 
 """
@@ -116,6 +126,9 @@ func redraw_saved_connections(graph: WorldMapGraph, graph_edit: GraphEdit) -> vo
 			var owner_node: GraphNode = graph.get_node_by_id(node.confed.Owner);	
 			graph_edit.connect_node(node.name, 0, owner_node.name, 0);
 
+## Called when the User changes the current starting year of the GameMap
+func _on_year_input_value_changed(value: float) -> void:
+	GameMapManager.game_map.Date = [12, 31, roundi(value)];
 
 ## When the user wants to go back to the Main GameMap Editor Menu
 func _on_go_back_button_pressed():
@@ -135,7 +148,7 @@ func _on_go_back_button_pressed():
 		if terr.Last_Names.size() < 1:
 			error_message += "\n\t- {name}: Needs at Least One Last Name".format({"name": terr.Name})
 		if terr.Rating < 1:
-			error_message += "\n\t- {name}: Needs at Least A Country Rating of >1".format({"name": terr.Name})
+			error_message += "\n\t- {name}: Needs at Least A Country Rating of >=1".format({"name": terr.Name})
 		if terr.Name == "Territory":
 			error_message += "\n\t- {name}: Needs a valid Country Name".format({"name": terr.Name})
 	

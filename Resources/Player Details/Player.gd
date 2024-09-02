@@ -1,6 +1,6 @@
 class_name Player extends Resource
 
-""" Identifying Information """
+@export_category("Identifying Information")
 
 ## The Unique ID of the Player
 @export var ID: int; #32 bits
@@ -20,11 +20,11 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## The BirthDate of the Player, stored as an array of integers in the format of (Month, Day, Year)
 @export var BirthDate: Array[int];
 
+## The Age of the Player 
 @export var Age: int;
-@export var Height: int; # in cms 
-@export var Weight: int; # in Kgs
-@export var Overall: int; #out of 100
-@export var Potential: int; #out of 100
+
+
+@export_category("Key Details")
 @export var Right_Foot: bool; # whether player is right foot dominate
 @export var Skill_Moves: int; #out of 5 stars
 @export var Weak_Foot: int; #out of 5 stars
@@ -38,7 +38,6 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## 5. Morale < 10  Very UnHappy
 @export var Morale: int;
 
-
 ## The current Sharpness of the Player.
 ## The BreakDown of the Sharpness is as follows
 ## 1. Sharpness > 90  Very Fit
@@ -47,10 +46,6 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## 4. Sharpness < 25  UnFit
 ## 5. Sharpness < 10  Very UnFit
 @export var Sharpness: int;
-
-
-## The Nationalities of the Player (array of territory ids)
-@export var Nationalities: Array[int];
 
 ## The Positions of the Player  (array of Positons Enums)
 @export var Positions: Array[int]
@@ -61,14 +56,6 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## The current position for the player for their National Team
 @export var National_Position: int;
 
-## The Teams of the player currently plays for both
-@export var Club_Team: int;
-
-## The National Team of the Player (array of eligable, in order of preference by player)
-@export var National_Teams: Array[int]
-
-
-""" Key Details """
 ## The Market Value of the Player (in US Dollars in Millions)
 @export var Market_Value: float
 
@@ -94,23 +81,24 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 @export var Club_Shirt_Number: int;
 @export var National_Team_Number: int;
 
-""" Current Season Stats """
-## The Stats for Each Individal Tournaments
-@export var Tournament_Stats: Array[PlayerSeasonStats]
+@export_category("Player Groups")
+## The Teams of the player currently plays for both
+@export var Club_Team: int;
 
-""" Player History """
-## The Overall Stats of Previous Seaons
-@export var Previous_Seasons_Stats: Array[PlayerSeasonStats]
+## The National Team of the Player (array of eligable, in order of preference by player)
+@export var National_Teams: Array[int]
 
-## The Stats for Previous Seasons for each tornament
-@export var Previous_Tournament_Stats: Array[PlayerSeasonStats];
+## The Nationalities of the Player (array of territory ids)
+@export var Nationalities: Array[int];
 
-## Trophies Won
-@export var Trophies_Won: Dictionary;
 
-""" Player Stats """
+@export_category("Player Stats")
 
-@export_category("Technical Ability")
+@export_subgroup("Stats Summary")
+@export var Overall: int; #out of 100
+@export var Potential: int; #out of 100
+
+@export_subgroup("Technical Ability")
 @export var Corners: int; #Set Pieces
 @export var Crossing: int; #Corossing
 @export var Dribbling: int; #Ball Control
@@ -126,7 +114,7 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 @export var Tackling: int; #Defending
 @export var Technique: int; #Crossing
 
-@export_category("Mental Ability")
+@export_subgroup("Mental Ability")
 @export var Aggression: int #Mentality
 @export var Anticipation: int #Movement
 @export var Bravery: int #Leadership
@@ -142,7 +130,7 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 @export var Vision: int; #Passing
 @export var Work_Rate: int; #Endurance
 
-@export_category("Physical Ability")
+@export_subgroup("Physical Ability")
 @export var Acceleration: int; #Speed
 @export var Agility: int; #Speed
 @export var Balance: int; #Strength
@@ -151,34 +139,34 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 @export var Pace: int; #Speed
 @export var Stamina: int; #Endurance
 @export var Strength: int; #Strength
-#Height and Weight as well
+@export var Height: int; # in cms 
+@export var Weight: int; # in Kgs
 
 
-## This will return 
-func get_condensed_player_stats() -> Dictionary:
-	return {};
-	
+@export_category("Player History")
+## The Overall Stats of All Seasons played by the player. The current season will be stored in
+## position zero, and the bigger the index, the more years it was behind. 
+@export var Previous_Seasons_Stats: Array[PlayerSeasonStats]
 
+## The Stats for Previous Seasons for each tornament
+@export var Previous_Tournament_Stats: Array[PlayerSeasonStats];
 
+## Trophies Won
+@export var Trophies_Won: Dictionary;
 
-
-
-
-
-
+""" Method Functions """
 ## This is a constructor that allows us to initiate a Player with a name.
 func _init(name := ""):
 	Name = name;
 	
-	# Connect Territory to Player, so we change the weak pointer here
-	connect("terr_id_changed", _on_territory_id_changed)
-	
-	# Connect Team to Player, so we change the weak pointer here
-	connect("team_id_changed", _on_team_id_changed)
 
 
 
 """ Signal Functions """
+func connect_signal(sig1: Signal, sig2: Signal) -> void:
+	sig1.connect(_on_territory_id_changed);
+	sig2.connect(_on_team_id_changed);
+
 func _on_territory_id_changed(old_id: int, new_id: int) -> void:
 	for index in range(Nationalities.size()):
 		if Nationalities[index] == old_id:
@@ -198,4 +186,40 @@ func _on_team_id_changed(old_id: int, new_id: int) -> void:
 		return #There can only be once instance of each id, so return early now
 			
 """ Loading and Saving Player Face """
+
+## Function to save the image in the filesystem for the given player. Will save image with new identifier
+func save_face_for_player(image: Image) -> bool:
+	# First we need to validate that the image passed in is valid
+	if image == null:
+		return false;
+		
+	# Second, if team already has a logo saved, we need to ensure we delete it in order to ensure we don't leave unneeded images
+	if Face_Path != null and not Face_Path.is_empty():
+		DirAccess.remove_absolute(Face_Path_Dir + Face_Path)
+	
+	# Now we need to resize the image
+	image.resize(120, 120, 2);
+	
+	# Now we need to save this image using the number unique identifier or previous name is already located
+	var file_name: String =  uuid.v4() + ".png"
+	var save_path: String = Face_Path_Dir + file_name;
+	var error: Error = image.save_png(save_path);
+	if error != OK:
+		return false
+	
+	# Now we save this path inside of the terr to have forever. We will also use this path to delete the image
+	Face_Path = file_name;
+	return true
+
+## Get the image for this team. Null is returned if no image exists for this Team
+func get_player_face() -> Image:
+	# Load Image
+	if FileAccess.file_exists(Face_Path_Dir + Face_Path):
+		var image: Image = Image.load_from_file(Face_Path_Dir + Face_Path)
+		if image != null:
+			return image
+	
+	
+	return null
+	
 

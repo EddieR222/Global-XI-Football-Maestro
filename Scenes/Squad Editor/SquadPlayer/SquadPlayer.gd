@@ -43,8 +43,41 @@ func _drop_data(at_position: Vector2, data):
 func set_player(p: Player) -> bool:
 	player = p;
 	
-	get_tree().call_group("Squad_Info", "display_player", p)
+	# Display Player Name
+	var number_and_name: Label = get_node("NumberAndName")
+	
+	# Get Player Shirt Number
+	var shirt_number: int = player.Club_Shirt_Number;
+	
+	# Get Player Name
+	var player_name: String = player.Name;
+	var player_name_split: Array = player_name.strip_edges().split(" ")
+	var first_name: String = player_name_split.pop_front();
+	var last_name: String = player_name_split.pop_back();
+	var first_name_letter: String = first_name.left(1);
+	
+	
+	number_and_name.text = str(shirt_number) + " " + first_name_letter + ". " + last_name
+	
+	# Display Rating
+	var rating_label: Label = get_node("KeyInfo/Rating");
+	rating_label.text = str(player.Overall);
+	
+	# Display Position
+	var position_label: Label = get_node("KeyInfo/Position");
+	position_label.text = PlayerManager.convert_to_string_position(player.Positions[0]);
+	
+	# Display Player Face
+	var player_face: Image = player.get_player_face()
+	var player_face_diplay: TextureRect = get_node("KeyInfo/PlayerFaceContainer/PlayerFace")
+	var texture_image: ImageTexture = ImageTexture.create_from_image(player_face)
+	player_face_diplay.texture = texture_image
+	
+	
 	return true
+
+
+
 
 
 """ Static Functions """

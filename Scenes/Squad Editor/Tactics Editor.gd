@@ -15,6 +15,10 @@ var subs: Array[VBoxContainer];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Debug: Load GameMap
+	GameMapManager.load_game_map_with_filename("")
+	GameMapManager.player_manager.prepare_cache();
+	
 	# First we need to get the formation saved by team
 	call_deferred("load_squad_formation", Team.new())
 
@@ -192,7 +196,7 @@ func load_squad_formation(_team: Team) -> bool:
 	var player_positions: Array = formations.formations["4-4-2"];
 	
 	# Generate Players for Squad
-	#var squad_players: Array[Player] = GameMapManager.game_map.player_manager.generate_team_squad(0, 100, 0)
+	var squad_players: Array[Player] = GameMapManager.player_manager.generate_team_squad(0, 100, 0)
 	
 	# Now For Each Player Position, we want to put each player into the field rect
 	for pos: Vector2 in player_positions:
@@ -208,17 +212,21 @@ func load_squad_formation(_team: Team) -> bool:
 		new_squad_player.global_position = global_pos;
 		new_squad_player.squad_player_swapped.connect(drop_data)
 		new_squad_player.relative_position = pos
-		#new_squad_player.player = squad_player.pop_back()
+		new_squad_player.set_player(squad_players.pop_back())
 		
 		# Now we push into squad
 		squad.push_back(new_squad_player)
 
+	# Generate Players for Sub
+	var sub_players: Array[Player] = GameMapManager.player_manager.generate_team_subs(0, 100, 0)
+	
 	# Now we just load the subs
 	for i in range(12):
 		var new_squad_player: VBoxContainer = squad_player.instantiate()
 		sub_area.add_child(new_squad_player)
 		new_squad_player.top_level = false
 		new_squad_player.squad_player_swapped.connect(drop_data)
+		new_squad_player.set_player(sub_players.pop_back())
 		
 		# Now we push into subs
 		subs.push_back(new_squad_player)

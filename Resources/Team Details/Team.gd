@@ -85,15 +85,5 @@ func get_team_logo() -> Image:
 	
 	return null
 	
-	
-func get_num_import_files(image_folder_path: String) -> int:
-	var flag_folder: DirAccess = DirAccess.open(image_folder_path);
-	var files: PackedStringArray= flag_folder.get_files_at(image_folder_path);
-	
-	var num_imports: int = 0;
-	for file: String in files:
-		if file.get_extension() == "png":
-			num_imports += 1;
-			
-	return num_imports
+
 
