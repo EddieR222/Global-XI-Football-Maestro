@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://0ibe2y5qi3fp"]
+[gd_scene load_steps=3 format=3 uid="uid://0ibe2y5qi3fp"]
 
 [ext_resource type="Script" path="res://Scenes/Table/table.gd" id="1_qlstr"]
 
+[sub_resource type="Theme" id="Theme_jxcrn"]
+ItemList/colors/font_hovered_color = Color(0.870588, 0.811765, 0.984314, 1)
+ItemList/colors/guide_color = Color(0.878431, 0.588235, 0.815686, 0.807843)
+Label/colors/font_color = Color(0.749261, 0.584603, 1, 1)
+
 [node name="Table" type="ScrollContainer"]
+clip_contents = false
 layout_direction = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +18,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 2
-vertical_scroll_mode = 0
+vertical_scroll_mode = 2
 script = ExtResource("1_qlstr")
 
 [node name="Control" type="VBoxContainer" parent="."]
@@ -21,21 +27,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Title" type="MarginContainer" parent="Control"]
+[node name="Title" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RowScroll" type="ScrollContainer" parent="Control"]
+[node name="Data" type="ItemList" parent="Control"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="Rows" type="VBoxContainer" parent="Control/RowScroll"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
+theme = SubResource("Theme_jxcrn")
+allow_search = false
+auto_height = true
+text_overrun_behavior = 1
+fixed_icon_size = Vector2i(80, 80)

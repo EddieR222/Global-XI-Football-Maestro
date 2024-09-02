@@ -1,12 +1,12 @@
+HBoxContainer
+ItemList
+ScrollContainer
 VBoxContainer
 MarginContainer
-HBoxContainer
-ScrollContainer
 OptionButton
 SpinBox
 Label
 Button
-ItemList
 GridContainer
 TabContainer
 TabBar

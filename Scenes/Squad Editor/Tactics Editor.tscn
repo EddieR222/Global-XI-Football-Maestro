@@ -302,6 +302,7 @@ text = "Generate Players for Current View"
 [node name="Control" parent="Formation/PlayerInfoAndListArea" instance=ExtResource("20_n13ar")]
 layout_mode = 2
 size_flags_stretch_ratio = 10.0
+horizontal_scroll_mode = 0
 
 [node name="Player Comparision" type="HBoxContainer" parent="."]
 visible = false

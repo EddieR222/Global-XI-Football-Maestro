@@ -70,3 +70,4 @@ theme_override_font_sizes/font_size = 16
 text = "12 B.Silva"
 horizontal_alignment = 1
 vertical_alignment = 1
+text_overrun_behavior = 1

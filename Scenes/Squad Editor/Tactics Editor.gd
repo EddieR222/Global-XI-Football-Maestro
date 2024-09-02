@@ -234,10 +234,48 @@ func load_squad_formation(_team: Team) -> bool:
 	
 	# Generate Players for Reserve
 	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(0, 30, 70, 20)
-	player_table.set_player_list(reserve_players)
+	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nationality", "Overall", "Potential", "Height", "Weight"], "Name", get_text_and_icon);
+	player_table.set_data(dataframe);
 	
 	
 	return true
+
+
+func get_text_and_icon(player: Player) -> Dictionary:
+	var dict: Dictionary = {};
+	
+	# Get Text for Position
+	dict["Position"] = PlayerManager.convert_to_string_position(player.Positions[0])
+	
+	# Get Text and Icon for Player Name and Face
+	var name_split: Array = player.Name.split(" ");
+	dict["Name"] = name_split[0].left(1) + ". " + name_split.pop_back();
+	dict["Name_icon"] = player.get_player_face();
+	
+	# Get text for age
+	dict["Age"] = str(player.Age)
+	
+	# Get text and icon for Nationality
+	var terr: Territory = GameMapManager.game_map.get_territory_by_id(player.Nationalities[0])
+	dict["Nationality"] = terr.Code
+	dict["Nationality_icon"] = terr.get_territory_image();
+	
+	# Get Text for Overall
+	dict["Overall"] = str(player.Overall)
+	
+	# Get text for Potential 
+	dict["Potential"] = str(player.Potential)
+	
+	# Get text for Height
+	dict["Height"] = str(player.Height);
+	
+	# Get text for Weight
+	dict["Weight"] = str(player.Weight);
+	
+	
+	return dict
+
+
 
 ## This function simply takes the existing 
 func redraw_squad() -> bool:
