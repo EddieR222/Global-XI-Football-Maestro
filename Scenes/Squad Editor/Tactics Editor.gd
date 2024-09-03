@@ -233,7 +233,7 @@ func load_squad_formation(_team: Team) -> bool:
 		subs.push_back(new_squad_player)
 	
 	# Generate Players for Reserve
-	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(0, 30, 70, 20)
+	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(0, 0, 100, 50)
 	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nationality", "Overall", "Potential", "Height", "Weight"], "Name", get_text_and_icon);
 	player_table.set_data(dataframe);
 	

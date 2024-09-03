@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdmxyb7rc4bhc"]
+
+[ext_resource type="FontFile" uid="uid://vvwh4soulnvi" path="res://Textures/Anonymous.ttf" id="1_11hvr"]
+
+[node name="Tableeader" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_11hvr")
+theme_override_font_sizes/font_size = 16
+icon_alignment = 2
+expand_icon = true

@@ -1,11 +1,11 @@
-res://Scenes/Table/table.tscn
+res://Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
-res://Resources/Table Details/Dataframe.gd
-res://tablecol.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
 res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
-res://Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
+res://Scenes/Table/table.tscn
 res://Scenes/Table/table.gd
 res://Scenes/Squad Editor/Tactics Editor.gd
-res://Scenes/Table/tablecolumn.tscn
+res://Scenes/Table/tableeader.tscn
+res://Scenes/Table/tableheader.tscn
+res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd

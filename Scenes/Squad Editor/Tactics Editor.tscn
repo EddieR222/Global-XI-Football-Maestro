@@ -75,6 +75,7 @@ size_flags_stretch_ratio = 5.0
 ratio = 0.66
 
 [node name="Field" type="TextureRect" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad"]
+self_modulate = Color(0.317647, 0.317647, 0.317647, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -302,7 +303,6 @@ text = "Generate Players for Current View"
 [node name="Control" parent="Formation/PlayerInfoAndListArea" instance=ExtResource("20_n13ar")]
 layout_mode = 2
 size_flags_stretch_ratio = 10.0
-horizontal_scroll_mode = 0
 
 [node name="Player Comparision" type="HBoxContainer" parent="."]
 visible = false
