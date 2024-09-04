@@ -234,7 +234,7 @@ func load_squad_formation(_team: Team) -> bool:
 	
 	# Generate Players for Reserve
 	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(0, 0, 100, 50)
-	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nationality", "Overall", "Potential", "Height", "Weight"], "Name", get_text_and_icon);
+	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nationality", "Overall", "Potential", "Height (cm)", "Weight (kg)"], "Name", get_text_and_icon);
 	player_table.set_data(dataframe);
 	
 	
@@ -267,10 +267,10 @@ func get_text_and_icon(player: Player) -> Dictionary:
 	dict["Potential"] = str(player.Potential)
 	
 	# Get text for Height
-	dict["Height"] = str(player.Height);
+	dict["Height (cm)"] = str(player.Height);
 	
 	# Get text for Weight
-	dict["Weight"] = str(player.Weight);
+	dict["Weight (kg)"] = str(player.Weight);
 	
 	
 	return dict

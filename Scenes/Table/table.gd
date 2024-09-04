@@ -4,22 +4,29 @@ extends ScrollContainer
 @onready var title_row: ItemList = %Title;
 @onready var data_item_list: ItemList = %Data;
 
-""" Scenes """
-@onready var header_button: PackedScene = preload("res://Scenes/Table/tableheader.tscn")
-
 """ Data """
 @export var dataframe: Dataframe;
-
+@export var _copy_dataframe: Array[Dictionary] = []
 @export var rows: int;
 @export var cols: int;
 
 
-@export var max_length: Dictionary
+@export var max_length: Dictionary;
+@export var icon_columns: Dictionary;
+const ABSOLUTE_MAX_STRING_LENGTH: int = 50;
 
+""" Icons """
+const down_arrow: String = "▼"
+const up_arrow: String = "▲" 
+const neutral: String = "-"
 
+""" Font and Icon Info """
+const FONT_PIXEL_WIDTH: int = 10;
+@onready var ICON_WIDTH_IN_LETTER: int = data_item_list.fixed_icon_size.x / FONT_PIXEL_WIDTH;
 
 func set_data(data: Dataframe) -> void:
 	dataframe = data;
+
 	
 	cols = dataframe.title_names.size()
 	rows = dataframe.data.size();
@@ -31,39 +38,22 @@ func set_data(data: Dataframe) -> void:
 	add_title_row()
 
 	for row: int in range(rows):
-		add_row(dataframe.data[row])
-		
-	
-	
-	
+		add_row(row)
+
+
+
 func add_title_row() -> bool:
-	#var index: int = 0;
-	#for column: String in dataframe.title_names:
-		## Pad Column Name
-		#var column_string: String = prepare_text(column, column, true)
-		#
-		## Now instantiate
-		#var header: Button = header_button.instantiate()
-		#header.text = column_string
-		#
-		## Now adjust size
-		#if data_item_list.get_item_icon(index) != null:
-			#header.text = "--" + column_string + "--"
-		#
-		## Now add child
-		#title_row.add_child(header);
-		#
-		#index += 1
-		
+	# First we clear if anything previously had
+	title_row.clear()
+	
 	for column: String in dataframe.title_names:
-		title_row.add_item(column, null, true);
-		
-		
+		title_row.add_item(prepare_text(column, column, false), null, true);
+	
 	return true
 
 
-func add_row(row_data) -> void:
-	var row_text_and_icons: Dictionary = dataframe.get_text_and_icon.call(row_data);
+func add_row(data_index: int) -> void:
+	var row_text_and_icons: Dictionary = _copy_dataframe[data_index]
 	for column: String in dataframe.title_names:
 		# Get Text if any, otherwise put N/A
 		var cell_text: String = row_text_and_icons[column] if column in row_text_and_icons.keys() else "N/A"
@@ -73,30 +63,31 @@ func add_row(row_data) -> void:
 		var cell_icon: ImageTexture = null;
 		if image != null:
 			cell_icon = ImageTexture.create_from_image(image)
-			cell_text = prepare_text(cell_text, column, false)
-		else:
 			cell_text = prepare_text(cell_text, column, true)
+		else:
+			cell_text = prepare_text(cell_text, column, false)
 			
 		
 		# Now we add item to list
 		var index: int = data_item_list.add_item(cell_text, cell_icon, false);
-		
-		# Now we check if current column is metadata column
-		if column == dataframe.metadata_column:
-			data_item_list.set_item_metadata(index, row_data);
-		
 
-func fix_column_widths() -> void:
-	var rect: Rect2 = data_item_list.get_item_rect(1, true)
-	rect.grow_side(2, 1000)
-	
+
+
 func prepare_text(text: String, column: String, icon: bool) -> String:
-	var total_length: int = max_length[column]
-	var padding_needed = total_length - text.length()
+	var total_length: int = min(max_length[column], ABSOLUTE_MAX_STRING_LENGTH if !icon  else ABSOLUTE_MAX_STRING_LENGTH - ICON_WIDTH_IN_LETTER)
+	if text == column and !icon_columns[column]:
+		text = text + neutral
+	elif text == column and icon_columns[column]:
+		text = text + neutral
+		total_length += ICON_WIDTH_IN_LETTER
+	elif text != column:
+		text = " " + text
+		
+	var padding_needed = total_length - text.length();
 	
 
 	if padding_needed > 0: 
-		var left_padding = padding_needed / 2 if icon else 0
+		var left_padding = padding_needed / 2 if !icon else 0
 		var right_padding = padding_needed - left_padding
 		return " ".repeat(left_padding) + text + " ".repeat(right_padding)
 	elif padding_needed < 0:
@@ -107,18 +98,109 @@ func prepare_text(text: String, column: String, icon: bool) -> String:
 
 
 func calculate_max_text_lengths(data: Dataframe) -> Dictionary:
+	# Clear previous things
+	icon_columns.clear()
+	_copy_dataframe.clear()
+	
 	# Start Return Dictionary
 	var dict: Dictionary;
-	for column: String in dataframe.title_names:
-		dict[column] = column.length();
 	
+	# Initialize values as minimum of length of column name (plus 1)
+	for column: String in dataframe.title_names:
+		dict[column] = column.length() + 1; # Add 1 to account for up and down arrow that all columns will have
+	
+	# Now go through each data and find max length of column, whether it holds an icon, and build easy to work with database
 	for row_data in data.data:
 		var row_text_and_icons: Dictionary = dataframe.get_text_and_icon.call(row_data);
 		for column: String in dataframe.title_names:
+			# Calculate Max Length
 			var cell_text: String = row_text_and_icons[column] if column in row_text_and_icons.keys() else "N/A"
 			dict[column] = max(dict[column], cell_text.length())
+			
+			# Determine Icon in Column
+			if column + "_icon" in row_text_and_icons.keys():
+				icon_columns[column] = true;
+			else:
+				icon_columns[column] = false;
+	
+			# Bui;d Easy to Work with Database
+		_copy_dataframe.push_back(row_text_and_icons)
+			
 	
 	return dict
 			
 	
 	
+
+## When the user clicks the column's title item, here we either sort (ascending or descending) or go back to neutral
+func _on_title_item_selected(index: int) -> void:
+	# First we can determine column selected by the index
+	var column_selected: String = dataframe.title_names[index]
+	
+	# Now we can use the current column name to determine what state it was selected previously
+	var curr_column: String = title_row.get_item_text(index)
+	if curr_column.contains(up_arrow):
+		# This means it was previously sorted upwards, so now we sort downwards
+		_copy_dataframe.sort_custom(
+			func(a: Dictionary, b: Dictionary): 
+				var a_column_string: String =  a[column_selected];
+				if a_column_string.is_valid_int():
+					return a_column_string.to_int() <= b[column_selected].to_int()
+				elif a_column_string.is_valid_float():
+					return a_column_string.to_float() <= b[column_selected].to_float();
+				elif PlayerManager.convert_to_int_position(a_column_string) != -1:
+					return PlayerManager.convert_to_int_position(a_column_string) <= PlayerManager.convert_to_int_position(b[column_selected])
+				else:
+					return UnicodeNormalizer.normalize(a[column_selected].to_lower()) >= UnicodeNormalizer.normalize(b[column_selected].to_lower()));
+		add_title_row()
+		data_item_list.clear()
+		for row: int in range(rows):
+			add_row(row)
+			
+		# Set text to indicate it is now descending
+		title_row.set_item_text(index, curr_column.replace(up_arrow, down_arrow))
+			
+	elif curr_column.contains(down_arrow):
+		# This means it was previously sorted downwards, we now return to neutral (by default, players will be sorted ascending by first row)
+		_copy_dataframe.sort_custom(
+			func(a: Dictionary, b: Dictionary): 
+				var a_column_string: String =  a[dataframe.title_names[0]];
+				if a_column_string.is_valid_int():
+					return a_column_string.to_int() <= b[dataframe.title_names[0]].to_int()
+				elif a_column_string.is_valid_float():
+					return a_column_string.to_float() <= b[dataframe.title_names[0]].to_float();
+				elif PlayerManager.convert_to_int_position(a_column_string) != -1:
+					return PlayerManager.convert_to_int_position(a_column_string) <= PlayerManager.convert_to_int_position(b[dataframe.title_names[0]])
+				else:
+					return UnicodeNormalizer.normalize(a[column_selected].to_lower()) >= UnicodeNormalizer.normalize(b[dataframe.title_names[0]].to_lower()));
+		add_title_row()
+		data_item_list.clear()
+		for row: int in range(rows):
+			add_row(row)
+			
+		# Set text to indicate it is now descending
+		title_row.set_item_text(0, title_row.get_item_text(0).replace(neutral, up_arrow))
+		
+	elif curr_column.contains(neutral):
+		# This means it was previously sorted upwards, so now we sort downwards
+		_copy_dataframe.sort_custom(
+			func(a: Dictionary, b: Dictionary): 
+				var a_column_string: String =  a[column_selected];
+				if a_column_string.is_valid_int():
+					return a_column_string.to_int() >= b[column_selected].to_int()
+				elif a_column_string.is_valid_float():
+					return a_column_string.to_float() >= b[column_selected].to_float();
+				elif PlayerManager.convert_to_int_position(a_column_string) != -1:
+					return PlayerManager.convert_to_int_position(a_column_string) >= PlayerManager.convert_to_int_position(b[column_selected])
+				else:
+					return UnicodeNormalizer.normalize(a[column_selected].to_lower()) <= UnicodeNormalizer.normalize(b[column_selected].to_lower()));
+		add_title_row()
+		data_item_list.clear()
+		for row: int in range(rows):
+			add_row(row)
+			
+		# Set text to indicate it is now descending
+		title_row.set_item_text(index, curr_column.replace(neutral, up_arrow))
+		
+		
+

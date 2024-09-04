@@ -1,10 +1,10 @@
-ItemList
-Button
 ScrollContainer
 VScrollBar
+MarginContainer
+ItemList
+Button
 HBoxContainer
 VBoxContainer
-MarginContainer
 OptionButton
 SpinBox
 Label

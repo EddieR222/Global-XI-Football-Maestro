@@ -1,14 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://0ibe2y5qi3fp"]
 
 [ext_resource type="Script" path="res://Scenes/Table/table.gd" id="1_qlstr"]
-[ext_resource type="FontFile" uid="uid://vvwh4soulnvi" path="res://Textures/Anonymous.ttf" id="2_tcxbd"]
+[ext_resource type="Theme" uid="uid://cmg6xg1i1jsqy" path="res://Scenes/Table/DataTableTheme.tres" id="2_raehq"]
 
-[sub_resource type="Theme" id="Theme_jxcrn"]
-ItemList/colors/font_hovered_color = Color(0.870588, 0.811765, 0.984314, 1)
-ItemList/colors/guide_color = Color(0.878431, 0.588235, 0.815686, 0.807843)
-ItemList/constants/h_separation = 10
-ItemList/fonts/font = ExtResource("2_tcxbd")
-Label/colors/font_color = Color(0.749261, 0.584603, 1, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4fbh"]
 
 [node name="Table" type="ScrollContainer"]
 anchors_preset = 15
@@ -16,7 +11,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_u4fbh")
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 script = ExtResource("1_qlstr")
@@ -27,18 +24,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Title" type="ItemList" parent="Control"]
-unique_name_in_owner = true
+[node name="Scroll" type="ScrollContainer" parent="Control"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Title" type="ItemList" parent="Control/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme = ExtResource("2_raehq")
+allow_search = false
+text_overrun_behavior = 1
 max_columns = 0
-fixed_column_width = 200
-icon_scale = 0.25
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
+size_flags_stretch_ratio = 10.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -47,10 +54,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
-theme = SubResource("Theme_jxcrn")
+theme = ExtResource("2_raehq")
 allow_search = false
 auto_height = true
 text_overrun_behavior = 1
-fixed_column_width = 200
-icon_scale = 0.25
+fixed_icon_size = Vector2i(40, 40)
+
+[connection signal="item_selected" from="Control/Scroll/Title" to="." method="_on_title_item_selected"]
