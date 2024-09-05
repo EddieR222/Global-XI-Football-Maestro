@@ -120,6 +120,10 @@ func handle_special_cases(index: int, cell_text: String, column: String) -> bool
 			var rating: int = cell_text.strip_edges().to_int();
 			var rating_color: Color = determine_rating_color(float(rating))
 			data_item_list.set_item_custom_fg_color(index, rating_color)
+		"Stamina":
+			var rating: int = cell_text.strip_edges().to_int();
+			var rating_color: Color = determine_rating_color(float(rating))
+			data_item_list.set_item_custom_fg_color(index, rating_color)
 		"Condition":
 			if cell_text == "Healthy":
 				data_item_list.set_item_custom_fg_color(index, ATTACKER_FONT_COLOR) # reuse color since it is a nice shade and visible
@@ -286,19 +290,19 @@ func _on_title_item_selected(index: int) -> void:
 			func(a: Dictionary, b: Dictionary): 
 				var a_column_string: String =  a[dataframe.title_names[0]];
 				if a_column_string.is_valid_int():
-					return a_column_string.to_int() <= b[dataframe.title_names[0]].to_int()
+					return a_column_string.to_int() >= b[dataframe.title_names[0]].to_int()
 				elif a_column_string.is_valid_float():
-					return a_column_string.to_float() <= b[dataframe.title_names[0]].to_float();
+					return a_column_string.to_float() >= b[dataframe.title_names[0]].to_float();
 				elif PlayerManager.convert_to_int_position(a_column_string) != -1:
-					return PlayerManager.convert_to_int_position(a_column_string) <= PlayerManager.convert_to_int_position(b[dataframe.title_names[0]])
+					return PlayerManager.convert_to_int_position(a_column_string) >= PlayerManager.convert_to_int_position(b[dataframe.title_names[0]])
 				else:
-					return UnicodeNormalizer.normalize(a[column_selected].to_lower()) >= UnicodeNormalizer.normalize(b[dataframe.title_names[0]].to_lower()));
+					return UnicodeNormalizer.normalize(a[column_selected].to_lower()) <= UnicodeNormalizer.normalize(b[dataframe.title_names[0]].to_lower()));
 		add_title_row()
 		data_item_list.clear()
 		for row: int in range(rows):
 			add_row(row)
 			
-		# Set text to indicate it is now descending
+		# Set text to indicate it is now ascending
 		title_row.set_item_text(0, title_row.get_item_text(0).replace(neutral, up_arrow))
 		
 	elif curr_column.contains(neutral):

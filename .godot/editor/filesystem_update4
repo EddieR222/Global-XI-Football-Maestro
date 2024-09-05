@@ -1,12 +1,13 @@
 res://Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/GameMapEditor/Team Editor/Team Editor.gd
 res://Scenes/Squad Editor/SubAreaBackground.tres
-res://Scenes/Table/table.tscn
-res://Scenes/Table/table.gd
-res://Scenes/Squad Editor/Tactics Editor.gd
 res://Scenes/GameMapEditor/Team Editor/Team Editor.tscn
 res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
 res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
+res://Scenes/Table/table.tscn
 res://Scenes/Table/tableheader.tscn
-res://Scenes/Table/DataTableTheme.tres
+res://Scenes/Squad Editor/Tactics Editor.gd
+res://Scenes/Table/table.gd
 res://Resources/Player Details/PlayerManager.gd
+res://TeamIdentity.tscn
+res://Scenes/Table/DataTableTheme.tres

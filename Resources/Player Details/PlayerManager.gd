@@ -289,7 +289,7 @@ func generate_team_reserves(team_id: int, percent_local:= -1, percent_foreign :=
 	var num_foreign: int = reserve_size - num_local;
 	
 	# Now we want to get the Team Formation and the positions needed
-	var positions: Array[String] = ["GK", "LB", "CB", "CB", "RB", "LM", "CM", "CM", "RM", "ST", "ST", "GK"] #team.Team_Tactics.Position_Names;
+	var positions: Array[String] = ["GK", "LB", "CB", "CB", "RB", "LM", "CM", "CM", "RM", "ST", "ST", "ST"] #team.Team_Tactics.Position_Names;
 	var copy: Array[String] = positions.duplicate(true) #team.Team_Tactics.Position_Names;
 	while positions.size() < reserve_size: 
 		positions.push_back(copy.pick_random());
