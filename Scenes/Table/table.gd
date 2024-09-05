@@ -24,6 +24,12 @@ const neutral: String = "-"
 const FONT_PIXEL_WIDTH: int = 10;
 @onready var ICON_WIDTH_IN_LETTER: int = data_item_list.fixed_icon_size.x / FONT_PIXEL_WIDTH;
 
+# Position Colors
+const GOALKEPPER_FONT_COLOR: Color = Color(206.0/255.0, 131.0/255.0, 1.0);
+const DEFENDER_FONT_COLOR: Color = Color(50.0/255.0, 1.0, 50.0/255.0);
+const MIDFIELDER_FONT_COLOR: Color = Color(50.0/255.0, 153.0/255.0, 1.0);
+const ATTACKER_FONT_COLOR: Color = Color(1.0, 0.0/255.0, 0.0/255.0);
+
 func set_data(data: Dataframe) -> void:
 	dataframe = data;
 
@@ -67,10 +73,26 @@ func add_row(data_index: int) -> void:
 		else:
 			cell_text = prepare_text(cell_text, column, false)
 			
-		
 		# Now we add item to list
 		var index: int = data_item_list.add_item(cell_text, cell_icon, false);
 
+		# INFO SPECIAL CASES: Position or Overall/Potential
+		if PlayerManager.convert_to_int_position(cell_text.strip_edges()) != -1 and column == "Position":
+			# Valid Position String so we color code it
+			var pos: int = PlayerManager.convert_to_int_position(cell_text.strip_edges());
+			if pos == 0:
+				data_item_list.set_item_custom_fg_color(index, GOALKEPPER_FONT_COLOR)
+			elif pos <= 6: 
+				data_item_list.set_item_custom_fg_color(index, DEFENDER_FONT_COLOR)
+			elif pos <= 11:
+				data_item_list.set_item_custom_fg_color(index, MIDFIELDER_FONT_COLOR)
+			else:
+				data_item_list.set_item_custom_fg_color(index, ATTACKER_FONT_COLOR)
+		if column == "Overall" or column == "Potential":
+			var rating: int = cell_text.strip_edges().to_int();
+			var rating_color: Color = determine_rating_color(float(rating))
+			data_item_list.set_item_custom_fg_color(index, rating_color)
+			
 
 
 func prepare_text(text: String, column: String, icon: bool) -> String:
@@ -80,14 +102,12 @@ func prepare_text(text: String, column: String, icon: bool) -> String:
 	elif text == column and icon_columns[column]:
 		text = text + neutral
 		total_length += ICON_WIDTH_IN_LETTER
-	elif text != column:
-		text = " " + text
 		
 	var padding_needed = total_length - text.length();
 	
 
 	if padding_needed > 0: 
-		var left_padding = padding_needed / 2 if !icon else 0
+		var left_padding = padding_needed / 2 #if !icon else 0
 		var right_padding = padding_needed - left_padding
 		return " ".repeat(left_padding) + text + " ".repeat(right_padding)
 	elif padding_needed < 0:
@@ -130,7 +150,21 @@ func calculate_max_text_lengths(data: Dataframe) -> Dictionary:
 	return dict
 			
 	
-	
+func determine_rating_color(value: float) -> Color:
+	# Ensure value is clamped between 0 and 100
+	value = clamp(value, 0.0, 100.0)
+
+	# Define color ranges: red (0) -> yellow (50) -> green (100)
+	var red = Color(1.0, 0.0, 0.0)   # Dark Red
+	var yellow = Color(1.0, 1.0, 0.0) # Yellow
+	var green = Color(0.0, 1.0, 0.0)  # Dark Green
+
+	if value < 50.0:
+		# Interpolate between red and yellow
+		return red.lerp(yellow, value / 50.0)
+	else:
+		# Interpolate between yellow and green
+		return yellow.lerp(green, (value - 50.0) / 50.0)
 
 ## When the user clicks the column's title item, here we either sort (ascending or descending) or go back to neutral
 func _on_title_item_selected(index: int) -> void:

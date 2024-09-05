@@ -445,6 +445,9 @@ func generate_player(parameters: Dictionary) -> Player:
 	# Now we determine their skill move and weak foot star levels
 	player.Skill_Moves = determine_stars(player.Overall);
 	player.Weak_Foot = determine_stars(player.Overall);
+	
+	# DEBUG Testing stamina bar
+	player.Stamina_Level = randi() % 100;
 		
 	# Finally return player we created
 	return player

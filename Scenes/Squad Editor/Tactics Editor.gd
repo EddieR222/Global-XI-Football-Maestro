@@ -4,10 +4,10 @@ var team: Team;
 var squad: Array[VBoxContainer];
 var subs: Array[VBoxContainer];
 
-@onready var field_texture: TextureRect = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/Field");
-@onready var field: HBoxContainer = get_node("Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox");
-@onready var sub_area: GridContainer = get_node("Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/SubArea")
-@onready var player_table: ScrollContainer = get_node("Formation/PlayerInfoAndListArea/Control");
+@onready var field_texture: TextureRect = %Field
+@onready var field: HBoxContainer = %FieldBox
+@onready var sub_area: GridContainer = %SubArea
+@onready var player_table: ScrollContainer = %PlayerTable
 
 """ Panels """
 @onready var field_panels: Array[Panel] = [%LW, %LM, %LWB, %LB, %ST, %CF, %SS, %CAM, %CM, %CDM, %CB, %SW, %GK, %RW, %RM, %RWB, %RB ]
@@ -197,7 +197,7 @@ func load_squad_formation(_team: Team) -> bool:
 	var player_positions: Array = formations.formations["4-4-2"];
 	
 	# Generate Players for Squad
-	var squad_players: Array[Player] = GameMapManager.player_manager.generate_team_squad(0, 100, 0)
+	var squad_players: Array[Player] = GameMapManager.player_manager.generate_team_squad(100, 100, 0)
 	
 	# Now For Each Player Position, we want to put each player into the field rect
 	for pos: Vector2 in player_positions:
@@ -219,7 +219,7 @@ func load_squad_formation(_team: Team) -> bool:
 		squad.push_back(new_squad_player)
 
 	# Generate Players for Sub
-	var sub_players: Array[Player] = GameMapManager.player_manager.generate_team_subs(0, 100, 0)
+	var sub_players: Array[Player] = GameMapManager.player_manager.generate_team_subs(100, 100, 0)
 	
 	# Now we just load the subs
 	for i in range(12):
@@ -233,8 +233,8 @@ func load_squad_formation(_team: Team) -> bool:
 		subs.push_back(new_squad_player)
 	
 	# Generate Players for Reserve
-	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(0, 0, 100, 50)
-	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nationality", "Overall", "Potential", "Height (cm)", "Weight (kg)"], "Name", get_text_and_icon);
+	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(100, 0, 100, 50)
+	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nat.", "Overall", "Potential", "Height (cm)", "Weight (kg)"], "Name", get_text_and_icon);
 	player_table.set_data(dataframe);
 	
 	
@@ -257,8 +257,8 @@ func get_text_and_icon(player: Player) -> Dictionary:
 	
 	# Get text and icon for Nationality
 	var terr: Territory = GameMapManager.game_map.get_territory_by_id(player.Nationalities[0])
-	dict["Nationality"] = terr.Code
-	dict["Nationality_icon"] = terr.get_territory_image();
+	dict["Nat."] = terr.Code
+	dict["Nat._icon"] = terr.get_territory_image();
 	
 	# Get Text for Overall
 	dict["Overall"] = str(player.Overall)

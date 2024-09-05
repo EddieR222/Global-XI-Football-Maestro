@@ -1,7 +1,18 @@
 extends VBoxContainer
 
+""" Player Information """
 var player: Player;
 var relative_position: Vector2;
+
+""" Constants """
+# Position Colors
+const GOALKEPPER_FONT_COLOR: Color = Color(206.0/255.0, 131.0/255.0, 1.0);
+const DEFENDER_FONT_COLOR: Color = Color(50.0/255.0, 1.0, 50.0/255.0);
+const MIDFIELDER_FONT_COLOR: Color = Color(50.0/255.0, 153.0/255.0, 1.0);
+const ATTACKER_FONT_COLOR: Color = Color(1.0, 0.0/255.0, 0.0/255.0);
+
+
+
 
 signal squad_player_swapped(at_position: Vector2, data)
 
@@ -43,42 +54,123 @@ func _drop_data(at_position: Vector2, data):
 func set_player(p: Player) -> bool:
 	player = p;
 	
-	# Display Player Name
-	var number_and_name: Label = get_node("NumberAndName")
+	set_player_name(player.Name)
 	
-	# Get Player Shirt Number
-	var shirt_number: int = player.Club_Shirt_Number;
+	# Display Rating
+	set_player_rating(player.Overall)
+	
+	# Display Position
+	set_player_position(player.Positions[0]);
+	
+	# Display Player Face
+	set_player_face(player.get_player_face())
+	
+	# Set Player Stamina
+	set_stamina(player.Stamina_Level)
+	
+	
+	return true
+	
+func set_player_name(full_name: String) -> bool:
+	# Display Player Name
+	var player_name: Label = %PlayerName
 	
 	# Get Player Name
-	var player_name: String = player.Name;
-	var player_name_split: Array = player_name.strip_edges().split(" ")
+	var player_name_split: Array = full_name.strip_edges().split(" ")
 	var first_name: String = player_name_split.pop_front();
 	var last_name: String = player_name_split.pop_back();
 	var first_name_letter: String = first_name.left(1);
 	
+	# Display it
+	player_name.text = first_name_letter + ". " + last_name
 	
-	number_and_name.text = str(shirt_number) + " " + first_name_letter + ". " + last_name
+	return true
+
+func set_player_position(pos: int) -> bool:
+	var position_label: Label = %Position
+	position_label.text = PlayerManager.convert_to_string_position(pos);
+	if pos == 0:
+		position_label.add_theme_color_override("font_color", GOALKEPPER_FONT_COLOR)
+	elif pos <= 6: 
+		position_label.add_theme_color_override("font_color", DEFENDER_FONT_COLOR)
+	elif pos <= 11:
+		position_label.add_theme_color_override("font_color", MIDFIELDER_FONT_COLOR)
+	else:
+		position_label.add_theme_color_override("font_color", ATTACKER_FONT_COLOR)
 	
-	# Display Rating
-	var rating_label: Label = get_node("KeyInfo/Rating");
-	rating_label.text = str(player.Overall);
-	
-	# Display Position
-	var position_label: Label = get_node("KeyInfo/Position");
-	position_label.text = PlayerManager.convert_to_string_position(player.Positions[0]);
-	
-	# Display Player Face
-	var player_face: Image = player.get_player_face()
-	var player_face_diplay: TextureRect = get_node("KeyInfo/PlayerFaceContainer/PlayerFace")
-	var texture_image: ImageTexture = ImageTexture.create_from_image(player_face)
-	player_face_diplay.texture = texture_image
+	# Remake Tooltip 
+	generate_tooltip()
 	
 	
 	return true
 
+func set_player_rating(rating: int) -> bool:
+	# Display Rating
+	var rating_label: Label = %Rating;
+	rating_label.text = str(rating);
+	
+	# Remake Tooltip 
+	generate_tooltip()
+	
+	return true
+
+func set_player_face(face: Image) -> bool:
+	var player_face: Image = face
+	if player_face == null:
+		return false
+	var player_face_diplay: TextureRect = %PlayerFace
+	var texture_image: ImageTexture = ImageTexture.create_from_image(player_face)
+	player_face_diplay.texture = texture_image
+	return true
+
+func set_stamina(stamina_level: int) -> void:
+	# First we need to get the stamina level color
+	var stamina_color: Color = determine_stamina_color(float(stamina_level))
+	
+	# Now we display it 
+	var stamina_bar: ProgressBar = %Stamina
+	stamina_bar.value = float(stamina_level)
+	var style_box: StyleBox = StyleBoxFlat.new()
+	stamina_bar.add_theme_stylebox_override("fill", style_box)
+	style_box.bg_color = stamina_color
+	
+	# Remake Tooltip 
+	generate_tooltip()
 
 
+func determine_stamina_color(value: float) -> Color:
+	# Ensure value is clamped between 0 and 100
+	value = clamp(value, 0.0, 100.0)
 
+	# Define color ranges: red (0) -> yellow (50) -> green (100)
+	var red = Color(1.0, 0.0, 0.0)   # Dark Red
+	var yellow = Color(1.0, 1.0, 0.0) # Yellow
+	var green = Color(0.0, 1.0, 0.0)  # Dark Green
+
+	if value < 50.0:
+		# Interpolate between red and yellow
+		return red.lerp(yellow, value / 50.0)
+	else:
+		# Interpolate between yellow and green
+		return yellow.lerp(green, (value - 50.0) / 50.0)
+
+func generate_tooltip() -> void:
+	# First we get all the text we need
+	var player_name: String = player.Name
+	var player_position: String = %Position.text;
+	var player_rating: String = %Rating.text
+	var player_age: String = str(player.Age)
+	var player_height: String = str(player.Height) + " cm"
+	var player_weight: String = str(player.Weight) + " kg"
+	var player_stamina: String = str(%Stamina.value)
+	
+	# Now we format string
+	var tooltip_message: String = "%s\nPosition: %s\nRating: %s\nAge: %s\nHeight: %s\nWeight: %s\nStamina Level: %s" % [player_name, player_position, player_rating, player_age, player_height, player_weight, player_stamina]
+	
+	# Set Tooltip
+	tooltip_text = tooltip_message
+	
+	return
 
 """ Static Functions """
 ## This converts the relative positions to global positions and also accounting for center to top_left conversion

@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd" id="1_3nyqf"]
 [ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Images/Icons/world_icon.png.png" id="2_vun3s"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj6bi"]
-bg_color = Color(0, 0.717198, 0.381764, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5uxx"]
+bg_color = Color(4.71681e-06, 0.720704, 0.320213, 1)
 
 [node name="UI" type="VBoxContainer"]
-custom_minimum_size = Vector2(125, 100)
-offset_right = 125.0
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
 offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -16,58 +16,73 @@ mouse_filter = 0
 theme_override_constants/separation = 0
 script = ExtResource("1_3nyqf")
 
-[node name="KeyInfo" type="HBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_direction = 1
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
-theme_override_constants/separation = 0
 
-[node name="Rating" type="Label" parent="KeyInfo"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Rating" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 14.0
+offset_bottom = 17.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
 size_flags_stretch_ratio = 0.5
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "95"
-horizontal_alignment = 1
 vertical_alignment = 2
+uppercase = true
 
-[node name="PlayerFaceContainer" type="AspectRatioContainer" parent="KeyInfo"]
+[node name="Position" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_bottom = 17.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.55
+theme_override_font_sizes/font_size = 14
+text = "CDM"
+horizontal_alignment = 2
+vertical_alignment = 2
+uppercase = true
+
+[node name="PlayerFaceContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
 
-[node name="PlayerFace" type="TextureRect" parent="KeyInfo/PlayerFaceContainer"]
+[node name="PlayerFace" type="TextureRect" parent="PlayerFaceContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_vun3s")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Position" type="Label" parent="KeyInfo"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.55
-theme_override_font_sizes/font_size = 14
-text = "CDM"
-horizontal_alignment = 1
-vertical_alignment = 2
-
 [node name="Stamina" type="ProgressBar" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_styles/fill = SubResource("StyleBoxFlat_kj6bi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r5uxx")
+min_value = 1.0
+step = 1.0
 value = 78.0
-fill_mode = 3
 show_percentage = false
 
-[node name="NumberAndName" type="Label" parent="."]
+[node name="PlayerName" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_font_sizes/font_size = 16
-text = "12 B.Silva"
+theme_override_font_sizes/font_size = 12
+text = "Player Full Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 1

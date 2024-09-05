@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1725387925
+::res://::1725477496
 CODE_OF_CONDUCT.md::TextFile::-1::1724514532::0::1::::<><>::
 CONTRIBUTING.md::TextFile::-1::1724514532::0::1::::<><>::
 Control.gd::GDScript::-1::1724514532::0::1::::<>TextureRect<>::
@@ -67,7 +67,7 @@ gdsqlite.gdextension::GDExtension::-1::1724514540::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1724514540::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1724514540::0::1::::<><>::
 plugin.cfg::TextFile::-1::1724514540::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1725387917
+::res://addons/godot-sqlite/bin/::1725477491
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1724514540
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1724514540
 ::res://addons/goutte.unicode/::1724514540
@@ -11648,7 +11648,7 @@ field.png::CompressedTexture2D::6043526772483403680::1724514532::1724514532::1::
 11403.png::CompressedTexture2D::7858284308919797306::1724514533::1724514533::1::::<><>::
 11404.png::CompressedTexture2D::5323733602672408950::1724514533::1724514533::1::::<><>::
 bb743896-c6e6-4ef6-bd7e-f37d197cc705.png::CompressedTexture2D::2135870773337082444::1724514539::1724514539::1::::<><>::
-::res://Images/Icons/::1725397077
+::res://Images/Icons/::1725397094
 ArrowIcon.svg::CompressedTexture2D::1472014079794351156::1724514539::1724514901::1::::<><>::
 football_kit_icon.png::CompressedTexture2D::8503222143896418475::1724514540::1724514540::1::::<><>::
 manager_icon.png::CompressedTexture2D::993718941428212871::1724514540::1724514540::1::::<><>::
@@ -17788,16 +17788,16 @@ SingleKnockOutNode.tscn::PackedScene::5942002964185257488::1724514540::0::1::::<
 SpecificTeamPopPanel.gd::GDScript::-1::1724514540::0::1::::<>PopupPanel<>::
 TeamsList.gd::GDScript::-1::1724514540::0::1::::<>ItemList<>::
 TournamentSelection.gd::GDScript::-1::1724514540::0::1::::<>OptionButton<>::
-::res://Scenes/GameMapEditor/New Team Editor/::1725396950
+::res://Scenes/GameMapEditor/New Team Editor/::1725424627
 LogoInput.gd::GDScript::-1::1724514540::0::1::::<>TextureButton<>::
 Team Editor 2.gd::GDScript::-1::1725072336::0::1::::<>Control<>::
-Team Editor 2.tscn::PackedScene::174819667336499039::1725396950::0::1::::<><>::res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd<>uid://cn614eycgw6h8::::res://Images/Backgrounds/Background_4.svg<>uid://dhs7nypb65elu::::res://TeamIdentity.tscn<>uid://wg1tcvk27p26::::res://Scenes/Squad Editor/Tactics Editor.tscn
+Team Editor 2.tscn::PackedScene::174819667336499039::1725424627::0::1::::<><>::res://Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd<>uid://cn614eycgw6h8::::res://Images/Backgrounds/Background_4.svg<>uid://dhs7nypb65elu::::res://TeamIdentity.tscn<>uid://wg1tcvk27p26::::res://Scenes/Squad Editor/Tactics Editor.tscn
 TeamNameInput.gd::GDScript::-1::1724514540::0::1::::<>LineEdit<>::
 ::res://Scenes/GameMapEditor/Player Editor/::1724514540
 PlayerEditor.tscn::PackedScene::5819171660964311173::1724514540::0::1::::<><>::
-::res://Scenes/GameMapEditor/Team Editor/::1725396950
+::res://Scenes/GameMapEditor/Team Editor/::1725424626
 Team Editor.gd::GDScript::-1::1725390183::0::1::::<>Node<>::
-Team Editor.tscn::PackedScene::5428947114430059492::1725396950::0::1::::<><>::res://Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
+Team Editor.tscn::PackedScene::5428947114430059492::1725424626::0::1::::<><>::res://Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Images/icon.svg<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
 ::res://Scenes/GameMapEditor/Team Editor/Misc Scripts/::1724514540
 City Input.gd::GDScript::-1::1724514540::0::1::::<>LineEdit<>::
 Logo.gd::GDScript::-1::1724514540::0::1::::<>TextureButton<>::
@@ -17824,7 +17824,7 @@ Territory Editor.tscn::PackedScene::8422911629128742764::1725247465::0::1::::<><
 ::res://Scenes/Main Menu/::1724514540
 main_menu.gd::GDScript::-1::1724514540::0::1::::<>Control<>::
 main_menu.tscn::PackedScene::9010644990611671047::1724514540::0::1::::<><>::res://Scenes/Main Menu/main_menu.gd<>uid://cnhitdoh7wh7y::::res://Images/main_menu.jpg<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres
-::res://Scenes/Squad Editor/::1725397060
+::res://Scenes/Squad Editor/::1725424629
 CAM.gd::GDScript::-1::1724514540::0::1::::<>Panel<>::
 CB.gd::GDScript::-1::1724514540::0::1::::<>Panel<>::
 CDM.gd::GDScript::-1::1724514540::0::1::::<>Panel<>::
@@ -17843,23 +17843,23 @@ RWB.gd::GDScript::-1::1724514540::0::1::::<>Panel<>::
 SS.gd::GDScript::-1::1724514540::0::1::::<>Panel<>::
 ST.gd::GDScript::-1::1724514540::0::1::::<>Panel<>::
 SW.gd::GDScript::-1::1724514540::0::1::::<>Panel<>::
-Tactics Editor.gd::GDScript::-1::1725335022::0::1::::<>TabContainer<>::
-Tactics Editor.tscn::PackedScene::1558153536436496545::1725397060::0::1::::<><>::uid://csdsado3ilnxg::::res://Images/Backgrounds/field.png<>res://Scenes/Squad Editor/Tactics Editor.gd<>res://Scenes/Squad Editor/LW.gd<>res://Scenes/Squad Editor/ST.gd<>res://Scenes/Squad Editor/LM.gd<>res://Scenes/Squad Editor/LWB.gd<>res://Scenes/Squad Editor/LB.gd<>res://Scenes/Squad Editor/CF.gd<>res://Scenes/Squad Editor/SS.gd<>res://Scenes/Squad Editor/CAM.gd<>res://Scenes/Squad Editor/CM.gd<>res://Scenes/Squad Editor/CDM.gd<>res://Scenes/Squad Editor/CB.gd<>res://Scenes/Squad Editor/SW.gd<>res://Scenes/Squad Editor/GK.gd<>res://Scenes/Squad Editor/RW.gd<>res://Scenes/Squad Editor/RM.gd<>res://Scenes/Squad Editor/RWB.gd<>res://Scenes/Squad Editor/RB.gd<>uid://0ibe2y5qi3fp::::res://Scenes/Table/table.tscn
-::res://Scenes/Squad Editor/SquadPlayer/::1725396952
+Tactics Editor.gd::GDScript::-1::1725419458::0::1::::<>TabContainer<>::
+Tactics Editor.tscn::PackedScene::1558153536436496545::1725424629::0::1::::<><>::uid://csdsado3ilnxg::::res://Images/Backgrounds/field.png<>res://Scenes/Squad Editor/Tactics Editor.gd<>res://Scenes/Squad Editor/LW.gd<>res://Scenes/Squad Editor/ST.gd<>res://Scenes/Squad Editor/LM.gd<>res://Scenes/Squad Editor/LWB.gd<>res://Scenes/Squad Editor/LB.gd<>res://Scenes/Squad Editor/CF.gd<>res://Scenes/Squad Editor/SS.gd<>res://Scenes/Squad Editor/CAM.gd<>res://Scenes/Squad Editor/CM.gd<>res://Scenes/Squad Editor/CDM.gd<>res://Scenes/Squad Editor/CB.gd<>res://Scenes/Squad Editor/SW.gd<>res://Scenes/Squad Editor/GK.gd<>res://Scenes/Squad Editor/RW.gd<>res://Scenes/Squad Editor/RM.gd<>res://Scenes/Squad Editor/RWB.gd<>res://Scenes/Squad Editor/RB.gd<>uid://0ibe2y5qi3fp::::res://Scenes/Table/table.tscn
+::res://Scenes/Squad Editor/SquadPlayer/::1725424629
 NumberAndName.gd::GDScript::-1::1725241408::0::1::::<>Label<>::
 Position.gd::GDScript::-1::1725073444::0::1::::<>Label<>::
 Rating.gd::GDScript::-1::1725073473::0::1::::<>Label<>::
 SquadPlayer.gd::GDScript::-1::1725337798::0::1::::<>VBoxContainer<>::
-SquadPlayer.tscn::PackedScene::2676593477630379109::1725396952::0::1::::<><>::res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd<>uid://c65ora8j2a8su::::res://Images/Icons/world_icon.png.png
+SquadPlayer.tscn::PackedScene::2676593477630379109::1725424629::0::1::::<><>::res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd<>uid://c65ora8j2a8su::::res://Images/Icons/world_icon.png.png
 Stamina.gd::GDScript::-1::1725073832::0::1::::<>ProgressBar<>::
 ::res://Scenes/Squad Editor/SquadPlayer/Misc Scripts/::1725241387
 PlayerFace.gd::GDScript::-1::1725241387::0::1::::<>TextureRect<>::
-::res://Scenes/Table/::1725396953
-DataTableTheme.tres::Theme::5629417413306141288::1725393891::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
-table.gd::GDScript::-1::1725395785::0::1::::<>ScrollContainer<>::
-table.tscn::PackedScene::1771305429742224809::1725396953::0::1::::<><>::res://Scenes/Table/table.gd<>uid://cmg6xg1i1jsqy::::res://Scenes/Table/DataTableTheme.tres
+::res://Scenes/Table/::1725424630
+DataTableTheme.tres::Theme::5629417413306141288::1725397671::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
+table.gd::GDScript::-1::1725419534::0::1::::<>ScrollContainer<>::
+table.tscn::PackedScene::1771305429742224809::1725424629::0::1::::<><>::res://Scenes/Table/table.gd<>uid://cmg6xg1i1jsqy::::res://Scenes/Table/DataTableTheme.tres
 tablecolumn.tscn::PackedScene::7985281899638768295::1725308406::0::1::::<><>::
-tableheader.tscn::PackedScene::2623199200276569244::1725396953::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
+tableheader.tscn::PackedScene::2623199200276569244::1725424630::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
 table_cell_icon_and_text.gd::GDScript::-1::1725247287::0::1::::<>Button<>::
 table_cell_icon_and_text.tscn::PackedScene::7461926541985860973::1725250804::0::1::::<><>::res://Scenes/Table/table_cell_icon_and_text.gd
 table_cell_text.gd::GDScript::-1::1724514540::0::1::::<>Label<>::
