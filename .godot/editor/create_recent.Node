@@ -1,3 +1,5 @@
+CollisionPolygon3D
+CollisionShape3D
 Panel
 Button
 GridContainer
@@ -11,4 +13,3 @@ VBoxContainer
 OptionButton
 SpinBox
 Label
-TabContainer

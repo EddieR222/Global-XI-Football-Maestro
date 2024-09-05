@@ -428,7 +428,7 @@ func generate_player(parameters: Dictionary) -> Player:
 
 	# Now we determine whether the player is left or right footed
 	var foot_chance: int = randi() % 100;
-	player.Right_Foot = true if foot_chance < 15 else false;
+	player.Right_Foot = false if foot_chance < 15 else true;
 
 	# Now we determine the player's nationality (or nationalities) 
 	determine_player_nationality(terr_id, player);

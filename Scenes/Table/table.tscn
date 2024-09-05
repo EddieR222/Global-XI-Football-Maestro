@@ -13,12 +13,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_u4fbh")
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 script = ExtResource("1_qlstr")
 
 [node name="Control" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

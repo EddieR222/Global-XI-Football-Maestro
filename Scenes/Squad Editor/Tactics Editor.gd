@@ -29,7 +29,7 @@ func _process(delta):
 	pass
 	
 """ For Dropping into SquadPlayers """
-## This function will be called whenever a player is dropped onto the empty soccer field.
+## This function will be called whenever a player is dropped onto another player
 func drop_data(at_position: Vector2, data):
 	# We need to see which player is attempting to be swapped
 	var swap_player: VBoxContainer = find_swap(at_position, data)
@@ -234,13 +234,13 @@ func load_squad_formation(_team: Team) -> bool:
 	
 	# Generate Players for Reserve
 	var reserve_players: Array[Player] = GameMapManager.player_manager.generate_team_reserves(100, 0, 100, 50)
-	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nat.", "Overall", "Potential", "Height (cm)", "Weight (kg)"], "Name", get_text_and_icon);
+	var dataframe: Dataframe = Dataframe.new(reserve_players, ["Position", "Name", "Age", "Nat.", "Overall", "Potential", "Skill Moves", "Foot", "Weak Foot", "Height (cm)", "Weight (kg)", "Condition", "Morale", "Sharpness" ], "Name", get_text_and_icon);
 	player_table.set_data(dataframe);
 	
 	
 	return true
 
-
+## The function that will be passed into the Dataframe Instance. This will be called for collecting the text and icons needed from the player resource
 func get_text_and_icon(player: Player) -> Dictionary:
 	var dict: Dictionary = {};
 	
@@ -272,12 +272,62 @@ func get_text_and_icon(player: Player) -> Dictionary:
 	# Get text for Weight
 	dict["Weight (kg)"] = str(player.Weight);
 	
+	# Get Text for Condition
+	if player.Condition == 0:
+		dict["Condition"] = "Injury Prone"
+	elif player.Condition == 1:
+		dict["Condition"] = "Injured"
+	else:
+		dict["Condition"] = "Healthy"
+		
+	# Text for Skill Moves
+	dict["Skill Moves"] = "*".repeat(player.Skill_Moves);
+	
+	# Get Text for Weak Foot
+	dict["Weak Foot"] = "*".repeat(player.Weak_Foot)
+	
+	# Get Text for Dominant Foot
+	dict["Foot"] = "R" if player.Right_Foot else "L"
+	
+	# Get text for Morale
+	# 1. Morale > 90  Very Happy
+	# 2. Morale > 75  Happy
+	# 3. Morale > 25  Neutral
+	# 4. Morale < 25  UnHappy
+	# 5. Morale < 10  Very UnHappy
+	var morale: int = player.Morale;
+	if morale < 10:
+		dict["Morale"] = "Very UnHappy";
+	elif morale < 25:
+		dict["Morale"] = "UnHappy";
+	elif morale < 75:
+		dict["Morale"] = "Neutral";
+	elif morale < 90:
+		dict["Morale"] = "Happy";
+	else:
+		dict["Morale"] = "Very Happy";
+		
+	# 1. Sharpness > 90  Very Fit
+	# 2. Sharpness > 75  Fit
+	# 3. Sharpness > 25  Neutral
+	# 4. Sharpness < 25  UnFit
+	# 5. Sharpness < 10  Very UnFit
+	var sharpness: int = player.Sharpness;
+	if sharpness < 10:
+		dict["Sharpness"] = "Very UnFit";
+	elif sharpness < 25:
+		dict["Sharpness"] = "UnFit";
+	elif sharpness < 75:
+		dict["Sharpness"] = "Neutral";
+	elif sharpness < 90:
+		dict["Sharpness"] = "Fit";
+	else:
+		dict["Sharpness"] = "Very Fit";
+	
 	
 	return dict
 
-
-
-## This function simply takes the existing 
+## This function simply takes the existing squad players and redraws them into the correct position (will be called after the visibility of the field is changed)
 func redraw_squad() -> bool:
 	for player: VBoxContainer in squad:
 		var field_position: Vector2 = player.relative_position;
@@ -287,7 +337,6 @@ func redraw_squad() -> bool:
 		
 		
 	return true
-		
 
 ## This converts the relative positions to global positions and also accounting for center to top_left conversion
 func convert_relative_to_global(relative: Vector2, global_rect: Rect2) -> Vector2:
@@ -301,6 +350,7 @@ func convert_relative_to_global(relative: Vector2, global_rect: Rect2) -> Vector
 	
 	return global_center
 
+## This converts the global positions to relative positions and also accounting for center to top_left conversion
 func convert_global_to_relative(global_pos: Vector2 , global_rect: Rect2) -> Vector2:
 	
 	var relative_pos: Vector2 = global_pos - global_rect.position;
