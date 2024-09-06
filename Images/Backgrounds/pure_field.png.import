@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csdsado3ilnxg"
-path="res://.godot/imported/field.png-9d4822ccc95124c9b2f84a41224d6b2b.ctex"
+uid="uid://bla14mlgt8vjf"
+path="res://.godot/imported/pure_field.png-b1eeb247a1fcbfd2199b6713ec7b8fdd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Backgrounds/field.png"
-dest_files=["res://.godot/imported/field.png-9d4822ccc95124c9b2f84a41224d6b2b.ctex"]
+source_file="res://Images/Backgrounds/pure_field.png"
+dest_files=["res://.godot/imported/pure_field.png-b1eeb247a1fcbfd2199b6713ec7b8fdd.ctex"]
 
 [params]
 

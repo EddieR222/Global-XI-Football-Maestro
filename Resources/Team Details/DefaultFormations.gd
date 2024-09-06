@@ -17,6 +17,19 @@ var formations: Dictionary = {
 		Vector2(), # Right CF
 		Vector2() # RW
 	],
+	"2-3-2-3": [
+		Vector2(50,95), # Goalkeeper
+		Vector2(35, 80), # Left CB
+		Vector2(65, 80), # Right CB 
+		Vector2(10, 50), # LM
+		Vector2(50, 50), # Mid CM
+		Vector2(90, 50), # RM
+		Vector2(10,30), # LW
+		Vector2(35, 30), # Left SS
+		Vector2(50, 10), # Striker
+		Vector2(65, 30), # Right SS
+		Vector2(90,30) # RW
+	],
 	"4-4-2": [
 		Vector2(50,95), # Goalkeeper
 		Vector2(10,80), # LB

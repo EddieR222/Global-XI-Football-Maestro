@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://wg1tcvk27p26"]
 
-[ext_resource type="Texture2D" uid="uid://csdsado3ilnxg" path="res://Images/Backgrounds/field.png" id="1_qx7xf"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/Tactics Editor.gd" id="1_xpt86"]
+[ext_resource type="Texture2D" uid="uid://bla14mlgt8vjf" path="res://Images/Backgrounds/pure_field.png" id="2_d8pp3"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/LW.gd" id="3_yqm8q"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/ST.gd" id="4_a146v"]
 [ext_resource type="Script" path="res://Scenes/Squad Editor/LM.gd" id="4_ct2oa"]
@@ -82,15 +82,11 @@ self_modulate = Color(0.317647, 0.317647, 0.317647, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_qx7xf")
+texture = ExtResource("2_d8pp3")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 25
 
 [node name="FieldBox" type="HBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer"]
 unique_name_in_owner = true

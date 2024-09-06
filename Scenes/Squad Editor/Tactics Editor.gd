@@ -194,7 +194,7 @@ func load_squad_formation(_team: Team) -> bool:
 	team = _team;
 	
 	# For now we load a default formation
-	var player_positions: Array = formations.formations["4-4-2"];
+	var player_positions: Array = formations.formations["2-3-2-3"];
 	
 	# Generate Players for Squad
 	var squad_players: Array[Player] = GameMapManager.player_manager.generate_team_squad(100, 100, 0)
@@ -347,12 +347,15 @@ func convert_relative_to_global(relative: Vector2, global_rect: Rect2) -> Vector
 	var global_center: = global_rect.position + relative_ratio;
 	
 	# Now convert to center position, we do this by subtract half x and y
-	global_center -= 0.5 * Vector2(125, 100)
+	global_center -= 0.5 * Vector2(100, 100)
 	
 	return global_center
 
 ## This converts the global positions to relative positions and also accounting for center to top_left conversion
 func convert_global_to_relative(global_pos: Vector2 , global_rect: Rect2) -> Vector2:
+	# Convert top left corner to center
+	global_pos += 0.5 * Vector2(100, 100)
+	
 	
 	var relative_pos: Vector2 = global_pos - global_rect.position;
 	
