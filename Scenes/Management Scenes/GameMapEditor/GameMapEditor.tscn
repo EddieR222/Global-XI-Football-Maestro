@@ -1,0 +1,199 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccptlpg3oaais"]
+
+[ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/GameMapEditor.gd" id="1_kgi45"]
+[ext_resource type="Theme" uid="uid://etm0dk2bjjr1" path="res://Textures/main_menu.tres" id="1_rfdc0"]
+[ext_resource type="Theme" path="res://Textures/GameMapMenuButton.tres" id="3_ogpwo"]
+[ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Assests/2D Assests/Images/Icons/world_icon.png.png" id="4_ytkey"]
+[ext_resource type="Texture2D" uid="uid://crqayvu5gcmqw" path="res://Assests/2D Assests/Images/Icons/team_logo_icon.png" id="5_hfpht"]
+[ext_resource type="Texture2D" uid="uid://ds7vxc8b1nn10" path="res://Assests/2D Assests/Images/Icons/player_icon.png" id="6_6iico"]
+[ext_resource type="Texture2D" uid="uid://trf8pxoqve84" path="res://Assests/2D Assests/Images/Icons/tournament_icon.png" id="6_fviy1"]
+[ext_resource type="Texture2D" uid="uid://b8uu5pwkliayf" path="res://Assests/2D Assests/Images/Icons/stadium_icon.png" id="7_6nru1"]
+[ext_resource type="Texture2D" uid="uid://ofmn2c28o1yp" path="res://Assests/2D Assests/Images/Icons/manager_icon.png" id="8_sgxgr"]
+[ext_resource type="Texture2D" uid="uid://dtfa3dj15ee2f" path="res://Assests/2D Assests/Images/Icons/football_kit_icon.png" id="9_5816g"]
+[ext_resource type="Texture2D" uid="uid://cnre1w2nfyinf" path="res://Assests/2D Assests/Images/Icons/trophy_icon.png" id="11_k3v7q"]
+
+
+[node name="GameMapEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kgi45")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00784314, 0, 0.0941176, 1)
+
+[node name="TopBottom" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TopBottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="FileSelecter" type="HBoxContainer" parent="TopBottom/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FileSelection" type="Button" parent="TopBottom/MarginContainer/FileSelecter"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("1_rfdc0")
+text = "   File   "
+
+[node name="SaveButton" type="Button" parent="TopBottom/MarginContainer/FileSelecter"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("1_rfdc0")
+text = "   Save   "
+
+[node name="LineEdit" type="LineEdit" parent="TopBottom/MarginContainer/FileSelecter"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Filename"
+alignment = 1
+max_length = 30
+clear_button_enabled = true
+
+[node name="NumErrors" type="Label" parent="TopBottom/MarginContainer/FileSelecter"]
+layout_mode = 2
+text = "Number of Error: 10"
+
+[node name="SettingsSelection" type="GridContainer" parent="TopBottom"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+columns = 4
+
+[node name="WorldEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ogpwo")
+text = "World Editor"
+icon = ExtResource("4_ytkey")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="TeamEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Team Editor"
+icon = ExtResource("5_hfpht")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="TournamentEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Tournament Editor"
+icon = ExtResource("6_fviy1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="PlayerEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Player Editor"
+icon = ExtResource("6_6iico")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="StadiumEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Stadium Editor"
+icon = ExtResource("7_6nru1")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="ManagerEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Manager Editor"
+icon = ExtResource("8_sgxgr")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="KitEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Kit Editor"
+icon = ExtResource("9_5816g")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="TrophyEditorButton" type="Button" parent="TopBottom/SettingsSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Trophy Editor"
+icon = ExtResource("11_k3v7q")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 2
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 0
+access = 1
+root_subfolder = "save_files/"
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="FileError" type="ConfirmationDialog" parent="."]
+initial_position = 2
+size = Vector2i(511, 100)
+ok_button_text = "Try Again"
+dialog_text = "File was unable to be  loaded, please try again or try another file"
+cancel_button_text = "Try Another"
+
+[connection signal="pressed" from="TopBottom/MarginContainer/FileSelecter/FileSelection" to="." method="_on_file_selection_pressed"]
+[connection signal="pressed" from="TopBottom/MarginContainer/FileSelecter/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="text_changed" from="TopBottom/MarginContainer/FileSelecter/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/WorldEditorButton" to="." method="_on_world_editor_button_pressed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/TeamEditorButton" to="." method="_on_team_editor_button_pressed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/TournamentEditorButton" to="." method="_on_tournament_editor_button_pressed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/PlayerEditorButton" to="." method="_on_player_editor_button_pressed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/StadiumEditorButton" to="." method="_on_stadium_editor_button_pressed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/ManagerEditorButton" to="." method="_on_manager_editor_button_pressed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/KitEditorButton" to="." method="_on_kit_editor_button_pressed"]
+[connection signal="pressed" from="TopBottom/SettingsSelection/TrophyEditorButton" to="." method="_on_trophy_editor_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="canceled" from="FileError" to="." method="_on_file_error_canceled"]
+[connection signal="confirmed" from="FileError" to="." method="_on_file_error_confirmed"]

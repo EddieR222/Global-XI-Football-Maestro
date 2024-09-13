@@ -1,11 +1,6 @@
-res://Scenes/Squad Editor
-res://Scenes/Table
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player
 res://
-res://Images
+res://Shaders
 res://Resources/GameMap
-res://Scenes/Squad Editor/SquadPlayer/Misc Scripts
-res://Images/Icons
-res://Images/Backgrounds
 res://Resources/Settings
 res://Singletons
-res://Scenes/Country Editor

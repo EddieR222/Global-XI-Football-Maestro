@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c3vqgav6b48qn"]
+
+[ext_resource type="Shader" path="res://Shaders/Transparent Noise Border.gdshader" id="1_1d7vj"]
+
+[resource]
+shader = ExtResource("1_1d7vj")
+shader_parameter/radius = 0.459
+shader_parameter/effectControl = 0.309
+shader_parameter/burnSpeed = 0.076
+shader_parameter/shape = 1.0

@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Global XI Football Maestro"
-run/main_scene="res://Scenes/start_up.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [autoload]
@@ -43,10 +42,13 @@ enabled=PackedStringArray("res://addons/LogDuck/plugin.cfg", "res://addons/goutt
 [file_customization]
 
 folder_colors={
+"res://Assests/": "red",
 "res://Resources/": "yellow",
-"res://Tests/": "pink",
-"res://Tests/Editor_Testing/": "red",
-"res://Tests/Resource_Testing/": "yellow"
+"res://Scenes/": "green",
+"res://Shaders/": "purple",
+"res://Unit Tests/": "pink",
+"res://Unit Tests/Editor_Testing/": "red",
+"res://Unit Tests/Resource_Testing/": "yellow"
 }
 
 [input]
@@ -60,8 +62,3 @@ Click={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-
-[rendering]
-
-renderer/rendering_method="mobile"
-renderer/rendering_method.mobile="gl_compatibility"

@@ -1,0 +1,386 @@
+[gd_scene load_steps=22 format=3 uid="uid://nia43tyo1mfo"]
+
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/Tactics Editor.gd" id="1_xpt86"]
+[ext_resource type="Texture2D" uid="uid://bla14mlgt8vjf" path="res://Assests/2D Assests/Images/Backgrounds/pure_field.png" id="2_d8pp3"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/LW.gd" id="3_yqm8q"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/ST.gd" id="4_a146v"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/LM.gd" id="4_ct2oa"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/LWB.gd" id="5_r8mxl"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/LB.gd" id="6_xutua"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/CF.gd" id="8_bqyhl"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/SS.gd" id="9_5racx"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/CAM.gd" id="10_5pjed"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/CM.gd" id="11_5ilxx"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/CDM.gd" id="12_gvr7d"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/CB.gd" id="13_b1hvs"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/SW.gd" id="14_rcrlh"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/GK.gd" id="15_q0fds"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/RW.gd" id="16_gdak3"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/RM.gd" id="17_4qrx8"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/RWB.gd" id="18_pvq8y"]
+[ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/RB.gd" id="19_1udva"]
+[ext_resource type="Theme" uid="uid://b26y65dk0mjiv" path="res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres" id="20_5phc7"]
+[ext_resource type="PackedScene" uid="uid://0ibe2y5qi3fp" path="res://Scenes/Management Scenes/Table/table.tscn" id="20_n13ar"]
+
+[node name="Players" type="TabContainer"]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 2
+script = ExtResource("1_xpt86")
+
+[node name="Formation" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="TeamFormationDetails" type="VBoxContainer" parent="Formation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Formation/TeamFormationDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label" type="Label" parent="Formation/TeamFormationDetails/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+text = "Team Formation"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CheckButton" type="CheckButton" parent="Formation/TeamFormationDetails/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit Mode"
+
+[node name="TeamFormation" type="HBoxContainer" parent="Formation/TeamFormationDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="FieldandSquad" type="AspectRatioContainer" parent="Formation/TeamFormationDetails/TeamFormation"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+ratio = 0.66
+
+[node name="Field" type="TextureRect" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad"]
+unique_name_in_owner = true
+self_modulate = Color(0.317647, 0.317647, 0.317647, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_d8pp3")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad"]
+layout_mode = 2
+
+[node name="FieldBox" type="HBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="LW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_yqm8q")
+
+[node name="LM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("4_ct2oa")
+
+[node name="LWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+script = ExtResource("5_r8mxl")
+
+[node name="LB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/LeftField"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("6_xutua")
+
+[node name="Middle Field" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.6
+theme_override_constants/separation = 0
+
+[node name="ST" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+script = ExtResource("4_a146v")
+
+[node name="CF" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("8_bqyhl")
+
+[node name="SS" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("9_5racx")
+
+[node name="CAM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("10_5pjed")
+
+[node name="CM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+script = ExtResource("11_5ilxx")
+
+[node name="CDM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("12_gvr7d")
+
+[node name="CB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.55
+script = ExtResource("13_b1hvs")
+
+[node name="SW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("14_rcrlh")
+
+[node name="GK" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/Middle Field"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("15_q0fds")
+
+[node name="RightField" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="RW" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("16_gdak3")
+
+[node name="RM" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("17_4qrx8")
+
+[node name="RWB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+script = ExtResource("18_pvq8y")
+
+[node name="RB" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/FieldandSquad/MarginContainer/FieldBox/RightField"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+script = ExtResource("19_1udva")
+
+[node name="SubsArea" type="VBoxContainer" parent="Formation/TeamFormationDetails/TeamFormation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.95
+
+[node name="Label" type="Label" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea"]
+layout_mode = 2
+text = "Subsitutes"
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="GridContainer" type="GridContainer" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="Panel" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel2" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel3" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel4" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel5" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel6" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel7" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel8" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel9" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel10" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel11" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="Panel12" type="Panel" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("20_5phc7")
+
+[node name="SubArea" type="GridContainer" parent="Formation/TeamFormationDetails/TeamFormation/SubsArea/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="PlayerInfoAndListArea" type="VBoxContainer" parent="Formation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+theme_override_constants/separation = 0
+
+[node name="TitleBar" type="HBoxContainer" parent="Formation/PlayerInfoAndListArea"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+theme_override_constants/separation = 0
+
+[node name="PlayerViewOptions" type="OptionButton" parent="Formation/PlayerInfoAndListArea/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+item_count = 5
+selected = 2
+popup/item_0/text = "Squad Only"
+popup/item_0/id = 0
+popup/item_1/text = "Squad + Subs"
+popup/item_1/id = 1
+popup/item_2/text = "Whole Team"
+popup/item_2/id = 2
+popup/item_3/text = "Loaned Out Players"
+popup/item_3/id = 3
+popup/item_4/text = "Loaned In Players"
+popup/item_4/id = 4
+
+[node name="BlankSpace" type="MarginContainer" parent="Formation/PlayerInfoAndListArea/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="GeneratePlayer" type="Button" parent="Formation/PlayerInfoAndListArea/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Generate Players for Current View"
+
+[node name="PlayerTable" parent="Formation/PlayerInfoAndListArea" instance=ExtResource("20_n13ar")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 10.0
+
+[node name="Player Comparision" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
