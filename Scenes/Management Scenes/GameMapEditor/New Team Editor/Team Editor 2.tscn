@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cn614eycgw6h8" path="res://Assests/2D Assests/Images/Backgrounds/Background_4.svg" id="2_n65gf"]
 [ext_resource type="PackedScene" uid="uid://dhs7nypb65elu" path="res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamIdentity.tscn" id="3_2ykha"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TextureRect.gd" id="3_xsdds"]
-[ext_resource type="PackedScene" path="res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn" id="8_7y0oe"]
+[ext_resource type="PackedScene" uid="uid://nia43tyo1mfo" path="res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn" id="8_7y0oe"]
 
 [node name="TeamEditor2" type="Control"]
 layout_mode = 3

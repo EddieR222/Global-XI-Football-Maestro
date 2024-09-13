@@ -20,6 +20,7 @@ UnicodeNormalizer="*res://addons/goutte.unicode/singleton/UnicodeNormalizer.gd"
 LogDuck="*res://addons/LogDuck/LogDuck.gd"
 uuid="*res://Singletons/uuid.gd"
 GameSettings="*res://Resources/Settings/Settings.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
 
@@ -37,7 +38,7 @@ window/icon=""
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/LogDuck/plugin.cfg", "res://addons/goutte.unicode/plugin.cfg", "res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/LogDuck/plugin.cfg", "res://addons/goutte.unicode/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 

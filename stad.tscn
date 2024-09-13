@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4vcmgyhhgk8x"]
+
+[ext_resource type="PackedScene" uid="uid://x6ur4qte3jnk" path="res://Assests/3D Assests/Stadium/stad.glb" id="1_g5ei0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y5tln"]
+rough = true
+bounce = 4.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k1wxr"]
+
+[node name="stad" instance=ExtResource("1_g5ei0")]
+transform = Transform3D(0.999848, 0, -0.0174524, 0, 1, 0, 0.0174524, 0, 0.999848, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stadium_Field" index="0"]
+transform = Transform3D(1, 1.86265e-09, 0, 0, 1, 6.66828e-15, 0, -1.80966e-14, 1, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_y5tln")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stadium_Field/StaticBody3D" index="0"]
+transform = Transform3D(2500, 0, 0, 0, 2500, 2.75122e-11, 0, -2.75122e-11, 2500, 0, -1.00002, 4.76837e-07)
+shape = SubResource("BoxShape3D_k1wxr")
