@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rl5cyv1p3072"]
 
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.gd" id="1_0v7p6"]
-[ext_resource type="Texture2D" uid="uid://vwix3f5216wn" path="res://Assests/2D Assests/Images/Backgrounds/Background_2.svg" id="2_obi3x"]
+[ext_resource type="Texture2D" uid="uid://vwix3f5216wn" path="res://Assets/2D Assets/Images/Backgrounds/Background_2.svg" id="2_obi3x"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/World Editor/GraphEdit.gd" id="3_hpr62"]
 
 [node name="SaveLoader" type="Control"]

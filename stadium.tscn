@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://yihwjo4dhmtt"]
+
+[ext_resource type="PackedScene" uid="uid://ckktksphumv43" path="res://Assets/3D Assets/Stadium/stadium.glb" id="1_2ueaa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2eq7p"]
+
+[node name="stadium" instance=ExtResource("1_2ueaa")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stadium_Field" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stadium_Field/StaticBody3D" index="0"]
+transform = Transform3D(2500, 0, 0, 0, 2500, 0, 0, 0, 2500, 0, 0, 1240)
+shape = SubResource("BoxShape3D_2eq7p")

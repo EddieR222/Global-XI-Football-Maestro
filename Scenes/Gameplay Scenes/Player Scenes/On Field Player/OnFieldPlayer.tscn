@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkvauomoirh1w"]
+[gd_scene load_steps=12 format=3 uid="uid://dkvauomoirh1w"]
 
 [ext_resource type="PackedScene" uid="uid://c8ov8rsspema2" path="res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn" id="1_7g4te"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_glvsf"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_0rx5o"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_gwtgy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_0f7td"]
+[ext_resource type="PackedScene" uid="uid://yihwjo4dhmtt" path="res://stadium.tscn" id="7_cej7k"]
 [ext_resource type="PackedScene" uid="uid://dgeqh5j7ybmme" path="res://Scenes/Gameplay Scenes/Soccer Ball/soccer_ball.tscn" id="7_jsx5i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ir6xi"]
@@ -37,27 +38,37 @@ axis_lock_linear_y = true
 physics_material_override = SubResource("PhysicsMaterial_ir6xi")
 
 [node name="CollisioShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(70, 0, 0, 0, 1, 0, 0, 0, 120, 0, -1, 0)
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 120, 0, -50, 0)
 shape = SubResource("BoxShape3D_lwtfd")
 
 [node name="Soccer_Man_B2" parent="." instance=ExtResource("1_7g4te")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, -7.57103e-08, 15.5, -10.866)
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 25.9807, 25, 6.65942)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_glvsf")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, -7.57103e-08, 15.5, -10.866)
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 25.9807, 25, 6.65942)
 script = ExtResource("3_0rx5o")
 priority = 1
-follow_mode = 6
-follow_target = NodePath("../Soccer_Man_B2")
+follow_mode = 5
+follow_target = NodePath("../soccer_ball")
 tween_resource = SubResource("Resource_wgirw")
 camera_3d_resource = SubResource("Resource_5n13j")
-follow_offset = Vector3(0, 5, -10)
+follow_distance = 30.0
+dead_zone_width = 0.51
+dead_zone_height = 0.675
+spring_length = 30.0
 
 [node name="soccer_ball" parent="." instance=ExtResource("7_jsx5i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 6.65942)
+
+[node name="stadium" parent="." instance=ExtResource("7_cej7k")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 137.481, 0)
+light_energy = 2.0
+shadow_enabled = true

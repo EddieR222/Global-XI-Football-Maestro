@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mcpysqfhgsen"]
 
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd" id="1_3nyqf"]
-[ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Assests/2D Assests/Images/Icons/world_icon.png.png" id="2_vun3s"]
+[ext_resource type="Texture2D" uid="uid://c65ora8j2a8su" path="res://Assets/2D Assets/Images/Icons/world_icon.png.png" id="2_vun3s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5uxx"]
 bg_color = Color(4.71681e-06, 0.720704, 0.320213, 1)

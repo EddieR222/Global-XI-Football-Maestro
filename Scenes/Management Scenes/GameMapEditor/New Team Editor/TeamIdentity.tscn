@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dhs7nypb65elu"]
 
-[ext_resource type="Texture2D" uid="uid://c6frbihfvpaip" path="res://Assests/2D Assests/Images/Icons/NO_LOGO_ICON.png" id="1_pc0a0"]
+[ext_resource type="Texture2D" uid="uid://c6frbihfvpaip" path="res://Assets/2D Assets/Images/Icons/NO_LOGO_ICON.png" id="1_pc0a0"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/New Team Editor/LogoInput.gd" id="2_p0vik"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd" id="3_xl5rq"]
-[ext_resource type="Texture2D" uid="uid://u8b4eq4emf77" path="res://Assests/2D Assests/Images/Icons/ArrowIcon.svg" id="4_eaor4"]
-[ext_resource type="Texture2D" uid="uid://dtfa3dj15ee2f" path="res://Assests/2D Assests/Images/Icons/football_kit_icon.png" id="5_7slar"]
+[ext_resource type="Texture2D" uid="uid://u8b4eq4emf77" path="res://Assets/2D Assets/Images/Icons/ArrowIcon.svg" id="4_eaor4"]
+[ext_resource type="Texture2D" uid="uid://dtfa3dj15ee2f" path="res://Assets/2D Assets/Images/Icons/football_kit_icon.png" id="5_7slar"]
 
 [node name="Identity" type="VBoxContainer"]
 anchors_preset = 15

@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgeqh5j7ybmme"]
+[gd_scene load_steps=7 format=3 uid="uid://dgeqh5j7ybmme"]
 
-[ext_resource type="Texture2D" uid="uid://cvnxmkvp61siy" path="res://Assests/3D Assests/Soccer Ball/soccer_ball_Studio Ochi Athletes 09.png" id="1_pmljo"]
+[ext_resource type="Texture2D" uid="uid://cvnxmkvp61siy" path="res://Assets/3D Assets/Soccer Ball/soccer_ball_Studio Ochi Athletes 09.png" id="1_llnsn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4mxyr"]
+friction = 0.2
+bounce = 0.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ranb8"]
 resource_name = "Athletes 03"
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("1_pmljo")
+albedo_texture = ExtResource("1_llnsn")
 roughness = 0.6
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wn2xy"]
@@ -47,6 +51,11 @@ shadow_mesh = SubResource("ArrayMesh_wn2xy")
 radius = 0.11
 
 [node name="soccer_ball" type="RigidBody3D"]
+mass = 0.44
+physics_material_override = SubResource("PhysicsMaterial_4mxyr")
+can_sleep = false
+linear_damp = 0.05
+angular_damp = 0.1
 
 [node name="Football Ball_001" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_nnpso")

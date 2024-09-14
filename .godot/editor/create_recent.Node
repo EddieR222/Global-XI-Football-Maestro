@@ -1,6 +1,10 @@
-StaticBody3D
-WorldEnvironment
+CharacterBody3D
+AnimationTree
 CollisionShape3D
+Area3D
+DirectionalLight3D
+WorldEnvironment
+StaticBody3D
 RigidBody3D
 PhantomCamera3D
 PhantomCameraHost
@@ -8,7 +12,3 @@ Camera3D
 CSGBox3D
 CollisionPolygon3D
 SpringArm3D
-Node3D
-CSGMesh3D
-CharacterBody3D
-MeshInstance3D

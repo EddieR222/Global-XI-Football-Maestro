@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://etm0dk2bjjr1" path="res://Textures/main_menu.tres" id="1_6vdfr"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Country Editor/country_editor.gd" id="1_e7wbr"]
 [ext_resource type="Script" path="res://SaverLoader/TerritorySaveLoader.gd" id="2_38riy"]
-[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assests/2D Assests/Images/icon.svg" id="3_mryqo"]
+[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assets/2D Assets/Images/icon.svg" id="3_mryqo"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Country Editor/FileDialog.gd" id="5_fmku2"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Country Editor/ItemList.gd" id="5_jd4kt"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Country Editor/Territory Name Edit.gd" id="5_ukg64"]

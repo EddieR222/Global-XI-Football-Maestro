@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://nia43tyo1mfo"]
 
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/Tactics Editor.gd" id="1_xpt86"]
-[ext_resource type="Texture2D" uid="uid://bla14mlgt8vjf" path="res://Assests/2D Assests/Images/Backgrounds/pure_field.png" id="2_d8pp3"]
+[ext_resource type="Texture2D" uid="uid://bla14mlgt8vjf" path="res://Assets/2D Assets/Images/Backgrounds/pure_field.png" id="2_d8pp3"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/LW.gd" id="3_yqm8q"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/ST.gd" id="4_a146v"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Squad Editor/LM.gd" id="4_ct2oa"]

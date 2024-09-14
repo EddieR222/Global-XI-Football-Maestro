@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cjl273pvm5ydo"]
 
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/Team Editor/Team Editor.gd" id="1_v8esq"]
-[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assests/2D Assests/Images/icon.svg" id="2_q2jd6"]
+[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assets/2D Assets/Images/icon.svg" id="2_q2jd6"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd" id="3_yrcmb"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd" id="4_kfda0"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd" id="5_f6c14"]

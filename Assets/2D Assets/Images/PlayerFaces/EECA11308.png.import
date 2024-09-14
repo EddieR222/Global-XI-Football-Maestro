@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://clg85c5doo6dp"
+path="res://.godot/imported/EECA11308.png-b9fc7efd9cf8878a0a320f80169c389d.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Assets/2D Assets/Images/PlayerFaces/EECA11308.png"
+dest_files=["res://.godot/imported/EECA11308.png-b9fc7efd9cf8878a0a320f80169c389d.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

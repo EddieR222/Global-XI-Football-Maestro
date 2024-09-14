@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/League Editor/League Editor.gd" id="1_t21qs"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/League Editor/Tournament Editor.gd" id="2_ke8lr"]
-[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assests/2D Assests/Images/icon.svg" id="3_e73rl"]
+[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assets/2D Assets/Images/icon.svg" id="3_e73rl"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/League Editor/Misc Scripts/TextureButton.gd" id="4_l7ego"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/League Editor/Misc Scripts/League Name.gd" id="5_qyh3y"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/League Editor/Misc Scripts/League Tournament ID.gd" id="6_7lnj6"]

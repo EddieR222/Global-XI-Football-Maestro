@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://etm0dk2bjjr1" path="res://Textures/main_menu.tres" id="1_s7mqb"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd" id="2_2qh7n"]
-[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assests/2D Assests/Images/icon.svg" id="3_3q647"]
+[ext_resource type="Texture2D" uid="uid://cdkp3cl6rfyra" path="res://Assets/2D Assets/Images/icon.svg" id="3_3q647"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Country Editor/TextureButton.gd" id="4_uf1kk"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/Country Editor/Territory Name Edit.gd" id="5_skodj"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/CoTerritory Input.gd" id="6_54ipa"]
