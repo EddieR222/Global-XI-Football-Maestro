@@ -9,10 +9,7 @@ class_name Player extends Resource
 @export var Name: String
 
 ## The Beginning of the Face Path 
-const Face_Path_Dir: String = "user://Images/Player Faces/";
-
-## The Path for the Player's Face Image
-@export var Face_Path: String;
+@export var image_manager: ResourceImageManager = ResourceImageManager.new("user://Images/Player Faces/", 80, 80);
 
 ## The NickName of the Player
 @export var NickName: String
@@ -158,8 +155,6 @@ const Face_Path_Dir: String = "user://Images/Player Faces/";
 ## This is a constructor that allows us to initiate a Player with a name.
 func _init(name := ""):
 	Name = name;
-	
-
 
 
 """ Signal Functions """
@@ -167,12 +162,14 @@ func connect_signal(sig1: Signal, sig2: Signal) -> void:
 	sig1.connect(_on_territory_id_changed);
 	sig2.connect(_on_team_id_changed);
 
+
 func _on_territory_id_changed(old_id: int, new_id: int) -> void:
 	for index in range(Nationalities.size()):
 		if Nationalities[index] == old_id:
 			Nationalities[index] == new_id;
 			return #There can only be once instance of each id, so return early now
-			
+
+
 func _on_team_id_changed(old_id: int, new_id: int) -> void:
 	var club_id: int = Club_Team
 	var national_id: Array[int] = National_Teams
@@ -188,38 +185,15 @@ func _on_team_id_changed(old_id: int, new_id: int) -> void:
 """ Loading and Saving Player Face """
 
 ## Function to save the image in the filesystem for the given player. Will save image with new identifier
-func save_face_for_player(image: Image) -> bool:
-	# First we need to validate that the image passed in is valid
-	if image == null:
-		return false;
-		
-	# Second, if team already has a logo saved, we need to ensure we delete it in order to ensure we don't leave unneeded images
-	if Face_Path != null and not Face_Path.is_empty():
-		DirAccess.remove_absolute(Face_Path_Dir + Face_Path)
-	
-	# Now we need to resize the image
-	image.resize(120, 120, 2);
-	
-	# Now we need to save this image using the number unique identifier or previous name is already located
-	var file_name: String =  uuid.v4() + ".png"
-	var save_path: String = Face_Path_Dir + file_name;
-	var error: Error = image.save_png(save_path);
-	if error != OK:
-		return false
-	
-	# Now we save this path inside of the terr to have forever. We will also use this path to delete the image
-	Face_Path = file_name;
-	return true
+func save_face_for_player(image: Image) -> Error:
+	# Save Face
+	return image_manager.save_image(image);
+
 
 ## Get the image for this team. Null is returned if no image exists for this Team
 func get_player_face() -> Image:
 	# Load Image
-	if FileAccess.file_exists(Face_Path_Dir + Face_Path):
-		var image: Image = Image.load_from_file(Face_Path_Dir + Face_Path)
-		if image != null:
-			return image
+	return image_manager.load_image();
 	
-	
-	return null
 	
 

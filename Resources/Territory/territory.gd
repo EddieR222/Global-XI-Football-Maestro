@@ -32,14 +32,7 @@ extends Resource
 		if code.length() > 4: return 
 		else: Code = code
 
-const Flag_Path_Dir: String = "user://Images/Territory Flags/"
-
-
-## The Path in the User folder where the flag is being stored. We use this string to both store and retrieve the 
-## flag that the user stores for this territory.[br]
-## Once the path is set, the previous flag will be OVERWRITTEN if a new flag is provided
-@export 
-var Flag_Path: String;
+@export var image_manager: ResourceImageManager = ResourceImageManager.new("user://Images/Territory Flags/", 80, 120);
 
 @export_category(" Country Information")
 
@@ -139,38 +132,13 @@ var Club_Teams_Rankings: Array[Team];
 ## Function to save the image in the filesystem for the given terr_id. Will save image with new identifier
 ## if territory doesn't have a flag saved, otherwise it will overwrite the previous image
 func save_image_for_terr(image: Image) -> bool:
-	# First we need to validate that the image passed in is valid
-	if image == null:
-		return false;
-		
-	# Second, if team already has a logo saved, we need to ensure we delete it in order to ensure we don't leave unneeded images
-	if Flag_Path != null and not Flag_Path.is_empty():
-		DirAccess.remove_absolute(Flag_Path_Dir + Flag_Path)
-	
-	# Now we need to resize the image
-	image.resize(120, 120, 2);
-	
-	# Now we need to save this image using the number unique identifier or previous name is already located
-	var file_name: String = uuid.v4() + ".png"
-	var save_path: String = Flag_Path_Dir + file_name;
-	var error: Error = image.save_png(save_path);
-	if error != OK:
-		return false
-	
-	# Now we save this path inside of the terr to have forever. We will also use this path to delete the image
-	Flag_Path = file_name;
-	return true
+	return image_manager.save_image(image);
+
 
 ## Function to load the image for this territory. Can return null if image doesn't exist so check for null upon return
 func get_territory_image() -> Image:
 	# Load Image
-	if FileAccess.file_exists(Flag_Path_Dir + Flag_Path):
-		var image: Image = Image.load_from_file(Flag_Path_Dir + Flag_Path)
-		if image != null:
-			return image
-	
-	
-	return null
+	return image_manager.load_image();
 
 
 func add_club_team(team: Team) -> bool:
