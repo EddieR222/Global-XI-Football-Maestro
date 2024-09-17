@@ -26,25 +26,24 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		rotate_towards(direction, delta)
+		rotate_towards_direction(direction, delta)
 		velocity = transform.basis.z * -SPEED
-	#else:
-		#velocity= move_toward(velocity.x, 0, SPEED)
-		#velocity = move_toward(velocity.z, 0, SPEED)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 
-func rotate_towards(direction: Vector3, delta):
-	# Get the forward direction of the character (local Z axis in Godot 3D is forward)
+
+func rotate_towards_direction(direction: Vector3, delta):
+	# Get the forward direction of the player (local Z axis is forward)
 	var forward_direction = -transform.basis.z
 
-	# Calculate the angle between the forward direction and the input direction
+	# Calculate the angle between forward direction and input direction
 	var angle_to_target = forward_direction.angle_to(direction)
 
-	# Calculate the rotation direction (sign) and apply the rotation
-	var rotation_direction = forward_direction.cross(direction).y # Positive or negative rotation
+	# Calculate rotation direction (left or right)
+	var rotation_direction = forward_direction.cross(direction).y
 
-	# Rotate the character based on the angle, rotation speed, and direction
+	# Rotate smoothly towards the target direction
 	rotation.y += rotation_direction * min(angle_to_target, rotation_speed * delta)
-
-
