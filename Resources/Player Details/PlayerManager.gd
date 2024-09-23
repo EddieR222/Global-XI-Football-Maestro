@@ -697,7 +697,7 @@ func determine_player_name(player: Player) -> void:
 func determine_player_face(player: Player) -> void:
 	# First we need to load a player face randomly
 	# INFO: For now, we use premade generated faces
-	var player_face: Image = get_random_player_face("res://Images/PlayerFaces/");
+	var player_face: Image = get_random_player_face("res://Assets/2D Assets/Images/PlayerFaces/");
 	player.save_face_for_player(player_face)
 	
 	return

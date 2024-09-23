@@ -1,6 +1,7 @@
+AnimationTree
+Node3D
 BTPlayer
 CharacterBody3D
-AnimationTree
 CollisionShape3D
 Area3D
 DirectionalLight3D
@@ -11,5 +12,3 @@ PhantomCamera3D
 PhantomCameraHost
 Camera3D
 CSGBox3D
-CollisionPolygon3D
-SpringArm3D

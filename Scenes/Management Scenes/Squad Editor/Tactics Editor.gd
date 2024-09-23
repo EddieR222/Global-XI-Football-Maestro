@@ -12,7 +12,7 @@ var subs: Array[VBoxContainer];
 """ Panels """
 @onready var field_panels: Array[Panel] = [%LW, %LM, %LWB, %LB, %ST, %CF, %SS, %CAM, %CM, %CDM, %CB, %SW, %GK, %RW, %RM, %RWB, %RB ]
 @onready var formations: DefaultFormations = DefaultFormations.new()
-@onready var squad_player: PackedScene = preload("res://Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn");
+@onready var squad_player: PackedScene = preload("res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

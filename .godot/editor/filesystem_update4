@@ -1,24 +1,15 @@
-res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/OnFieldPlayer.tscn
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn
 res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres
 res://Scenes/Management Scenes/Table/DataTableTheme.tres
 res://Shaders/Transparent Noise Border.gdshader
 res://Shaders/PixelateAndOutline.gdshader
-res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn
-res://demo/ai/trees/01_agent_melee_simple.tres
-res://demo/ai/trees/02_agent_charger.tres
-res://demo/ai/trees/03_agent_imp.tres
-res://demo/ai/trees/04_agent_skirmisher.tres
-res://demo/ai/trees/05_agent_ranged.tres
-res://demo/ai/trees/06_agent_melee_combo.tres
-res://demo/ai/trees/07_agent_melee_nuanced.tres
-res://demo/ai/trees/08_agent_demon.tres
-res://demo/ai/trees/09_agent_summoner.tres
-res://ai/trees/goalkeeper.tres
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/PlayerMovement.gd
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/OnFieldPlayer.tscn
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.gd
 res://Scenes/Management Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
 res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
 res://Scenes/Management Scenes/Table/table.tscn
 res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamIdentity.tscn
-res://Scenes/Management Scenes/GameMapEditor/Player Editor/Player Face Editor/PlayerFaceEditor.tscn
 res://Scenes/Gameplay Scenes/Soccer Ball/soccer_ball.tscn
 res://stadium.tscn
