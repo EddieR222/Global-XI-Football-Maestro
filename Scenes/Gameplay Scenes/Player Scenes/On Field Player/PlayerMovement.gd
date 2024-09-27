@@ -11,7 +11,7 @@ const MIN_SPRINT_SPEED: float = 30.0
 
 
 ## Reference to the playe instance
-@onready var player_body: CharacterBody3D = get_node("..")
+@onready var player_body: CharacterBody3D = get_owner();
 
 
 # Movement and rotation speeds
