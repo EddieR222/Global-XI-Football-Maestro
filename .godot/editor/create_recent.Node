@@ -1,8 +1,11 @@
+InputController
 Node3D
+CollisionShape3D
+ShapeCast3D
+RayCast3D
 AnimationTree
 BTPlayer
 CharacterBody3D
-CollisionShape3D
 Area3D
 DirectionalLight3D
 WorldEnvironment
@@ -10,5 +13,3 @@ StaticBody3D
 RigidBody3D
 PhantomCamera3D
 PhantomCameraHost
-Camera3D
-CSGBox3D
