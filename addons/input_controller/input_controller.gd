@@ -207,8 +207,8 @@ func process_input(event: InputEvent, actions: Array[StringName]) -> bool:
 		_process_action(event, action)
 	
 	# If configured to do so, prevent the InputEvent from propagating to other nodes.
-	if set_input_as_handled:
-		get_viewport().set_input_as_handled()
+	#if set_input_as_handled:
+		#get_viewport().set_input_as_handled()
 	
 	return true  # Action was processed.
 
@@ -282,3 +282,9 @@ func _process_action(event: InputEvent, action: StringName) -> void:
 		action_state.last_activated_at = 0  # Reset this before calling _determine_input_type().
 		input_type = await _determine_input_type(action_state, delta)
 		input_detected.emit(event, action, input_type)
+		
+		
+		
+		
+
+
