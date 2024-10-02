@@ -3,7 +3,6 @@
 [ext_resource type="Theme" uid="uid://etm0dk2bjjr1" path="res://Textures/main_menu.tres" id="1_meumr"]
 [ext_resource type="Script" path="res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.gd" id="2_vc7l5"]
 
-
 [node name="Confed" type="GraphNode"]
 custom_minimum_size = Vector2(1000, 500)
 anchors_preset = 15

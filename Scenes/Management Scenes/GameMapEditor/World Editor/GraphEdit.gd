@@ -1,8 +1,5 @@
 extends GraphEdit
 
-const CONFED_NODE : String = "res://Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn";
-const TERRITORY_NODE : String = "res://Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn";
-
 """
 All known issues still:
 	Converting to more sustainable documentation and model of data retention
@@ -15,8 +12,8 @@ All known issues still:
 """
 Preload Nodes that we will instantiate later 
 """
-@onready var confed_node: PackedScene = preload(CONFED_NODE);
-@onready var terr_node: PackedScene = preload(TERRITORY_NODE);
+@onready var confed_node: PackedScene = preload("res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn");
+@onready var terr_node: PackedScene = preload("res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn");
 
 """ Terr Edit Node """
 ## The local graph node for territory editor
@@ -25,7 +22,7 @@ Preload Nodes that we will instantiate later
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# For testing
-	var worked: bool = GameMapManager.load_game_map_with_filename("")
+	var worked: bool = GameMapManager.get_csv_data();
 	if worked:
 		print(true)
 	if GameMapManager.game_map.Confederations.size() == 0:

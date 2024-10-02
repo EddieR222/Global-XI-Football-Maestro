@@ -369,7 +369,7 @@ func load_default_territory_flags(dir: String, store_dir: String) -> bool:
 func _on_go_back_button_pressed():
 	# First we must save the file to the selected_game_map file
 	var game_map_manager: GameMapManager = GameMapManager.new();
-	game_map_manager.save_game_map(game_map, "selected_game_map");
+	#game_map_manager.save_game_map(game_map, "selected_game_map");
 	
 	# Now switch scenes
 	#get_tree().change_scene_to_packed(GAME_MAP_EDITOR)

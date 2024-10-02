@@ -109,9 +109,7 @@ func load_csv_save(folder: String) -> bool:
 # Example usage
 func get_csv_data() -> bool:
 	var gm: GameMap = GameMap.new();
-	var csv_file_path = "res://Test CSV/Leagues around the world - Team Rating Calculations (1).csv" 
-	var csv_data = read_csv_file(csv_file_path)
-	#
+
 	##First we have to Load the Teams
 	#for entry in csv_data:
 		#var team: Team = Team.new();
@@ -121,8 +119,8 @@ func get_csv_data() -> bool:
 		#gm.add_team(team);
 		
 	# Second , we have to load the territories
-	csv_file_path = "res://Test CSV/Game Directories - All Territories.csv"
-	csv_data = read_csv_file(csv_file_path)
+	var csv_file_path = "res://Test CSV/Game Directories - All Territories.csv"
+	var csv_data = read_csv_file(csv_file_path)
 	for entry in csv_data:
 		
 		
@@ -132,7 +130,7 @@ func get_csv_data() -> bool:
 
 		
 		# Load Flag for Territory
-		var path: String = "user://Images/Territory Flags/"
+		var path: String = "res://Assets/2D Assets/Images/Territory Flags/"
 		var img: Image = Image.load_from_file(path + terr.Name + ".png");
 		terr.save_image_for_terr(img)
 		

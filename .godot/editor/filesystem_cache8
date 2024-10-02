@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1727735643
+::res://::1727827247
 CODE_OF_CONDUCT.md::TextFile::-1::1727438078::0::1::::<><>::
 CONTRIBUTING.md::TextFile::-1::1727438078::0::1::::<><>::
 Control.gd::GDScript::-1::1727438078::0::1::::<>TextureRect<>::
@@ -7,7 +7,7 @@ icon.svg::CompressedTexture2D::41404490809459251::1727438079::1727438607::1::::<
 README.md::TextFile::-1::1727438078::0::1::::<><>::
 SECURITY.md::TextFile::-1::1727438078::0::1::::<><>::
 stad.tscn::PackedScene::4465392298086744865::1727438079::0::1::::<><>::uid://x6ur4qte3jnk::::res://Assests/3D Assests/Stadium/stad.glb
-stadium.tscn::PackedScene::1701512071419867473::1727731658::0::1::::<><>::uid://ckktksphumv43::::res://Assets/3D Assets/Stadium/stadium.glb
+stadium.tscn::PackedScene::1701512071419867473::1727827247::0::1::::<><>::uid://ckktksphumv43::::res://Assets/3D Assets/Stadium/stadium.glb
 ::res://addons/::1727538450
 ::res://addons/easy_charts/::1727438607
 icon.svg::CompressedTexture2D::5587240663104598401::1727438078::1727438607::1::::<><>::
@@ -138,13 +138,13 @@ THIRDPARTY.txt::TextFile::-1::1727438078::0::1::::<><>::
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/::1727438079
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/Resources/::1727438079
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/_CodeSignature/::1727438079
-::res://addons/godot-jolt/windows/::1727735638
+::res://addons/godot-jolt/windows/::1727796034
 ::res://addons/godot-sqlite/::1727438079
 gdsqlite.gdextension::GDExtension::-1::1727438079::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1727438079::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1727438079::0::1::::<><>::
 plugin.cfg::TextFile::-1::1727438079::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1727735638
+::res://addons/godot-sqlite/bin/::1727827238
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1727438079
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1727438079
 ::res://addons/goutte.unicode/::1727438079
@@ -278,12 +278,12 @@ green.png::CompressedTexture2D::3896279560051998512::1727438079::1727438607::1::
 red.png::CompressedTexture2D::2443263267725858415::1727438079::1727438607::1::::<><>::
 Script.svg::CompressedTexture2D::4817060143842260657::1727438079::1727438607::1::::<><>::
 yellow.png::CompressedTexture2D::1043265824178416429::1727438079::1727438607::1::::<><>::
-::res://addons/input_controller/::1727538451
+::res://addons/input_controller/::1727742461
 action_handler_map.gd::GDScript::-1::1727538450::0::1::::ActionHandlerMap<>Object<>::
 action_state.gd::GDScript::-1::1727538450::0::1::::ActionState<>Node<>::
 icon.png::CompressedTexture2D::977067540541099462::1727538450::1727538451::1::::<><>::
 icon.svg::CompressedTexture2D::4138309571670124336::1727538450::1727538451::1::::<><>::
-input_controller.gd::GDScript::-1::1727538451::0::1::::InputController<>Node<>res://addons/input_controller/icon.svg::
+input_controller.gd::GDScript::-1::1727742461::0::1::::InputController<>Node<>res://addons/input_controller/icon.svg::
 plugin.cfg::TextFile::-1::1727538451::0::1::::<><>::
 plugin.gd::GDScript::-1::1727538451::0::1::::<>EditorPlugin<>::
 README.md::TextFile::-1::1727538450::0::1::::<><>::
@@ -292,7 +292,7 @@ LICENSE.md::TextFile::-1::1727438079::0::1::::<><>::
 LOGO_LICENSE.md::TextFile::-1::1727438079::0::1::::<><>::
 README.md::TextFile::-1::1727438079::0::1::::<><>::
 version.txt::TextFile::-1::1727438079::0::1::::<><>::
-::res://addons/limboai/bin/::1727735639
+::res://addons/limboai/bin/::1727796038
 limboai.gdextension::GDExtension::-1::1727438079::0::1::::<><>::
 ::res://addons/limboai/bin/liblimboai.macos.editor.framework/::1727438079
 ::res://addons/limboai/bin/liblimboai.macos.template_release.framework/::1727438079
@@ -504,7 +504,7 @@ safe_resource_loader.gd::GDScript::-1::1727438079::0::1::::SafeResourceLoader<>R
 goalkeeper.tres::BehaviorTree::6615030307452073725::1727438079::0::1::::<><>::
 ::res://Assets/::1727438078
 ::res://Assets/2D Assets/::1727438072
-::res://Assets/2D Assets/Images/::1727438607
+::res://Assets/2D Assets/Images/::1727824745
 Global_XI_Football_Maestro_Logo.JPG::CompressedTexture2D::2428067565950428885::1727438075::1727438607::1::::<><>::
 icon.png::CompressedTexture2D::4429861210449272497::1727438078::1727438607::1::::<><>::
 icon.svg::CompressedTexture2D::5005012556432720634::1727438078::1727438607::1::::<><>::
@@ -543,6 +543,260 @@ DefenderColor.svg::CompressedTexture2D::114759167954824884::1727438075::17274386
 GoalKeeperColor.svg::CompressedTexture2D::1332279662312215468::1727438075::1727438607::1::::<><>::
 MidFieldColor.svg::CompressedTexture2D::8041606267973080150::1727438075::1727438607::1::::<><>::
 ::res://Assets/2D Assets/Images/PlayerFaces/::1727438440
+::res://Assets/2D Assets/Images/Territory Flags/::1727824888
+Afghanistan.png::CompressedTexture2D::7827024666839832092::1727796425::1727824887::1::::<><>::
+Aland Islands.png::CompressedTexture2D::8916596606723361197::1727796460::1727824887::1::::<><>::
+Albania.png::CompressedTexture2D::2078650541588620821::1727796477::1727824887::1::::<><>::
+Algeria.png::CompressedTexture2D::8005750381110662952::1727796497::1727824887::1::::<><>::
+American Samoa.png::CompressedTexture2D::9010712478646422632::1727796515::1727824887::1::::<><>::
+Andorra.png::CompressedTexture2D::3147498015747839723::1727796560::1727824887::1::::<><>::
+Angola.png::CompressedTexture2D::5687518197003568465::1727796615::1727824887::1::::<><>::
+Anguilla.png::CompressedTexture2D::8758332404077791306::1727796637::1727824887::1::::<><>::
+Antigua and Barbuda.png::CompressedTexture2D::7176885121935513767::1727796655::1727824887::1::::<><>::
+Argentina.png::CompressedTexture2D::5780307280841719460::1727796700::1727824887::1::::<><>::
+Armenia.png::CompressedTexture2D::7320721447387634449::1727796734::1727824887::1::::<><>::
+Aruba.png::CompressedTexture2D::6333891942422906946::1727796771::1727824887::1::::<><>::
+Ascension Island.png::CompressedTexture2D::4715045339936234230::1727796787::1727824887::1::::<><>::
+Australia.png::CompressedTexture2D::1092662900751734817::1727796808::1727824887::1::::<><>::
+Austria.png::CompressedTexture2D::9080394179674059599::1727796822::1727824887::1::::<><>::
+Azerbaijan.png::CompressedTexture2D::3367387732478263224::1727796834::1727824887::1::::<><>::
+Bahamas.png::CompressedTexture2D::4755838669749803692::1727796857::1727824887::1::::<><>::
+Bahrain.png::CompressedTexture2D::3505243413657672203::1727796871::1727824887::1::::<><>::
+Bangladesh.png::::-1::1727796889::0::0::::<><>::
+Barbados.png::CompressedTexture2D::2541017082740860664::1727796916::1727824887::1::::<><>::
+Belarus.png::CompressedTexture2D::5930139411438333591::1727796930::1727824887::1::::<><>::
+Belgium.png::CompressedTexture2D::5320260332490996682::1727796947::1727824887::1::::<><>::
+Belize.png::CompressedTexture2D::8795516008938886961::1727796975::1727824887::1::::<><>::
+Benin.png::CompressedTexture2D::6158029606157080071::1727796992::1727824887::1::::<><>::
+Bermuda.png::CompressedTexture2D::4023459899630226732::1727797010::1727824887::1::::<><>::
+Bhutan.png::CompressedTexture2D::2883817725949612552::1727797026::1727824887::1::::<><>::
+Bolivia.png::CompressedTexture2D::7754544107939478160::1727797050::1727824887::1::::<><>::
+Bonaire.png::CompressedTexture2D::36526129361923747::1727797064::1727824887::1::::<><>::
+Bosnia and Herzegovina.png::CompressedTexture2D::2277375562655949802::1727797078::1727824887::1::::<><>::
+Botswana.png::CompressedTexture2D::7157337280890314313::1727797095::1727824887::1::::<><>::
+Brazil.png::CompressedTexture2D::5883355288788533596::1727797111::1727824887::1::::<><>::
+British Virgin Islands.png::CompressedTexture2D::304647005001967901::1727797153::1727824887::1::::<><>::
+Brunei.png::CompressedTexture2D::1476206536279645528::1727797171::1727824887::1::::<><>::
+Bulgaria.png::CompressedTexture2D::4018748309578911412::1727797185::1727824887::1::::<><>::
+Burkina Faso.png::CompressedTexture2D::1091353872805801209::1727797212::1727824887::1::::<><>::
+Burundi.png::CompressedTexture2D::3910802773212424049::1727797228::1727824887::1::::<><>::
+Cambodia.png::CompressedTexture2D::3396905499251702209::1727797241::1727824887::1::::<><>::
+Cameroon.png::CompressedTexture2D::7086979459284688107::1727797255::1727824887::1::::<><>::
+Canada.png::CompressedTexture2D::1802744280306910197::1727797270::1727824887::1::::<><>::
+Cape Verde.png::CompressedTexture2D::1511348852615961449::1727797287::1727824887::1::::<><>::
+Cayman Islands.png::CompressedTexture2D::3077561706871013774::1727797302::1727824887::1::::<><>::
+Central African Republic.png::CompressedTexture2D::4268079558826200388::1727797317::1727824887::1::::<><>::
+Chad.png::CompressedTexture2D::1521707734724269919::1727797329::1727824887::1::::<><>::
+Chile.png::CompressedTexture2D::5149061195644208486::1727797342::1727824887::1::::<><>::
+China.png::CompressedTexture2D::2002656442355688249::1727797359::1727824887::1::::<><>::
+Christmas Island.png::CompressedTexture2D::6902082292467190125::1727797378::1727824887::1::::<><>::
+Cocos Islands.png::CompressedTexture2D::4581705238181094361::1727797396::1727824887::1::::<><>::
+Colombia.png::CompressedTexture2D::2853693962947649238::1727797407::1727824887::1::::<><>::
+Comoros.png::CompressedTexture2D::2283576473276416379::1727797433::1727824887::1::::<><>::
+Congo.png::CompressedTexture2D::1125182912403122207::1727797451::1727824887::1::::<><>::
+Cook Islands.png::CompressedTexture2D::9103595873542524926::1727797463::1727824887::1::::<><>::
+Costa Rica.png::CompressedTexture2D::7698492251255566648::1727797474::1727824887::1::::<><>::
+Croatia.png::CompressedTexture2D::7408484830423838634::1727797484::1727824887::1::::<><>::
+Cuba.png::CompressedTexture2D::2696097109378068342::1727797504::1727824887::1::::<><>::
+Curaçao.png::CompressedTexture2D::2823831050933800821::1727797527::1727824887::1::::<><>::
+Cyprus.png::CompressedTexture2D::7582545164509059696::1727797541::1727824887::1::::<><>::
+Czech Republic.png::CompressedTexture2D::6335413698321435274::1727797579::1727824887::1::::<><>::
+Denmark.png::CompressedTexture2D::1585111880701742893::1727797602::1727824887::1::::<><>::
+Djibouti.png::CompressedTexture2D::1895842043487489986::1727797616::1727824887::1::::<><>::
+Dominica.png::CompressedTexture2D::2272270767343808813::1727797632::1727824887::1::::<><>::
+Dominican Republic.png::CompressedTexture2D::7071444259205277561::1727797675::1727824887::1::::<><>::
+DR Congo.png::CompressedTexture2D::7359845701447810650::1727797689::1727824887::1::::<><>::
+East Timor.png::CompressedTexture2D::3562105816193665412::1727797701::1727824887::1::::<><>::
+Ecuador.png::CompressedTexture2D::75935786787450520::1727797713::1727824888::1::::<><>::
+Egypt.png::CompressedTexture2D::2984772323511389299::1727797725::1727824887::1::::<><>::
+El Salvador.png::CompressedTexture2D::3881975482060662077::1727797749::1727824887::1::::<><>::
+England.png::CompressedTexture2D::2401144552012938237::1727797864::1727824887::1::::<><>::
+Equatorial Guinea.png::CompressedTexture2D::8952096540787688989::1727797879::1727824887::1::::<><>::
+Eritrea.png::CompressedTexture2D::8471588126108744678::1727797906::1727824887::1::::<><>::
+Estonia.png::CompressedTexture2D::1946402506732077153::1727797930::1727824887::1::::<><>::
+Eswatini.png::CompressedTexture2D::5007182290138384487::1727797944::1727824887::1::::<><>::
+Ethiopia.png::CompressedTexture2D::8026135969553419537::1727797956::1727824887::1::::<><>::
+Falkland Islands.png::CompressedTexture2D::3906997745654634540::1727797968::1727824887::1::::<><>::
+Faroe Islands.png::CompressedTexture2D::4031903436576371980::1727797982::1727824887::1::::<><>::
+Federated States of Micronesia.png::CompressedTexture2D::6825581298252020672::1727798019::1727824887::1::::<><>::
+Fiji.png::CompressedTexture2D::6623768622982949591::1727798033::1727824887::1::::<><>::
+Finland.png::CompressedTexture2D::108485858981065006::1727798055::1727824887::1::::<><>::
+France.png::CompressedTexture2D::8778287856631738251::1727798099::1727824887::1::::<><>::
+French Guiana.png::CompressedTexture2D::8153115849109246083::1727798109::1727824887::1::::<><>::
+French Polynesia.png::CompressedTexture2D::5715106216834048996::1727798126::1727824887::1::::<><>::
+Gabon.png::CompressedTexture2D::3696811469834148298::1727798144::1727824887::1::::<><>::
+Gambia.png::CompressedTexture2D::3727036428542305887::1727798159::1727824887::1::::<><>::
+Georgia.png::CompressedTexture2D::8635964107067791143::1727798188::1727824887::1::::<><>::
+Germany.png::CompressedTexture2D::2305551224552253624::1727798203::1727824887::1::::<><>::
+Ghana.png::CompressedTexture2D::8943459734097413785::1727798215::1727824887::1::::<><>::
+Gibraltar.png::CompressedTexture2D::9019987447919959182::1727798232::1727824887::1::::<><>::
+Gozo.png::CompressedTexture2D::7014558469217491873::1727798253::1727824887::1::::<><>::
+Greece.png::CompressedTexture2D::7037717633631201061::1727798277::1727824887::1::::<><>::
+Greenland.png::CompressedTexture2D::1397075187904364315::1727798290::1727824887::1::::<><>::
+Grenada.png::CompressedTexture2D::7196334048465411688::1727798301::1727824887::1::::<><>::
+Guadeloupe.png::CompressedTexture2D::2022104183608524085::1727798319::1727824887::1::::<><>::
+Guam.png::CompressedTexture2D::6306443254107860977::1727798339::1727824887::1::::<><>::
+Guatemala.png::CompressedTexture2D::5911743450687271600::1727798352::1727824887::1::::<><>::
+Guernsey.png::CompressedTexture2D::4673028151326890794::1727798386::1727824887::1::::<><>::
+Guinea-Bissau.png::CompressedTexture2D::7964090108961587229::1727798420::1727824887::1::::<><>::
+Guinea.png::CompressedTexture2D::9051521138220784602::1727798407::1727824887::1::::<><>::
+Guyana.png::CompressedTexture2D::9053377055230504834::1727798446::1727824887::1::::<><>::
+Haiti.png::CompressedTexture2D::124151432082509847::1727798464::1727824887::1::::<><>::
+Hawaii.png::CompressedTexture2D::2464061459138291819::1727798475::1727824887::1::::<><>::
+Honduras.png::CompressedTexture2D::4694772243733781672::1727798848::1727824887::1::::<><>::
+Hong Kong.png::CompressedTexture2D::6611692327748613272::1727798860::1727824887::1::::<><>::
+Hungary.png::CompressedTexture2D::3242151675824511322::1727798872::1727824887::1::::<><>::
+Iceland.png::CompressedTexture2D::5992265397917366582::1727798888::1727824887::1::::<><>::
+India.png::CompressedTexture2D::494407114805745543::1727798917::1727824887::1::::<><>::
+Indonesia.png::CompressedTexture2D::6514664943464183276::1727798931::1727824887::1::::<><>::
+Iran.png::CompressedTexture2D::2365930901547081472::1727798943::1727824887::1::::<><>::
+Iraq.png::CompressedTexture2D::7900534681139387607::1727798957::1727824887::1::::<><>::
+Ireland.png::CompressedTexture2D::169515317051108293::1727800188::1727824887::1::::<><>::
+Isle of Man.png::CompressedTexture2D::930259101855736711::1727800210::1727824887::1::::<><>::
+Isle of Wight.png::CompressedTexture2D::5267019529045546050::1727800705::1727824887::1::::<><>::
+Isles of Scilly.png::CompressedTexture2D::7982034727098545593::1727800716::1727824887::1::::<><>::
+Israel.png::CompressedTexture2D::4260391450455639570::1727800729::1727824887::1::::<><>::
+Italy.png::CompressedTexture2D::885684467672818373::1727800740::1727824887::1::::<><>::
+Ivory Coast.png::CompressedTexture2D::6578780854736123368::1727800774::1727824887::1::::<><>::
+Jamaica.png::CompressedTexture2D::5795023758752052657::1727800787::1727824887::1::::<><>::
+Japan.png::CompressedTexture2D::1259308517879543336::1727800798::1727824887::1::::<><>::
+Jersey.png::CompressedTexture2D::521969806793413158::1727800843::1727824887::1::::<><>::
+Jordan.png::CompressedTexture2D::7154314054894984809::1727800860::1727824887::1::::<><>::
+Kazakhstan.png::CompressedTexture2D::4327992181110944745::1727800873::1727824887::1::::<><>::
+Kenya.png::CompressedTexture2D::5478033442774509795::1727800884::1727824887::1::::<><>::
+Kiribati.png::CompressedTexture2D::5568270347445083615::1727800894::1727824887::1::::<><>::
+Kosovo.png::CompressedTexture2D::7364472488048088829::1727800904::1727824887::1::::<><>::
+Kuwait.png::CompressedTexture2D::3795568955423474205::1727800916::1727824887::1::::<><>::
+Kyrgyzstan.png::CompressedTexture2D::9154712775353671352::1727800928::1727824887::1::::<><>::
+Laos.png::CompressedTexture2D::6785283049438302192::1727800955::1727824887::1::::<><>::
+Latvia.png::CompressedTexture2D::6105160359772476403::1727800967::1727824887::1::::<><>::
+Lebanon.png::CompressedTexture2D::4975146147671889864::1727800977::1727824887::1::::<><>::
+Lesotho.png::CompressedTexture2D::8736041098804135265::1727800987::1727824887::1::::<><>::
+Liberia.png::CompressedTexture2D::130233903845968780::1727800997::1727824886::1::::<><>::
+Libya.png::CompressedTexture2D::2278032087676627859::1727801010::1727824886::1::::<><>::
+Liechtenstein.png::CompressedTexture2D::5622661232693347944::1727801020::1727824886::1::::<><>::
+Lithuania.png::CompressedTexture2D::4824805913164160264::1727801085::1727824886::1::::<><>::
+Luxembourg.png::CompressedTexture2D::7645484757178379754::1727801827::1727824886::1::::<><>::
+Macau.png::CompressedTexture2D::1138798832230833923::1727801843::1727824887::1::::<><>::
+Madagascar.png::CompressedTexture2D::5381050712953083033::1727801871::1727824886::1::::<><>::
+Madeira.png::CompressedTexture2D::8613751495930509363::1727801883::1727824886::1::::<><>::
+Malawi.png::CompressedTexture2D::3506003089845893043::1727801892::1727824886::1::::<><>::
+Malaysia.png::CompressedTexture2D::6636413571967585542::1727801902::1727824886::1::::<><>::
+Maldives.png::CompressedTexture2D::6626888359570066234::1727801916::1727824887::1::::<><>::
+Mali.png::CompressedTexture2D::4617352187575500518::1727801929::1727824887::1::::<><>::
+Malta.png::CompressedTexture2D::8327192387478801099::1727801938::1727824887::1::::<><>::
+Marshall Islands.png::CompressedTexture2D::8578172421669567767::1727801948::1727824886::1::::<><>::
+Martinique.png::CompressedTexture2D::8601557750965811869::1727801964::1727824887::1::::<><>::
+Mauritania.png::CompressedTexture2D::6167503436677704799::1727801979::1727824886::1::::<><>::
+Mauritius.png::CompressedTexture2D::3394629154648082325::1727801992::1727824886::1::::<><>::
+Mayotte.png::CompressedTexture2D::3427097006668336395::1727802012::1727824887::1::::<><>::
+Mexico.png::CompressedTexture2D::2768551547054324971::1727802022::1727824887::1::::<><>::
+Moldova.png::CompressedTexture2D::3353729492373445713::1727802031::1727824886::1::::<><>::
+Monaco.png::CompressedTexture2D::8122999766093133874::1727802042::1727824886::1::::<><>::
+Mongolia.png::CompressedTexture2D::7294566125219972534::1727802051::1727824886::1::::<><>::
+Montenegro.png::CompressedTexture2D::1043995510156133376::1727802063::1727824886::1::::<><>::
+Montserrat.png::CompressedTexture2D::2532284876162319953::1727802075::1727824886::1::::<><>::
+Morocco.png::CompressedTexture2D::6021267995137484963::1727802087::1727824887::1::::<><>::
+Mozambique.png::CompressedTexture2D::8789046737717275929::1727802097::1727824886::1::::<><>::
+Myanmar.png::CompressedTexture2D::2290844621136568643::1727802111::1727824886::1::::<><>::
+Namibia.png::CompressedTexture2D::5415698554863926474::1727802122::1727824887::1::::<><>::
+Nauru.png::CompressedTexture2D::3726804404881902110::1727802140::1727824886::1::::<><>::
+Nepal.png::CompressedTexture2D::5493578708835121165::1727802183::1727824886::1::::<><>::
+Netherlands.png::CompressedTexture2D::4375760278560191842::1727824655::1727824886::1::::<><>::
+New Caledonia.png::CompressedTexture2D::5261846112075822511::1727802212::1727824886::1::::<><>::
+New Zealand.png::CompressedTexture2D::2832991142115095536::1727802225::1727824886::1::::<><>::
+Nicaragua.png::CompressedTexture2D::1890394050165251475::1727821939::1727824886::1::::<><>::
+Niger.png::CompressedTexture2D::5438794460292103525::1727821981::1727824886::1::::<><>::
+Nigeria.png::CompressedTexture2D::2927018410900467755::1727821995::1727824886::1::::<><>::
+Niue.png::CompressedTexture2D::1268636968601258319::1727822011::1727824886::1::::<><>::
+Norfolk Island.png::CompressedTexture2D::7976609074001643456::1727822022::1727824886::1::::<><>::
+North Korea.png::CompressedTexture2D::495860135801931801::1727822042::1727824886::1::::<><>::
+North Macedonia.png::CompressedTexture2D::4448616542351416557::1727822064::1727824886::1::::<><>::
+Northern Ireland.png::CompressedTexture2D::2946359936229758248::1727822075::1727824886::1::::<><>::
+Northern Mariana Islands.png::CompressedTexture2D::3245320860146894566::1727822106::1727824886::1::::<><>::
+Norway.png::CompressedTexture2D::3014693982043358058::1727822119::1727824886::1::::<><>::
+Oman.png::CompressedTexture2D::817832315200183551::1727822130::1727824886::1::::<><>::
+Orkney.png::CompressedTexture2D::51108716560096626::1727822141::1727824886::1::::<><>::
+Pakistan.png::CompressedTexture2D::5933910179178191103::1727822151::1727824886::1::::<><>::
+Palau.png::CompressedTexture2D::7996516975837660986::1727822161::1727824886::1::::<><>::
+Palestine.png::CompressedTexture2D::8501851893735386526::1727822175::1727824886::1::::<><>::
+Panama.png::CompressedTexture2D::5547807221444139012::1727822188::1727824886::1::::<><>::
+Papua New Guinea.png::CompressedTexture2D::1227314093929128245::1727822201::1727824886::1::::<><>::
+Paraguay.png::CompressedTexture2D::317774391207008906::1727822212::1727824886::1::::<><>::
+Peru.png::CompressedTexture2D::8387847767155962665::1727822225::1727824886::1::::<><>::
+Philippines.png::CompressedTexture2D::1544995355007396608::1727822237::1727824886::1::::<><>::
+Pitcairn Islands.png::CompressedTexture2D::6970788071506218846::1727822248::1727824886::1::::<><>::
+Poland.png::CompressedTexture2D::3446361053472514842::1727822258::1727824886::1::::<><>::
+Portugal.png::CompressedTexture2D::6575239377656076350::1727822269::1727824887::1::::<><>::
+Puerto Rico.png::CompressedTexture2D::3029160471761898159::1727822279::1727824886::1::::<><>::
+Qatar.png::CompressedTexture2D::3025415640760683958::1727822290::1727824886::1::::<><>::
+Romania.png::CompressedTexture2D::576746183722439039::1727822326::1727824886::1::::<><>::
+Russia.png::CompressedTexture2D::3342649788966312689::1727822336::1727824886::1::::<><>::
+Rwanda.png::CompressedTexture2D::1594921259138067758::1727822349::1727824887::1::::<><>::
+Réunion.png::CompressedTexture2D::3876354711566119768::1727822307::1727824886::1::::<><>::
+Saint Helena.png::CompressedTexture2D::2946486054868400625::1727822360::1727824887::1::::<><>::
+Saint Kitts and Nevis.png::CompressedTexture2D::1743212254024458478::1727822372::1727824887::1::::<><>::
+Saint Lucia.png::CompressedTexture2D::1699133931483445644::1727822384::1727824887::1::::<><>::
+Saint Martin.png::CompressedTexture2D::4215524590362148288::1727822397::1727824887::1::::<><>::
+Saint Pierre and Miquelon.png::CompressedTexture2D::3952425834819650716::1727822411::1727824887::1::::<><>::
+Saint Vincent and the Grenadines.png::CompressedTexture2D::4399499386811587821::1727822426::1727824887::1::::<><>::
+Saint-Barthélemy.png::CompressedTexture2D::1597855813834910908::1727822444::1727824887::1::::<><>::
+Samoa.png::CompressedTexture2D::7144210502562437809::1727822454::1727824887::1::::<><>::
+San Marino.png::CompressedTexture2D::774447342050559514::1727822470::1727824887::1::::<><>::
+Saudi Arabia.png::CompressedTexture2D::5150740216109223619::1727822496::1727824887::1::::<><>::
+Scotland.png::CompressedTexture2D::445735443786153710::1727822539::1727824887::1::::<><>::
+Senegal.png::CompressedTexture2D::5908382189534799240::1727822551::1727824887::1::::<><>::
+Serbia.png::CompressedTexture2D::1718260816929374241::1727822563::1727824887::1::::<><>::
+Seychelles.png::CompressedTexture2D::6782684938790050263::1727822573::1727824887::1::::<><>::
+Sierra Leone.png::CompressedTexture2D::1321504285391662597::1727822582::1727824887::1::::<><>::
+Singapore.png::CompressedTexture2D::3336759353461065245::1727822592::1727824887::1::::<><>::
+Sint Maarten.png::CompressedTexture2D::1392206976836540958::1727822602::1727824887::1::::<><>::
+Slovakia.png::CompressedTexture2D::3678900209125169389::1727822612::1727824887::1::::<><>::
+Slovenia.png::CompressedTexture2D::3785201784317520823::1727822622::1727824887::1::::<><>::
+Solomon Islands.png::CompressedTexture2D::2000990210237621836::1727822633::1727824887::1::::<><>::
+Somalia.png::CompressedTexture2D::2960723616768271285::1727822645::1727824887::1::::<><>::
+South Africa.png::CompressedTexture2D::1665118499403937584::1727822658::1727824887::1::::<><>::
+South Korea.png::CompressedTexture2D::6704727814325425315::1727822668::1727824887::1::::<><>::
+South Sudan.png::CompressedTexture2D::1489307465960401087::1727822764::1727824887::1::::<><>::
+Spain.png::CompressedTexture2D::6646017527194096766::1727822783::1727824887::1::::<><>::
+Sri Lanka.png::CompressedTexture2D::2835590667535117646::1727822795::1727824887::1::::<><>::
+Sudan.png::CompressedTexture2D::2594628248097226769::1727822804::1727824887::1::::<><>::
+Suriname.png::CompressedTexture2D::3945397627758218786::1727822815::1727824887::1::::<><>::
+Sweden.png::CompressedTexture2D::1203386993067720895::1727822827::1727824887::1::::<><>::
+Switzerland.png::CompressedTexture2D::1445664751854241546::1727822850::1727824887::1::::<><>::
+Syria.png::CompressedTexture2D::2542013909253907414::1727822860::1727824887::1::::<><>::
+São Tomé and Príncipe.png::CompressedTexture2D::2700800121735785830::1727822483::1727824887::1::::<><>::
+Taiwan.png::CompressedTexture2D::7838127646398517898::1727822870::1727824886::1::::<><>::
+Tajikistan.png::CompressedTexture2D::5120374687113191242::1727822890::1727824886::1::::<><>::
+Tanzania.png::CompressedTexture2D::2971226865821264647::1727822901::1727824886::1::::<><>::
+Thailand.png::CompressedTexture2D::1480592178295943836::1727822912::1727824886::1::::<><>::
+Togo.png::CompressedTexture2D::4025384221265975526::1727822923::1727824887::1::::<><>::
+Tokelau.png::CompressedTexture2D::5420780758820376120::1727822937::1727824886::1::::<><>::
+Tonga.png::CompressedTexture2D::7363414512745883439::1727822951::1727824886::1::::<><>::
+Trinidad and Tobago.png::CompressedTexture2D::9163653439247400983::1727822970::1727824886::1::::<><>::
+Tristan da Cunha.png::CompressedTexture2D::4135741377047489299::1727822984::1727824887::1::::<><>::
+Tunisia.png::CompressedTexture2D::3044551034640611494::1727822993::1727824887::1::::<><>::
+Turkey.png::CompressedTexture2D::294241895577289221::1727823003::1727824886::1::::<><>::
+Turkmenistan.png::CompressedTexture2D::5105888282825092300::1727823013::1727824887::1::::<><>::
+Turks and Caicos Islands.png::CompressedTexture2D::9043676972501833874::1727823023::1727824887::1::::<><>::
+Tuvalu.png::CompressedTexture2D::3145220907591799558::1727823033::1727824887::1::::<><>::
+U.S. Virgin Islands.png::CompressedTexture2D::5706800682477340495::1727823058::1727824887::1::::<><>::
+Uganda.png::CompressedTexture2D::7632489136198375742::1727823076::1727824887::1::::<><>::
+Ukraine.png::CompressedTexture2D::9102489328030694414::1727823091::1727824887::1::::<><>::
+United Arab Emirates.png::CompressedTexture2D::3577838123393109032::1727823103::1727824887::1::::<><>::
+United States of America.png::CompressedTexture2D::5156022799833507994::1727823125::1727824887::1::::<><>::
+Uruguay.png::CompressedTexture2D::4924292344740465144::1727823137::1727824887::1::::<><>::
+Uzbekistan.png::CompressedTexture2D::6984516812906418672::1727823156::1727824887::1::::<><>::
+Vanuatu.png::CompressedTexture2D::2832619102938573811::1727823166::1727824887::1::::<><>::
+Vatican City.png::CompressedTexture2D::1416415531309178946::1727823180::1727824887::1::::<><>::
+Venezuela.png::CompressedTexture2D::7223012969603409520::1727823204::1727824887::1::::<><>::
+Vietnam.png::CompressedTexture2D::2064256908736286985::1727823224::1727824887::1::::<><>::
+Wales.png::CompressedTexture2D::4690464102976064479::1727823235::1727824887::1::::<><>::
+Wallis and Futuna.png::CompressedTexture2D::7621172883521709783::1727823246::1727824887::1::::<><>::
+Yemen.png::CompressedTexture2D::7112204501889827622::1727823256::1727824887::1::::<><>::
+Zambia.png::CompressedTexture2D::5473602126700242337::1727823270::1727824887::1::::<><>::
+Zanzibar.png::CompressedTexture2D::5145734668615394584::1727823282::1727824887::1::::<><>::
+Zimbabwe.png::CompressedTexture2D::1477233110017499685::1727823295::1727824887::1::::<><>::
 ::res://Assets/3D Assets/::1727438078
 ::res://Assets/3D Assets/Player Models/::1727438607
 Soccer_Man_B.glb::PackedScene::4076847759357259825::1727438078::1727438078::1::::<><>::
@@ -703,9 +957,9 @@ CompressedGameMap.gd::GDScript::-1::1727438078::0::1::::CompressedGameMap<>Resou
 CompressedPlayer.gd::GDScript::-1::1727438078::0::1::::Player<>Resource<>::
 ::res://Resources/Confederation/::1727438078
 Confederation.gd::GDScript::-1::1727438078::0::1::::Confederation<>Resource<>::
-::res://Resources/GameMap/::1727438078
+::res://Resources/GameMap/::1727825087
 GameMap.gd::GDScript::-1::1727438078::0::1::::GameMap<>Resource<>::
-GameMapManager1.gd::GDScript::-1::1727438078::0::1::::GameMapManagement<>Node<>::
+GameMapManager1.gd::GDScript::-1::1727825087::0::1::::GameMapManagement<>Node<>::
 ::res://Resources/Player Details/::1727438078
 Player.gd::GDScript::-1::1727438078::0::1::::Player<>Resource<>::
 PlayerManager.gd::GDScript::-1::1727438078::0::1::::PlayerManager<>Resource<>::
@@ -736,26 +990,27 @@ LeagueStage.gd::GDScript::-1::1727438078::0::1::::LeagueStage<>Resource<>::
 SingleKnockOutStage.gd::GDScript::-1::1727438078::0::1::::SingleKnockOutStage<>Resource<>::
 TeamLeagueStats.gd::GDScript::-1::1727438078::0::1::::TeamLeagueStats<>Resource<>::
 TournamentStage.gd::GDScript::-1::1727438078::0::1::::TournamentStage<>Resource<>::
-::res://Resources/Trie Resources/::1727729159
-trie_node.gd::GDScript::-1::1727729159::0::1::::TrieNode<>RefCounted<>::
-trie_tree.gd::GDScript::-1::1727729084::0::1::::TrieTree<>Node<>::
+::res://Resources/Trie Resources/::1727744877
+input_action.gd::GDScript::-1::1727744357::0::1::::InputAction<>Resource<>::
+trie_node.gd::GDScript::-1::1727744318::0::1::::TrieNode<>Resource<>::
+trie_tree.gd::GDScript::-1::1727744877::0::1::::TrieTree<>Resource<>::
 ::res://Scenes/::1727438078
 ::res://Scenes/Gameplay Scenes/::1727438078
 ::res://Scenes/Gameplay Scenes/Player Scenes/::1727438078
 ::res://Scenes/Gameplay Scenes/Player Scenes/Composition Nodes/::1727438078
 player_movement.gd::GDScript::-1::1727438078::0::1::::PlayerMovement<>Node3D<>::
-::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/::1727731659
+::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/::1727827247
 AnimationHandler.gd::GDScript::-1::1727556516::0::1::::<>Node3D<>::
 Area3D.gd::GDScript::-1::1727438078::0::1::::<>Area3D<>::
 CameraController.gd::GDScript::-1::1727438078::0::1::::<>Node3D<>::
-OnFieldPlayer.tscn::PackedScene::7904538890684999022::1727731658::0::1::::<><>::uid://c8ov8rsspema2::::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn<>res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd<>res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd<>res://addons/phantom_camera/scripts/resources/tween_resource.gd<>res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd<>uid://yihwjo4dhmtt::::res://stadium.tscn<>uid://dgeqh5j7ybmme::::res://Scenes/Gameplay Scenes/Soccer Ball/soccer_ball.tscn
+OnFieldPlayer.tscn::PackedScene::7904538890684999022::1727827246::0::1::::<><>::uid://c8ov8rsspema2::::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn<>res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd<>res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd<>res://addons/phantom_camera/scripts/resources/tween_resource.gd<>res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd<>uid://yihwjo4dhmtt::::res://stadium.tscn<>uid://dgeqh5j7ybmme::::res://Scenes/Gameplay Scenes/Soccer Ball/soccer_ball.tscn
 PlayerMovement.gd::GDScript::-1::1727556509::0::1::::<>Node3D<>::
 soccer_man_b.gd::GDScript::-1::1727555813::0::1::::<>CharacterBody3D<>::
-soccer_man_b.tscn::PackedScene::7119309405586550683::1727731659::0::1::::<><>::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.gd<>uid://bvjdouwp3uogb::::res://Assets/3D Assets/Player Models/Soccer_Man_B_Soccer_Man_B_Colrs.png<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/Area3D.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/PlayerMovement.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/AnimationHandler.gd<>res://addons/input_controller/input_controller.gd
-::res://Scenes/Gameplay Scenes/Soccer Ball/::1727731658
-soccer_ball.tscn::PackedScene::7589638187455137556::1727731658::0::1::::<><>::uid://cvnxmkvp61siy::::res://Assets/3D Assets/Soccer Ball/soccer_ball_Studio Ochi Athletes 09.png
+soccer_man_b.tscn::PackedScene::7119309405586550683::1727827247::0::1::::<><>::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.gd<>uid://bvjdouwp3uogb::::res://Assets/3D Assets/Player Models/Soccer_Man_B_Soccer_Man_B_Colrs.png<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/Area3D.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/PlayerMovement.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/AnimationHandler.gd<>res://addons/input_controller/input_controller.gd
+::res://Scenes/Gameplay Scenes/Soccer Ball/::1727827246
+soccer_ball.tscn::PackedScene::7589638187455137556::1727827246::0::1::::<><>::uid://cvnxmkvp61siy::::res://Assets/3D Assets/Soccer Ball/soccer_ball_Studio Ochi Athletes 09.png
 ::res://Scenes/Management Scenes/::1727438078
-::res://Scenes/Management Scenes/Country Editor/::1727438078
+::res://Scenes/Management Scenes/Country Editor/::1727824799
 Area Val.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
 Code Name Text.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
 Con ID.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
@@ -775,7 +1030,7 @@ Pop Val.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
 Rating Value.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
 T ID.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
 Territory Name Edit.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
-TextureButton.gd::GDScript::-1::1727438078::0::1::::<>TextureButton<>::
+TextureButton.gd::GDScript::-1::1727824799::0::1::::<>TextureButton<>::
 ::res://Scenes/Management Scenes/GameMapEditor/::1727438078
 GameMapEditor.gd::GDScript::-1::1727438078::0::1::::<>Control<>::
 GameMapEditor.tscn::PackedScene::4945358785978659714::1727438078::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/GameMapEditor.gd<>uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Textures/GameMapMenuButton.tres<>uid://c65ora8j2a8su::::res://Assets/2D Assets/Images/Icons/world_icon.png.png<>uid://crqayvu5gcmqw::::res://Assets/2D Assets/Images/Icons/team_logo_icon.png<>uid://ds7vxc8b1nn10::::res://Assets/2D Assets/Images/Icons/player_icon.png<>uid://trf8pxoqve84::::res://Assets/2D Assets/Images/Icons/tournament_icon.png<>uid://b8uu5pwkliayf::::res://Assets/2D Assets/Images/Icons/stadium_icon.png<>uid://ofmn2c28o1yp::::res://Assets/2D Assets/Images/Icons/manager_icon.png<>uid://dtfa3dj15ee2f::::res://Assets/2D Assets/Images/Icons/football_kit_icon.png<>uid://cnre1w2nfyinf::::res://Assets/2D Assets/Images/Icons/trophy_icon.png
@@ -816,20 +1071,20 @@ SingleKnockOutNode.tscn::PackedScene::5942002964185257488::1727438078::0::1::::<
 SpecificTeamPopPanel.gd::GDScript::-1::1727438078::0::1::::<>PopupPanel<>::
 TeamsList.gd::GDScript::-1::1727438078::0::1::::<>ItemList<>::
 TournamentSelection.gd::GDScript::-1::1727438078::0::1::::<>OptionButton<>::
-::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/::1727731658
+::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/::1727827246
 LogoInput.gd::GDScript::-1::1727438078::0::1::::<>TextureButton<>::
 Team Editor 2.gd::GDScript::-1::1727438078::0::1::::<>Control<>::
-Team Editor 2.tscn::PackedScene::174819667336499039::1727731658::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd<>uid://cn614eycgw6h8::::res://Assets/2D Assets/Images/Backgrounds/Background_4.svg<>uid://dhs7nypb65elu::::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamIdentity.tscn<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TextureRect.gd<>uid://nia43tyo1mfo::::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn
-TeamIdentity.tscn::PackedScene::7689710199028411994::1727731658::0::1::::<><>::uid://c6frbihfvpaip::::res://Assets/2D Assets/Images/Icons/NO_LOGO_ICON.png<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/LogoInput.gd<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd<>uid://u8b4eq4emf77::::res://Assets/2D Assets/Images/Icons/ArrowIcon.svg<>uid://dtfa3dj15ee2f::::res://Assets/2D Assets/Images/Icons/football_kit_icon.png
+Team Editor 2.tscn::PackedScene::174819667336499039::1727827246::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd<>uid://cn614eycgw6h8::::res://Assets/2D Assets/Images/Backgrounds/Background_4.svg<>uid://dhs7nypb65elu::::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamIdentity.tscn<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TextureRect.gd<>uid://nia43tyo1mfo::::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn
+TeamIdentity.tscn::PackedScene::7689710199028411994::1727827246::0::1::::<><>::uid://c6frbihfvpaip::::res://Assets/2D Assets/Images/Icons/NO_LOGO_ICON.png<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/LogoInput.gd<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd<>uid://u8b4eq4emf77::::res://Assets/2D Assets/Images/Icons/ArrowIcon.svg<>uid://dtfa3dj15ee2f::::res://Assets/2D Assets/Images/Icons/football_kit_icon.png
 TeamNameInput.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
 TextureRect.gd::GDScript::-1::1727438078::0::1::::<>TextureRect<>::
 ::res://Scenes/Management Scenes/GameMapEditor/Player Editor/::1727438078
 PlayerEditor.tscn::PackedScene::5819171660964311173::1727438078::0::1::::<><>::
 ::res://Scenes/Management Scenes/GameMapEditor/Player Editor/Player Face Editor/::1727438078
 PlayerFaceEditor.tscn::PackedScene::2702813501149751523::1727438078::0::1::::<><>::
-::res://Scenes/Management Scenes/GameMapEditor/Team Editor/::1727438078
-Team Editor.gd::GDScript::-1::1727438078::0::1::::<>Node<>::
-Team Editor.tscn::PackedScene::5428947114430059492::1727438078::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Assets/2D Assets/Images/icon.svg<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
+::res://Scenes/Management Scenes/GameMapEditor/Team Editor/::1727824183
+Team Editor.gd::GDScript::-1::1727824018::0::1::::<>Node<>::
+Team Editor.tscn::PackedScene::5428947114430059492::1727824183::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/Team Editor/Team Editor.gd<>uid://cdkp3cl6rfyra::::res://Assets/2D Assets/Images/icon.svg<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Logo.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Team Name.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Team ID.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/Name Code Input.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/City Input.gd<>res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/SpinBox.gd
 ::res://Scenes/Management Scenes/GameMapEditor/Team Editor/Misc Scripts/::1727438078
 City Input.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
 Logo.gd::GDScript::-1::1727438078::0::1::::<>TextureButton<>::
@@ -837,23 +1092,23 @@ Name Code Input.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
 SpinBox.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
 Team ID.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Team Name.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
-::res://Scenes/Management Scenes/GameMapEditor/World Editor/::1727438078
-GraphEdit.gd::GDScript::-1::1727438078::0::1::::<>GraphEdit<>::
-World Editor.gd::GDScript::-1::1727438078::0::1::::<>Control<>::
-World Editor.tscn::PackedScene::1217744872715804559::1727438078::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.gd<>uid://vwix3f5216wn::::res://Assets/2D Assets/Images/Backgrounds/Background_2.svg<>res://Scenes/Management Scenes/GameMapEditor/World Editor/GraphEdit.gd
-::res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/::1727438078
+::res://Scenes/Management Scenes/GameMapEditor/World Editor/::1727827248
+GraphEdit.gd::GDScript::-1::1727825203::0::1::::<>GraphEdit<>::
+World Editor.gd::GDScript::-1::1727796103::0::1::::<>Control<>::
+World Editor.tscn::PackedScene::1217744872715804559::1727827248::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.gd<>uid://vwix3f5216wn::::res://Assets/2D Assets/Images/Backgrounds/Background_2.svg<>res://Scenes/Management Scenes/GameMapEditor/World Editor/GraphEdit.gd
+::res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/::1727827248
 Confederation Editor.gd::GDScript::-1::1727438078::0::1::::<>GraphNode<>::
-Confederation Editor.tscn::PackedScene::4377020352998335848::1727438078::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.gd
+Confederation Editor.tscn::PackedScene::4377020352998335848::1727827248::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.gd
 ItemList.gd::GDScript::-1::1727438078::0::1::::<>ItemList<>::
 ::res://Scenes/Management Scenes/GameMapEditor/World Editor/League Editor/::1727438078
 League Editor.tscn::PackedScene::507481753769897923::1727438078::0::1::::<><>::
 LeagueNode.tscn::PackedScene::8628539737815509014::1727438078::0::1::::<><>::
-::res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/::1727438078
+::res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/::1727827248
 CoTerritory Input.gd::GDScript::-1::1727438078::0::1::::<>OptionButton<>::
 Label.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Territory Editor.gd::GDScript::-1::1727438078::0::1::::<>GraphNode<>::
-Territory Editor.tscn::PackedScene::8422911629128742764::1727438078::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Assets/2D Assets/Images/icon.svg<>res://Scenes/Management Scenes/Country Editor/TextureButton.gd<>res://Scenes/Management Scenes/Country Editor/Territory Name Edit.gd<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/CoTerritory Input.gd<>res://Scenes/Management Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Management Scenes/Country Editor/Pop Val.gd<>res://Scenes/Management Scenes/Country Editor/Area Val.gd<>res://Scenes/Management Scenes/Country Editor/GDP Val.gd<>res://Scenes/Management Scenes/Country Editor/First Name List.gd<>res://Scenes/Management Scenes/Country Editor/Last Names List.gd<>res://Scenes/Management Scenes/Country Editor/Rating Value.gd<>res://Scenes/Management Scenes/Country Editor/League Rating Val.gd
-::res://Scenes/Management Scenes/Squad Editor/::1727731658
+Territory Editor.tscn::PackedScene::8422911629128742764::1727827248::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Assets/2D Assets/Images/icon.svg<>res://Scenes/Management Scenes/Country Editor/TextureButton.gd<>res://Scenes/Management Scenes/Country Editor/Territory Name Edit.gd<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/CoTerritory Input.gd<>res://Scenes/Management Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Management Scenes/Country Editor/Pop Val.gd<>res://Scenes/Management Scenes/Country Editor/Area Val.gd<>res://Scenes/Management Scenes/Country Editor/GDP Val.gd<>res://Scenes/Management Scenes/Country Editor/First Name List.gd<>res://Scenes/Management Scenes/Country Editor/Last Names List.gd<>res://Scenes/Management Scenes/Country Editor/Rating Value.gd<>res://Scenes/Management Scenes/Country Editor/League Rating Val.gd
+::res://Scenes/Management Scenes/Squad Editor/::1727827246
 CAM.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 CB.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 CDM.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
@@ -871,23 +1126,23 @@ RW.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 RWB.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 SS.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 ST.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
-SubAreaBackground.tres::Theme::4347029320556437945::1727724845::0::1::::<><>::
+SubAreaBackground.tres::Theme::4347029320556437945::1727796052::0::1::::<><>::
 SW.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 Tactics Editor.gd::GDScript::-1::1727438078::0::1::::<>TabContainer<>::
-Tactics Editor.tscn::PackedScene::929023278465423960::1727731658::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.gd<>uid://bla14mlgt8vjf::::res://Assets/2D Assets/Images/Backgrounds/pure_field.png<>res://Scenes/Management Scenes/Squad Editor/LW.gd<>res://Scenes/Management Scenes/Squad Editor/ST.gd<>res://Scenes/Management Scenes/Squad Editor/LM.gd<>res://Scenes/Management Scenes/Squad Editor/LWB.gd<>res://Scenes/Management Scenes/Squad Editor/LB.gd<>res://Scenes/Management Scenes/Squad Editor/CF.gd<>res://Scenes/Management Scenes/Squad Editor/SS.gd<>res://Scenes/Management Scenes/Squad Editor/CAM.gd<>res://Scenes/Management Scenes/Squad Editor/CM.gd<>res://Scenes/Management Scenes/Squad Editor/CDM.gd<>res://Scenes/Management Scenes/Squad Editor/CB.gd<>res://Scenes/Management Scenes/Squad Editor/SW.gd<>res://Scenes/Management Scenes/Squad Editor/GK.gd<>res://Scenes/Management Scenes/Squad Editor/RW.gd<>res://Scenes/Management Scenes/Squad Editor/RM.gd<>res://Scenes/Management Scenes/Squad Editor/RWB.gd<>res://Scenes/Management Scenes/Squad Editor/RB.gd<>uid://b26y65dk0mjiv::::res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres<>uid://0ibe2y5qi3fp::::res://Scenes/Management Scenes/Table/table.tscn
-::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/::1727731658
+Tactics Editor.tscn::PackedScene::929023278465423960::1727827246::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.gd<>uid://bla14mlgt8vjf::::res://Assets/2D Assets/Images/Backgrounds/pure_field.png<>res://Scenes/Management Scenes/Squad Editor/LW.gd<>res://Scenes/Management Scenes/Squad Editor/ST.gd<>res://Scenes/Management Scenes/Squad Editor/LM.gd<>res://Scenes/Management Scenes/Squad Editor/LWB.gd<>res://Scenes/Management Scenes/Squad Editor/LB.gd<>res://Scenes/Management Scenes/Squad Editor/CF.gd<>res://Scenes/Management Scenes/Squad Editor/SS.gd<>res://Scenes/Management Scenes/Squad Editor/CAM.gd<>res://Scenes/Management Scenes/Squad Editor/CM.gd<>res://Scenes/Management Scenes/Squad Editor/CDM.gd<>res://Scenes/Management Scenes/Squad Editor/CB.gd<>res://Scenes/Management Scenes/Squad Editor/SW.gd<>res://Scenes/Management Scenes/Squad Editor/GK.gd<>res://Scenes/Management Scenes/Squad Editor/RW.gd<>res://Scenes/Management Scenes/Squad Editor/RM.gd<>res://Scenes/Management Scenes/Squad Editor/RWB.gd<>res://Scenes/Management Scenes/Squad Editor/RB.gd<>uid://b26y65dk0mjiv::::res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres<>uid://0ibe2y5qi3fp::::res://Scenes/Management Scenes/Table/table.tscn
+::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/::1727827246
 NumberAndName.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Position.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Rating.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 SquadPlayer.gd::GDScript::-1::1727438078::0::1::::<>VBoxContainer<>::
-SquadPlayer.tscn::PackedScene::847349463483684125::1727731658::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd<>uid://c65ora8j2a8su::::res://Assets/2D Assets/Images/Icons/world_icon.png.png
+SquadPlayer.tscn::PackedScene::847349463483684125::1727827246::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd<>uid://c65ora8j2a8su::::res://Assets/2D Assets/Images/Icons/world_icon.png.png
 Stamina.gd::GDScript::-1::1727438078::0::1::::<>ProgressBar<>::
 ::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/Misc Scripts/::1727438078
 PlayerFace.gd::GDScript::-1::1727438078::0::1::::<>TextureRect<>::
-::res://Scenes/Management Scenes/Table/::1727731658
+::res://Scenes/Management Scenes/Table/::1727827246
 DataTableTheme.tres::Theme::5629417413306141288::1727438078::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
 table.gd::GDScript::-1::1727438078::0::1::::<>ScrollContainer<>::
-table.tscn::PackedScene::1771305429742224809::1727731658::0::1::::<><>::res://Scenes/Management Scenes/Table/table.gd<>uid://cmg6xg1i1jsqy::::res://Scenes/Management Scenes/Table/DataTableTheme.tres
+table.tscn::PackedScene::1771305429742224809::1727827246::0::1::::<><>::res://Scenes/Management Scenes/Table/table.gd<>uid://cmg6xg1i1jsqy::::res://Scenes/Management Scenes/Table/DataTableTheme.tres
 tablecolumn.tscn::PackedScene::7985281899638768295::1727438078::0::1::::<><>::
 tableheader.tscn::PackedScene::2623199200276569244::1727438078::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
 table_cell_icon_and_text.gd::GDScript::-1::1727438078::0::1::::<>Button<>::
@@ -904,9 +1159,9 @@ World_Map.png::CompressedTexture2D::5216406738885684064::1727438078::1727438607:
 ::res://Scenes/Management Scenes/territory_select/territory_area/::1727438078
 RegionArea.gd::GDScript::-1::1727438078::0::1::::<>Area2D<>::
 RegionArea.tscn::PackedScene::8337881817944772829::1727438078::0::1::::<><>::res://Scenes/Management Scenes/territory_select/territory_area/RegionArea.gd
-::res://Shaders/::1727731662
-PixelateAndOutline.gdshader::Shader::-1::1727731662::0::1::::<><>::
-Transparent Noise Border.gdshader::Shader::-1::1727731662::0::1::::<><>::
+::res://Shaders/::1727827248
+PixelateAndOutline.gdshader::Shader::-1::1727827248::0::1::::<><>::
+Transparent Noise Border.gdshader::Shader::-1::1727827248::0::1::::<><>::
 Transparent Noise Border.tres::ShaderMaterial::6782463142585962697::1727438078::0::1::::<><>::res://Shaders/Transparent Noise Border.gdshader
 ::res://Singletons/::1727536268
 unit_converter.gd::GDScript::-1::1727536268::0::1::::UnitConverter<>Node<>::
