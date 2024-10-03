@@ -48,7 +48,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("3_3q647")
-stretch_mode = 4
+stretch_mode = 5
 script = ExtResource("4_uf1kk")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/HBoxContainer"]

@@ -40,8 +40,8 @@ Functions below are responsible for saving and loading the WorldMap to user data
 """
 func load_gamemap():	
 	#Load the World Map from Disk
-	var file_map : GameMap = GameMapManager.game_map
-	#var file_map: GameMap = game_map_manager.get_csv_data();
+	GameMapManager.get_csv_data();
+	var file_map: GameMap = GameMapManager.game_map
 	if file_map == null:
 		return
 		
@@ -52,7 +52,7 @@ func load_gamemap():
 	graph_edit.world_graph.graph_nodes.clear();
 
 	# Start Graph Resource
-	var world_map: WorldMapGraph = graph_edit.world_graph #WorldMapGraph.new() 
+	var world_map: WorldMapGraph = graph_edit.world_graph 
 	
 	
 	# Iter through the confederations

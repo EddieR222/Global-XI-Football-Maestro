@@ -14,10 +14,10 @@ var _file_directory: String;
 var _file_name: String;
 var _default_image: String;
 
-func _init(dir: String, height: int, width: int):
+func _init(dir: String, _height: int, _width: int):
 	_file_directory = dir;
-	height = height;
-	width = width;
+	height = _height;
+	width = _width;
 
 ## Saves the passed in image and file_name. If no file_name is passed in, this will use the uuid as a file_name.
 ## Will delete a previously saved image if any.[br]
@@ -37,7 +37,7 @@ func save_image(img: Image, file_name := "") -> Error:
 		image_changed.emit() # ONLY gets emitted when image is changed
 			
 	# Now we need to resize the image
-	img.resize(height, width, 2);
+	img.resize(width, height, 2);
 	
 	# Now we need to save this image (possibly using uuid)
 	file_name = uuid.v4() + ".png" if file_name.is_empty() else file_name + ".png"
@@ -88,7 +88,7 @@ func set_default_image(img: Image) -> Error:
 		image_changed.emit() # ONLY gets emitted when image is changed
 			
 	# Now we need to resize the image
-	img.resize(height, width, 2);
+	img.resize(width, height, 2);
 	
 	# Now we need to save this image (possibly using uuid)
 	var file_name: String = uuid.v4() + ".png"

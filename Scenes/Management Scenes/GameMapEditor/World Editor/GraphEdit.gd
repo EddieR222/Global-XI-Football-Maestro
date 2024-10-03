@@ -22,9 +22,10 @@ Preload Nodes that we will instantiate later
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# For testing
-	var worked: bool = GameMapManager.get_csv_data();
-	if worked:
-		print(true)
+	GameMapManager.game_map = GameMap.new() #GameMapManager.get_csv_data();
+	
+	#if worked:
+		#print(true)
 	if GameMapManager.game_map.Confederations.size() == 0:
 		# We want to establish the world node and ensure it has the right properties
 		var world_confed_node: GraphNode = establish_world_node(false);

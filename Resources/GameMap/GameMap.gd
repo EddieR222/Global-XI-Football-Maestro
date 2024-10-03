@@ -110,18 +110,14 @@ func sort_confederations() -> void:
 			continue
 		
 		## Now we manually change the ID 
-		#Confederations[new_index].ID = new_index;
+		Confederations[new_index].ID = new_index;
 		
 		# Now we emit that the confed id has changed for all resources have a number pointer to the confederation
 		confed_id_changed.emit(old_id, -100);
 		confed_id_changed.emit(new_index, old_id);
 		confed_id_changed.emit(-100, new_index);
 		
-	# Log all Confederations and their new ID's
-	LogDuck.d("Confederations after Sorting")
-	for confed: Confederation in Confederations:
-		# Log Territory
-		LogDuck.d("[{id}]: [color=green]Name: {name} | Level: {level} | Owner: {owner}  ".format({"name": confed.Name, "id": confed.ID, "level": confed.Level, "owner":confed.Owner}))
+	
 
 ## This functions sorts the territories in alphabetical order by name. Corrects all IDs to new order
 func sort_territories() -> void:
@@ -218,11 +214,6 @@ func add_confederations(confeds: Array[Confederation]) -> bool:
 	# Now we add to array and sort
 	Confederations.append_array(confeds);
 	sort_confederations();
-	
-	# Log all added Confederations
-	for confed: Confederation in confeds:
-		# Log the Confederation
-		LogDuck.d("Added new Confederation to GameMap \n\t[color=green]Name: {name} \n\tID: {id} \n\tLevel: {level} \n\tOwner: {owner}\n".format({"name": confed.Name, "id": confed.ID, "level": confed.Level, "owner":confed.Owner}))
 	
 	# Now we return True to show we successfully added the confederations to GameMap
 	return true

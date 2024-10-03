@@ -121,6 +121,7 @@ func get_csv_data() -> bool:
 	# Second , we have to load the territories
 	var csv_file_path = "res://Test CSV/Game Directories - All Territories.csv"
 	var csv_data = read_csv_file(csv_file_path)
+	var territories: Array[Territory] = [];
 	for entry in csv_data:
 		
 		
@@ -142,7 +143,10 @@ func get_csv_data() -> bool:
 		terr.Last_Names = convert_to_string_array(entry["Last_Names"].split(",", false))
 		terr.Rating = entry["Rating"].to_int();
 		terr.League_Elo = entry["League_Elo"].to_float();
-		gm.add_territory(terr);
+		territories.push_back(terr)
+	
+	# Now we mass add all territories
+	gm.add_territories(territories)
 		
 	# Now we go through all the territories once added to add in coterritories
 	for entry in csv_data:
@@ -162,6 +166,7 @@ func get_csv_data() -> bool:
 		
 	csv_file_path = "res://Test CSV/Game Directories - All Confederations.csv"
 	csv_data = read_csv_file(csv_file_path)
+	var confederations: Array[Confederation] = [];
 	for entry in csv_data:
 		var confed: Confederation = Confederation.new();
 		confed.Name = entry["Name"]
@@ -170,7 +175,9 @@ func get_csv_data() -> bool:
 		var terr_list:= terr_nums.map(func(num: String): return gm.get_territory_by_id(num.to_int()))
 		confed.Territory_List = convert_to_territory_array(terr_list)
 		
-		gm.add_confederation(confed);
+		confederations.push_back(confed)
+		
+	gm.add_confederations(confederations)
 		
 	for entry in csv_data:
 		var confed_id: int = entry["ID"].to_int();
