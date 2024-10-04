@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1728002646
+::res://::1728081857
 CODE_OF_CONDUCT.md::TextFile::-1::1727438078::0::1::::<><>::
 CONTRIBUTING.md::TextFile::-1::1727438078::0::1::::<><>::
 Control.gd::GDScript::-1::1727438078::0::1::::<>TextureRect<>::
@@ -7,7 +7,7 @@ icon.svg::CompressedTexture2D::41404490809459251::1727438079::1727438607::1::::<
 README.md::TextFile::-1::1727438078::0::1::::<><>::
 SECURITY.md::TextFile::-1::1727438078::0::1::::<><>::
 stad.tscn::PackedScene::4465392298086744865::1727438079::0::1::::<><>::uid://x6ur4qte3jnk::::res://Assests/3D Assests/Stadium/stad.glb
-stadium.tscn::PackedScene::1701512071419867473::1727995903::0::1::::<><>::uid://ckktksphumv43::::res://Assets/3D Assets/Stadium/stadium.glb
+stadium.tscn::PackedScene::1701512071419867473::1728081857::0::1::::<><>::uid://ckktksphumv43::::res://Assets/3D Assets/Stadium/stadium.glb
 ::res://addons/::1727538450
 ::res://addons/easy_charts/::1727438607
 icon.svg::CompressedTexture2D::5587240663104598401::1727438078::1727438607::1::::<><>::
@@ -138,13 +138,13 @@ THIRDPARTY.txt::TextFile::-1::1727438078::0::1::::<><>::
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/::1727438079
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/Resources/::1727438079
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/_CodeSignature/::1727438079
-::res://addons/godot-jolt/windows/::1728002641
+::res://addons/godot-jolt/windows/::1728078513
 ::res://addons/godot-sqlite/::1727438079
 gdsqlite.gdextension::GDExtension::-1::1727438079::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1727438079::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1727438079::0::1::::<><>::
 plugin.cfg::TextFile::-1::1727438079::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1728002641
+::res://addons/godot-sqlite/bin/::1728081834
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1727438079
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1727438079
 ::res://addons/goutte.unicode/::1727438079
@@ -292,7 +292,7 @@ LICENSE.md::TextFile::-1::1727438079::0::1::::<><>::
 LOGO_LICENSE.md::TextFile::-1::1727438079::0::1::::<><>::
 README.md::TextFile::-1::1727438079::0::1::::<><>::
 version.txt::TextFile::-1::1727438079::0::1::::<><>::
-::res://addons/limboai/bin/::1728002641
+::res://addons/limboai/bin/::1728078513
 limboai.gdextension::GDExtension::-1::1727438079::0::1::::<><>::
 ::res://addons/limboai/bin/liblimboai.macos.editor.framework/::1727438079
 ::res://addons/limboai/bin/liblimboai.macos.template_release.framework/::1727438079
@@ -990,8 +990,8 @@ LeagueStage.gd::GDScript::-1::1727438078::0::1::::LeagueStage<>Resource<>::
 SingleKnockOutStage.gd::GDScript::-1::1727438078::0::1::::SingleKnockOutStage<>Resource<>::
 TeamLeagueStats.gd::GDScript::-1::1727438078::0::1::::TeamLeagueStats<>Resource<>::
 TournamentStage.gd::GDScript::-1::1727438078::0::1::::TournamentStage<>Resource<>::
-::res://Resources/Trie Resources/::1727744877
-input_action.gd::GDScript::-1::1727744357::0::1::::InputAction<>Resource<>::
+::res://Resources/Trie Resources/::1728079931
+input_action.gd::GDScript::-1::1728079931::0::1::::InputAction<>Resource<>::
 trie_node.gd::GDScript::-1::1727744318::0::1::::TrieNode<>Resource<>::
 trie_tree.gd::GDScript::-1::1727744877::0::1::::TrieTree<>Resource<>::
 ::res://Scenes/::1727438078
@@ -999,16 +999,16 @@ trie_tree.gd::GDScript::-1::1727744877::0::1::::TrieTree<>Resource<>::
 ::res://Scenes/Gameplay Scenes/Player Scenes/::1727438078
 ::res://Scenes/Gameplay Scenes/Player Scenes/Composition Nodes/::1727438078
 player_movement.gd::GDScript::-1::1727438078::0::1::::PlayerMovement<>Node3D<>::
-::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/::1728002635
-AnimationHandler.gd::GDScript::-1::1728001993::0::1::::<>Node3D<>::
+::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/::1728081857
+AnimationHandler.gd::GDScript::-1::1728081854::0::1::::<>Node3D<>::
 Area3D.gd::GDScript::-1::1727438078::0::1::::<>Area3D<>::
 CameraController.gd::GDScript::-1::1727438078::0::1::::<>Node3D<>::
-OnFieldPlayer.tscn::PackedScene::7904538890684999022::1727997813::0::1::::<><>::uid://c8ov8rsspema2::::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn<>res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd<>res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd<>res://addons/phantom_camera/scripts/resources/tween_resource.gd<>res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd<>uid://yihwjo4dhmtt::::res://stadium.tscn<>uid://dgeqh5j7ybmme::::res://Scenes/Gameplay Scenes/Soccer Ball/soccer_ball.tscn
+OnFieldPlayer.tscn::PackedScene::7904538890684999022::1728081857::0::1::::<><>::uid://c8ov8rsspema2::::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn<>res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd<>res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd<>res://addons/phantom_camera/scripts/resources/tween_resource.gd<>res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd<>uid://yihwjo4dhmtt::::res://stadium.tscn<>uid://dgeqh5j7ybmme::::res://Scenes/Gameplay Scenes/Soccer Ball/soccer_ball.tscn
 PlayerMovement.gd::GDScript::-1::1727556509::0::1::::<>Node3D<>::
 soccer_man_b.gd::GDScript::-1::1727555813::0::1::::<>CharacterBody3D<>::
-soccer_man_b.tscn::PackedScene::7119309405586550683::1728002635::0::1::::<><>::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.gd<>uid://bvjdouwp3uogb::::res://Assets/3D Assets/Player Models/Soccer_Man_B_Soccer_Man_B_Colrs.png<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/Area3D.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/PlayerMovement.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/AnimationHandler.gd<>res://addons/input_controller/input_controller.gd
-::res://Scenes/Gameplay Scenes/Soccer Ball/::1727995903
-soccer_ball.tscn::PackedScene::7589638187455137556::1727995903::0::1::::<><>::uid://cvnxmkvp61siy::::res://Assets/3D Assets/Soccer Ball/soccer_ball_Studio Ochi Athletes 09.png
+soccer_man_b.tscn::PackedScene::7119309405586550683::1728081857::0::1::::<><>::res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.gd<>uid://bvjdouwp3uogb::::res://Assets/3D Assets/Player Models/Soccer_Man_B_Soccer_Man_B_Colrs.png<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/Area3D.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/PlayerMovement.gd<>res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/AnimationHandler.gd<>res://addons/input_controller/input_controller.gd
+::res://Scenes/Gameplay Scenes/Soccer Ball/::1728081857
+soccer_ball.tscn::PackedScene::7589638187455137556::1728081857::0::1::::<><>::uid://cvnxmkvp61siy::::res://Assets/3D Assets/Soccer Ball/soccer_ball_Studio Ochi Athletes 09.png
 ::res://Scenes/Management Scenes/::1727438078
 ::res://Scenes/Management Scenes/Country Editor/::1727824799
 Area Val.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
@@ -1071,11 +1071,11 @@ SingleKnockOutNode.tscn::PackedScene::5942002964185257488::1727438078::0::1::::<
 SpecificTeamPopPanel.gd::GDScript::-1::1727438078::0::1::::<>PopupPanel<>::
 TeamsList.gd::GDScript::-1::1727438078::0::1::::<>ItemList<>::
 TournamentSelection.gd::GDScript::-1::1727438078::0::1::::<>OptionButton<>::
-::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/::1727995902
+::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/::1728081856
 LogoInput.gd::GDScript::-1::1727438078::0::1::::<>TextureButton<>::
 Team Editor 2.gd::GDScript::-1::1727438078::0::1::::<>Control<>::
-Team Editor 2.tscn::PackedScene::174819667336499039::1727995902::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd<>uid://cn614eycgw6h8::::res://Assets/2D Assets/Images/Backgrounds/Background_4.svg<>uid://dhs7nypb65elu::::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamIdentity.tscn<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TextureRect.gd<>uid://nia43tyo1mfo::::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn
-TeamIdentity.tscn::PackedScene::7689710199028411994::1727995902::0::1::::<><>::uid://c6frbihfvpaip::::res://Assets/2D Assets/Images/Icons/NO_LOGO_ICON.png<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/LogoInput.gd<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd<>uid://u8b4eq4emf77::::res://Assets/2D Assets/Images/Icons/ArrowIcon.svg<>uid://dtfa3dj15ee2f::::res://Assets/2D Assets/Images/Icons/football_kit_icon.png
+Team Editor 2.tscn::PackedScene::174819667336499039::1728081856::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/Team Editor 2.gd<>uid://cn614eycgw6h8::::res://Assets/2D Assets/Images/Backgrounds/Background_4.svg<>uid://dhs7nypb65elu::::res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamIdentity.tscn<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TextureRect.gd<>uid://nia43tyo1mfo::::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn
+TeamIdentity.tscn::PackedScene::7689710199028411994::1728081856::0::1::::<><>::uid://c6frbihfvpaip::::res://Assets/2D Assets/Images/Icons/NO_LOGO_ICON.png<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/LogoInput.gd<>res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamNameInput.gd<>uid://u8b4eq4emf77::::res://Assets/2D Assets/Images/Icons/ArrowIcon.svg<>uid://dtfa3dj15ee2f::::res://Assets/2D Assets/Images/Icons/football_kit_icon.png
 TeamNameInput.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
 TextureRect.gd::GDScript::-1::1727438078::0::1::::<>TextureRect<>::
 ::res://Scenes/Management Scenes/GameMapEditor/Player Editor/::1727438078
@@ -1092,23 +1092,23 @@ Name Code Input.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
 SpinBox.gd::GDScript::-1::1727438078::0::1::::<>SpinBox<>::
 Team ID.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Team Name.gd::GDScript::-1::1727438078::0::1::::<>LineEdit<>::
-::res://Scenes/Management Scenes/GameMapEditor/World Editor/::1727995904
+::res://Scenes/Management Scenes/GameMapEditor/World Editor/::1728081857
 GraphEdit.gd::GDScript::-1::1727901747::0::1::::<>GraphEdit<>::
 World Editor.gd::GDScript::-1::1727910291::0::1::::<>Control<>::
-World Editor.tscn::PackedScene::1217744872715804559::1727995904::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.gd<>uid://vwix3f5216wn::::res://Assets/2D Assets/Images/Backgrounds/Background_2.svg<>res://Scenes/Management Scenes/GameMapEditor/World Editor/GraphEdit.gd
-::res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/::1727995904
+World Editor.tscn::PackedScene::1217744872715804559::1728081857::0::1::::<><>::res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.gd<>uid://vwix3f5216wn::::res://Assets/2D Assets/Images/Backgrounds/Background_2.svg<>res://Scenes/Management Scenes/GameMapEditor/World Editor/GraphEdit.gd
+::res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/::1728081857
 Confederation Editor.gd::GDScript::-1::1727438078::0::1::::<>GraphNode<>::
-Confederation Editor.tscn::PackedScene::4377020352998335848::1727995904::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.gd
+Confederation Editor.tscn::PackedScene::4377020352998335848::1728081857::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.gd
 ItemList.gd::GDScript::-1::1727438078::0::1::::<>ItemList<>::
 ::res://Scenes/Management Scenes/GameMapEditor/World Editor/League Editor/::1727438078
 League Editor.tscn::PackedScene::507481753769897923::1727438078::0::1::::<><>::
 LeagueNode.tscn::PackedScene::8628539737815509014::1727438078::0::1::::<><>::
-::res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/::1727995904
+::res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/::1728081857
 CoTerritory Input.gd::GDScript::-1::1727438078::0::1::::<>OptionButton<>::
 Label.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Territory Editor.gd::GDScript::-1::1727438078::0::1::::<>GraphNode<>::
-Territory Editor.tscn::PackedScene::8422911629128742764::1727995904::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Assets/2D Assets/Images/icon.svg<>res://Scenes/Management Scenes/Country Editor/TextureButton.gd<>res://Scenes/Management Scenes/Country Editor/Territory Name Edit.gd<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/CoTerritory Input.gd<>res://Scenes/Management Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Management Scenes/Country Editor/Pop Val.gd<>res://Scenes/Management Scenes/Country Editor/Area Val.gd<>res://Scenes/Management Scenes/Country Editor/GDP Val.gd<>res://Scenes/Management Scenes/Country Editor/First Name List.gd<>res://Scenes/Management Scenes/Country Editor/Last Names List.gd<>res://Scenes/Management Scenes/Country Editor/Rating Value.gd<>res://Scenes/Management Scenes/Country Editor/League Rating Val.gd
-::res://Scenes/Management Scenes/Squad Editor/::1727995902
+Territory Editor.tscn::PackedScene::8422911629128742764::1728081857::0::1::::<><>::uid://etm0dk2bjjr1::::res://Textures/main_menu.tres<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.gd<>uid://cdkp3cl6rfyra::::res://Assets/2D Assets/Images/icon.svg<>res://Scenes/Management Scenes/Country Editor/TextureButton.gd<>res://Scenes/Management Scenes/Country Editor/Territory Name Edit.gd<>res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/CoTerritory Input.gd<>res://Scenes/Management Scenes/Country Editor/Code Name Text.gd<>res://Scenes/Management Scenes/Country Editor/Pop Val.gd<>res://Scenes/Management Scenes/Country Editor/Area Val.gd<>res://Scenes/Management Scenes/Country Editor/GDP Val.gd<>res://Scenes/Management Scenes/Country Editor/First Name List.gd<>res://Scenes/Management Scenes/Country Editor/Last Names List.gd<>res://Scenes/Management Scenes/Country Editor/Rating Value.gd<>res://Scenes/Management Scenes/Country Editor/League Rating Val.gd
+::res://Scenes/Management Scenes/Squad Editor/::1728081856
 CAM.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 CB.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 CDM.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
@@ -1126,23 +1126,23 @@ RW.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 RWB.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 SS.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 ST.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
-SubAreaBackground.tres::Theme::4347029320556437945::1727981194::0::1::::<><>::
+SubAreaBackground.tres::Theme::4347029320556437945::1728078534::0::1::::<><>::
 SW.gd::GDScript::-1::1727438078::0::1::::<>Panel<>::
 Tactics Editor.gd::GDScript::-1::1727438078::0::1::::<>TabContainer<>::
-Tactics Editor.tscn::PackedScene::929023278465423960::1727995902::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.gd<>uid://bla14mlgt8vjf::::res://Assets/2D Assets/Images/Backgrounds/pure_field.png<>res://Scenes/Management Scenes/Squad Editor/LW.gd<>res://Scenes/Management Scenes/Squad Editor/ST.gd<>res://Scenes/Management Scenes/Squad Editor/LM.gd<>res://Scenes/Management Scenes/Squad Editor/LWB.gd<>res://Scenes/Management Scenes/Squad Editor/LB.gd<>res://Scenes/Management Scenes/Squad Editor/CF.gd<>res://Scenes/Management Scenes/Squad Editor/SS.gd<>res://Scenes/Management Scenes/Squad Editor/CAM.gd<>res://Scenes/Management Scenes/Squad Editor/CM.gd<>res://Scenes/Management Scenes/Squad Editor/CDM.gd<>res://Scenes/Management Scenes/Squad Editor/CB.gd<>res://Scenes/Management Scenes/Squad Editor/SW.gd<>res://Scenes/Management Scenes/Squad Editor/GK.gd<>res://Scenes/Management Scenes/Squad Editor/RW.gd<>res://Scenes/Management Scenes/Squad Editor/RM.gd<>res://Scenes/Management Scenes/Squad Editor/RWB.gd<>res://Scenes/Management Scenes/Squad Editor/RB.gd<>uid://b26y65dk0mjiv::::res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres<>uid://0ibe2y5qi3fp::::res://Scenes/Management Scenes/Table/table.tscn
-::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/::1727995902
+Tactics Editor.tscn::PackedScene::929023278465423960::1728081856::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/Tactics Editor.gd<>uid://bla14mlgt8vjf::::res://Assets/2D Assets/Images/Backgrounds/pure_field.png<>res://Scenes/Management Scenes/Squad Editor/LW.gd<>res://Scenes/Management Scenes/Squad Editor/ST.gd<>res://Scenes/Management Scenes/Squad Editor/LM.gd<>res://Scenes/Management Scenes/Squad Editor/LWB.gd<>res://Scenes/Management Scenes/Squad Editor/LB.gd<>res://Scenes/Management Scenes/Squad Editor/CF.gd<>res://Scenes/Management Scenes/Squad Editor/SS.gd<>res://Scenes/Management Scenes/Squad Editor/CAM.gd<>res://Scenes/Management Scenes/Squad Editor/CM.gd<>res://Scenes/Management Scenes/Squad Editor/CDM.gd<>res://Scenes/Management Scenes/Squad Editor/CB.gd<>res://Scenes/Management Scenes/Squad Editor/SW.gd<>res://Scenes/Management Scenes/Squad Editor/GK.gd<>res://Scenes/Management Scenes/Squad Editor/RW.gd<>res://Scenes/Management Scenes/Squad Editor/RM.gd<>res://Scenes/Management Scenes/Squad Editor/RWB.gd<>res://Scenes/Management Scenes/Squad Editor/RB.gd<>uid://b26y65dk0mjiv::::res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres<>uid://0ibe2y5qi3fp::::res://Scenes/Management Scenes/Table/table.tscn
+::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/::1728081856
 NumberAndName.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Position.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 Rating.gd::GDScript::-1::1727438078::0::1::::<>Label<>::
 SquadPlayer.gd::GDScript::-1::1727438078::0::1::::<>VBoxContainer<>::
-SquadPlayer.tscn::PackedScene::847349463483684125::1727995902::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd<>uid://c65ora8j2a8su::::res://Assets/2D Assets/Images/Icons/world_icon.png.png
+SquadPlayer.tscn::PackedScene::847349463483684125::1728081856::0::1::::<><>::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.gd<>uid://c65ora8j2a8su::::res://Assets/2D Assets/Images/Icons/world_icon.png.png
 Stamina.gd::GDScript::-1::1727438078::0::1::::<>ProgressBar<>::
 ::res://Scenes/Management Scenes/Squad Editor/SquadPlayer/Misc Scripts/::1727438078
 PlayerFace.gd::GDScript::-1::1727438078::0::1::::<>TextureRect<>::
-::res://Scenes/Management Scenes/Table/::1727995902
+::res://Scenes/Management Scenes/Table/::1728081856
 DataTableTheme.tres::Theme::5629417413306141288::1727438078::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
 table.gd::GDScript::-1::1727438078::0::1::::<>ScrollContainer<>::
-table.tscn::PackedScene::1771305429742224809::1727995902::0::1::::<><>::res://Scenes/Management Scenes/Table/table.gd<>uid://cmg6xg1i1jsqy::::res://Scenes/Management Scenes/Table/DataTableTheme.tres
+table.tscn::PackedScene::1771305429742224809::1728081856::0::1::::<><>::res://Scenes/Management Scenes/Table/table.gd<>uid://cmg6xg1i1jsqy::::res://Scenes/Management Scenes/Table/DataTableTheme.tres
 tablecolumn.tscn::PackedScene::7985281899638768295::1727438078::0::1::::<><>::
 tableheader.tscn::PackedScene::2623199200276569244::1727438078::0::1::::<><>::uid://vvwh4soulnvi::::res://Textures/Anonymous.ttf
 table_cell_icon_and_text.gd::GDScript::-1::1727438078::0::1::::<>Button<>::
@@ -1159,9 +1159,9 @@ World_Map.png::CompressedTexture2D::5216406738885684064::1727438078::1727438607:
 ::res://Scenes/Management Scenes/territory_select/territory_area/::1727438078
 RegionArea.gd::GDScript::-1::1727438078::0::1::::<>Area2D<>::
 RegionArea.tscn::PackedScene::8337881817944772829::1727438078::0::1::::<><>::res://Scenes/Management Scenes/territory_select/territory_area/RegionArea.gd
-::res://Shaders/::1728002637
-PixelateAndOutline.gdshader::Shader::-1::1728002637::0::1::::<><>::
-Transparent Noise Border.gdshader::Shader::-1::1728002637::0::1::::<><>::
+::res://Shaders/::1728081857
+PixelateAndOutline.gdshader::Shader::-1::1728081857::0::1::::<><>::
+Transparent Noise Border.gdshader::Shader::-1::1728081857::0::1::::<><>::
 Transparent Noise Border.tres::ShaderMaterial::6782463142585962697::1727438078::0::1::::<><>::res://Shaders/Transparent Noise Border.gdshader
 ::res://Singletons/::1727536268
 unit_converter.gd::GDScript::-1::1727536268::0::1::::UnitConverter<>Node<>::

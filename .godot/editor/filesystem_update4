@@ -2,6 +2,8 @@ res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn
 res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres
 res://Shaders/Transparent Noise Border.gdshader
 res://Shaders/PixelateAndOutline.gdshader
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/AnimationHandler.gd
+res://Resources/Trie Resources/input_action.gd
 res://Scenes/Management Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
 res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
@@ -12,3 +14,4 @@ res://stadium.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/OnFieldPlayer.tscn

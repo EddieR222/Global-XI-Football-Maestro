@@ -1,30 +1,30 @@
 extends Node3D
-const InputType = InputController.InputType
 @onready var input_controller = $"../InputController"
 @export var animation_tree: AnimationTree;
 @onready var player: CharacterBody3D = get_owner();
-
+const INPUTTYPE = InputAction.INPUTTYPE
 
 @export var player_movement: Node3D;
 @export var input_timer: Timer;
 
-enum INPUTTYPE {
-	PRESS, 
-	HOLD,
-	DIRECTION,
-	RELEASE,
-}
+
 @export var action_button_hold_times: Dictionary = {
 	"Through Ball":          0.0,
 	"Lob Pass":              0.0,
 	"Shoot":                 0.0,
 	"Short Pass":            0.0,
-	"Player Run":            0.0,
+	"Player Run Modifier":   0.0,
 	"Finesse Shot Modifier": 0.0,
 	"Protect Ball":          0.0,
 	"Sprint":                0.0,
-	"Move Player":           0.0,
-	"Skill Move":            0.0,
+	"Move Player Up":        0.0,
+	"Move Player Down":      0.0,
+	"Move Player Left":      0.0,
+	"Move Player Right":     0.0,
+	"Skill Move Up":         0.0,
+	"Skill Move Down":       0.0,
+	"Skill Move Left":       0.0,
+	"Skill Move Right":      0.0,
 	"Tactics Up":            0.0,
 	"Tactics Down":          0.0,
 	"Tactics Left":          0.0,
@@ -35,12 +35,18 @@ enum INPUTTYPE {
 	"Lob Pass":              1,
 	"Shoot":                 2,
 	"Short Pass":            3,
-	"Player Run":            4,
+	"Player Run Modifier":   4,
 	"Finesse Shot Modifier": 5,
 	"Protect Ball":          6,
 	"Sprint":                7,
-	"Move Player":           8,
-	"Skill Move":            9,
+	"Move Player Up":        8,
+	"Move Player Down":      8,
+	"Move Player Left":      8,  
+	"Move Player Right":     8,
+	"Skill Move Up":         9,
+	"Skill Move Down":       9,
+	"Skill Move Left":       9,
+	"Skill Move Right":      9,
 	"Tactics Up":            10,
 	"Tactics Down":          11,
 	"Tactics Left":          12,
@@ -62,28 +68,44 @@ func _input(event: InputEvent) -> void:
 	# First, we go through the actions defined and check if they have been pressed
 	var time_started: float = Time.get_ticks_msec();
 	for action: String in order_of_importance.keys():
+		# Verify an action is pressed
 		if not Input.is_action_pressed(action):
 			continue;
+			
+		# Add Button Input to Input Buffer, which should still be valid or a new one
 		action_button_hold_times[action] = time_started;
+		var new_inputaction: InputAction = InputAction.new()
+		new_inputaction.action = action;
+		new_inputaction.type = INPUTTYPE.PRESS;
+		input_buffer.push_back(new_inputaction)
 	
-	# Next, we start the timer
-	input_timer.start(1.0)
+	
+	# Next, we start the timer if a button has been pressed and timer already timeout
+	if input_timer.is_stopped() and input_buffer.size() > 0:
+		input_timer.start(1.0);
 	
 	# Now, we check if any button has been released, building the InputAction
 	for action: String in order_of_importance.keys():
+		# Verify button has been released
 		if not Input.is_action_just_released(action):
 			continue;
+			
+		# Check the Type of Button Pressed given the amount of time it was held	
 		var time_released: float = Time.get_ticks_msec();
 		var delta: float = time_released - action_button_hold_times[action];
 		var type: INPUTTYPE = INPUTTYPE.PRESS if delta <= hold_threshold * 1000 else INPUTTYPE.HOLD;
 		
+		# Verify the button held time is considered a Hold
+		if type != INPUTTYPE.HOLD:
+			continue;
 			
+		# Now we change the InputType of the latest action and add timing info
+		var latest_input_of_action: InputAction = find_latest_input(action);
+		if latest_input_of_action == null:
+			continue
+		latest_input_of_action.type = INPUTTYPE.HOLD;
+		latest_input_of_action.time_pressed = delta;
 			
-	
-		
-
-	pass
-	
 	
 
 
@@ -96,6 +118,11 @@ func clear_action_timers() -> void:
 	for action in action_button_hold_times.keys():
 		action_button_hold_times[action] = 0.0;
 
+func find_latest_input(desired_action: String) -> InputAction:
+	for index: int in range(-1, -input_buffer.size(), -1):
+		if input_buffer[index].action == desired_action:
+			return input_buffer[index];
+	return null
 #
 #func handle_attacking_inputs(event: InputEvent, action: String, input_type: InputType) -> void:
 	#match action:
@@ -141,7 +168,8 @@ func _on_input_buffer_timer_timeout() -> void:
 	input_buffer = sort_inputs(input_buffer);
 	
 	# Now we search through the Trie Tree to check if Inputs are valid
-	print(input_buffer)
+	for input: InputAction in input_buffer:
+		print(input.action + " " + str(input.type) + " " + str(input.time_pressed))
 	
 	# Now we call appropiate function
 	
