@@ -1,17 +1,14 @@
-res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.tscn
+res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn
 res://Scenes/Management Scenes/Squad Editor/SubAreaBackground.tres
 res://Shaders/Transparent Noise Border.gdshader
 res://Shaders/PixelateAndOutline.gdshader
-res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.gd
 res://Scenes/Management Scenes/GameMapEditor/New Team Editor/Team Editor 2.tscn
 res://Scenes/Management Scenes/Squad Editor/Tactics Editor.tscn
 res://Scenes/Management Scenes/Squad Editor/SquadPlayer/SquadPlayer.tscn
 res://Scenes/Management Scenes/Table/table.tscn
 res://Scenes/Management Scenes/GameMapEditor/New Team Editor/TeamIdentity.tscn
-res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/OnFieldPlayer.tscn
 res://Scenes/Gameplay Scenes/Soccer Ball/soccer_ball.tscn
 res://stadium.tscn
-res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn
+res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
-res://Resources/Composition Resources/image_manager.gd
