@@ -73,7 +73,7 @@ func move_forward() -> Vector3:
 ## Rotate the player based on the input vector
 func rotate_player(input_vector: Vector2, delta: float) -> void:
 	# Compute the target direction based on the right stick input
-	var target_angle = atan2(-input_vector.y, -input_vector.x)
+	var target_angle = atan2(input_vector.y, -input_vector.x)
 	
 	
 	# Interpolate smoothly towards the target angle using rotation speed

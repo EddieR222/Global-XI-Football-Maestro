@@ -8,6 +8,28 @@ const INPUTTYPE = InputAction.INPUTTYPE
 @export var input_timer: Timer;
 
 
+@export var action_button_pressed_at: Dictionary = {
+	"Through Ball":          0.0,
+	"Lob Pass":              0.0,
+	"Shoot":                 0.0,
+	"Short Pass":            0.0,
+	"Player Run Modifier":   0.0,
+	"Finesse Shot Modifier": 0.0,
+	"Protect Ball":          0.0,
+	"Sprint":                0.0,
+	#"Move Player Up":        0.0,
+	#"Move Player Down":      0.0,
+	#"Move Player Left":      0.0,
+	#"Move Player Right":     0.0,
+	#"Skill Move Up":         0.0,
+	#"Skill Move Down":       0.0,
+	#"Skill Move Left":       0.0,
+	#"Skill Move Right":      0.0,
+	"Tactics Up":            0.0,
+	"Tactics Down":          0.0,
+	"Tactics Left":          0.0,
+	"Tactics Right":         0.0,
+};
 @export var action_button_hold_times: Dictionary = {
 	"Through Ball":          0.0,
 	"Lob Pass":              0.0,
@@ -17,14 +39,14 @@ const INPUTTYPE = InputAction.INPUTTYPE
 	"Finesse Shot Modifier": 0.0,
 	"Protect Ball":          0.0,
 	"Sprint":                0.0,
-	"Move Player Up":        0.0,
-	"Move Player Down":      0.0,
-	"Move Player Left":      0.0,
-	"Move Player Right":     0.0,
-	"Skill Move Up":         0.0,
-	"Skill Move Down":       0.0,
-	"Skill Move Left":       0.0,
-	"Skill Move Right":      0.0,
+	#"Move Player Up":        0.0,
+	#"Move Player Down":      0.0,
+	#"Move Player Left":      0.0,
+	#"Move Player Right":     0.0,
+	#"Skill Move Up":         0.0,
+	#"Skill Move Down":       0.0,
+	#"Skill Move Left":       0.0,
+	#"Skill Move Right":      0.0,
 	"Tactics Up":            0.0,
 	"Tactics Down":          0.0,
 	"Tactics Left":          0.0,
@@ -39,61 +61,86 @@ const INPUTTYPE = InputAction.INPUTTYPE
 	"Finesse Shot Modifier": 5,
 	"Protect Ball":          6,
 	"Sprint":                7,
-	"Move Player Up":        8,
-	"Move Player Down":      8,
-	"Move Player Left":      8,  
-	"Move Player Right":     8,
-	"Skill Move Up":         9,
-	"Skill Move Down":       9,
-	"Skill Move Left":       9,
-	"Skill Move Right":      9,
+	#"Move Player Up":        8,
+	#"Move Player Down":      8,
+	#"Move Player Left":      8,  
+	#"Move Player Right":     8,
+	#"Skill Move Up":         9,
+	#"Skill Move Down":       9,
+	#"Skill Move Left":       9,
+	#"Skill Move Right":      9,
 	"Tactics Up":            10,
 	"Tactics Down":          11,
 	"Tactics Left":          12,
 	"Tactics Right":         13,
 }
 
+
 ## The amount of time (in seconds) before a button input is considered as "Holding" the button.
 ## Anything less than this threshold value will be considered a press
-const hold_threshold: float = 0.3;
+const HOLD_THRESHOLD: float = 0.5;
 
 ## The amount of time (in seconds) before a new button input is considered a completely new input.
-const chain_input_time: float = 1.0;
+const CHAIN_INPUT_TIME: float = 2;
+
+## The amount fo Strength needed to not be considered a deadzone
+const DEADZONE_STRENGTH: float = 0.3;
 
 ## The Time the Last Button was pressed
 var _last_pressed_time: float = 0.0;
 var input_buffer: Array[InputAction] = [];
 
+
+var movement_stick_input: Vector2 = Vector2.ZERO;
+var skill_move_stick_input: Vector2 = Vector2.ZERO;
+
+
+
+var input_trie_map: TrieTree = TrieTree.new();
+
+func _ready():
+	# DEBUG: Set up simple movement button maps
+	var move_player= 0
+	pass
+	
+
+
 func _input(event: InputEvent) -> void:
-	# First, we go through the actions defined and check if they have been pressed
+	# First, we update directional inputs
+	movement_stick_input = Input.get_vector("Move Player Left", "Move Player Right", "Move Player Up", "Move Player Down", DEADZONE_STRENGTH);
+	skill_move_stick_input = Input.get_vector("Skill Move Left", "Skill Move Right", "Skill Move Up", "Skill Move Up", DEADZONE_STRENGTH);
+	
+	
+	# Now, we go through the button actions defined and check if they have been pressed
 	var time_started: float = Time.get_ticks_msec();
 	for action: String in order_of_importance.keys():
-		# Verify an action is pressed
-		if not Input.is_action_pressed(action):
+		# Verify an action is just pressed
+		if not Input.is_action_just_pressed(action):
 			continue;
 			
 		# Add Button Input to Input Buffer, which should still be valid or a new one
-		action_button_hold_times[action] = time_started;
+		action_button_pressed_at[action] = time_started;
 		var new_inputaction: InputAction = InputAction.new()
 		new_inputaction.action = action;
-		new_inputaction.type = INPUTTYPE.PRESS;
+		new_inputaction.type = INPUTTYPE.PRESS 
 		input_buffer.push_back(new_inputaction)
 	
 	
 	# Next, we start the timer if a button has been pressed and timer already timeout
 	if input_timer.is_stopped() and input_buffer.size() > 0:
-		input_timer.start(1.0);
+		input_timer.start(CHAIN_INPUT_TIME);
 	
 	# Now, we check if any button has been released, building the InputAction
+	var time_released: float = Time.get_ticks_msec();
 	for action: String in order_of_importance.keys():
 		# Verify button has been released
 		if not Input.is_action_just_released(action):
 			continue;
 			
 		# Check the Type of Button Pressed given the amount of time it was held	
-		var time_released: float = Time.get_ticks_msec();
-		var delta: float = time_released - action_button_hold_times[action];
-		var type: INPUTTYPE = INPUTTYPE.PRESS if delta <= hold_threshold * 1000 else INPUTTYPE.HOLD;
+		var delta: float = time_released - action_button_pressed_at[action];
+		action_button_pressed_at[action] = 0.0;
+		var type: INPUTTYPE = INPUTTYPE.PRESS if delta <= (HOLD_THRESHOLD * 1000) else INPUTTYPE.HOLD;
 		
 		# Verify the button held time is considered a Hold
 		if type != INPUTTYPE.HOLD:
@@ -104,9 +151,24 @@ func _input(event: InputEvent) -> void:
 		if latest_input_of_action == null:
 			continue
 		latest_input_of_action.type = INPUTTYPE.HOLD;
-		latest_input_of_action.time_pressed = delta;
+		action_button_hold_times[action] = delta / 1000.0;
 			
 	
+
+
+func _physics_process(delta: float) -> void:
+	# Starting off, we make the player's velocity zero, only changing it if we have valid movement inputs
+	player.velocity = Vector3.ZERO
+	
+	# For each physics process, we check to see if directional inputs have been given
+	if movement_stick_input != Vector2.ZERO:
+		# Rotate Player Body to this direction
+		player_movement.rotate_player(movement_stick_input, 1.0/60.0);
+		
+		# Now, we set the velocity of player
+		player.velocity = player_movement.move_forward();
+		
+	player.move_and_slide();
 
 
 ## Sorts the inputs so the Trie can search for it in a consistent order
@@ -124,19 +186,20 @@ func find_latest_input(desired_action: String) -> InputAction:
 			return input_buffer[index];
 	return null
 #
-#func handle_attacking_inputs(event: InputEvent, action: String, input_type: InputType) -> void:
-	#match action:
-		#"Move Player Up", "Move Player Down", "Move Player Left", "Move Player Right":
-			## Get Direction of PLayer's Directional movement
-			#var forward_direction: Vector2 = Input.get_vector("Move Player Left", "Move Player Right", "Move Player Down", "Move Player Up", 0.3);
-			#
-			## Rotate Player Body to this direction
-			#player_movement.rotate_player(forward_direction, 1.0/60.0);
-			#
-			## Now, we set the velocity of player
-			#player.velocity = player_movement.move_forward();
-			#
-	#player.move_and_slide()
+func handle_attacking_inputs() -> void:
+	for input_action: InputAction in input_buffer:
+		match input_action.action:
+			"Move Player Up", "Move Player Down", "Move Player Left", "Move Player Right":
+				# Get Direction of PLayer's Directional movement
+				var forward_direction: Vector2 = Input.get_vector("Move Player Left", "Move Player Right", "Move Player Down", "Move Player Up", 0.3);
+				
+				# Rotate Player Body to this direction
+				player_movement.rotate_player(forward_direction, 1.0/60.0);
+				
+				# Now, we set the velocity of player
+				player.velocity = player_movement.move_forward();
+			
+	player.move_and_slide()
 
 
 
@@ -169,10 +232,13 @@ func _on_input_buffer_timer_timeout() -> void:
 	
 	# Now we search through the Trie Tree to check if Inputs are valid
 	for input: InputAction in input_buffer:
-		print(input.action + " " + str(input.type) + " " + str(input.time_pressed))
+		print(input.action + " " + str(input.type) + " " + str(action_button_hold_times[input.action]))
 	
 	# Now we call appropiate function
-	
+	# DEBUG: If Has movement input, move towards it
+	for action: String in action_button_hold_times.keys():
+		action_button_hold_times[action] = 0.0;
+		action_button_pressed_at[action] = 0.0;
 	
 	# Now we reset the input buffer
 	input_buffer.clear();
