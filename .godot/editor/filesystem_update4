@@ -14,4 +14,3 @@ res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/soccer_man_b.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/World Editor.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/Confederation Editors/Confederation Editor.tscn
 res://Scenes/Management Scenes/GameMapEditor/World Editor/Territory Editors/Territory Editor.tscn
-res://Scenes/Gameplay Scenes/Player Scenes/On Field Player/PlayerMovement.gd
